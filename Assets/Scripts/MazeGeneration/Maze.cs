@@ -75,11 +75,7 @@ public class Maze : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
-                if(map[x, z] == TileType.Wall)
-                {   
-                    //Instantiate(wall, pos, Quaternion.identity);
-                }
-                else if (map[x, z] == TileType.Floor)
+                if (map[x, z] == TileType.Floor)
                 {   
                     MazePieceDetail piece = GetStructureAtPosition(x, z);
                     if(piece.structure != null)
