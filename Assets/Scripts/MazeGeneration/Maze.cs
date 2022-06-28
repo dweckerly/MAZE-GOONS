@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum TileType
 {
     Wall,
@@ -39,6 +38,14 @@ public class Maze : MonoBehaviour
         new MapLocation(0, -1)
     };
 
+
+    public GameObject cornerCurved;
+    public GameObject cornerStraight;
+    public GameObject crossRoads;
+    public GameObject deadEnd;
+    public GameObject straight;
+    public GameObject tJunction;
+
     void Start()
     {
         InitializeMap();
@@ -70,10 +77,14 @@ public class Maze : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
+                Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
                 if(map[x, z] == TileType.Wall)
-                {
-                    Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
+                {   
                     Instantiate(wall, pos, Quaternion.identity);
+                }
+                else if (map[x, z] == TileType.Floor)
+                {
+                    Instantiate(straight, pos, Quaternion.identity);
                 }
                 
             }
