@@ -38,13 +38,14 @@ public class Maze : MonoBehaviour
         new MapLocation(0, -1)
     };
 
+    MazePieceCollection mazePieceCollection;
 
-    public GameObject cornerCurved;
-    public GameObject cornerStraight;
-    public GameObject crossRoads;
-    public GameObject deadEnd;
-    public GameObject straight;
-    public GameObject tJunction;
+    public virtual void Generate() { }
+
+    private void Awake() 
+    {
+        mazePieceCollection = GetComponent<MazePieceCollection>();
+    }
 
     void Start()
     {
@@ -56,8 +57,6 @@ public class Maze : MonoBehaviour
     private void InitializeMap()
     {
         map = new TileType[width, depth];
-
-        // 1 is wall 0 is corridor
         for (int z = 0; z < depth; z++)
         {
             for (int x = 0; x < width; x++)
@@ -66,8 +65,6 @@ public class Maze : MonoBehaviour
             }
         }
     }
-
-    public virtual void Generate() {}
 
     private void DrawMap()
     {
@@ -80,15 +77,29 @@ public class Maze : MonoBehaviour
                 Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
                 if(map[x, z] == TileType.Wall)
                 {   
-                    Instantiate(wall, pos, Quaternion.identity);
+                    //Instantiate(wall, pos, Quaternion.identity);
                 }
                 else if (map[x, z] == TileType.Floor)
-                {
-                    Instantiate(straight, pos, Quaternion.identity);
-                }
-                
+                {   
+                    MazePieceDetail piece = GetStructureAtPosition(x, z);
+                    if(piece.structure != null)
+                    {
+                        GameObject go = Instantiate(piece.structure, pos, Quaternion.identity);
+                        go.transform.Rotate(piece.rotation);
+                    }                    
+                }                
             }
         }
+    }
+
+    MazePieceDetail GetStructureAtPosition(int x, int z)
+    {
+        TileType[] tileArray = GetSquareNeighborsTileTypes(x, z);
+        foreach(MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if(tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        return new MazePieceDetail();
     }
 
     public int CountSquareNeighbors(int x, int z, TileType tileType)
@@ -116,5 +127,10 @@ public class Maze : MonoBehaviour
     public int CountAllFloorNeighbors(int x, int z)
     {
         return CountSquareNeighbors(x, z, TileType.Floor) + CountDiagonalNeighbors(x, z, TileType.Floor);
+    }
+
+    public TileType[] GetSquareNeighborsTileTypes(int x, int z)
+    {
+        return new TileType[4] { map[x - 1, z], map[x, z + 1], map[x + 1, z], map[x, z - 1] };
     }
 }

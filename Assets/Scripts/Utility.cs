@@ -18,4 +18,13 @@ public static class Utility
             list[n] = value;
         }
     }
+
+    public static bool CompareArrays<T>(this T[] arr0, T[] arr1)
+    {
+        for(int i = 0; i < arr0.Length; i++)
+        {
+            if (!arr0[i].Equals(arr1[i])) return false;
+        }
+        return true;
+    }
 }
