@@ -29,6 +29,18 @@ public class MapLocation
     }
 }
 
+public class MazeStructureItem
+{
+    public MapLocation position;
+    public StructureType structureType;
+
+    public MazeStructureItem(int x, int z, StructureType _structureType)
+    {
+        position = new MapLocation(x, z);
+        structureType = _structureType;
+    }
+}
+
 public class Maze : MonoBehaviour
 {
     public int width = 30;
@@ -41,6 +53,8 @@ public class Maze : MonoBehaviour
     public int maxRoomSize = 20;
 
     public TileType[,] map;
+
+    List<MazeStructureItem> mazeStructureMap = new List<MazeStructureItem>();
 
     public List<MapLocation> directions = new List<MapLocation>()
     {
@@ -106,15 +120,21 @@ public class Maze : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
+                Vector3 pos = ConvertToGameSpace(x, z);
                 if (map[x, z] == TileType.Floor)
                 {            
                     MazePieceDetail piece = GetStructureAtPositionBySquareNeighbors(x, z);
                     GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
                     go.transform.Rotate(piece.rotation);
+                    mazeStructureMap.Add(new MazeStructureItem(x, z, piece.structureType));
                 }                
             }
         }
+    }
+
+    Vector3 ConvertToGameSpace(int x, int z)
+    {
+        return new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
     }
 
     MazePieceDetail GetStructureAtPositionBySquareNeighbors(int x, int z)
