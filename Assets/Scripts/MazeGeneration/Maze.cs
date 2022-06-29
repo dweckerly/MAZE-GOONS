@@ -105,7 +105,7 @@ public class Maze : MonoBehaviour
                 if (map[x, z] == TileType.Floor)
                 {   
                     // check for floor (check all neighbors)
-                    // check for wall (check for 5 floor in direction)
+                    // check for wall (check for 5 floor in direction and wall)
                     // check for corridor (check 4 squares)
                     MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
                     if(piece.structureType != StructureType.Undefined)
