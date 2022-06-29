@@ -340,6 +340,8 @@ MonoBehaviour:
     structure: {fileID: 3898509360062164936, guid: a91aa512ddff1f6498b9c917d8c2d472, type: 3}
   - structureType: 7
     structure: {fileID: 661355010434548141, guid: f064821d993f92b4899596a16f002889, type: 3}
+  - structureType: 0
+    structure: {fileID: 902281179873152139, guid: ec506d0a0f69cef4298258a7b5a9bcad, type: 3}
   pieceDetails:
   - name: straight vertical
     structureType: 1
@@ -411,7 +413,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
   - name: Room Wall top
     structureType: 7
-    tilePattern: 010000000100000000000000010000000100000001000000
+    tilePattern: 010000000000000001000000010000000100000001000000
     rotation: {x: 0, y: 90, z: 0}
   - name: Room Wall right
     structureType: 7

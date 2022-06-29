@@ -108,36 +108,16 @@ public class Maze : MonoBehaviour
                     // check for wall (check for 5 floor in direction and wall)
                     // check for corridor (check 4 squares)
                     MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
-                    if(piece.structureType != StructureType.Undefined)
-                    {
-                        GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
-                        go.transform.Rotate(piece.rotation);
-                    }
-                    else 
+                    if (piece.structureType == StructureType.Undefined)
                     {
                         piece = GetStructureAtPositionByDirectionalNeighbors(x, z);
-                        if (piece.structureType != StructureType.Undefined)
-                        {
-                            GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
-                            go.transform.Rotate(piece.rotation);
-                        }
-                        else 
+                        if (piece.structureType == StructureType.Undefined)
                         {
                             piece = GetStructureAtPositionBySquareNeighbors(x, z);
-                            if (piece.structureType != StructureType.Undefined)
-                            {
-                                GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
-                                go.transform.Rotate(piece.rotation);
-                            }
-                            else
-                            {
-                                GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                                block.transform.localScale = new Vector3(scale, scale, scale);
-                                block.transform.position = pos;
-                            }
                         }
-                                               
-                    }                    
+                    }
+                    GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
+                    go.transform.Rotate(piece.rotation);                   
                 }                
             }
         }
