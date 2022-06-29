@@ -9,14 +9,6 @@ public enum TileType
     Maze
 }
 
-public enum Direction
-{
-    West,
-    North,
-    East, 
-    South
-}
-
 public class MapLocation
 {
     public int x;
