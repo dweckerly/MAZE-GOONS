@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +50,7 @@ public class Maze : MonoBehaviour
     {
         InitializeMap();
         Generate();
+        AddRooms(2, 6, 2, 6);
         DrawMap();
     }
 
@@ -62,6 +62,25 @@ public class Maze : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 map[x, z] = TileType.Wall;
+            }
+        }
+    }
+
+    public virtual void AddRooms(int minRooms, int maxRooms, int minSize, int maxSize)
+    {
+        int roomCount = Random.Range(minRooms, maxRooms + 1);
+        for (int i = 0; i < roomCount; i++)
+        {
+            int startX = Random.Range(2, width - 1);
+            int startZ = Random.Range(2, depth - 1);
+            int roomWidth = Random.Range(minSize, maxSize + 1);
+            int roomDepth = Random.Range(minSize, maxSize + 1);
+            for(int x = startX; x < width - 1 && x < startX + roomWidth; x++)
+            {
+                for (int z = startZ; z < depth - 1 && z < startZ + roomDepth; z++)
+                {
+                    map[x, z] = TileType.Floor;
+                } 
             }
         }
     }
@@ -82,6 +101,12 @@ public class Maze : MonoBehaviour
                     {
                         GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
                         go.transform.Rotate(piece.rotation);
+                    }
+                    else 
+                    {
+                        GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        block.transform.localScale = new Vector3(scale, scale, scale);
+                        block.transform.position = pos;
                     }                    
                 }                
             }
