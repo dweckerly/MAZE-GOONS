@@ -142,7 +142,7 @@ public class Maze : MonoBehaviour
         TileType[] tileArray = GetSquareNeighborsTileTypes(x, z);
         foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
         {
-            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
+            if (tileArray.IsSameArray(piece.tilePattern)) return piece;
         }
         return new MazePieceDetail();
     }

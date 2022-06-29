@@ -19,7 +19,7 @@ public static class Utility
         }
     }
 
-    public static bool CompareArrays<T>(this T[] arr0, T[] arr1)
+    public static bool IsSameArray<T>(this T[] arr0, T[] arr1)
     {
         if (arr0.Length != arr1.Length) return false;
         for(int i = 0; i < arr0.Length; i++)
