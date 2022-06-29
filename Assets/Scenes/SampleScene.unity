@@ -325,65 +325,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c561e74dcbdb64baaacd7b888ad714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structureMapping:
+  - structureType: 1
+    structure: {fileID: 6351060721503576280, guid: c7f782f64b5f4d9408455988715ce453, type: 3}
+  - structureType: 2
+    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
+  - structureType: 3
+    structure: {fileID: 1585328137981339299, guid: b204699a9baeed549b8fa2106dfa1d33, type: 3}
+  - structureType: 4
+    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
+  - structureType: 5
+    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
   pieceDetails:
   - name: straight vertical
-    structure: {fileID: 6351060721503576280, guid: c7f782f64b5f4d9408455988715ce453, type: 3}
+    structureType: 1
     tilePattern: 00000000010000000000000001000000
     rotation: {x: 0, y: 0, z: 0}
   - name: straight horizontal
-    structure: {fileID: 6351060721503576280, guid: c7f782f64b5f4d9408455988715ce453, type: 3}
+    structureType: 1
     tilePattern: 01000000000000000100000000000000
     rotation: {x: 0, y: 90, z: 0}
   - name: corner top and right
-    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
+    structureType: 2
     tilePattern: 00000000010000000100000000000000
     rotation: {x: 0, y: 0, z: 0}
   - name: corner right and bottom
-    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
+    structureType: 2
     tilePattern: 00000000000000000100000001000000
     rotation: {x: 0, y: 90, z: 0}
   - name: corner left and bottom
-    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
+    structureType: 2
     tilePattern: 01000000000000000000000001000000
     rotation: {x: 0, y: 180, z: 0}
   - name: corner left and top
-    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
+    structureType: 2
     tilePattern: 01000000010000000000000000000000
     rotation: {x: 0, y: -90, z: 0}
-  - name: crossroads
-    structure: {fileID: 1585328137981339299, guid: b204699a9baeed549b8fa2106dfa1d33, type: 3}
+  - name: Crossroads
+    structureType: 3
     tilePattern: 01000000010000000100000001000000
     rotation: {x: 0, y: 0, z: 0}
   - name: Dead End bottom
-    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
+    structureType: 4
     tilePattern: 00000000000000000000000001000000
     rotation: {x: 0, y: 0, z: 0}
   - name: Dead End left
-    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
+    structureType: 4
     tilePattern: 01000000000000000000000000000000
     rotation: {x: 0, y: 90, z: 0}
   - name: Dead End top
-    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
+    structureType: 4
     tilePattern: 00000000010000000000000000000000
     rotation: {x: 0, y: 180, z: 0}
   - name: Dead End right
-    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
+    structureType: 4
     tilePattern: 00000000000000000100000000000000
     rotation: {x: 0, y: -90, z: 0}
   - name: T right
-    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
+    structureType: 5
     tilePattern: 00000000010000000100000001000000
     rotation: {x: 0, y: 0, z: 0}
   - name: T bottom
-    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
+    structureType: 5
     tilePattern: 01000000000000000100000001000000
     rotation: {x: 0, y: 90, z: 0}
   - name: T left
-    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
+    structureType: 5
     tilePattern: 01000000010000000000000001000000
     rotation: {x: 0, y: 180, z: 0}
   - name: T top
-    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
+    structureType: 5
     tilePattern: 01000000010000000100000000000000
     rotation: {x: 0, y: -90, z: 0}
 --- !u!1001 &7537682657580351301

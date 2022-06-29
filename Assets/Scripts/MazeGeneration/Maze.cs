@@ -78,9 +78,9 @@ public class Maze : MonoBehaviour
                 if (map[x, z] == TileType.Floor)
                 {   
                     MazePieceDetail piece = GetStructureAtPosition(x, z);
-                    if(piece.structure != null)
+                    if(piece.structureType != StructureType.Undefined)
                     {
-                        GameObject go = Instantiate(piece.structure, pos, Quaternion.identity);
+                        GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
                         go.transform.Rotate(piece.rotation);
                     }                    
                 }                
