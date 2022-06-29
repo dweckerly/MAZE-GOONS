@@ -11,7 +11,7 @@ public class DFS : Maze
 
     void Generate(int x, int z)
     {
-        if (CountSquareNeighbors(x, z, TileType.Floor) >= 2) return;
+        if (CountSquareNeighborsByType(x, z, TileType.Floor) >= 2) return;
         map[x, z] = TileType.Floor;
 
         directions.Shuffle();

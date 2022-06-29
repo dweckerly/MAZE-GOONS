@@ -9,7 +9,8 @@ public enum StructureType
     Corner,
     Crossroads,
     Deadend,
-    TJunction
+    TJunction,
+    Floor
 }
 
 [System.Serializable]
@@ -24,7 +25,7 @@ public struct MazePieceDetail
 {
     public string name;
     public StructureType structureType;
-    public TileType[] tilePattern; // tile pattern --> left (x - 1), top (z + 1), right (x + 1), bottom (z - 1)
+    public TileType[] tilePattern;
     public Vector3 rotation;
 }
 

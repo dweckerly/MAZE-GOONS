@@ -50,7 +50,7 @@ public class Maze : MonoBehaviour
     {
         InitializeMap();
         Generate();
-        AddRooms(2, 6, 2, 6);
+        AddRooms(4, 10, 4, 10);
         DrawMap();
     }
 
@@ -96,7 +96,7 @@ public class Maze : MonoBehaviour
                 Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
                 if (map[x, z] == TileType.Floor)
                 {   
-                    MazePieceDetail piece = GetStructureAtPosition(x, z);
+                    MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
                     if(piece.structureType != StructureType.Undefined)
                     {
                         GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
@@ -104,18 +104,28 @@ public class Maze : MonoBehaviour
                     }
                     else 
                     {
-                        GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        block.transform.localScale = new Vector3(scale, scale, scale);
-                        block.transform.position = pos;
+                        // check squares here?
+                        MazePieceDetail pieceBySquare = GetStructureAtPositionBySquareNeighbors(x, z);
+                        if (pieceBySquare.structureType != StructureType.Undefined)
+                        {
+                            GameObject go = Instantiate(mazePieceCollection.pieceMap[pieceBySquare.structureType], pos, Quaternion.identity);
+                            go.transform.Rotate(pieceBySquare.rotation);
+                        }
+                        else
+                        {
+                            GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            block.transform.localScale = new Vector3(scale, scale, scale);
+                            block.transform.position = pos;
+                        }                        
                     }                    
                 }                
             }
         }
     }
 
-    MazePieceDetail GetStructureAtPosition(int x, int z)
+    MazePieceDetail GetStructureAtPositionByAllNeighbors(int x, int z)
     {
-        TileType[] tileArray = GetSquareNeighborsTileTypes(x, z);
+        TileType[] tileArray = GetNeighborTileTypes(x, z);
         foreach(MazePieceDetail piece in mazePieceCollection.pieceDetails)
         {
             if(tileArray.CompareArrays(piece.tilePattern)) return piece;
@@ -123,7 +133,17 @@ public class Maze : MonoBehaviour
         return new MazePieceDetail();
     }
 
-    public int CountSquareNeighbors(int x, int z, TileType tileType)
+    MazePieceDetail GetStructureAtPositionBySquareNeighbors(int x, int z)
+    {
+        TileType[] tileArray = GetSquareNeighborsTileTypes(x, z);
+        foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        return new MazePieceDetail();
+    }
+
+    public int CountSquareNeighborsByType(int x, int z, TileType tileType)
     {
         int count = 0;
         if (x <= 0 || x >= width - 1 || z <= 0 || z >= depth - 1) return 5;
@@ -134,7 +154,7 @@ public class Maze : MonoBehaviour
         return count;
     }
 
-    public int CountDiagonalNeighbors(int x, int z, TileType tileType)
+    public int CountDiagonalNeighborsByType(int x, int z, TileType tileType)
     {
         int count = 0;
         if (x <= 0 || x >= width - 1 || z <= 0 || z >= depth - 1) return 5;
@@ -147,11 +167,33 @@ public class Maze : MonoBehaviour
 
     public int CountAllFloorNeighbors(int x, int z)
     {
-        return CountSquareNeighbors(x, z, TileType.Floor) + CountDiagonalNeighbors(x, z, TileType.Floor);
+        return CountSquareNeighborsByType(x, z, TileType.Floor) + CountDiagonalNeighborsByType(x, z, TileType.Floor);
+    }
+
+    public TileType[] GetNeighborTileTypes(int x, int z)
+    {
+        // left, top left, top middle, top right, right, bottom right, bottom mid, bottom left
+        return new TileType[8] {
+            map[x - 1, z],
+            map[x - 1, z + 1], 
+            map[x, z + 1],
+            map[x + 1, z + 1],
+            map[x + 1, z],
+            map[x + 1, z - 1],
+            map[x, z - 1],
+            map[x - 1, z - 1]
+        };
     }
 
     public TileType[] GetSquareNeighborsTileTypes(int x, int z)
     {
+        // tile pattern --> left (x - 1), top (z + 1), right (x + 1), bottom (z - 1)
         return new TileType[4] { map[x - 1, z], map[x, z + 1], map[x + 1, z], map[x, z - 1] };
+    }
+
+    public TileType[] GetDiagonalNeighborsTileTypes(int x, int z)
+    {
+        // top left, top right, bottom right, bottom left
+        return new TileType[4] { map[x - 1, z + 1], map[x + 1, z + 1], map[x + 1, z - 1], map[x - 1, z - 1] };
     }
 }

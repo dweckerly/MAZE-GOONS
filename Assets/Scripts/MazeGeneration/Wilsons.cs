@@ -30,7 +30,7 @@ public class Wilsons : Maze
         {
             for(int x = 1; x < width - 1; x++)
             {
-                if (CountSquareNeighbors(x, z, TileType.Maze) == 0)
+                if (CountSquareNeighborsByType(x, z, TileType.Maze) == 0)
                 {
                     availableCells.Add(new MapLocation(x, z));
                 }
@@ -62,14 +62,14 @@ public class Wilsons : Maze
             int randomDirection = Random.Range(0, directions.Count);
             int newX = currentX + directions[randomDirection].x;
             int newZ = currentZ + directions[randomDirection].z;
-            if (CountSquareNeighbors(newX, newZ, TileType.Floor) < 2)
+            if (CountSquareNeighborsByType(newX, newZ, TileType.Floor) < 2)
             {
                 currentX = newX;
                 currentZ = newZ;
                 map[currentX, currentZ] = TileType.Floor;
                 traversed.Add(new MapLocation(currentX, currentZ));
             }
-            validPath = CountSquareNeighbors(currentX, currentZ, TileType.Maze) == 1;
+            validPath = CountSquareNeighborsByType(currentX, currentZ, TileType.Maze) == 1;
             
             loop++;
             if (loop >= 50000) print("LOOP COUNT TERMINATION");

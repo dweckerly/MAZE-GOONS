@@ -20,7 +20,7 @@ public class Prims : Maze
             x = walls[randomWall].x;
             z = walls[randomWall].z;
             walls.RemoveAt(randomWall);
-            if(CountSquareNeighbors(x, z, TileType.Floor) == 1)
+            if(CountSquareNeighborsByType(x, z, TileType.Floor) == 1)
             {
                 map[x, z] = TileType.Floor;
                 AddWallsToList(x, z);
