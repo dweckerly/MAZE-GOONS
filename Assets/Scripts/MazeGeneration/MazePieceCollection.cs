@@ -5,13 +5,11 @@ using UnityEngine;
 public enum StructureType
 {
     Undefined,
-    Straight,
     Corner,
-    Crossroads,
+    Corridor,
     Deadend,
-    TJunction,
     Floor,
-    RoomWall
+    SingleWall
 }
 
 [System.Serializable]

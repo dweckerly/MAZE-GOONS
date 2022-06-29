@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &168672589
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.665845
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1687392
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610529828227252688, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950182904639806314, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
+      propertyPath: m_Name
+      value: Single-Wall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +308,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &826334400
 MonoBehaviour:
@@ -326,102 +383,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structureMapping:
-  - structureType: 1
-    structure: {fileID: 6351060721503576280, guid: c7f782f64b5f4d9408455988715ce453, type: 3}
-  - structureType: 2
-    structure: {fileID: 2726115068045229772, guid: 6934153635cadd74cb599ea42f6d6c60, type: 3}
-  - structureType: 3
-    structure: {fileID: 1585328137981339299, guid: b204699a9baeed549b8fa2106dfa1d33, type: 3}
-  - structureType: 4
-    structure: {fileID: 467711237675906045, guid: ed90dff89b11465408bb9edec84d6ad9, type: 3}
-  - structureType: 5
-    structure: {fileID: 8769700357239989938, guid: 73d36ad9403b243468463aad4ba6c04a, type: 3}
-  - structureType: 6
-    structure: {fileID: 3898509360062164936, guid: a91aa512ddff1f6498b9c917d8c2d472, type: 3}
-  - structureType: 7
-    structure: {fileID: 661355010434548141, guid: f064821d993f92b4899596a16f002889, type: 3}
   - structureType: 0
     structure: {fileID: 902281179873152139, guid: ec506d0a0f69cef4298258a7b5a9bcad, type: 3}
+  - structureType: 1
+    structure: {fileID: 7590697910892932124, guid: b706ae8b864dc7240ac1dc30e0566fcf, type: 3}
+  - structureType: 2
+    structure: {fileID: 4133102315415584602, guid: eeb4fd02321b75343b43395689bf0dcb, type: 3}
+  - structureType: 4
+    structure: {fileID: 8453472176241610160, guid: 70b8b83808c0e14428a812c2135e6111, type: 3}
+  - structureType: 5
+    structure: {fileID: 8950182904639806314, guid: caa52d52bdd035044b1193eb4fe00841, type: 3}
   pieceDetails:
-  - name: straight vertical
-    structureType: 1
+  - name: Corridor Vertical
+    structureType: 2
     tilePattern: 00000000010000000000000001000000
     rotation: {x: 0, y: 0, z: 0}
-  - name: straight horizontal
-    structureType: 1
+  - name: Corridor Horizontal
+    structureType: 2
     tilePattern: 01000000000000000100000000000000
     rotation: {x: 0, y: 90, z: 0}
-  - name: corner top and right
-    structureType: 2
+  - name: Corner Top-Right
+    structureType: 1
     tilePattern: 00000000010000000100000000000000
     rotation: {x: 0, y: 0, z: 0}
-  - name: corner right and bottom
+  - name: Corner Right-Bottom
     structureType: 2
     tilePattern: 00000000000000000100000001000000
     rotation: {x: 0, y: 90, z: 0}
-  - name: corner left and bottom
-    structureType: 2
+  - name: Corner Left-Bottom
+    structureType: 1
     tilePattern: 01000000000000000000000001000000
     rotation: {x: 0, y: 180, z: 0}
-  - name: corner left and top
-    structureType: 2
+  - name: Corner Left-Top
+    structureType: 1
     tilePattern: 01000000010000000000000000000000
     rotation: {x: 0, y: -90, z: 0}
-  - name: Crossroads
-    structureType: 3
+  - name: Floor
+    structureType: 4
     tilePattern: 01000000010000000100000001000000
     rotation: {x: 0, y: 0, z: 0}
-  - name: Dead End bottom
-    structureType: 4
-    tilePattern: 00000000000000000000000001000000
-    rotation: {x: 0, y: 0, z: 0}
-  - name: Dead End left
-    structureType: 4
-    tilePattern: 01000000000000000000000000000000
-    rotation: {x: 0, y: 90, z: 0}
-  - name: Dead End top
-    structureType: 4
-    tilePattern: 00000000010000000000000000000000
-    rotation: {x: 0, y: 180, z: 0}
-  - name: Dead End right
-    structureType: 4
+  - name: Dead End Right
+    structureType: 3
     tilePattern: 00000000000000000100000000000000
+    rotation: {x: 0, y: 0, z: 0}
+  - name: Dead End Bottom
+    structureType: 3
+    tilePattern: 00000000000000000000000001000000
+    rotation: {x: 0, y: 90, z: 0}
+  - name: Dead End left
+    structureType: 3
+    tilePattern: 01000000000000000000000000000000
+    rotation: {x: 0, y: 180, z: 0}
+  - name: Dead End Top
+    structureType: 3
+    tilePattern: 00000000010000000000000000000000
     rotation: {x: 0, y: -90, z: 0}
-  - name: T right
+  - name: Single Wall Left
     structureType: 5
     tilePattern: 00000000010000000100000001000000
     rotation: {x: 0, y: 0, z: 0}
-  - name: T bottom
+  - name: Single Wall Top
     structureType: 5
     tilePattern: 01000000000000000100000001000000
     rotation: {x: 0, y: 90, z: 0}
-  - name: T left
+  - name: Single Wall Right
     structureType: 5
     tilePattern: 01000000010000000000000001000000
     rotation: {x: 0, y: 180, z: 0}
-  - name: T top
+  - name: Single Wall Bottom
     structureType: 5
     tilePattern: 01000000010000000100000000000000
-    rotation: {x: 0, y: -90, z: 0}
-  - name: Floor
-    structureType: 6
-    tilePattern: 0100000001000000010000000100000001000000010000000100000001000000
-    rotation: {x: 0, y: 0, z: 0}
-  - name: 'Room Wall left '
-    structureType: 7
-    tilePattern: 000000000100000001000000010000000100000001000000
-    rotation: {x: 0, y: 0, z: 0}
-  - name: Room Wall top
-    structureType: 7
-    tilePattern: 010000000000000001000000010000000100000001000000
-    rotation: {x: 0, y: 90, z: 0}
-  - name: Room Wall right
-    structureType: 7
-    tilePattern: 010000000100000001000000000000000100000001000000
-    rotation: {x: 0, y: 180, z: 0}
-  - name: Room Wall bottom
-    structureType: 7
-    tilePattern: 010000000100000001000000010000000100000000000000
     rotation: {x: 0, y: -90, z: 0}
 --- !u!1001 &7537682657580351301
 PrefabInstance:

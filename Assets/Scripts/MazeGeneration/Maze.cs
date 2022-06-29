@@ -58,7 +58,7 @@ public class Maze : MonoBehaviour
     {
         InitializeMap();
         Generate();
-        AddRooms(4, 10, 4, 10);
+        AddRooms(6, 12, 4, 10);
         DrawMap();
     }
 
@@ -103,21 +103,24 @@ public class Maze : MonoBehaviour
             {
                 Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
                 if (map[x, z] == TileType.Floor)
-                {   
+                {
                     // check for floor (check all neighbors)
                     // check for wall (check for 5 floor in direction and wall)
                     // check for corridor (check 4 squares)
-                    MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
-                    if (piece.structureType == StructureType.Undefined)
-                    {
-                        piece = GetStructureAtPositionByDirectionalNeighbors(x, z);
-                        if (piece.structureType == StructureType.Undefined)
-                        {
-                            piece = GetStructureAtPositionBySquareNeighbors(x, z);
-                        }
-                    }
+                    // MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
+                    // if (piece.structureType == StructureType.Undefined)
+                    // {
+                    //     piece = GetStructureAtPositionByDirectionalNeighbors(x, z);
+                    //     if (piece.structureType == StructureType.Undefined)
+                    //     {
+                    //         piece = GetStructureAtPositionBySquareNeighbors(x, z);
+                    //     }
+                    // }
+                    // GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
+                    // go.transform.Rotate(piece.rotation);             
+                    MazePieceDetail piece = GetStructureAtPositionBySquareNeighbors(x, z);
                     GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
-                    go.transform.Rotate(piece.rotation);                   
+                    go.transform.Rotate(piece.rotation);
                 }                
             }
         }
