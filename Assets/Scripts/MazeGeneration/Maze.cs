@@ -9,6 +9,14 @@ public enum TileType
     Maze
 }
 
+public enum Direction
+{
+    West,
+    North,
+    East, 
+    South
+}
+
 public class MapLocation
 {
     public int x;
@@ -96,6 +104,9 @@ public class Maze : MonoBehaviour
                 Vector3 pos = new Vector3((x - (width / 2)) * scale, 0, (z - (depth / 2)) * scale);
                 if (map[x, z] == TileType.Floor)
                 {   
+                    // check for floor (check all neighbors)
+                    // check for wall (check for 5 floor in direction)
+                    // check for corridor (check 4 squares)
                     MazePieceDetail piece = GetStructureAtPositionByAllNeighbors(x, z);
                     if(piece.structureType != StructureType.Undefined)
                     {
@@ -104,19 +115,28 @@ public class Maze : MonoBehaviour
                     }
                     else 
                     {
-                        // check squares here?
-                        MazePieceDetail pieceBySquare = GetStructureAtPositionBySquareNeighbors(x, z);
-                        if (pieceBySquare.structureType != StructureType.Undefined)
+                        piece = GetStructureAtPositionByDirectionalNeighbors(x, z);
+                        if (piece.structureType != StructureType.Undefined)
                         {
-                            GameObject go = Instantiate(mazePieceCollection.pieceMap[pieceBySquare.structureType], pos, Quaternion.identity);
-                            go.transform.Rotate(pieceBySquare.rotation);
+                            GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
+                            go.transform.Rotate(piece.rotation);
                         }
-                        else
+                        else 
                         {
-                            GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                            block.transform.localScale = new Vector3(scale, scale, scale);
-                            block.transform.position = pos;
-                        }                        
+                            piece = GetStructureAtPositionBySquareNeighbors(x, z);
+                            if (piece.structureType != StructureType.Undefined)
+                            {
+                                GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
+                                go.transform.Rotate(piece.rotation);
+                            }
+                            else
+                            {
+                                GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                                block.transform.localScale = new Vector3(scale, scale, scale);
+                                block.transform.position = pos;
+                            }
+                        }
+                                               
                     }                    
                 }                
             }
@@ -129,6 +149,31 @@ public class Maze : MonoBehaviour
         foreach(MazePieceDetail piece in mazePieceCollection.pieceDetails)
         {
             if(tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        return new MazePieceDetail();
+    }
+
+    MazePieceDetail GetStructureAtPositionByDirectionalNeighbors(int x, int z)
+    {
+        TileType[] tileArray = GetDirectionalTileTypes(x, z, Direction.West);
+        foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        tileArray = GetDirectionalTileTypes(x, z, Direction.North);
+        foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        tileArray = GetDirectionalTileTypes(x, z, Direction.East);
+        foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
+        }
+        tileArray = GetDirectionalTileTypes(x, z, Direction.South);
+        foreach (MazePieceDetail piece in mazePieceCollection.pieceDetails)
+        {
+            if (tileArray.CompareArrays(piece.tilePattern)) return piece;
         }
         return new MazePieceDetail();
     }
@@ -183,6 +228,20 @@ public class Maze : MonoBehaviour
             map[x, z - 1],
             map[x - 1, z - 1]
         };
+    }
+
+    public TileType[] GetDirectionalTileTypes(int x, int z, Direction dir)
+    {
+        // start at left including where 5 floor tiles should be and 1 wall
+        if (dir == Direction.West)
+            return new TileType[6] { map[x - 1, z], map[x - 1, z + 1], map[x, z + 1], map[x + 1, z], map[x, z - 1], map[x - 1, z - 1] };
+        else if (dir == Direction.North)
+            return new TileType[6] { map[x - 1, z], map[x - 1, z + 1], map[x, z + 1], map[x + 1, z + 1], map[x + 1, z], map[x, z - 1] };
+        else if (dir == Direction.East)
+            return new TileType[6] { map[x - 1, z], map[x, z + 1], map[x + 1, z + 1], map[x + 1, z], map[x + 1, z - 1], map[x, z - 1] };
+        else if (dir == Direction.South)
+            return new TileType[6] { map[x - 1, z], map[x, z + 1], map[x + 1, z], map[x + 1, z - 1], map[x, z - 1], map[x - 1, z - 1] };
+        return new TileType[0];
     }
 
     public TileType[] GetSquareNeighborsTileTypes(int x, int z)

@@ -10,7 +10,8 @@ public enum StructureType
     Crossroads,
     Deadend,
     TJunction,
-    Floor
+    Floor,
+    RoomWall
 }
 
 [System.Serializable]
