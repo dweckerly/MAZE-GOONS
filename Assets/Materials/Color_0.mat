@@ -9,18 +9,18 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Color_0
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
+  - DR_OUTLINE_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
+  m_InvalidKeywords:
   - _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -1190,7 +1190,7 @@ Material:
     - _Layer1Strength: 1
     - _Layer2Size: 0
     - _Layer2Strength: 0
-    - _LightContribution: 0
+    - _LightContribution: 0.25
     - _LightDataAOStrengthA: 0
     - _LightDataAOStrengthB: 0
     - _LightDataAOStrengthG: 0
@@ -1353,7 +1353,7 @@ Material:
     - _OutlineDepthOffset: 0
     - _OutlineDstBlend: 0
     - _OutlineEmission: 0
-    - _OutlineEnabled: 0
+    - _OutlineEnabled: 1
     - _OutlineFixedSize: 0
     - _OutlineHueOffset: 0
     - _OutlineHueOffsetSpeed: 0
@@ -1377,7 +1377,7 @@ Material:
     - _OutlineTextureUV: 0
     - _OutlineTintMix: 0
     - _OutlineUseVertexColors: 0
-    - _OutlineWidth: 0.01
+    - _OutlineWidth: 1
     - _OutlineZTest: 4
     - _OutlinesMaxDistance: 9999
     - _OverrideLightmapDir: 0
@@ -1553,7 +1553,7 @@ Material:
     - _ShadowBorder: 0.5
     - _ShadowBorderRange: 0
     - _ShadowColorTexUV: 0
-    - _ShadowEdgeSize: 0.05
+    - _ShadowEdgeSize: 0
     - _ShadowEdgeSizeExtra: 0.05
     - _ShadowMix: 0
     - _ShadowMixThreshold: 0.5
@@ -1946,7 +1946,7 @@ Material:
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClothMetallicSmoothnessMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.2552065, g: 0.3490566, b: 0.32207054, a: 1}
-    - _ColorDim: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDim: {r: 0.087620154, g: 0.103773594, b: 0.09685069, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
@@ -2077,7 +2077,7 @@ Material:
     - _MochieMetallicMasksPan: {r: 0, g: 0, b: 0, a: 0}
     - _MochieReflectionTint: {r: 1, g: 1, b: 1, a: 1}
     - _MochieSpecularTint: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDropShadowOffset: {r: 1, g: 0, b: 0, a: 0}
     - _OutlineMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _OutlinePersonaDirection: {r: 1, g: 0, b: 0, a: 0}
