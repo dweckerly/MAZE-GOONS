@@ -139,10 +139,15 @@ public class Maze : MonoBehaviour
     private void AddEnemies()
     {
         int randomRoom = Random.Range(1, roomList.Count);
-        int randomPosition = Random.Range(0, roomList[randomRoom].Count);
-        Vector3 pos = ConvertToGameSpace(roomList[randomRoom][randomPosition].x, roomList[randomRoom][randomPosition].z);
-        GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+        roomList[randomRoom].Shuffle();
+        for(int i = 0; i < 3; i++)
+        {
+            Vector3 pos = ConvertToGameSpace(roomList[randomRoom][i].x, roomList[randomRoom][i].z);
+            GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+        }
     }
+        
+        
 
     Vector3 ConvertToGameSpace(int x, int z)
     {
