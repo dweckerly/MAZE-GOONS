@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 826334401}
   - component: {fileID: 826334403}
   - component: {fileID: 826334404}
+  - component: {fileID: 826334405}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -436,6 +437,35 @@ MonoBehaviour:
     structureType: 5
     tilePattern: 01000000010000000100000000000000
     rotation: {x: 0, y: -90, z: 0}
+--- !u!114 &826334405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826334397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 1
+  m_Size: {x: 1000, y: 100, z: 1000}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &1111495708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1074496280649959774, guid: 995fa320ca3fde742b5a1950566acb66, type: 3}

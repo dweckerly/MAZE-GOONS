@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum TileType
 {
@@ -48,6 +49,8 @@ public class Maze : MonoBehaviour
 
     List<MazeStructureItem> mazeStructureMap = new List<MazeStructureItem>();
 
+    NavMeshSurface surface;
+
     public List<MapLocation> directions = new List<MapLocation>()
     {
         new MapLocation(1, 0),
@@ -63,6 +66,7 @@ public class Maze : MonoBehaviour
     private void Awake() 
     {
         mazePieceCollection = GetComponent<MazePieceCollection>();
+        surface = GetComponent<NavMeshSurface>();
     }
 
     void Start()
@@ -71,6 +75,7 @@ public class Maze : MonoBehaviour
         Generate();
         AddRooms(minRooms, maxRooms, minRoomSize, maxRoomSize);
         DrawMap();
+        surface.BuildNavMesh();
     }
 
     private void InitializeMap()
