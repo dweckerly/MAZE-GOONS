@@ -49,7 +49,11 @@ public class Maze : MonoBehaviour
 
     List<MazeStructureItem> mazeStructureMap = new List<MazeStructureItem>();
 
+    List<List<MapLocation>> roomList = new List<List<MapLocation>>();
+
     NavMeshSurface surface;
+
+    public GameObject enemyPrefab;
 
     public List<MapLocation> directions = new List<MapLocation>()
     {
@@ -76,6 +80,7 @@ public class Maze : MonoBehaviour
         AddRooms(minRooms, maxRooms, minRoomSize, maxRoomSize);
         DrawMap();
         surface.BuildNavMesh();
+        AddEnemies();
     }
 
     private void InitializeMap()
@@ -95,6 +100,7 @@ public class Maze : MonoBehaviour
         int roomCount = Random.Range(minRooms, maxRooms + 1);
         for (int i = 0; i < roomCount; i++)
         {
+            roomList.Add(new List<MapLocation>());
             int startX = Random.Range(2, width - 1);
             int startZ = Random.Range(2, depth - 1);
             int roomWidth = Random.Range(minSize, maxSize + 1);
@@ -103,6 +109,7 @@ public class Maze : MonoBehaviour
             {
                 for (int z = startZ; z < depth - 1 && z < startZ + roomDepth; z++)
                 {
+                    roomList[i].Add(new MapLocation(x, z));
                     map[x, z] = TileType.Floor;
                 } 
             }
@@ -127,6 +134,14 @@ public class Maze : MonoBehaviour
                 }                
             }
         }
+    }
+
+    private void AddEnemies()
+    {
+        int randomRoom = Random.Range(1, roomList.Count);
+        int randomPosition = Random.Range(0, roomList[randomRoom].Count);
+        Vector3 pos = ConvertToGameSpace(roomList[randomRoom][randomPosition].x, roomList[randomRoom][randomPosition].z);
+        GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
     }
 
     Vector3 ConvertToGameSpace(int x, int z)
