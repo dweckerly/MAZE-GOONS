@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3955724695841842021
 Transform:
@@ -92,9 +92,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3955724695841842021}
     m_Modifications:
+    - target: {fileID: 149450, guid: 7b6438df353859a4db6fef0eaccf0a2f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 162906, guid: 7b6438df353859a4db6fef0eaccf0a2f, type: 3}
       propertyPath: m_Name
       value: CandleLightRed 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 162906, guid: 7b6438df353859a4db6fef0eaccf0a2f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 170542, guid: 7b6438df353859a4db6fef0eaccf0a2f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 412400, guid: 7b6438df353859a4db6fef0eaccf0a2f, type: 3}
       propertyPath: m_RootOrder
@@ -166,6 +178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3955724695841842021}
     m_Modifications:
+    - target: {fileID: 149450, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 162906, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
       propertyPath: m_Name
       value: CandleLightRed
@@ -173,6 +189,14 @@ PrefabInstance:
     - target: {fileID: 162906, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 162906, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 170542, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 412400, guid: 6f894f63c0dede642b94f62fae3c3a72, type: 3}
       propertyPath: m_RootOrder

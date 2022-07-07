@@ -118,8 +118,8 @@ public class Maze : MonoBehaviour
 
     private void DrawMap()
     {
-        GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        wall.transform.localScale = new Vector3(scale, scale, scale);
+        //GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //wall.transform.localScale = new Vector3(scale, scale, scale);
         for (int z = 0; z < depth; z++)
         {
             for (int x = 0; x < width; x++)
@@ -146,8 +146,6 @@ public class Maze : MonoBehaviour
             GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
         }
     }
-        
-        
 
     Vector3 ConvertToGameSpace(int x, int z)
     {
