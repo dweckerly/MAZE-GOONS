@@ -25,12 +25,12 @@ public class MapLocation
 public class MazeStructureItem
 {
     public MapLocation position;
-    public StructureType structureType;
+    public MazePieceDetail pieceDetail;
 
-    public MazeStructureItem(int x, int z, StructureType _structureType)
+    public MazeStructureItem(int x, int z, MazePieceDetail _pieceDetail)
     {
         position = new MapLocation(x, z);
-        structureType = _structureType;
+        pieceDetail = _pieceDetail;
     }
 }
 
@@ -54,6 +54,8 @@ public class Maze : MonoBehaviour
     NavMeshSurface surface;
 
     public GameObject enemyPrefab;
+
+    public GameObject sconce;
 
     public List<MapLocation> directions = new List<MapLocation>()
     {
@@ -80,7 +82,8 @@ public class Maze : MonoBehaviour
         AddRooms(minRooms, maxRooms, minRoomSize, maxRoomSize);
         DrawMap();
         surface.BuildNavMesh();
-        AddEnemies();
+        AddEnemiesToRooms();
+        PlaceLights();
     }
 
     private void InitializeMap()
@@ -130,13 +133,13 @@ public class Maze : MonoBehaviour
                     MazePieceDetail piece = GetStructureAtPositionBySquareNeighbors(x, z);
                     GameObject go = Instantiate(mazePieceCollection.pieceMap[piece.structureType], pos, Quaternion.identity);
                     go.transform.Rotate(piece.rotation);
-                    mazeStructureMap.Add(new MazeStructureItem(x, z, piece.structureType));
+                    mazeStructureMap.Add(new MazeStructureItem(x, z, piece));
                 }                
             }
         }
     }
 
-    private void AddEnemies()
+    private void AddEnemiesToRooms()
     {
         int randomRoom = Random.Range(1, roomList.Count);
         roomList[randomRoom].Shuffle();
@@ -145,6 +148,35 @@ public class Maze : MonoBehaviour
             Vector3 pos = ConvertToGameSpace(roomList[randomRoom][i].x, roomList[randomRoom][i].z);
             GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
         }
+    }
+
+    private void PlaceLights()
+    {
+        foreach(MazeStructureItem item in mazeStructureMap)
+        {
+            if(item.pieceDetail.structureType == StructureType.Corridor)
+            {
+                Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
+                Vector3 pos1 = pos + new Vector3(0, -2, 0);
+                Vector3 pos2 = pos + new Vector3(0, -2, 0);
+                Vector3 rotation1 = item.pieceDetail.rotation + new Vector3(0, 90, 0);
+                Vector3 rotation2 = item.pieceDetail.rotation + new Vector3(0, -90, 0);
+                pos1 += CalculateLightPosition(rotation1);
+                pos2 += CalculateLightPosition(rotation2);
+                GameObject go1 = Instantiate(sconce, pos1, Quaternion.identity);
+                go1.transform.Rotate(rotation1);
+                GameObject go2 = Instantiate(sconce, pos2, Quaternion.identity);
+                go2.transform.Rotate(rotation2);
+            }
+        }
+    }
+
+    private Vector3 CalculateLightPosition(Vector3 rotation)
+    {
+        if (rotation.y == 0) return new Vector3(0, 0, -(scale / 2));
+        else if (rotation.y == 90) return new Vector3(-(scale / 2), 0, 0);
+        else if (rotation.y == -90) return new Vector3((scale / 2), 0, 0);
+        else return new Vector3(0, 0, (scale / 2));
     }
 
     Vector3 ConvertToGameSpace(int x, int z)
