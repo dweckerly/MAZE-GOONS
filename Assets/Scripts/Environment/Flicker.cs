@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Flicker : MonoBehaviour
 {
-    public float MaxReduction;
-    public float MaxIncrease;
+    public float maxIntensityReduction;
+    public float maxIntensityIncrease;
+    public float intensityStrength;
+
+    public float maxRangeReduction;
+    public float maxRangeIncrease;
+    public float rangeStrength;
+    
     public float RateDamping;
-    public float Strength;
+    
     public bool StopFlickering;
 
     private Light _lightSource;
     private float _baseIntensity;
+    private float _baseRange;
 
     public void Start()
     {
@@ -22,6 +29,7 @@ public class Flicker : MonoBehaviour
             return;
         }
         _baseIntensity = _lightSource.intensity;
+        _baseRange = _lightSource.range;
         StartCoroutine(DoFlicker());
     }
 
@@ -29,7 +37,8 @@ public class Flicker : MonoBehaviour
     {
         while (!StopFlickering)
         {
-            _lightSource.intensity = Mathf.Lerp(_lightSource.intensity, Random.Range(_baseIntensity - MaxReduction, _baseIntensity + MaxIncrease), Strength * Time.deltaTime);
+            _lightSource.intensity = Mathf.Lerp(_lightSource.intensity, Random.Range(_baseIntensity - maxIntensityReduction, _baseIntensity + maxIntensityIncrease), intensityStrength * Time.deltaTime);
+            _lightSource.range = Mathf.Lerp(_lightSource.range, Random.Range(_baseRange - maxRangeReduction, _baseRange + maxRangeIncrease), rangeStrength * Time.deltaTime);
             yield return new WaitForSeconds(RateDamping);
         }
     }

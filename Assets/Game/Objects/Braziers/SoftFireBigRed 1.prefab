@@ -19217,8 +19217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4823647ba41d0694686331e1ca12e362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxReduction: 0.5
-  MaxIncrease: 0.5
+  maxIntensityReduction: 0.5
+  maxIntensityIncrease: 0.5
+  intensityStrength: 300
+  maxRangeReduction: 0.1
+  maxRangeIncrease: 0.1
+  rangeStrength: 100
   RateDamping: 0.1
-  Strength: 300
   StopFlickering: 0
