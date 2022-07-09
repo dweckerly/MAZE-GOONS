@@ -83,7 +83,7 @@ public class Maze : MonoBehaviour
         DrawMap();
         surface.BuildNavMesh();
         AddEnemiesToRooms();
-        PlaceLights();
+        PlaceLightsInCorridors();
     }
 
     private void InitializeMap()
@@ -150,23 +150,31 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private void PlaceLights()
+    private void PlaceLightsInCorridors()
     {
         foreach(MazeStructureItem item in mazeStructureMap)
         {
-            if(item.pieceDetail.structureType == StructureType.Corridor)
+            if(item.pieceDetail.structureType == StructureType.Corridor && Random.Range(0, 100) < 80)
             {
                 Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
-                Vector3 pos1 = pos + new Vector3(0, -2, 0);
-                Vector3 pos2 = pos + new Vector3(0, -2, 0);
-                Vector3 rotation1 = item.pieceDetail.rotation + new Vector3(0, 90, 0);
-                Vector3 rotation2 = item.pieceDetail.rotation + new Vector3(0, -90, 0);
-                pos1 += CalculateLightPosition(rotation1);
-                pos2 += CalculateLightPosition(rotation2);
-                GameObject go1 = Instantiate(sconce, pos1, Quaternion.identity);
-                go1.transform.Rotate(rotation1);
-                GameObject go2 = Instantiate(sconce, pos2, Quaternion.identity);
-                go2.transform.Rotate(rotation2);
+                int chance = Random.Range(0, 100);
+                if (chance > 34)
+                {
+                    Vector3 pos1 = pos + new Vector3(0, -2, 0);
+                    Vector3 rotation1 = item.pieceDetail.rotation + new Vector3(0, 90, 0);
+                    pos1 += CalculateLightPosition(rotation1);
+                    GameObject go1 = Instantiate(sconce, pos1, Quaternion.identity);
+                    go1.transform.Rotate(rotation1);
+                }
+                if (chance < 65)
+                {
+                    Vector3 pos2 = pos + new Vector3(0, -2, 0);
+                    Vector3 rotation2 = item.pieceDetail.rotation + new Vector3(0, -90, 0);
+                    pos2 += CalculateLightPosition(rotation2);
+                    GameObject go2 = Instantiate(sconce, pos2, Quaternion.identity);
+                    go2.transform.Rotate(rotation2);
+                }
+                
             }
         }
     }
