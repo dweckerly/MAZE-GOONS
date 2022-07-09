@@ -83,9 +83,9 @@ public class Maze : MonoBehaviour
         Generate();
         AddRooms(minRooms, maxRooms, minRoomSize, maxRoomSize);
         DrawMap();
+        PlaceObjects();
         surface.BuildNavMesh();
         AddEnemiesToRooms();
-        PlaceObjects();
     }
 
     private void InitializeMap()
@@ -160,7 +160,7 @@ public class Maze : MonoBehaviour
             {
                 PlaceLights(item);
             }
-            else if (item.pieceDetail.structureType == StructureType.Deadend && Random.Range(0, 100) < 100)
+            else if (item.pieceDetail.structureType == StructureType.Deadend && Random.Range(0, 100) < 25)
             {
                 PlaceChest(item);
             }
