@@ -57,6 +57,8 @@ public class Maze : MonoBehaviour
 
     public GameObject sconce;
 
+    public GameObject chest;
+
     public List<MapLocation> directions = new List<MapLocation>()
     {
         new MapLocation(1, 0),
@@ -83,7 +85,7 @@ public class Maze : MonoBehaviour
         DrawMap();
         surface.BuildNavMesh();
         AddEnemiesToRooms();
-        PlaceLightsInCorridors();
+        PlaceObjects();
     }
 
     private void InitializeMap()
@@ -150,33 +152,50 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private void PlaceLightsInCorridors()
+    private void PlaceObjects()
     {
         foreach(MazeStructureItem item in mazeStructureMap)
         {
             if(item.pieceDetail.structureType == StructureType.Corridor && Random.Range(0, 100) < 80)
             {
-                Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
-                int chance = Random.Range(0, 100);
-                if (chance > 34)
-                {
-                    Vector3 pos1 = pos + new Vector3(0, -2, 0);
-                    Vector3 rotation1 = item.pieceDetail.rotation + new Vector3(0, 90, 0);
-                    pos1 += CalculateLightPosition(rotation1);
-                    GameObject go1 = Instantiate(sconce, pos1, Quaternion.identity);
-                    go1.transform.Rotate(rotation1);
-                }
-                if (chance < 65)
-                {
-                    Vector3 pos2 = pos + new Vector3(0, -2, 0);
-                    Vector3 rotation2 = item.pieceDetail.rotation + new Vector3(0, -90, 0);
-                    pos2 += CalculateLightPosition(rotation2);
-                    GameObject go2 = Instantiate(sconce, pos2, Quaternion.identity);
-                    go2.transform.Rotate(rotation2);
-                }
-                
+                PlaceLights(item);
+            }
+            else if (item.pieceDetail.structureType == StructureType.Deadend && Random.Range(0, 100) < 100)
+            {
+                PlaceChest(item);
             }
         }
+    }
+
+    private void PlaceLights(MazeStructureItem item)
+    {
+        Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
+        int chance = Random.Range(0, 100);
+        if (chance > 34)
+        {
+            Vector3 pos1 = pos + new Vector3(0, -2, 0);
+            Vector3 rotation1 = item.pieceDetail.rotation + new Vector3(0, 90, 0);
+            pos1 += CalculateLightPosition(rotation1);
+            GameObject go1 = Instantiate(sconce, pos1, Quaternion.identity);
+            go1.transform.Rotate(rotation1);
+        }
+        if (chance < 65)
+        {
+            Vector3 pos2 = pos + new Vector3(0, -2, 0);
+            Vector3 rotation2 = item.pieceDetail.rotation + new Vector3(0, -90, 0);
+            pos2 += CalculateLightPosition(rotation2);
+            GameObject go2 = Instantiate(sconce, pos2, Quaternion.identity);
+            go2.transform.Rotate(rotation2);
+        }
+    }
+
+    private void PlaceChest(MazeStructureItem item)
+    {
+        Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
+        pos += new Vector3(0, -3, 0);
+        GameObject go = Instantiate(chest, pos, Quaternion.identity);
+        Vector3 rotation = item.pieceDetail.rotation + new Vector3(0, 90, 0);
+        go.transform.Rotate(rotation);
     }
 
     private Vector3 CalculateLightPosition(Vector3 rotation)
