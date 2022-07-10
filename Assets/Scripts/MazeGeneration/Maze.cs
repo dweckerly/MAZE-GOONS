@@ -196,6 +196,13 @@ public class Maze : MonoBehaviour
         GameObject go = Instantiate(chest, pos, Quaternion.identity);
         Vector3 rotation = item.pieceDetail.rotation + new Vector3(0, 90, 0);
         go.transform.Rotate(rotation);
+        if (Random.Range(0, 100) < 75)
+        {
+            Vector3 lightRotation = item.pieceDetail.rotation;
+            pos += CalculateLightPosition(lightRotation);
+            GameObject go2 = Instantiate(sconce, pos, Quaternion.identity);
+            go2.transform.Rotate(lightRotation);
+        }
     }
 
     private Vector3 CalculateLightPosition(Vector3 rotation)
@@ -203,7 +210,7 @@ public class Maze : MonoBehaviour
         if (rotation.y == 0) return new Vector3(0, 0, -(scale / 2));
         else if (rotation.y == 90) return new Vector3(-(scale / 2), 0, 0);
         else if (rotation.y == -90) return new Vector3((scale / 2), 0, 0);
-        else return new Vector3(0, 0, (scale / 2));
+        else return new Vector3(0, 0, (scale / 2)); // -180
     }
 
     Vector3 ConvertToGameSpace(int x, int z)
