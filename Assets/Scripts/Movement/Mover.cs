@@ -20,7 +20,7 @@ public class Mover : MonoBehaviour
         UpdateAnimator();
     }
 
-    public void MoveTo(Vector3 dest, float speedFraction)
+    public void MoveTo(Vector3 dest, float speedFraction = 1f)
     {
         agent.destination = dest;
         agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
@@ -37,5 +37,10 @@ public class Mover : MonoBehaviour
         Vector3 localVelocity = transform.InverseTransformDirection(agent.velocity);
         float speedPercent = localVelocity.z / maxSpeed;
         animator.SetFloat("forwardSpeed", speedPercent);
+    }
+
+    public void SetAnimationTrigger(string trigger)
+    {
+        animator.SetTrigger(trigger);
     }
 }
