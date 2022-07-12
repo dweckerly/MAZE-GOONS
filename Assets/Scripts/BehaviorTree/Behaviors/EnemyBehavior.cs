@@ -3,26 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : GenericBehavior
 {
-    NavMeshAgent agent;
     Combatant combatant;
-    MovementHandler mover;
 
-    Node root;
-    GameObject target = null;
-
-    [SerializeField] float viewDistance = 30f;
-    [SerializeField] float viewAngle = 90f;
-    [SerializeField] float interactionDistance = 5f;
-
-    Node.Status behaviorStatus = Node.Status.RUNNING;
-
-    private void Awake() 
+    protected override void Awake() 
     {
-        agent = GetComponent<NavMeshAgent>();
+        base.Awake();
         combatant = GetComponent<Combatant>();
-        mover = GetComponent<MovementHandler>();
     }
 
     void Start()
@@ -95,10 +83,5 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 targetDirection = target.position - transform.position;
         float angle = Vector3.Angle(targetDirection, transform.forward);
         return angle < (viewAngle / 2);
-    }
-
-    void Update()
-    {
-        if(behaviorStatus != Node.Status.SUCCESS) behaviorStatus = root.Process();
     }
 }
