@@ -22,11 +22,21 @@ public class Combatant : MonoBehaviour
     private void Update() 
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (target == null) return;
+        if (target == null) 
+        {
+            animator.SetAnimationBool("inCombat", false);
+            return;
+        }
         transform.LookAt(target.transform);
     }
 
-    private void TriggerAttack()
+    public void SetTarget(CombatTarget _target)
+    {
+        target = _target;
+        animator.SetAnimationBool("inCombat", true);
+    }
+
+    public void TriggerAttack()
     {
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {

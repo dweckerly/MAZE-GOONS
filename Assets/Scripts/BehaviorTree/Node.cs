@@ -22,12 +22,20 @@ public class Node
 
     public virtual Status Process()
     {
+        if (children.Count == 0) return Status.SUCCESS;
         return children[currentChild].Process();
     }
 
     public void AddChild(Node n)
     {
         children.Add(n);
+    }
+
+    public void Reset()
+    {
+        foreach (Node n in children)
+            n.Reset();
+        currentChild = 0;
     }
 
     struct NodeLevel

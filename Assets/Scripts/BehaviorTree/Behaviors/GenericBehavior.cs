@@ -27,20 +27,45 @@ public class GenericBehavior : MonoBehaviour
 
     protected virtual void Start() 
     {
+        root = new Node();
         behaveCycleTime = new WaitForSeconds(Random.Range(0.1f, 1f));
         StartCoroutine("Behave");
     }
 
-    protected Node.Status MoveToTarget(float speedPercent = 1f)
+    public float GetDistanceToTarget()
+    {
+        return Vector3.Distance(transform.position, target.transform.position);
+    }
+
+    public bool isInFieldOfView(Transform target)
+    {
+        Vector3 targetDirection = target.position - transform.position;
+        float angle = Vector3.Angle(targetDirection, transform.forward);
+        return angle < (viewAngle / 2);
+    }
+
+    public bool IsInInteractionRange()
+    {
+        if (target == null) return false;
+        return GetDistanceToTarget() <= interactionDistance;
+    }
+
+    public Node.Status InInteractionRange()
+    {
+        if (IsInInteractionRange()) return Node.Status.SUCCESS;
+        return Node.Status.FAILURE;
+    }
+
+    // need to update this to take in speedPercent param
+    protected Node.Status MoveToTarget()
     {
         if (target == null) return Node.Status.FAILURE;
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        if (distanceToTarget < interactionDistance)
+        if (IsInInteractionRange())
         {
             mover.StopMoving();
             return Node.Status.SUCCESS;
         }
-        mover.MoveTo(target.transform.position, speedPercent);
+        mover.MoveTo(target.transform.position);
         return Node.Status.RUNNING;
     }
 
