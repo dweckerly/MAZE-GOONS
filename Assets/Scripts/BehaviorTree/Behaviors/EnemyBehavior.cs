@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyBehavior : GenericBehavior
 {
@@ -13,8 +12,10 @@ public class EnemyBehavior : GenericBehavior
         combatant = GetComponent<Combatant>();
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         root = new Node("Enemy Behavior");
         Leaf lookForPlayer = new Leaf("Look For Player", LookForPlayer);
         Leaf moveToPlayer = new Leaf("Move To Player", MoveToPlayer);
@@ -27,7 +28,6 @@ public class EnemyBehavior : GenericBehavior
         detectPlayerSequence.AddChild(attackPlayer);
         root.AddChild(detectPlayerSequence);
         root.PrintTree();
-        Debug.Log("Starting Look for Player...");
         root.Process();
     }
 
@@ -38,8 +38,6 @@ public class EnemyBehavior : GenericBehavior
         {
             if (hit.gameObject.CompareTag("Player") && isInFieldOfView(hit.transform))
             {
-                Debug.Log("Look for Player SUCCESS!");
-                Debug.Log("Starting Move to Player...");
                 target = hit.gameObject;
                 return Node.Status.SUCCESS;
             }

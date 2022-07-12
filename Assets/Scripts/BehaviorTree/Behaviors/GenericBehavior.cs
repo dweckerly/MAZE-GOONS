@@ -11,6 +11,8 @@ public class GenericBehavior : MonoBehaviour
     protected Node root;
     protected GameObject target = null;
 
+    WaitForSeconds behaveCycleTime;
+
     public float viewDistance = 20f;
     public float viewAngle = 90f;
     public float interactionDistance = 5f;
@@ -21,6 +23,12 @@ public class GenericBehavior : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         mover = GetComponent<MovementHandler>();
+    }
+
+    protected virtual void Start() 
+    {
+        behaveCycleTime = new WaitForSeconds(Random.Range(0.1f, 1f));
+        StartCoroutine("Behave");
     }
 
     protected Node.Status MoveToTarget(float speedPercent = 1f)
@@ -36,13 +44,12 @@ public class GenericBehavior : MonoBehaviour
         return Node.Status.RUNNING;
     }
 
-    void Start()
+    IEnumerator Behave()
     {
-        
-    }
-
-    void Update()
-    {
-        if (behaviorStatus != Node.Status.SUCCESS) behaviorStatus = root.Process();
+        while (true)
+        {
+            behaviorStatus = root.Process();
+            yield return behaveCycleTime;
+        }
     }
 }

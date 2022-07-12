@@ -21,4 +21,9 @@ public class AnimationHandler : MonoBehaviour
     {
         animator.SetTrigger(trigger);
     }
+
+    public void SetAnimationBool(string name, bool val)
+    {
+        animator.SetBool(name, val);
+    }
 }

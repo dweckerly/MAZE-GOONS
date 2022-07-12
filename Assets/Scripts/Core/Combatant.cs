@@ -8,9 +8,10 @@ public class Combatant : MonoBehaviour
 {
     Health health;
     AnimationHandler animator;
+    CombatTarget target;
 
-    [SerializeField] float timeBetweenAttakcs = 1.5f;
     float timeSinceLastAttack = Mathf.Infinity;
+    [SerializeField] float timeBetweenAttakcs = 1.5f;
 
     private void Awake() 
     {
@@ -21,6 +22,8 @@ public class Combatant : MonoBehaviour
     private void Update() 
     {
         timeSinceLastAttack += Time.deltaTime;
+        if (target == null) return;
+        transform.LookAt(target.transform);
     }
 
     private void TriggerAttack()
