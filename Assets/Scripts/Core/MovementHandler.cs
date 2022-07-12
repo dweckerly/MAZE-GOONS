@@ -7,12 +7,12 @@ using UnityEngine.AI;
 public class MovementHandler : MonoBehaviour
 {
     [SerializeField] float maxSpeed = 7f;
-    AnimationHandler animation;
+    AnimationHandler animator;
     NavMeshAgent agent;
 
     void Awake()
     {
-        animation = GetComponent<AnimationHandler>();
+        animator = GetComponent<AnimationHandler>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -37,11 +37,6 @@ public class MovementHandler : MonoBehaviour
     {
         Vector3 localVelocity = transform.InverseTransformDirection(agent.velocity);
         float speedPercent = localVelocity.z / maxSpeed;
-        animation.SetAnimationFloat("forwardSpeed", speedPercent);
-    }
-
-    public void SetAnimationTrigger(string trigger)
-    {
-        animation.SetAnimationTrigger(trigger);
+        animator.SetAnimationFloat("forwardSpeed", speedPercent);
     }
 }

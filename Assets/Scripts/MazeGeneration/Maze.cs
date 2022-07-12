@@ -156,12 +156,14 @@ public class Maze : MonoBehaviour
 
     private void AddEnemiesToRooms()
     {
-        int randomRoom = Random.Range(1, roomList.Count);
-        for(int i = 0; i < 3; i++)
+        foreach (RoomAttributes room in roomList)
         {
-            int randomPos = Random.Range(1, roomList[randomRoom].coords.Count);
-            Vector3 pos = ConvertToGameSpace(roomList[randomRoom].coords[randomPos].x, roomList[randomRoom].coords[randomPos].z);
-            GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+            for(int i = 0; i < 3; i++)
+            {
+                int randomPos = Random.Range(0, room.coords.Count);
+                Vector3 pos = ConvertToGameSpace(room.coords[randomPos].x, room.coords[randomPos].z);
+                GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity);
+            }
         }
     }
 

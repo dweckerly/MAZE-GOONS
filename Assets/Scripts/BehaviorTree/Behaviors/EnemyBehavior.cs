@@ -79,11 +79,12 @@ public class EnemyBehavior : MonoBehaviour
     {
         Debug.Log("Attacking player!");
         transform.LookAt(target.transform);
-        mover.SetAnimationTrigger("attack");
+        // need this to be handled in the combatant
+        //mover.SetAnimationTrigger("attack");
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget > interactionDistance)
         {
-            mover.SetAnimationTrigger("stopAttack");
+            //mover.SetAnimationTrigger("stopAttack");
             return Node.Status.FAILURE;
         }
         return Node.Status.RUNNING;
@@ -98,6 +99,6 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        if(behaviorStatus == Node.Status.RUNNING) behaviorStatus = root.Process();
+        if(behaviorStatus != Node.Status.SUCCESS) behaviorStatus = root.Process();
     }
 }

@@ -7,12 +7,12 @@ using UnityEngine;
 public class Combatant : MonoBehaviour
 {
     Health health;
-    AnimationHandler animation;
+    AnimationHandler animator;
 
     private void Awake() 
     {
         health = GetComponent<Health>();
-        animation = GetComponent<AnimationHandler>();
+        animator = GetComponent<AnimationHandler>();
     }
 
 
