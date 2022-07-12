@@ -28,7 +28,7 @@ public class MovementHandler : MonoBehaviour
         agent.isStopped = false;
     }
 
-    public void CancelMovement()
+    public void StopMoving()
     {
         agent.isStopped = true;
     }

@@ -23,6 +23,19 @@ public class GenericBehavior : MonoBehaviour
         mover = GetComponent<MovementHandler>();
     }
 
+    protected Node.Status MoveToTarget(float speedPercent = 1f)
+    {
+        if (target == null) return Node.Status.FAILURE;
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        if (distanceToTarget < interactionDistance)
+        {
+            mover.StopMoving();
+            return Node.Status.SUCCESS;
+        }
+        mover.MoveTo(target.transform.position, speedPercent);
+        return Node.Status.RUNNING;
+    }
+
     void Start()
     {
         
