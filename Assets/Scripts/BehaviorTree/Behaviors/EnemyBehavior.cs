@@ -5,24 +5,24 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    Node root;
     NavMeshAgent agent;
+    Combatant combatant;
+    MovementHandler mover;
+
+    Node root;
     GameObject target = null;
-    Mover mover;
 
     [SerializeField] float viewDistance = 30f;
     [SerializeField] float viewAngle = 90f;
     [SerializeField] float interactionDistance = 5f;
-
-    public enum ActionState { IDLE, WORKING }
-    ActionState actionState = ActionState.IDLE;
 
     Node.Status behaviorStatus = Node.Status.RUNNING;
 
     private void Awake() 
     {
         agent = GetComponent<NavMeshAgent>();
-        mover = GetComponent<Mover>();
+        combatant = GetComponent<Combatant>();
+        mover = GetComponent<MovementHandler>();
     }
 
     void Start()
@@ -78,6 +78,7 @@ public class EnemyBehavior : MonoBehaviour
     public Node.Status AttackPlayer()
     {
         Debug.Log("Attacking player!");
+        transform.LookAt(target.transform);
         mover.SetAnimationTrigger("attack");
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         if (distanceToTarget > interactionDistance)
