@@ -28,7 +28,7 @@ public class GenericBehavior : MonoBehaviour
     protected virtual void Start() 
     {
         root = new Node();
-        behaveCycleTime = new WaitForSeconds(Random.Range(0.1f, 1f));
+        behaveCycleTime = new WaitForSeconds(Random.Range(0.1f, 0.5f));
         StartCoroutine("Behave");
     }
 

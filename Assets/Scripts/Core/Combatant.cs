@@ -24,10 +24,20 @@ public class Combatant : MonoBehaviour
         timeSinceLastAttack += Time.deltaTime;
         if (target == null) 
         {
+            StopAttack();
             animator.SetAnimationBool("inCombat", false);
             return;
         }
-        transform.LookAt(target.transform);
+        LookAtTarget(target.transform.position);
+        // Vector3 lookAtTarget = target.transform.position;
+        // lookAtTarget.y = transform.position.y;
+        // transform.LookAt(lookAtTarget);
+    }
+
+    public void LookAtTarget(Vector3 target)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(target - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
     public void SetTarget(CombatTarget _target)
@@ -43,5 +53,10 @@ public class Combatant : MonoBehaviour
             animator.SetAnimationTrigger("attack");
             timeSinceLastAttack = 0;
         }
+    }
+
+    public void StopAttack()
+    {
+        animator.SetAnimationTrigger("stopAttack");
     }
 }

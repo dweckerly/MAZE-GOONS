@@ -22,16 +22,12 @@ public class EnemyBehavior : GenericBehavior
         detectEnemySequence.AddChild(lookForEnemy);
         detectEnemySequence.AddChild(moveToEnemy);
 
-
-        Leaf inRangeForAttack = new Leaf("In Range For Attack", InInteractionRange);
         Leaf attackTarget = new Leaf("Attack Target", AttackTarget);
-        Sequence attackTargetSequence = new Sequence("Attack Target Sequence");
-        attackTargetSequence.AddChild(inRangeForAttack);
-        attackTargetSequence.AddChild(attackTarget);
 
         Selector detectAndAttackSelector = new Selector("Detect and Attack");
+        detectAndAttackSelector.AddChild(attackTarget);
         detectAndAttackSelector.AddChild(detectEnemySequence);
-        detectAndAttackSelector.AddChild(attackTargetSequence);
+        
 
         root.AddChild(detectAndAttackSelector);
         root.PrintTree();
@@ -40,6 +36,7 @@ public class EnemyBehavior : GenericBehavior
 
     public Node.Status LookForTarget()
     {
+        if (target != null) return Node.Status.SUCCESS;
         Collider[] hits = Physics.OverlapSphere(transform.position, viewDistance);
         foreach (Collider hit in hits)
         {
@@ -50,15 +47,18 @@ public class EnemyBehavior : GenericBehavior
                 return Node.Status.SUCCESS;
             }
         }
-        target = null;
         return Node.Status.FAILURE;
     }
 
     public Node.Status AttackTarget()
     {
-        if (target == null) return Node.Status.FAILURE;
+        if (target == null || !IsInInteractionRange())
+        {
+            combatant.StopAttack();
+            return Node.Status.FAILURE;
+        }
+        // if target is dead then return SUCCESS
         combatant.TriggerAttack();
-        return Node.Status.SUCCESS;
+        return Node.Status.RUNNING;
     }
-
 }

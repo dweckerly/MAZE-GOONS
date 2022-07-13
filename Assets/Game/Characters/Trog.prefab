@@ -1950,9 +1950,29 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 93166cdcf4f4b3f4eaf6913e4ed0ed8a, type: 2}
+    - target: {fileID: 3135337076268626705, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: viewDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135337076268626705, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: interactionDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798049258221082409, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4885587521139109000, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
       propertyPath: m_Height
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885587521139109000, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885587521139109000, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6415810628367863289, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
       propertyPath: m_Name
