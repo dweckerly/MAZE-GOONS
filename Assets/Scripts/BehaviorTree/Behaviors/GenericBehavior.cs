@@ -14,7 +14,7 @@ public class GenericBehavior : MonoBehaviour
     WaitForSeconds behaveCycleTime;
 
     public float viewDistance = 20f;
-    public float viewAngle = 90f;
+    public float viewAngle = 180f;
     public float interactionDistance = 5f;
 
     Node.Status behaviorStatus = Node.Status.RUNNING;
