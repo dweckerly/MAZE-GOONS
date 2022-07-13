@@ -12,7 +12,12 @@ public class Sequence : Node
     public override Status Process()
     {
         Status childStatus = children[currentChild].Process();
-        if (childStatus == Status.RUNNING || childStatus == Status.FAILURE) return childStatus;
+        if (childStatus == Status.RUNNING) return childStatus;
+        if(childStatus == Status.FAILURE) 
+        {
+            foreach (Node n in children) n.Reset();
+            return Status.FAILURE;
+        }
         
         currentChild++;
         if(currentChild >= children.Count)

@@ -33,8 +33,7 @@ public class Node
 
     public void Reset()
     {
-        foreach (Node n in children)
-            n.Reset();
+        foreach (Node n in children) n.Reset();
         currentChild = 0;
     }
 
