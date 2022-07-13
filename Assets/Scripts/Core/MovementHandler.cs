@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(AnimationHandler))]
 public class MovementHandler : MonoBehaviour
 {
     [SerializeField] float maxSpeed = 7f;
-    AnimationHandler animator;
+    Animator animator;
     NavMeshAgent agent;
 
     void Awake()
     {
-        animator = GetComponent<AnimationHandler>();
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -37,6 +36,6 @@ public class MovementHandler : MonoBehaviour
     {
         Vector3 localVelocity = transform.InverseTransformDirection(agent.velocity);
         float speedPercent = localVelocity.z / maxSpeed;
-        animator.SetAnimationFloat("forwardSpeed", speedPercent);
+        animator.SetFloat("forwardSpeed", speedPercent);
     }
 }

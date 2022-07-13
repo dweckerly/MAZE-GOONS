@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
-[RequireComponent(typeof(AnimationHandler))]
 public class Combatant : MonoBehaviour
 {
-    Health health;
-    AnimationHandler animator;
+    Animator animator;
     CombatTarget target;
 
     float timeSinceLastAttack = Mathf.Infinity;
@@ -15,8 +12,7 @@ public class Combatant : MonoBehaviour
 
     private void Awake() 
     {
-        health = GetComponent<Health>();
-        animator = GetComponent<AnimationHandler>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update() 
@@ -25,7 +21,7 @@ public class Combatant : MonoBehaviour
         if (target == null) 
         {
             StopAttack();
-            animator.SetAnimationBool("inCombat", false);
+            animator.SetBool("inCombat", false);
             return;
         }
         LookAtTarget(target.transform.position);
@@ -43,20 +39,20 @@ public class Combatant : MonoBehaviour
     public void SetTarget(CombatTarget _target)
     {
         target = _target;
-        animator.SetAnimationBool("inCombat", true);
+        animator.SetBool("inCombat", true);
     }
 
     public void TriggerAttack()
     {
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {
-            animator.SetAnimationTrigger("attack");
+            animator.SetTrigger("attack");
             timeSinceLastAttack = 0;
         }
     }
 
     public void StopAttack()
     {
-        animator.SetAnimationTrigger("stopAttack");
+        animator.SetTrigger("stopAttack");
     }
 }
