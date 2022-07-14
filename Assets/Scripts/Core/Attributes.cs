@@ -12,10 +12,12 @@ public enum Attribute
 
 public class Attributes : MonoBehaviour
 {
-    [SerializeField] int baseBrains;
-    [SerializeField] int baseBrawn;
-    [SerializeField] int baseGuile;
-    [SerializeField] int baseGuts;
+    [SerializeField] int brains;
+    [SerializeField] int brawn;
+    [SerializeField] int guile;
+    [SerializeField] int guts;
+
+    [SerializeField] int baseHP = 10;
 
     private int currentBrains;
     private int currentBrawn;
@@ -31,10 +33,10 @@ public class Attributes : MonoBehaviour
 
     private void Awake() 
     {
-        currentBrains = baseBrains;
-        currentBrawn = baseBrawn;
-        currentGuile = baseGuile;
-        currentGuts = baseGuts;
+        currentBrains = brains;
+        currentBrawn = brawn;
+        currentGuile = guile;
+        currentGuts = guts;
         maxHP = CalculateMaxHP();
         currentHP = maxHP;
 
@@ -51,7 +53,7 @@ public class Attributes : MonoBehaviour
 
     private int CalculateMaxHP()
     {
-        return 10 + baseGuts;
+        return baseHP + guts;
     }
 
     public int GetStat (Attribute attribute)

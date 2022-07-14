@@ -5,7 +5,9 @@ using UnityEngine;
 public class Combatant : MonoBehaviour
 {
     Animator animator;
-    CombatTarget target;
+
+    Attributes attributes;
+    Attributes target;
 
     float timeSinceLastAttack = Mathf.Infinity;
     [SerializeField] float timeBetweenAttakcs = 1.5f;
@@ -13,6 +15,7 @@ public class Combatant : MonoBehaviour
     private void Awake() 
     {
         animator = GetComponent<Animator>();
+        attributes = GetComponent<Attributes>();
     }
 
     private void Update() 
@@ -36,7 +39,7 @@ public class Combatant : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
-    public void SetTarget(CombatTarget _target)
+    public void SetTarget(Attributes _target)
     {
         target = _target;
         animator.SetBool("inCombat", true);
@@ -47,6 +50,7 @@ public class Combatant : MonoBehaviour
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {
             animator.SetTrigger("attack");
+            target.ChangeHP(attributes.GetStat(Attribute.Brawn));
             timeSinceLastAttack = 0;
         }
     }

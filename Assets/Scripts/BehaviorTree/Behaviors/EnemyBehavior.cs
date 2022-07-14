@@ -43,7 +43,7 @@ public class EnemyBehavior : GenericBehavior
             if (hit.gameObject.CompareTag("Player") && isInFieldOfView(hit.transform))
             {
                 target = hit.gameObject;
-                combatant.SetTarget(target.GetComponent<CombatTarget>());
+                combatant.SetTarget(target.GetComponent<Attributes>());
                 return Node.Status.SUCCESS;
             }
         }
