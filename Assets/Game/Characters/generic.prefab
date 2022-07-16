@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 6139183254295858530}
   - component: {fileID: 512889484171019157}
   - component: {fileID: 8856559505742904336}
-  - component: {fileID: 3580395444627940263}
+  - component: {fileID: 3913512112896414690}
   m_Layer: 0
   m_Name: generic
   m_TagString: Untagged
@@ -800,6 +800,7 @@ Transform:
   m_Children:
   - {fileID: 6642908896130305313}
   - {fileID: 2224516103871672430}
+  - {fileID: 6909049983319122531}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -815,6 +816,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5c9031d8805454f8838712498399e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <animator>k__BackingField: {fileID: 8856559505742904336}
+  <Controller>k__BackingField: {fileID: 3913512112896414690}
+  <InputReader>k__BackingField: {fileID: 512889484171019157}
+  freeLookSpeed: 5
 --- !u!114 &512889484171019157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,8 +852,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &3580395444627940263
-CapsuleCollider:
+--- !u!143 &3913512112896414690
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -857,9 +862,13 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  serializedVersion: 2
   m_Height: 1.8
-  m_Direction: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &3170920922295370990
 GameObject:
@@ -1129,6 +1138,37 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000000037252903, y: 0.004233562, z: 0.0012674084}
     m_Extent: {x: 0.011481962, y: 0.010688763, z: 0.0038959407}
   m_DirtyAABB: 0
+--- !u!1 &3476686167805338040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6909049983319122531}
+  m_Layer: 0
+  m_Name: CameraFocus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6909049983319122531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476686167805338040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2342029177920347583}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3552072250805957840
 GameObject:
   m_ObjectHideFlags: 0

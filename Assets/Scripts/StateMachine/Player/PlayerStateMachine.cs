@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    InputReader inputReader;
+    [field: SerializeField] public Animator animator { get; private set; }
+    [field: SerializeField] public CharacterController Controller { get; private set; }
+    [field: SerializeField] public InputReader InputReader { get; private set; }
 
-    private void Awake() 
+    public float freeLookSpeed = 5f;
+
+    private void Start() 
     {
-        inputReader = GetComponent<InputReader>();    
+        SwicthState(new PlayerTestState(this));    
     }
 }
