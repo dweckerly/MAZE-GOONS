@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
+    InputReader inputReader;
 
+    private void Awake() 
+    {
+        inputReader = GetComponent<InputReader>();    
+    }
 }
