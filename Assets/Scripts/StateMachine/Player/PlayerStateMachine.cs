@@ -9,10 +9,17 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public CharacterController Controller { get; private set; }
     [field: SerializeField] public InputReader InputReader { get; private set; }
 
-    public float freeLookSpeed = 5f;
+    public Transform MainCameraTransform { get; private set; }
 
+    public float freeLookSpeed = 5f;
+    public float rotationDamping = 10f;
+
+    private void Awake() 
+    {
+        MainCameraTransform = Camera.main.transform;    
+    }
     private void Start() 
     {
-        SwicthState(new PlayerTestState(this));    
+        SwicthState(new PlayerFreeLookState(this));    
     }
 }
