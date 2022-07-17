@@ -15,7 +15,11 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        
+        if (stateMachine.Targeter.CurrentTarget == null)
+        { 
+            stateMachine.SwicthState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
     }
 
     public override void Exit()
