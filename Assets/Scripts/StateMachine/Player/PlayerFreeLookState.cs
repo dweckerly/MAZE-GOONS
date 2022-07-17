@@ -13,6 +13,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter() 
     {
+        if (!stateMachine.Targeter.SelectTarget()) return;
         stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
