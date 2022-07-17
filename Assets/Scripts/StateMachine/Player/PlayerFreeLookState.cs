@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFreeLookState : PlayerBaseState
 {
     private readonly int speedPercent = Animator.StringToHash("speedPercent");
+    private readonly int FreeLookBlendTree = Animator.StringToHash("Free Look Blend Tree");
 
     public PlayerFreeLookState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
@@ -13,7 +14,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter() 
     {
-        if (!stateMachine.Targeter.SelectTarget()) return;
+        stateMachine.animator.Play(FreeLookBlendTree);
         stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
@@ -38,6 +39,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnTarget()
     {
+        if (!stateMachine.Targeter.SelectTarget()) return;
         stateMachine.SwicthState(new PlayerTargetingState(stateMachine));
     }
 

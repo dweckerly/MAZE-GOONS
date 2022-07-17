@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
 {
+    private readonly int TargetingBlendTree = Animator.StringToHash("Targeting Blend Tree");
     public PlayerTargetingState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter()
     {
+        stateMachine.animator.Play(TargetingBlendTree);
         stateMachine.InputReader.CancelEvent += OnCancel;
     }
 
