@@ -21,7 +21,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovementDirection();
-        stateMachine.Controller.Move(movement * stateMachine.freeLookSpeed * deltaTime);
+        Move(movement * stateMachine.freeLookSpeed, deltaTime);
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             stateMachine.animator.SetFloat(speedPercent, 0, animatorDampTime, deltaTime);
