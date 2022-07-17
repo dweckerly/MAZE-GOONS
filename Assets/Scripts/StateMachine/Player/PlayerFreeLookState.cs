@@ -11,7 +11,10 @@ public class PlayerFreeLookState : PlayerBaseState
     private const float animatorDampTime = 0.1f;
     private const float gravity = 20.0f;
 
-    public override void Enter() { }
+    public override void Enter() 
+    {
+        stateMachine.InputReader.TargetEvent += OnTarget;
+    }
 
     public override void Tick(float deltaTime)
     {
@@ -27,7 +30,15 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.animator.SetFloat(speedPercent, currentSpeed / stateMachine.freeLookSpeed, animatorDampTime, deltaTime);
     }
 
-    public override void Exit() { }
+    public override void Exit() 
+    {
+        stateMachine.InputReader.TargetEvent -= OnTarget;
+    }
+
+    private void OnTarget()
+    {
+        stateMachine.SwicthState(new PlayerTargetingState(stateMachine));
+    }
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {

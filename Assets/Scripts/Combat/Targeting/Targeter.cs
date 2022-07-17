@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<Target> targets = new List<Target>();
+
+    private void OnTriggerEnter(Collider other) 
     {
-        
+        if (other.TryGetComponent<Target>(out Target target)) targets.Add(target);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other) 
     {
-        
+        if (other.TryGetComponent<Target>(out Target target)) targets.Remove(target);
     }
 }
