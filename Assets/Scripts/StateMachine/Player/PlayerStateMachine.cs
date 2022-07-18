@@ -14,6 +14,7 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
 
     public float freeLookSpeed = 5f;
+    public float targetingSpeed = 5f;
     public float rotationDamping = 10f;
 
     private void Awake() 
