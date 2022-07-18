@@ -823,6 +823,19 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 512889484171019157}
   <Targeter>k__BackingField: {fileID: 2261308180672582767}
   <ForceReceiver>k__BackingField: {fileID: 5784837290568942105}
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: One-Handed-Swing-Left
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.5
+  - <AnimationName>k__BackingField: One-Handed-Swing-Down
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.8
+  - <AnimationName>k__BackingField: One-Handed-Swing-Up
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
   freeLookSpeed: 6
   targetingSpeed: 5
   rotationDamping: 10

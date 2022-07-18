@@ -23,6 +23,11 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwicthState(new PlayerFreeLookState(stateMachine));
             return;
         }
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwicthState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
         Vector3 movement = CalculateMovement();
         UpdateAnimator(deltaTime);
         Move(movement * stateMachine.targetingSpeed, deltaTime);
