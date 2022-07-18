@@ -6,8 +6,14 @@ using Cinemachine;
 public class Targeter : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup cinTargetGroup;
+    private Camera mainCamera;
     private List<Target> targets = new List<Target>();
     public Target CurrentTarget { get; private set; }
+
+    private void Start() 
+    {
+        mainCamera = Camera.main;    
+    }
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -25,7 +31,21 @@ public class Targeter : MonoBehaviour
     public bool SelectTarget()
     {
         if (targets.Count == 0) return false;
-        CurrentTarget = targets[0];
+        Target closestTarget = null;
+        float closestTargetDistance = Mathf.Infinity;
+        foreach (Target target in targets)
+        {
+            Vector2 viewPosition = mainCamera.WorldToViewportPoint(target.transform.position);
+            if (viewPosition.x < 0 || viewPosition.x > 1 || viewPosition.y < 0 || viewPosition.y > 1) continue;
+            Vector2 distanceToCEnter = viewPosition - new Vector2(0.5f, 0.5f);
+            if (distanceToCEnter.sqrMagnitude < closestTargetDistance)
+            {
+                closestTarget = target;
+                closestTargetDistance = distanceToCEnter.sqrMagnitude;
+            }
+        }
+        if (closestTarget == null) return false;
+        CurrentTarget = closestTarget;
         cinTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
         return true;
     }
