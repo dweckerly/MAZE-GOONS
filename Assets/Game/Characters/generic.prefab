@@ -824,18 +824,26 @@ MonoBehaviour:
   <Targeter>k__BackingField: {fileID: 2261308180672582767}
   <ForceReceiver>k__BackingField: {fileID: 5784837290568942105}
   <Attacks>k__BackingField:
-  - <AnimationName>k__BackingField: One-Handed-Swing-Left
+  - <AnimationName>k__BackingField: Unarmed-Hook-Right
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.5
-  - <AnimationName>k__BackingField: One-Handed-Swing-Down
+    <Force>k__BackingField: 0
+  - <AnimationName>k__BackingField: Unarmed-Hook-Left
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.8
-  - <AnimationName>k__BackingField: One-Handed-Swing-Up
+    <Force>k__BackingField: 0
+  - <AnimationName>k__BackingField: Unarmed-Uppercut
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 3
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 0
+  - <AnimationName>k__BackingField: Unarmed-Headbutt
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
+    <Force>k__BackingField: 0
   freeLookSpeed: 6
   targetingSpeed: 5
   rotationDamping: 10
@@ -902,6 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 3913512112896414690}
+  drag: 0.3
 --- !u!1 &3170920922295370990
 GameObject:
   m_ObjectHideFlags: 0

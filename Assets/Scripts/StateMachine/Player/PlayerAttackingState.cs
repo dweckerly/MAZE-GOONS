@@ -32,14 +32,14 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            if (stateMachine.Targeter.CurrentTarget != null)
-            {
-                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-            }
-            else
-            {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-            }
+            // if (stateMachine.Targeter.CurrentTarget != null)
+            // {
+            //     stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            // }
+            // else
+            // {
+            //     stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            // }
 
         }
 
