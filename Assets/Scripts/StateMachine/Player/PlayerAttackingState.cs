@@ -38,6 +38,13 @@ public class PlayerAttackingState : PlayerBaseState
         previousFrameTime = normalizedTime;
     }
 
+    public override void Exit() {}
+
+    private void ApplyForce()
+    {
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+    }
+
     private void TryComboAttack(float normalizedTime)
     {
         if (attack.ComboStateIndex == -1) return;
@@ -45,10 +52,6 @@ public class PlayerAttackingState : PlayerBaseState
         stateMachine.SwicthState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
-    public override void Exit()
-    {
-        
-    }
 
     private float GetNormalizedAnimationTime()
     {
