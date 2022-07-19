@@ -14,7 +14,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter() 
     {
-        stateMachine.animator.Play(FreeLookBlendTree);
+        stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
         stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
@@ -22,7 +22,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.SwicthState(new PlayerAttackingState(stateMachine, 0));
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
         Vector3 movement = CalculateMovementDirection();
@@ -45,7 +45,7 @@ public class PlayerFreeLookState : PlayerBaseState
     private void OnTarget()
     {
         if (!stateMachine.Targeter.SelectTarget()) return;
-        stateMachine.SwicthState(new PlayerTargetingState(stateMachine));
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)

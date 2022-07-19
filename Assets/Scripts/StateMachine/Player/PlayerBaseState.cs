@@ -6,6 +6,8 @@ public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
 
+    protected const float CrossFadeDuration = 0.1f;
+
     public PlayerBaseState(PlayerStateMachine _stateMachine)
     {
         stateMachine = _stateMachine;

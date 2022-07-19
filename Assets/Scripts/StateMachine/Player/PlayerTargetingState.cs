@@ -12,7 +12,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.animator.Play(TargetingBlendTree);
+        stateMachine.animator.CrossFadeInFixedTime(TargetingBlendTree, CrossFadeDuration);
         stateMachine.InputReader.CancelEvent += OnCancel;
     }
 
@@ -20,12 +20,12 @@ public class PlayerTargetingState : PlayerBaseState
     {
         if (stateMachine.Targeter.CurrentTarget == null)
         { 
-            stateMachine.SwicthState(new PlayerFreeLookState(stateMachine));
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
         if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.SwicthState(new PlayerAttackingState(stateMachine, 0));
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
         Vector3 movement = CalculateMovement();
@@ -58,7 +58,7 @@ public class PlayerTargetingState : PlayerBaseState
     private void OnCancel()
     {
         stateMachine.Targeter.Cancel();
-        stateMachine.SwicthState(new PlayerFreeLookState(stateMachine));
+        stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 
     private Vector3 CalculateMovement()

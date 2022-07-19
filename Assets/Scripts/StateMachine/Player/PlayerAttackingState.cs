@@ -32,7 +32,15 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            // go back to locomotion
+            if (stateMachine.Targeter.CurrentTarget != null)
+            {
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            }
+
         }
 
         previousFrameTime = normalizedTime;
@@ -49,7 +57,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         if (attack.ComboStateIndex == -1) return;
         if (normalizedTime < attack.ComboAttackTime) return;
-        stateMachine.SwicthState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
+        stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
 

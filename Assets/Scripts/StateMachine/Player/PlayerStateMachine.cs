@@ -25,6 +25,6 @@ public class PlayerStateMachine : StateMachine
     }
     private void Start() 
     {
-        SwicthState(new PlayerFreeLookState(this));    
+        SwitchState(new PlayerFreeLookState(this));    
     }
 }
