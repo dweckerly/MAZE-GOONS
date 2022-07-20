@@ -67,6 +67,8 @@ public class Maze : MonoBehaviour
 
     NavMeshSurface surface;
 
+    public GameObject playerPrefab;
+
     public GameObject enemyPrefab;
 
     public GameObject sconce;
@@ -101,6 +103,7 @@ public class Maze : MonoBehaviour
         PlaceObjects();
         surface.BuildNavMesh();
         AddEnemiesToRooms();
+        PlacePlayer();
     }
 
     private void InitializeMap()
@@ -229,6 +232,17 @@ public class Maze : MonoBehaviour
             Vector3 pos = ConvertToGameSpace(loc.x, loc.z);
             pos += new Vector3(0, -3, 0);
             GameObject go = Instantiate(brazier, pos, Quaternion.identity);
+        }
+    }
+
+    private void PlacePlayer()
+    {
+        for (int z = 0; z < depth; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (map[x, z] == TileType.Floor) playerPrefab.transform.position = ConvertToGameSpace(x, z);
+            }
         }
     }
 
