@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
+  m_Script: {fileID: 11500000, guid: 436e4bf90594574449bd43872dce6e64, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   itemName: Unarmed
   price: -1
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 2705123516480720307, guid: bf5868319f386ed45a86b72da0ea7138, type: 3}
   rightHanded: 1
+  dual: 1
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Unarmed-Hook-Right
     <TransitionDuration>k__BackingField: 0.1
@@ -27,13 +28,9 @@ MonoBehaviour:
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.75
     <Force>k__BackingField: 0
-  - <AnimationName>k__BackingField: Unarmed-Uppercut
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 3
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 0
   - <AnimationName>k__BackingField: Unarmed-Headbutt
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
     <Force>k__BackingField: 0
+  offHandPrefab: {fileID: 2740399199111973269, guid: 3845110c9d2f6d44c8e1adf19da4f06d, type: 3}
