@@ -17,7 +17,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
         stateMachine.InputReader.TargetEvent += OnTarget;
-        stateMachine.InputReader.TargetEvent += OnInteract;
+        stateMachine.InputReader.InteractEvent += OnInteract;
     }
 
     public override void Tick(float deltaTime)
@@ -42,13 +42,12 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit() 
     {
         stateMachine.InputReader.TargetEvent -= OnTarget;
-        stateMachine.InputReader.TargetEvent -= OnInteract;
+        stateMachine.InputReader.InteractEvent -= OnInteract;
     }
 
     private void OnInteract()
     {
         if (!stateMachine.Interacter.SelectInteraction()) return;
-        Debug.Log("Moving to Interacting State!");
         stateMachine.SwitchState(new PlayerInteractingState(stateMachine));
     }
 

@@ -17,7 +17,6 @@ public class Interacter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<Interactable>(out Interactable interact)) return;
-        Debug.Log("Found Interactable!");
         interactables.Add(interact);
         interact.OnDestroyed += RemoveTarget;
     }
