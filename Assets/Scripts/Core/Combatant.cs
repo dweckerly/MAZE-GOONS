@@ -51,6 +51,7 @@ public class Combatant : MonoBehaviour
         {
             animator.SetTrigger("attack");
             target.ChangeHP(attributes.GetStat(Attribute.Brawn));
+            Debug.Log("Hit for " + attributes.GetStat(Attribute.Brawn) + " damage!");
             timeSinceLastAttack = 0;
         }
     }
