@@ -5,7 +5,7 @@ using UnityEngine;
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-    [SerializeField] private float drag = 0.3f;
+    [SerializeField] private float drag = 0.1f;
     
     private Vector3 impact;
     private Vector3 dampingVelocity;
