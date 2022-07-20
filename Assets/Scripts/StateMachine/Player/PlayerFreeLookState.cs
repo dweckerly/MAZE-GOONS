@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
         stateMachine.InputReader.TargetEvent += OnTarget;
+        stateMachine.InputReader.TargetEvent += OnInteract;
     }
 
     public override void Tick(float deltaTime)
@@ -40,6 +42,14 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit() 
     {
         stateMachine.InputReader.TargetEvent -= OnTarget;
+        stateMachine.InputReader.TargetEvent -= OnInteract;
+    }
+
+    private void OnInteract()
+    {
+        if (!stateMachine.Interacter.SelectInteraction()) return;
+        Debug.Log("Moving to Interacting State!");
+        stateMachine.SwitchState(new PlayerInteractingState(stateMachine));
     }
 
     private void OnTarget()
