@@ -74,20 +74,13 @@ public class Attributes : MonoBehaviour
 
     public void ChangeHP(int amount)
     {
-        Debug.Log("Hit for " + amount + " damage!");
         currentHP += amount;
-        if (currentHP < 0)
-        {
-            currentHP = 0;
-            Die();
-        }
         if (currentHP > maxHP) currentHP = maxHP;
-        Debug.Log("Current HP: " + currentHP);
+        else if (currentHP <= 0) Die();
     }
 
     public void Die()
     {
-        Debug.Log("this guy ded.");
         animator.SetTrigger("die");
         alive = false;
     }
