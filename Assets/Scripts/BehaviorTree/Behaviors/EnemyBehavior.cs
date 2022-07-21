@@ -59,6 +59,7 @@ public class EnemyBehavior : GenericBehavior
                 if (!target.alive) 
                 {
                     target = null;
+                    combatant.RemoveTarget();
                     return Node.Status.FAILURE;
                 }
                 combatant.SetTarget(target);
@@ -70,9 +71,15 @@ public class EnemyBehavior : GenericBehavior
 
     public Node.Status AttackTarget()
     {
-        if (target == null || !target.alive || !IsInInteractionRange())
+        if (target == null || !IsInInteractionRange())
         {
             combatant.StopAttack();
+            return Node.Status.FAILURE;
+        }
+        if (!target.alive)
+        {
+            target = null;
+            combatant.RemoveTarget();
             return Node.Status.FAILURE;
         }
         combatant.TriggerAttack();

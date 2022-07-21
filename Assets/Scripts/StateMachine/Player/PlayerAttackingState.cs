@@ -27,6 +27,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        base.Tick(deltaTime);
         Move(deltaTime);
         FaceTarget();
         float normalizedTime = GetNormalizedAnimationTime();

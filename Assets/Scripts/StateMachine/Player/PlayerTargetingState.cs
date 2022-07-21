@@ -18,6 +18,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        base.Tick(deltaTime);
         if (stateMachine.Targeter.CurrentTarget == null)
         { 
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
