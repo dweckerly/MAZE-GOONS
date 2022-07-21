@@ -12,6 +12,7 @@ public enum Attribute
 
 public class Attributes : MonoBehaviour
 {
+    public bool alive = true;
     [SerializeField] int brains;
     [SerializeField] int brawn;
     [SerializeField] int guile;
@@ -86,5 +87,6 @@ public class Attributes : MonoBehaviour
     {
         Debug.Log("this guy ded.");
         animator.SetTrigger("die");
+        alive = false;
     }
 }

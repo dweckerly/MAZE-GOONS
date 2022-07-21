@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    [SerializeField] private Collider sourceCollider;
     [SerializeField] GameObject RightHand;
     [SerializeField] GameObject LeftHand;
     [field: SerializeField] public Weapon defaultWeapon { get; private set; }
@@ -35,5 +36,6 @@ public class WeaponHandler : MonoBehaviour
                 Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, LeftHand.transform);
         }
         currentWeapon = weapon;
+        currentWeapon.IgnoreCollider(sourceCollider);
     }
 }

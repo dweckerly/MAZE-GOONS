@@ -12,6 +12,7 @@ public class PlayerAttackingState : PlayerBaseState
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
+        stateMachine.WeaponHandler.currentWeapon.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
     }
 
     public override void Enter()
