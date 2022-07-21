@@ -50,8 +50,7 @@ public class Combatant : MonoBehaviour
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {
             animator.SetTrigger("attack");
-            target.ChangeHP(attributes.GetStat(Attribute.Brawn));
-            Debug.Log("Hit for " + attributes.GetStat(Attribute.Brawn) + " damage!");
+            //target.ChangeHP(-(attributes.GetStat(Attribute.Brawn)));
             timeSinceLastAttack = 0;
         }
     }

@@ -16,7 +16,8 @@ public class PlayerAttackingState : PlayerBaseState
         weapon = stateMachine.WeaponHandler.currentWeapon;
         weapon.DisableRightHand();
         weapon.DisableLeftHand();
-        weapon.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        weapon.weaponPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        weapon.offHandPrefab?.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
     }
 
     public override void Enter()

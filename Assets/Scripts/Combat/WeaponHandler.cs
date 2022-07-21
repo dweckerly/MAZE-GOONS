@@ -36,6 +36,6 @@ public class WeaponHandler : MonoBehaviour
                 weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, LeftHand.transform);
         }
         currentWeapon = weapon;
-        currentWeapon.IgnoreCollider(sourceCollider);
+        currentWeapon.weaponPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
     }
 }

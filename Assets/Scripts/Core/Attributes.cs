@@ -74,6 +74,7 @@ public class Attributes : MonoBehaviour
 
     public void ChangeHP(int amount)
     {
+        Debug.Log("Hit for " + amount + " damage!");
         currentHP += amount;
         if (currentHP < 0)
         {
@@ -81,6 +82,7 @@ public class Attributes : MonoBehaviour
             Die();
         }
         if (currentHP > maxHP) currentHP = maxHP;
+        Debug.Log("Current HP: " + currentHP);
     }
 
     public void Die()

@@ -12,39 +12,19 @@ public class Weapon : Item
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
-    protected Collider sourceCollider;
     protected int additiveDamageModifier = 0;
     protected float multiplicativeDamageModifier = 0f;
+    protected WeaponDamage mainHandDamage;
+    protected WeaponDamage offHandDamage;
 
     public virtual void Init() 
     {
+        mainHandDamage = weaponPrefab.GetComponent<WeaponDamage>();
+        mainHandDamage.baseDamage = weaponDamage;
+        offHandDamage = offHandPrefab?.GetComponent<WeaponDamage>();
+        if (offHandDamage != null) offHandDamage.baseDamage = weaponDamage;
         DisableRightHand();
         DisableLeftHand();
-    }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        if (other == sourceCollider) return;
-        if (other.TryGetComponent<Attributes>(out Attributes attributes)) 
-        {
-            int damage = Mathf.RoundToInt((weaponDamage + additiveDamageModifier) * multiplicativeDamageModifier) * -1;
-            attributes.ChangeHP(damage);
-        }
-    }
-
-    public void IgnoreCollider(Collider collider)
-    {
-        sourceCollider = collider;
-    }
-
-    public void SetAdditiveDamageModifier(int mod)
-    {
-        additiveDamageModifier = mod;
-    }
-
-    public void SetMultiplicativeDamageModifier(float mod)
-    {
-        multiplicativeDamageModifier = mod;
     }
 
     public void EnableRightHand()
