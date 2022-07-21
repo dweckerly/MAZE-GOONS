@@ -9,7 +9,7 @@ public class GenericBehavior : MonoBehaviour
     protected MovementHandler mover;
 
     protected Node root;
-    protected GameObject target = null;
+    protected Attributes target = null;
 
     WaitForSeconds behaveCycleTime;
 

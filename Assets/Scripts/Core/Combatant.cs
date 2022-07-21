@@ -28,9 +28,6 @@ public class Combatant : MonoBehaviour
             return;
         }
         LookAtTarget(target.transform.position);
-        // Vector3 lookAtTarget = target.transform.position;
-        // lookAtTarget.y = transform.position.y;
-        // transform.LookAt(lookAtTarget);
     }
 
     public void LookAtTarget(Vector3 target)
@@ -55,7 +52,7 @@ public class Combatant : MonoBehaviour
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {
             animator.SetTrigger("attack");
-            //target.ChangeHP(-(attributes.GetStat(Attribute.Brawn)));
+            target.ChangeHP(-(attributes.GetStat(Attribute.Brawn)));
             timeSinceLastAttack = 0;
         }
     }

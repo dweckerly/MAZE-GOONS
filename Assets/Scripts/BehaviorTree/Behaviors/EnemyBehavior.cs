@@ -55,8 +55,13 @@ public class EnemyBehavior : GenericBehavior
         {
             if (hit.gameObject.CompareTag("Player") && isInFieldOfView(hit.transform))
             {
-                target = hit.gameObject;
-                combatant.SetTarget(target.GetComponent<Attributes>());
+                target = hit.GetComponent<Attributes>();
+                if (!target.alive) 
+                {
+                    target = null;
+                    return Node.Status.FAILURE;
+                }
+                combatant.SetTarget(target);
                 return Node.Status.SUCCESS;
             }
         }
@@ -65,12 +70,11 @@ public class EnemyBehavior : GenericBehavior
 
     public Node.Status AttackTarget()
     {
-        if (target == null || !IsInInteractionRange())
+        if (target == null || !target.alive || !IsInInteractionRange())
         {
             combatant.StopAttack();
             return Node.Status.FAILURE;
         }
-        // if target is dead then return SUCCESS?
         combatant.TriggerAttack();
         return Node.Status.RUNNING;
     }
