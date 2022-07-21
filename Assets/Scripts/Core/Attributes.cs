@@ -30,8 +30,6 @@ public class Attributes : MonoBehaviour
     private int maxHP;
     private int currentHP;
 
-    Animator animator;
-
     private void Awake() 
     {
         currentBrains = brains;
@@ -48,8 +46,6 @@ public class Attributes : MonoBehaviour
             { Attribute.Guile, currentGuile },
             { Attribute.Guts, currentGuts },
         };
-
-        animator = GetComponent<Animator>();
     }
 
     private int CalculateMaxHP()
@@ -81,7 +77,6 @@ public class Attributes : MonoBehaviour
 
     public void Die()
     {
-        animator.SetTrigger("die");
         alive = false;
     }
 }
