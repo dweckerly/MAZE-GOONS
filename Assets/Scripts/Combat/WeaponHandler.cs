@@ -27,8 +27,8 @@ public class WeaponHandler : MonoBehaviour
         {
             if (weapon.dual)
             {
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
-                weapon.offHandPrefab = Instantiate(weapon.offHandPrefab, weapon.offHandPrefab.transform.position, weapon.offHandPrefab.transform.rotation, LeftHand.transform);
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
+                weapon.offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
             }
             else if (weapon.rightHanded)
                 weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
