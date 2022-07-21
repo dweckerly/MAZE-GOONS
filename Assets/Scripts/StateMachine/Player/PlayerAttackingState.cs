@@ -7,12 +7,16 @@ public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
     private Attack attack;
+    private Weapon weapon;
     private bool appliedForce = false;
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
-        stateMachine.WeaponHandler.currentWeapon.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        weapon = stateMachine.WeaponHandler.currentWeapon;
+        weapon.DisableRightHand();
+        weapon.DisableLeftHand();
+        weapon.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
     }
 
     public override void Enter()
@@ -27,6 +31,8 @@ public class PlayerAttackingState : PlayerBaseState
         float normalizedTime = GetNormalizedAnimationTime();
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
+            if (attack.RightHand) weapon.EnableRightHand();
+            else weapon.EnableLeftHand();
             if (normalizedTime >= attack.ForceTime) TryApplyForce();
             if (stateMachine.InputReader.IsAttacking)
             {
@@ -35,6 +41,8 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
+            if (attack.RightHand) weapon.DisableRightHand();
+            else weapon.DisableLeftHand();
             if (stateMachine.Targeter.CurrentTarget != null)
             {
                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));

@@ -12,7 +12,8 @@ public class WeaponHandler : MonoBehaviour
 
     private void Awake() 
     {
-        currentWeapon = defaultWeapon;
+        currentWeapon = Instantiate(defaultWeapon);
+        currentWeapon.Init();
         EquipWeapon(currentWeapon);
     }
 
@@ -26,14 +27,13 @@ public class WeaponHandler : MonoBehaviour
         {
             if (weapon.dual)
             {
-                DualWeapon dualWeapon = (DualWeapon) weapon;
-                Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
-                Instantiate(dualWeapon.offHandPrefab, dualWeapon.offHandPrefab.transform.position, dualWeapon.offHandPrefab.transform.rotation, LeftHand.transform);
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
+                weapon.offHandPrefab = Instantiate(weapon.offHandPrefab, weapon.offHandPrefab.transform.position, weapon.offHandPrefab.transform.rotation, LeftHand.transform);
             }
-            else if (weapon.rightHanded) 
-                Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
+            else if (weapon.rightHanded)
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
             else
-                Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, LeftHand.transform);
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, LeftHand.transform);
         }
         currentWeapon = weapon;
         currentWeapon.IgnoreCollider(sourceCollider);

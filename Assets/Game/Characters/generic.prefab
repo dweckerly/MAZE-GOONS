@@ -971,6 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d79f4dab1a376647b6a5b2641ee01d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 1
   brains: 2
   brawn: 2
   guile: 2
@@ -988,9 +989,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337939797b73b6044abab7aeed9d303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sourceCollider: {fileID: 0}
   RightHand: {fileID: 7329609350194272689}
   LeftHand: {fileID: 1224073683623019199}
-  <defaultWeapon>k__BackingField: {fileID: 11400000, guid: 9a815146710caab4f8b3c11710dc1cc0, type: 2}
+  <defaultWeapon>k__BackingField: {fileID: 11400000, guid: af0934f11f22d444a99ca766e2392493, type: 2}
   currentWeapon: {fileID: 0}
 --- !u!1 &3170920922295370990
 GameObject:

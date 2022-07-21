@@ -6,14 +6,21 @@ using UnityEngine;
 public class Weapon : Item
 {
     public GameObject weaponPrefab = null;
+    public GameObject offHandPrefab = null;
     public int weaponDamage = 1;
     public bool rightHanded = true;
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
-    private Collider sourceCollider;
-    private int additiveDamageModifier = 0;
-    private float multiplicativeDamageModifier = 0f;
+    protected Collider sourceCollider;
+    protected int additiveDamageModifier = 0;
+    protected float multiplicativeDamageModifier = 0f;
+
+    public virtual void Init() 
+    {
+        DisableRightHand();
+        DisableLeftHand();
+    }
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -38,6 +45,26 @@ public class Weapon : Item
     public void SetMultiplicativeDamageModifier(float mod)
     {
         multiplicativeDamageModifier = mod;
+    }
+
+    public void EnableRightHand()
+    {
+        weaponPrefab.SetActive(true);
+    }
+
+    public virtual void DisableRightHand()
+    {
+        weaponPrefab.SetActive(false);
+    }
+
+    public void EnableLeftHand()
+    {
+        offHandPrefab.SetActive(true);
+    }
+
+    public void DisableLeftHand()
+    {
+        offHandPrefab.SetActive(false);
     }
 
 }
