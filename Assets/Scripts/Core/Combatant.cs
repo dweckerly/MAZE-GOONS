@@ -45,6 +45,11 @@ public class Combatant : MonoBehaviour
         animator.SetBool("inCombat", true);
     }
 
+    public void RemoveTarget()
+    {
+        target = null;
+    }
+
     public void TriggerAttack()
     {
         if (timeSinceLastAttack > timeBetweenAttakcs)

@@ -19,6 +19,8 @@ public class GenericBehavior : MonoBehaviour
 
     Node.Status behaviorStatus = Node.Status.RUNNING;
 
+    bool behaving = true;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -69,12 +71,19 @@ public class GenericBehavior : MonoBehaviour
         return Node.Status.RUNNING;
     }
 
+    public void StopBehavior()
+    {
+        behaving = false;
+        StopAllCoroutines();
+    }
+
     IEnumerator Behave()
     {
-        while (true)
+        while (behaving)
         {
             behaviorStatus = root.Process();
             yield return behaveCycleTime;
         }
+        
     }
 }

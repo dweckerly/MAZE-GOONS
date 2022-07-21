@@ -5,11 +5,13 @@ using UnityEngine;
 public class EnemyBehavior : GenericBehavior
 {
     Combatant combatant;
+    Attributes attributes;
 
     protected override void Awake() 
     {
         base.Awake();
         combatant = GetComponent<Combatant>();
+        attributes = GetComponent<Attributes>();
     }
 
     protected override void Start()
@@ -27,11 +29,22 @@ public class EnemyBehavior : GenericBehavior
         Selector detectAndAttackSelector = new Selector("Detect and Attack");
         detectAndAttackSelector.AddChild(attackTarget);
         detectAndAttackSelector.AddChild(detectEnemySequence);
-        
 
-        root.AddChild(detectAndAttackSelector);
+        Leaf alive = new Leaf("Am I alive?", IsAlive);
+        DependencySequence aliveSeq = new DependencySequence("Alive and can act", alive);
+        aliveSeq.AddChild(detectAndAttackSelector);
+
+        root.AddChild(aliveSeq);
         root.PrintTree();
         root.Process();
+    }
+
+    public Node.Status IsAlive()
+    {
+        if (attributes.alive) return Node.Status.SUCCESS;
+        combatant.RemoveTarget();
+        StopBehavior();
+        return Node.Status.FAILURE;
     }
 
     public Node.Status LookForTarget()
@@ -57,7 +70,7 @@ public class EnemyBehavior : GenericBehavior
             combatant.StopAttack();
             return Node.Status.FAILURE;
         }
-        // if target is dead then return SUCCESS
+        // if target is dead then return SUCCESS?
         combatant.TriggerAttack();
         return Node.Status.RUNNING;
     }
