@@ -180,7 +180,7 @@ public class Maze : MonoBehaviour
             }
             else if (item.pieceDetail.structureType == StructureType.Deadend && Random.Range(0, 100) < 25)
             {
-                PlaceChest(item);
+                PlaceChests(item);
             }
         }
         PlaceBraziersInRooms();
@@ -208,7 +208,7 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private void PlaceChest(MazeStructureItem item)
+    private void PlaceChests(MazeStructureItem item)
     {
         Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
         pos += new Vector3(0, -3, 0);
