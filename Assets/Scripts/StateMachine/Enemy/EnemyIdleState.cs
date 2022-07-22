@@ -6,7 +6,6 @@ public class EnemyIdleState : EnemyBaseState
 {
     private readonly int LocomotionHash = Animator.StringToHash("Locomotion");
     private readonly int SpeedHash = Animator.StringToHash("Speed");
-
     private const float AnimationDampTime = 0.2f;
 
     public EnemyIdleState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}
@@ -14,13 +13,12 @@ public class EnemyIdleState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(LocomotionHash, CrossFadeDuration);
-        stateMachine.animator.SetFloat(SpeedHash, 0);
     }
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-        if (IsInDetectionRange(stateMachine.Player)) return;
+        if (IsInDetectionRange(stateMachine.Player)) stateMachine.SwitchState(new EnemyChasingState(stateMachine)); ;
         stateMachine.animator.SetFloat(SpeedHash, 0f, AnimationDampTime, deltaTime);
     }
 
