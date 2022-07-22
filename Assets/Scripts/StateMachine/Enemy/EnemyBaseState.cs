@@ -13,10 +13,20 @@ public abstract class EnemyBaseState : State
         stateMachine = _stateMachine;
     }
 
-    protected bool IsInDetectionRange(GameObject go)
+    protected bool IsInRange(GameObject go, float range)
     {
         float toDistanceSqr = (go.transform.position - stateMachine.transform.position).sqrMagnitude;
-        return toDistanceSqr <= stateMachine.DetectionRange * stateMachine.DetectionRange;
+        return toDistanceSqr <= range * range;
+    }
+
+    protected bool IsInDetectionRange(GameObject go)
+    {
+        return IsInRange(go, stateMachine.DetectionRange);
+    }
+
+    protected bool IsInAttackRange(GameObject go)
+    {
+        return IsInRange(go, stateMachine.AttackRange);
     }
 
     protected void Move(float deltaTime)
@@ -29,10 +39,10 @@ public abstract class EnemyBaseState : State
         stateMachine.Controller.Move((movement + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
 
-    protected void FaceTarget()
+    protected void FaceTarget(GameObject go)
     {
-        if (stateMachine.Player == null) return;
-        Vector3 lookPosition = stateMachine.Player.transform.position - stateMachine.transform.position;
+        if (go == null) return;
+        Vector3 lookPosition = go.transform.position - stateMachine.transform.position;
         lookPosition.y = 0f;
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPosition);
     }
