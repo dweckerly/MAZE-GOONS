@@ -74,7 +74,7 @@ public class Maze : MonoBehaviour
     public GameObject sconce;
     public GameObject brazier;
 
-    public GameObject chest;
+    public GameObject[] chests;
 
     public List<MapLocation> directions = new List<MapLocation>()
     {
@@ -212,7 +212,8 @@ public class Maze : MonoBehaviour
     {
         Vector3 pos = ConvertToGameSpace(item.position.x, item.position.z);
         pos += new Vector3(0, -3, 0);
-        GameObject go = Instantiate(chest, pos, Quaternion.identity);
+        int rand = Random.Range(0, chests.Length);
+        GameObject go = Instantiate(chests[rand], pos, Quaternion.identity);
         Vector3 rotation = item.pieceDetail.rotation + new Vector3(0, 90, 0);
         go.transform.Rotate(rotation);
         if (Random.Range(0, 100) < 75)

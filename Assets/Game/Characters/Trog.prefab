@@ -1974,6 +1974,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 4885587521139109000, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6415810628367863289, guid: 8d3758a61e3121b45a8fc00bb12b26a9, type: 3}
       propertyPath: m_Name
       value: Trog
@@ -2002,6 +2006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d79f4dab1a376647b6a5b2641ee01d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 1
   brains: 0
   brawn: 1
   guile: 1
