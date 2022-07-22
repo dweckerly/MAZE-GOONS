@@ -21,10 +21,13 @@ public class Weapon : Item
     {
         mainHandDamage = weaponPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.baseDamage = weaponDamage;
-        offHandDamage = offHandPrefab?.GetComponent<WeaponDamage>();
-        if (offHandDamage != null) offHandDamage.baseDamage = weaponDamage;
         DisableRightHand();
-        DisableLeftHand();
+        if (offHandPrefab != null)
+        {
+            offHandDamage = offHandPrefab?.GetComponent<WeaponDamage>();
+            offHandDamage.baseDamage = weaponDamage;
+            DisableLeftHand();
+        }
     }
 
     public void EnableRightHand()

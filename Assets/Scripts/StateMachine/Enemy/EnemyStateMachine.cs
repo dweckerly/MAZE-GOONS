@@ -6,9 +6,11 @@ using UnityEngine.AI;
 public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public Animator animator { get; private set; }
+    [field: SerializeField] public Attributes Attributes { get; private set; }
     [field: SerializeField] public CharacterController Controller { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
+    [field: SerializeField] public WeaponHandler WeaponHandler { get; private set; }
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
