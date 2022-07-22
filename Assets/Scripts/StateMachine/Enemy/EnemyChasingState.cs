@@ -23,6 +23,7 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
         MoveToTarget(deltaTime, stateMachine.Player);
+        FaceTarget();
         stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
     }
 

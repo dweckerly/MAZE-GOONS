@@ -28,4 +28,12 @@ public abstract class EnemyBaseState : State
     {
         stateMachine.Controller.Move((movement + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
+
+    protected void FaceTarget()
+    {
+        if (stateMachine.Player == null) return;
+        Vector3 lookPosition = stateMachine.Player.transform.position - stateMachine.transform.position;
+        lookPosition.y = 0f;
+        stateMachine.transform.rotation = Quaternion.LookRotation(lookPosition);
+    }
 }
