@@ -24,7 +24,7 @@ public class EnemyChasingState : EnemyBaseState
         }
         if (IsInAttackRange(stateMachine.Player))
         {
-            stateMachine.SwitchState(new EnemyAttackingState(stateMachine, 0));
+            stateMachine.SwitchState(new EnemyFightingState(stateMachine));
             return;
         }
         MoveToTarget(deltaTime, stateMachine.Player);

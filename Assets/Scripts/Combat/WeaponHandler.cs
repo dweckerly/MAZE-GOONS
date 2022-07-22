@@ -31,9 +31,9 @@ public class WeaponHandler : MonoBehaviour
                 weapon.offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
             }
             else if (weapon.rightHanded)
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, RightHand.transform);
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
             else
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, weapon.weaponPrefab.transform.position, weapon.weaponPrefab.transform.rotation, LeftHand.transform);
+                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, LeftHand.transform);
         }
         currentWeapon = weapon;
         currentWeapon?.weaponPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);

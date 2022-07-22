@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponDamage : MonoBehaviour
 {
     public int baseDamage;
+    public float knockback;
     protected Collider sourceCollider;
     protected List<Collider> alreadyCollidedWith = new List<Collider>();
     protected int additiveDamageModifier = 0;
@@ -23,7 +24,13 @@ public class WeaponDamage : MonoBehaviour
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
         {
             int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier) * -1;
+            Debug.Log("Hitting Player for " + damage + "!");
             attributes.ChangeHP(damage);
+        }
+        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        {
+            Vector3 direction = (other.transform.position - sourceCollider.transform.position).normalized;
+            forceReceiver.AddForce(direction * knockback);
         }
     }
 

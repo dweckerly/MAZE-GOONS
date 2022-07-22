@@ -15,9 +15,12 @@ public class PlayerAttackingState : PlayerBaseState
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
         weapon = stateMachine.WeaponHandler.currentWeapon;
         weapon.DisableRightHand();
-        weapon.DisableLeftHand();
         weapon.weaponPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        weapon.offHandPrefab?.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        if (weapon.offHandPrefab != null)
+        {
+            weapon.DisableLeftHand();
+            weapon.offHandPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        }
     }
 
     public override void Enter()
@@ -30,11 +33,19 @@ public class PlayerAttackingState : PlayerBaseState
         base.Tick(deltaTime);
         Move(deltaTime);
         FaceTarget();
-        float normalizedTime = GetNormalizedAnimationTime();
+        float normalizedTime = GetNormalizedAnimationTime(stateMachine.animator);
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
-            if (attack.RightHand) weapon.EnableRightHand();
-            else weapon.EnableLeftHand();
+            if (attack.RightHand)
+            {
+                weapon.weaponPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
+                weapon.EnableRightHand();
+            } 
+            else 
+            {
+                weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
+                weapon.EnableLeftHand();
+            }
             if (normalizedTime >= attack.ForceTime) TryApplyForce();
             if (stateMachine.InputReader.IsAttacking)
             {
@@ -72,15 +83,5 @@ public class PlayerAttackingState : PlayerBaseState
         if (appliedForce) return;
         stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
         appliedForce = true;
-    }
-
-    private float GetNormalizedAnimationTime()
-    {
-        AnimatorStateInfo currentInfo = stateMachine.animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.animator.GetNextAnimatorStateInfo(0);
-
-        if (stateMachine.animator.IsInTransition(0) && nextInfo.IsTag("Attack")) return nextInfo.normalizedTime;
-        else if (!stateMachine.animator.IsInTransition(0) && currentInfo.IsTag("Attack")) return currentInfo.normalizedTime;
-        return 0f;
     }
 }
