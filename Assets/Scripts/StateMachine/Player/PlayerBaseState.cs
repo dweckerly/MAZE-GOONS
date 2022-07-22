@@ -15,7 +15,7 @@ public abstract class PlayerBaseState : State
 
     public override void Tick(float deltaTime)
     {
-        if (!stateMachine.Attributes.alive) stateMachine.SwitchState(null);
+        if (!stateMachine.Attributes.alive) stateMachine.SwitchState(new PlayerDeadState(stateMachine));
     }
 
     protected void Move(float deltaTime)
