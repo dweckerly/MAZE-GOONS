@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public enum Attribute
 
 public class Attributes : MonoBehaviour
 {
+    public event Action OnTakeDamage;
     public bool alive = true;
     [SerializeField] int brains;
     [SerializeField] int brawn;
@@ -76,6 +78,12 @@ public class Attributes : MonoBehaviour
         currentHP += amount;
         if (currentHP > maxHP) currentHP = maxHP;
         else if (currentHP <= 0) Die();
+    }
+
+    public void TakeDamage(int amount)
+    {
+        OnTakeDamage?.Invoke();
+        ChangeHP(amount * -1);
     }
 
     public void Die()

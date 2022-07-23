@@ -23,9 +23,9 @@ public class WeaponDamage : MonoBehaviour
         alreadyCollidedWith.Add(other);
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
         {
-            int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier) * -1;
+            int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier);
             Debug.Log("Hitting Player for " + damage + "!");
-            attributes.ChangeHP(damage);
+            attributes.TakeDamage(damage);
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {

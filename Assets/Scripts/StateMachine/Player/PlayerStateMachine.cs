@@ -28,4 +28,19 @@ public class PlayerStateMachine : StateMachine
     {
         SwitchState(new PlayerFreeLookState(this));    
     }
+
+    private void OnEnable()
+    {
+        Attributes.OnTakeDamage += HandleTakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        Attributes.OnTakeDamage -= HandleTakeDamage;
+    }
+
+    private void HandleTakeDamage()
+    {
+        SwitchState(new PlayerImpactState(this));
+    }
 }

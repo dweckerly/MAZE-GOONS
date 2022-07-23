@@ -31,4 +31,19 @@ public class EnemyStateMachine : StateMachine
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, DetectionRange);    
     }
+
+    private void OnEnable() 
+    {
+        Attributes.OnTakeDamage += HandleTakeDamage;
+    }
+
+    private void OnDisable() 
+    {
+        Attributes.OnTakeDamage -= HandleTakeDamage;
+    }
+
+    private void HandleTakeDamage()
+    {
+        SwitchState(new EnemyImpactState(this));
+    }
 }

@@ -52,7 +52,7 @@ public class Combatant : MonoBehaviour
         if (timeSinceLastAttack > timeBetweenAttakcs)
         {
             animator.SetTrigger("attack");
-            target.ChangeHP(-(attributes.GetStat(Attribute.Brawn)));
+            target.TakeDamage(attributes.GetStat(Attribute.Brawn));
             timeSinceLastAttack = 0;
         }
     }
