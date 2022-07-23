@@ -30,7 +30,11 @@ public class ForceReceiver : MonoBehaviour
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
-        if (agent != null && impact == Vector3.zero) agent.enabled = true;
+        if (agent != null && impact.sqrMagnitude < 0.2f * 0.2f) 
+        {
+            impact = Vector3.zero;
+            agent.enabled = true;
+        }
     }
 
     public void AddForce(Vector3 force)

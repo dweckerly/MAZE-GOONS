@@ -12,8 +12,9 @@ public class WeaponHandler : MonoBehaviour
 
     private void Awake() 
     {
+        sourceCollider = GetComponent<Collider>();
         currentWeapon = Instantiate(defaultWeapon);
-        currentWeapon?.Init();
+        currentWeapon.Init();
         EquipWeapon(currentWeapon);
     }
 
@@ -36,6 +37,7 @@ public class WeaponHandler : MonoBehaviour
                 weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, LeftHand.transform);
         }
         currentWeapon = weapon;
-        currentWeapon?.weaponPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+        currentWeapon.weaponPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+        if (currentWeapon.offHandPrefab != null) currentWeapon.offHandPrefab?.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
     }
 }
