@@ -20,6 +20,7 @@ public class EnemyFightingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        FaceTarget(stateMachine.Player);
         if (!IsInAttackRange(stateMachine.Player))
         {
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));

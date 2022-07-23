@@ -42,12 +42,12 @@ public class Weapon : Item
 
     public void EnableLeftHand()
     {
-        offHandPrefab?.SetActive(true);
+        offHandPrefab.SetActive(true);
     }
 
     public void DisableLeftHand()
     {
-        offHandPrefab?.SetActive(false);
+        offHandPrefab.SetActive(false);
     }
 
 }

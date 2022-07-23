@@ -18,9 +18,9 @@ public class EnemyAttackingState : EnemyBaseState
         weapon.DisableRightHand();
         if (weapon.offHandPrefab != null) 
         {
-            weapon.DisableLeftHand();
             weapon.offHandPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
             weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
+            weapon.DisableLeftHand();
         }
     }
 
