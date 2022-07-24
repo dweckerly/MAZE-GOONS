@@ -28,6 +28,11 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
+        if (stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+            return;
+        }
         Vector3 movement = CalculateMovementDirection();
         Move(movement * stateMachine.freeLookSpeed, deltaTime);
         if (stateMachine.InputReader.MovementValue == Vector2.zero)

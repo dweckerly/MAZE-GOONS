@@ -36,6 +36,8 @@ public class Attributes : MonoBehaviour
 
     Animator animator;
 
+    private bool isInvulnerable = false;
+
     private void Awake() 
     {
         currentBrains = brains;
@@ -84,8 +86,14 @@ public class Attributes : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isInvulnerable) return;
         OnTakeDamage?.Invoke();
         ChangeHP(amount * -1);
+    }
+
+    public void SetInvulnerable(bool invulnerable)
+    {
+        isInvulnerable = invulnerable;
     }
 
     public void Die()

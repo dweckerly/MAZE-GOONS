@@ -11,6 +11,7 @@ public class Weapon : Item
     public bool rightHanded = true;
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
+    public string blockingAnimation;
 
     protected int additiveDamageModifier = 0;
     protected float multiplicativeDamageModifier = 0f;
