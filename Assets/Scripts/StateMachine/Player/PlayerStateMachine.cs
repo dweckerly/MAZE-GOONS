@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public Attributes Attributes { get; private set; }
     [field: SerializeField] public WeaponHandler WeaponHandler { get; private set; }
+    //[field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public Interacter Interacter { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
@@ -32,15 +33,22 @@ public class PlayerStateMachine : StateMachine
     private void OnEnable()
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
+        Attributes.OnDie += HandleDie;
     }
 
     private void OnDisable()
     {
         Attributes.OnTakeDamage -= HandleTakeDamage;
+        Attributes.OnDie -= HandleDie;
     }
 
     private void HandleTakeDamage()
     {
         SwitchState(new PlayerImpactState(this));
+    }
+
+    private void HandleDie()
+    {
+        SwitchState(new PlayerDeadState(this));
     }
 }

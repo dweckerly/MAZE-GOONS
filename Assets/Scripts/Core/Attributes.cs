@@ -14,6 +14,8 @@ public enum Attribute
 public class Attributes : MonoBehaviour
 {
     public event Action OnTakeDamage;
+    public event Action OnDie;
+
     public bool alive = true;
     [SerializeField] int brains;
     [SerializeField] int brawn;
@@ -88,7 +90,7 @@ public class Attributes : MonoBehaviour
 
     public void Die()
     {
-        animator.SetTrigger("die");
+        OnDie?.Invoke();
         alive = false;
     }
 }

@@ -11,6 +11,8 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
     [field: SerializeField] public WeaponHandler WeaponHandler { get; private set; }
+    [field: SerializeField] public Target Target { get; private set; }
+    //[field: SerializeField] public Ragdoll Ragdoll { get; private set; }
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
@@ -35,15 +37,22 @@ public class EnemyStateMachine : StateMachine
     private void OnEnable() 
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
+        Attributes.OnDie += HandleDie;
     }
 
     private void OnDisable() 
     {
         Attributes.OnTakeDamage -= HandleTakeDamage;
+        Attributes.OnDie -= HandleDie;
     }
 
     private void HandleTakeDamage()
     {
         SwitchState(new EnemyImpactState(this));
+    }
+
+    private void HandleDie()
+    {
+        SwitchState(new EnemyDeadState(this));
     }
 }
