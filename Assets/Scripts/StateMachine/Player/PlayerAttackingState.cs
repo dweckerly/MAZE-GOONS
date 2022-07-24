@@ -69,7 +69,11 @@ public class PlayerAttackingState : PlayerBaseState
         previousFrameTime = normalizedTime;
     }
 
-    public override void Exit() {}
+    public override void Exit() 
+    {
+        weapon.DisableRightHand();
+        if (weapon.offHandPrefab != null) weapon.DisableLeftHand();
+    }
 
     private void TryComboAttack(float normalizedTime)
     {
