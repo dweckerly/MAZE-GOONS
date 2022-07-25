@@ -54,8 +54,6 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            if (attack.RightHand) weapon.DisableRightHand();
-            else weapon.DisableLeftHand();
             if (stateMachine.Targeter.CurrentTarget != null)
             {
                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
@@ -64,7 +62,6 @@ public class PlayerAttackingState : PlayerBaseState
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             }
-
         }
         previousFrameTime = normalizedTime;
     }
