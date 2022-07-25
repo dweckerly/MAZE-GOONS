@@ -15,40 +15,48 @@ public class Weapon : Item
 
     protected int additiveDamageModifier = 0;
     protected float multiplicativeDamageModifier = 0f;
-    protected WeaponDamage mainHandDamage;
-    protected WeaponDamage offHandDamage;
+    public WeaponDamage mainHandDamage;
+    public WeaponDamage offHandDamage;
+    public Collider mainHandCollider;
+    public Collider offHandCollider;
 
     public virtual void Init() 
     {
         mainHandDamage = weaponPrefab.GetComponent<WeaponDamage>();
+        mainHandCollider = weaponPrefab.GetComponent<Collider>();
         mainHandDamage.baseDamage = weaponDamage;
-        DisableRightHand();
+        //DisableRightHand();
         if (offHandPrefab != null)
         {
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
+            offHandCollider = offHandPrefab.GetComponent<Collider>();
             offHandDamage.baseDamage = weaponDamage;
-            DisableLeftHand();
+            //DisableLeftHand();
         }
     }
 
     public void EnableRightHand()
     {
-        weaponPrefab.SetActive(true);
+        //weaponPrefab.SetActive(true);
+        mainHandCollider.enabled = true;
     }
 
     public virtual void DisableRightHand()
     {
-        weaponPrefab.SetActive(false);
+        //weaponPrefab.SetActive(false);
+        mainHandCollider.enabled = false;
     }
 
     public void EnableLeftHand()
     {
-        offHandPrefab.SetActive(true);
+        //offHandPrefab.SetActive(true);
+        offHandCollider.enabled = true;
     }
 
     public void DisableLeftHand()
     {
-        offHandPrefab.SetActive(false);
+        //offHandPrefab.SetActive(false);
+        offHandCollider.enabled = false;
     }
 
 }

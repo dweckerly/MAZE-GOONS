@@ -13,39 +13,33 @@ public class EnemyAttackingState : EnemyBaseState
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
         weapon = stateMachine.WeaponHandler.currentWeapon;
-        weapon.weaponPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        weapon.weaponPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-        weapon.DisableRightHand();
-        if (weapon.offHandPrefab != null) 
+        weapon.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        weapon.mainHandDamage.knockback = attack.Knockback;
+        if (weapon.offHandPrefab != null)
         {
-            weapon.offHandPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-            weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-            weapon.DisableLeftHand();
+            weapon.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            weapon.offHandDamage.knockback = attack.Knockback;
         }
     }
 
     public override void Enter()
     {
+        weapon.EnableRightHand();
+        if (weapon.offHandPrefab != null) weapon.EnableLeftHand();
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
     }
 
-    public override void Exit() {}
+    public override void Exit() 
+    {
+        weapon.DisableRightHand();
+        if (weapon.offHandPrefab != null) weapon.DisableLeftHand();
+    }
 
     public override void Tick(float deltaTime)
     {
         float normalizedTime = GetNormalizedAnimationTime(stateMachine.animator);
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
-            if (attack.RightHand)
-            {
-                weapon.weaponPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                weapon.EnableRightHand();
-            }
-            else
-            {
-                weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                weapon.EnableLeftHand();
-            }
             if (normalizedTime >= attack.ForceTime) TryApplyForce();
         }
         previousFrameTime = normalizedTime;

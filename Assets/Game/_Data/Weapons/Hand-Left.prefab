@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2100753324373828792
 Transform:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2740399199111973269}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.002
   m_Height: 0.005
   m_Direction: 1
@@ -76,4 +76,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68040c1543ec1134faa1511490ebd5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 0
+  baseDamage: 1
+  knockback: 0

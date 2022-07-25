@@ -11,6 +11,8 @@ public class EnemyDeadState : EnemyBaseState
         //stateMachine.Ragdoll.ToggleRagdoll(true);
         stateMachine.WeaponHandler.currentWeapon.weaponPrefab.SetActive(false);
         GameObject.Destroy(stateMachine.Target);
+        stateMachine.Controller.enabled = false;
+        stateMachine.Agent.enabled = false;
         stateMachine.animator.SetTrigger("die");
     }
 

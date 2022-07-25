@@ -14,8 +14,23 @@ public class WeaponHandler : MonoBehaviour
     {
         sourceCollider = GetComponent<Collider>();
         currentWeapon = Instantiate(defaultWeapon);
-        currentWeapon.Init();
+        Init();
         EquipWeapon(currentWeapon);
+    }
+
+    public virtual void Init()
+    {
+        currentWeapon.mainHandDamage = currentWeapon.weaponPrefab.GetComponent<WeaponDamage>();
+        currentWeapon.mainHandCollider = currentWeapon.weaponPrefab.GetComponent<Collider>();
+        currentWeapon.mainHandDamage.baseDamage = currentWeapon.weaponDamage;
+        //DisableRightHand();
+        if (currentWeapon.offHandPrefab != null)
+        {
+            currentWeapon.offHandDamage = currentWeapon.offHandPrefab.GetComponent<WeaponDamage>();
+            currentWeapon.offHandCollider = currentWeapon.offHandPrefab.GetComponent<Collider>();
+            currentWeapon.offHandDamage.baseDamage = currentWeapon.weaponDamage;
+            //DisableLeftHand();
+        }
     }
 
     public void EquipWeapon(Weapon weapon)
@@ -37,7 +52,7 @@ public class WeaponHandler : MonoBehaviour
                 weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, LeftHand.transform);
         }
         currentWeapon = weapon;
-        currentWeapon.weaponPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
-        if (currentWeapon.offHandPrefab != null) currentWeapon.offHandPrefab?.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+        currentWeapon.mainHandDamage.IgnoreCollider(sourceCollider);
+        if (currentWeapon.offHandPrefab != null) currentWeapon.offHandDamage.IgnoreCollider(sourceCollider);
     }
 }

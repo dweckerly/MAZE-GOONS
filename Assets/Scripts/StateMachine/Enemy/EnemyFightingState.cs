@@ -13,10 +13,7 @@ public class EnemyFightingState : EnemyBaseState
         stateMachine.animator.CrossFadeInFixedTime(FightingIdleHash, CrossFadeDuration);
     }
 
-    public override void Exit()
-    {
-        
-    }
+    public override void Exit() {}
 
     public override void Tick(float deltaTime)
     {
