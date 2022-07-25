@@ -14,17 +14,18 @@ public class PlayerAttackingState : PlayerBaseState
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
         weapon = stateMachine.WeaponHandler.currentWeapon;
-        weapon.DisableRightHand();
         weapon.weaponPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
         if (weapon.offHandPrefab != null)
         {
-            weapon.DisableLeftHand();
             weapon.offHandPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
         }
     }
 
     public override void Enter()
     {
+        stateMachine.WeaponHandler.ClearWeaponColliderHistory(attack.RightHand);
+        stateMachine.WeaponHandler.EnableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.EnableLeftHandCollider();
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
@@ -39,18 +40,15 @@ public class PlayerAttackingState : PlayerBaseState
             if (attack.RightHand)
             {
                 weapon.weaponPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                weapon.EnableRightHand();
+                stateMachine.WeaponHandler.EnableRightHandCollider();
             } 
             else 
             {
                 weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                weapon.EnableLeftHand();
+                stateMachine.WeaponHandler.EnableLeftHandCollider();
             }
             if (normalizedTime >= attack.ForceTime) TryApplyForce();
-            if (stateMachine.InputReader.IsAttacking)
-            {
-                TryComboAttack(normalizedTime);
-            }
+            if (stateMachine.InputReader.IsAttacking) TryComboAttack(normalizedTime);
         }
         else
         {
@@ -68,8 +66,8 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Exit() 
     {
-        weapon.DisableRightHand();
-        if (weapon.offHandPrefab != null) weapon.DisableLeftHand();
+        stateMachine.WeaponHandler.DisableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
 
     private void TryComboAttack(float normalizedTime)

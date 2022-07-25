@@ -13,8 +13,8 @@ public class EnemyAttackingState : EnemyBaseState
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
         weapon = stateMachine.WeaponHandler.currentWeapon;
-        weapon.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        weapon.mainHandDamage.knockback = attack.Knockback;
+        //weapon.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        //weapon.mainHandDamage.knockback = attack.Knockback;
         if (weapon.offHandPrefab != null)
         {
             weapon.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
@@ -24,15 +24,16 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
-        weapon.EnableRightHand();
-        if (weapon.offHandPrefab != null) weapon.EnableLeftHand();
+        stateMachine.WeaponHandler.ClearWeaponColliderHistory(attack.RightHand);
+        stateMachine.WeaponHandler.EnableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.EnableLeftHandCollider();
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
     }
 
     public override void Exit() 
     {
-        weapon.DisableRightHand();
-        if (weapon.offHandPrefab != null) weapon.DisableLeftHand();
+        stateMachine.WeaponHandler.DisableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
 
     public override void Tick(float deltaTime)

@@ -4,55 +4,55 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] private Collider sourceCollider;
     [SerializeField] GameObject RightHand;
     [SerializeField] GameObject LeftHand;
     [field: SerializeField] public Weapon defaultWeapon { get; private set; }
     public Weapon currentWeapon;
+    public GameObject mainHandPrefab;
+    public GameObject offHandPrefab;
+
+    Collider mainHandCollider;
+
+    [SerializeField] private Collider sourceCollider;
 
     private void Awake() 
     {
         sourceCollider = GetComponent<Collider>();
-        currentWeapon = Instantiate(defaultWeapon);
-        Init();
-        EquipWeapon(currentWeapon);
-    }
-
-    public virtual void Init()
-    {
-        currentWeapon.mainHandDamage = currentWeapon.weaponPrefab.GetComponent<WeaponDamage>();
-        currentWeapon.mainHandCollider = currentWeapon.weaponPrefab.GetComponent<Collider>();
-        currentWeapon.mainHandDamage.baseDamage = currentWeapon.weaponDamage;
-        //DisableRightHand();
-        if (currentWeapon.offHandPrefab != null)
-        {
-            currentWeapon.offHandDamage = currentWeapon.offHandPrefab.GetComponent<WeaponDamage>();
-            currentWeapon.offHandCollider = currentWeapon.offHandPrefab.GetComponent<Collider>();
-            currentWeapon.offHandDamage.baseDamage = currentWeapon.weaponDamage;
-            //DisableLeftHand();
-        }
+        EquipWeapon(defaultWeapon);
     }
 
     public void EquipWeapon(Weapon weapon)
     {
-        if (currentWeapon != null)
-        {
-            // destroy old weapon
-        }
-        if (weapon.weaponPrefab != null)
-        {
-            if (weapon.dual)
-            {
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-                weapon.offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
-            }
-            else if (weapon.rightHanded)
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-            else
-                weapon.weaponPrefab = Instantiate(weapon.weaponPrefab, LeftHand.transform);
-        }
-        currentWeapon = weapon;
-        currentWeapon.mainHandDamage.IgnoreCollider(sourceCollider);
-        if (currentWeapon.offHandPrefab != null) currentWeapon.offHandDamage.IgnoreCollider(sourceCollider);
+        currentWeapon = Instantiate(weapon);
+        mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
+        if (weapon.offHandPrefab != null) offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
+        mainHandPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+        if (offHandPrefab != null) offHandPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+    }
+
+    public void ClearWeaponColliderHistory(bool right)
+    {
+        if (right) mainHandPrefab.GetComponent<WeaponDamage>().ClearColliderList();
+        else offHandPrefab.GetComponent<WeaponDamage>().ClearColliderList();
+    }
+
+    public void EnableRightHandCollider()
+    {
+        mainHandPrefab.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public virtual void DisableRightHandCollider()
+    {
+        mainHandPrefab.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
+    public void EnableLeftHandCollider()
+    {
+        offHandPrefab.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void DisableLeftHandCollider()
+    {
+        offHandPrefab.GetComponent<CapsuleCollider>().enabled = false;
     }
 }

@@ -34,29 +34,4 @@ public class Weapon : Item
             //DisableLeftHand();
         }
     }
-
-    public void EnableRightHand()
-    {
-        //weaponPrefab.SetActive(true);
-        mainHandCollider.enabled = true;
-    }
-
-    public virtual void DisableRightHand()
-    {
-        //weaponPrefab.SetActive(false);
-        mainHandCollider.enabled = false;
-    }
-
-    public void EnableLeftHand()
-    {
-        //offHandPrefab.SetActive(true);
-        offHandCollider.enabled = true;
-    }
-
-    public void DisableLeftHand()
-    {
-        //offHandPrefab.SetActive(false);
-        offHandCollider.enabled = false;
-    }
-
 }

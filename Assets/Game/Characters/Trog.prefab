@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 1586449061054418610}
   - component: {fileID: 4988348854193113823}
   - component: {fileID: 30227660615355346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,11 +814,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337939797b73b6044abab7aeed9d303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceCollider: {fileID: 5564701458377820193}
   RightHand: {fileID: 5883510427907914664}
   LeftHand: {fileID: 0}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: 2f5c9f17e17048f46b557155aaf0140e, type: 2}
   currentWeapon: {fileID: 0}
+  mainHandPrefab: {fileID: 0}
+  offHandPrefab: {fileID: 0}
+  sourceCollider: {fileID: 5564701458377820193}
 --- !u!1 &4425965942711177828
 GameObject:
   m_ObjectHideFlags: 0

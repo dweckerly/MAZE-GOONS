@@ -28,9 +28,14 @@ public class WeaponDamage : MonoBehaviour
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
-            Vector3 direction = (other.transform.position - sourceCollider.transform.position).normalized;
+            Vector3 direction = (other.transform.position - transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
         }
+    }
+
+    public void ClearColliderList()
+    {
+        alreadyCollidedWith.Clear();
     }
 
     public void IgnoreCollider(Collider collider)
