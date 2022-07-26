@@ -9,7 +9,7 @@ public class PlayerDeadState : PlayerBaseState
 
     public override void Enter() 
     {
-        stateMachine.animator.SetBool(DeadHash, true);
+        stateMachine.animator.SetTrigger(DeadHash);
     }
 
     public override void Tick(float deltaTime)

@@ -14,7 +14,7 @@ public class EnemyDeadState : EnemyBaseState
         GameObject.Destroy(stateMachine.Target);
         stateMachine.Controller.enabled = false;
         stateMachine.Agent.enabled = false;
-        stateMachine.animator.SetBool(DeadHash, true);
+        stateMachine.animator.SetTrigger(DeadHash);
     }
 
     public override void Exit() {}
