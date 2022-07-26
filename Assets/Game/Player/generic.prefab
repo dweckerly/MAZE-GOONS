@@ -830,6 +830,7 @@ MonoBehaviour:
   <Attributes>k__BackingField: {fileID: 5134899267749022103}
   <WeaponHandler>k__BackingField: {fileID: 980430527866985332}
   <Interacter>k__BackingField: {fileID: 7024153916784975196}
+  <DodgeParticles>k__BackingField: {fileID: 1010056522615571798}
   freeLookSpeed: 6
   targetingSpeed: 5
   rotationDamping: 10
@@ -2842,6 +2843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmokeWhiteTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 125742, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2852,11 +2857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.088
       objectReference: {fileID: 0}
     - target: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.421
       objectReference: {fileID: 0}
     - target: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2891,5 +2896,10 @@ PrefabInstance:
 --- !u!4 &1010056522601448898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
+  m_PrefabInstance: {fileID: 1010056522601835340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1010056522615571798 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19852826, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
   m_PrefabInstance: {fileID: 1010056522601835340}
   m_PrefabAsset: {fileID: 0}

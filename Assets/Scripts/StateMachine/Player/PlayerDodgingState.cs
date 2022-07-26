@@ -23,9 +23,13 @@ public class PlayerDodgingState : PlayerBaseState
         stateMachine.animator.SetFloat(DodgingForward, dodgeDirection.y);
         stateMachine.animator.SetFloat(DodgingRight, dodgeDirection.x);
         stateMachine.animator.CrossFadeInFixedTime(DodgingBlendTree, CrossFadeDuration);
+        stateMachine.DodgeParticles.Play();
     }
 
-    public override void Exit() {}
+    public override void Exit() 
+    {
+        stateMachine.DodgeParticles.Stop();
+    }
 
     public override void Tick(float deltaTime)
     {

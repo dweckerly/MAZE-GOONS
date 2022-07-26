@@ -14,6 +14,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponHandler WeaponHandler { get; private set; }
     //[field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public Interacter Interacter { get; private set; }
+    [field: SerializeField] public ParticleSystem DodgeParticles { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
 
@@ -31,7 +32,7 @@ public class PlayerStateMachine : StateMachine
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        DodgeParticles.Stop();
         SwitchState(new PlayerFreeLookState(this));    
     }
 
