@@ -9,11 +9,14 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        //stateMachine.Ragdoll.ToggleRagdoll(true);
-        stateMachine.WeaponHandler.currentWeapon.weaponPrefab.SetActive(false);
+        stateMachine.WeaponHandler.DisableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
+        
         GameObject.Destroy(stateMachine.Target);
+        
         stateMachine.Controller.enabled = false;
         stateMachine.Agent.enabled = false;
+        
         stateMachine.animator.SetTrigger(DeadHash);
     }
 
