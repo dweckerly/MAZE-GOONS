@@ -20,6 +20,8 @@ public class PlayerStateMachine : StateMachine
     public float freeLookSpeed = 5f;
     public float targetingSpeed = 5f;
     public float rotationDamping = 10f;
+    public float dodgeDistance = 2.5f;
+    public float dodgeDuration = 0.2f;
 
     private void Awake() 
     {

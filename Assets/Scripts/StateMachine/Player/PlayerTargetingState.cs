@@ -70,7 +70,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void OnDodge()
     {
-        stateMachine.SwitchState(new PlayerDodgingState(stateMachine));
+        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
     }
 
     private Vector3 CalculateMovement()

@@ -4,23 +4,45 @@ using UnityEngine;
 
 public class PlayerDodgingState : PlayerBaseState
 {
-    private readonly int DodgingBlendTree = Animator.StringToHash("Dodging Blend Tree");
+    private readonly int DodgingBlendTree = Animator.StringToHash("Dodging BlendTree");
     private readonly int DodgingForward = Animator.StringToHash("DodgingForward");
     private readonly int DodgingRight = Animator.StringToHash("DodgingRight");
 
-    public PlayerDodgingState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
+    private Vector3 dodgeDirection;
+    private float remainingDodgeTime;
+
+    public PlayerDodgingState(PlayerStateMachine _stateMachine, Vector3 direction) : base(_stateMachine) 
+    {
+        dodgeDirection = direction;
+    }
 
     public override void Enter()
     {
+        remainingDodgeTime = stateMachine.dodgeDuration;
+        stateMachine.Attributes.SetInvulnerable(true);
+        stateMachine.animator.SetFloat(DodgingForward, dodgeDirection.y);
+        stateMachine.animator.SetFloat(DodgingRight, dodgeDirection.x);
         stateMachine.animator.CrossFadeInFixedTime(DodgingBlendTree, CrossFadeDuration);
     }
 
-    public override void Exit() {}
+    public override void Exit() 
+    {
+        stateMachine.Attributes.SetInvulnerable(false);
+    }
 
     public override void Tick(float deltaTime)
     {
+        Vector3 movement = new Vector3();
+        movement += stateMachine.transform.right * dodgeDirection.x * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
+        movement += stateMachine.transform.forward * dodgeDirection.y * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
         
-        if (stateMachine.Targeter.CurrentTarget != null) stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-        else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        Move(movement, deltaTime);
+
+        remainingDodgeTime -= deltaTime;
+        if (remainingDodgeTime <= 0f)
+        {
+            if (stateMachine.Targeter.CurrentTarget != null) stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        }
     }
 }
