@@ -13,11 +13,6 @@ public abstract class PlayerBaseState : State
         stateMachine = _stateMachine;
     }
 
-    public override void Tick(float deltaTime)
-    {
-        if (!stateMachine.Attributes.alive) stateMachine.SwitchState(new PlayerDeadState(stateMachine));
-    }
-
     protected void Move(float deltaTime)
     {
         Move(Vector3.zero, deltaTime);

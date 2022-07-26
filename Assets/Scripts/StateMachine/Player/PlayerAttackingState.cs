@@ -7,46 +7,38 @@ public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
     private Attack attack;
-    private Weapon weapon;
     private bool appliedForce = false;
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
-        weapon = stateMachine.WeaponHandler.currentWeapon;
-        weapon.weaponPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        if (weapon.offHandPrefab != null)
-        {
-            weapon.offHandPrefab.GetComponent<WeaponDamage>().SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        }
     }
 
     public override void Enter()
     {
-        stateMachine.WeaponHandler.ClearWeaponColliderHistory(attack.RightHand);
-        stateMachine.WeaponHandler.EnableRightHandCollider();
-        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.EnableLeftHandCollider();
+        if (attack.RightHand)
+        {
+            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
+            stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
+            stateMachine.WeaponHandler.EnableRightHandCollider();
+        }
+        else 
+        {
+            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
+            stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
+            stateMachine.WeaponHandler.EnableLeftHandCollider();
+        }
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
     public override void Tick(float deltaTime)
     {
-        base.Tick(deltaTime);
         Move(deltaTime);
-        FaceTarget();
         float normalizedTime = GetNormalizedAnimationTime(stateMachine.animator);
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
-            if (attack.RightHand)
-            {
-                weapon.weaponPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                stateMachine.WeaponHandler.EnableRightHandCollider();
-            } 
-            else 
-            {
-                weapon.offHandPrefab.GetComponent<WeaponDamage>().knockback = attack.Knockback;
-                stateMachine.WeaponHandler.EnableLeftHandCollider();
-            }
             if (normalizedTime >= attack.ForceTime) TryApplyForce();
             if (stateMachine.InputReader.IsAttacking) TryComboAttack(normalizedTime);
         }

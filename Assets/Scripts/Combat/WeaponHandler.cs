@@ -10,8 +10,10 @@ public class WeaponHandler : MonoBehaviour
     public Weapon currentWeapon;
     public GameObject mainHandPrefab;
     public GameObject offHandPrefab;
-
-    Collider mainHandCollider;
+    public WeaponDamage mainHandDamage;
+    public WeaponDamage offHandDamage;
+    public Collider mainHandCollider;
+    public Collider offHandCollider;
 
     [SerializeField] private Collider sourceCollider;
 
@@ -23,36 +25,37 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipWeapon(Weapon weapon)
     {
-        currentWeapon = Instantiate(weapon);
+        currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-        if (weapon.offHandPrefab != null) offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
-        mainHandPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
-        if (offHandPrefab != null) offHandPrefab.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
-    }
-
-    public void ClearWeaponColliderHistory(bool right)
-    {
-        if (right) mainHandPrefab.GetComponent<WeaponDamage>().ClearColliderList();
-        else offHandPrefab.GetComponent<WeaponDamage>().ClearColliderList();
+        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
+        mainHandCollider = mainHandPrefab.GetComponent<CapsuleCollider>();
+        mainHandDamage.IgnoreCollider(sourceCollider);
+        if (weapon.offHandPrefab != null) 
+        {
+            offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
+            offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
+            offHandCollider = offHandPrefab.GetComponent<CapsuleCollider>();
+            offHandDamage.IgnoreCollider(sourceCollider);
+        }
     }
 
     public void EnableRightHandCollider()
     {
-        mainHandPrefab.GetComponent<CapsuleCollider>().enabled = true;
+        mainHandCollider.enabled = true;
     }
 
     public virtual void DisableRightHandCollider()
     {
-        mainHandPrefab.GetComponent<CapsuleCollider>().enabled = false;
+        mainHandCollider.enabled = false;
     }
 
     public void EnableLeftHandCollider()
     {
-        offHandPrefab.GetComponent<CapsuleCollider>().enabled = true;
+        offHandCollider.enabled = true;
     }
 
     public void DisableLeftHandCollider()
     {
-        offHandPrefab.GetComponent<CapsuleCollider>().enabled = false;
+        offHandCollider.enabled = false;
     }
 }

@@ -18,7 +18,6 @@ public class PlayerImpactState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        base.Tick(deltaTime);
         Move(deltaTime);
         duration -= deltaTime;
         if (duration <= 0) ReturnToLocomotion();

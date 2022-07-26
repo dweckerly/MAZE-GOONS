@@ -12,26 +12,4 @@ public class Weapon : Item
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public string blockingAnimation;
-
-    protected int additiveDamageModifier = 0;
-    protected float multiplicativeDamageModifier = 0f;
-    public WeaponDamage mainHandDamage;
-    public WeaponDamage offHandDamage;
-    public Collider mainHandCollider;
-    public Collider offHandCollider;
-
-    public virtual void Init() 
-    {
-        mainHandDamage = weaponPrefab.GetComponent<WeaponDamage>();
-        mainHandCollider = weaponPrefab.GetComponent<Collider>();
-        mainHandDamage.baseDamage = weaponDamage;
-        //DisableRightHand();
-        if (offHandPrefab != null)
-        {
-            offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
-            offHandCollider = offHandPrefab.GetComponent<Collider>();
-            offHandDamage.baseDamage = weaponDamage;
-            //DisableLeftHand();
-        }
-    }
 }

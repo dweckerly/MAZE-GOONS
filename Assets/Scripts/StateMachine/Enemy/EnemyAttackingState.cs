@@ -5,28 +5,30 @@ using UnityEngine;
 public class EnemyAttackingState : EnemyBaseState
 {
     private Attack attack;
-    private Weapon weapon;
     private bool appliedForce = false;
     private float previousFrameTime;
 
     public EnemyAttackingState(EnemyStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
-        weapon = stateMachine.WeaponHandler.currentWeapon;
-        //weapon.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-        //weapon.mainHandDamage.knockback = attack.Knockback;
-        if (weapon.offHandPrefab != null)
-        {
-            weapon.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-            weapon.offHandDamage.knockback = attack.Knockback;
-        }
     }
 
     public override void Enter()
     {
-        stateMachine.WeaponHandler.ClearWeaponColliderHistory(attack.RightHand);
-        stateMachine.WeaponHandler.EnableRightHandCollider();
-        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.EnableLeftHandCollider();
+        if (attack.RightHand)
+        {
+            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
+            stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
+            stateMachine.WeaponHandler.EnableRightHandCollider();
+        }
+        else
+        {
+            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
+            stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
+            stateMachine.WeaponHandler.EnableLeftHandCollider();
+        }
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
     }
 
