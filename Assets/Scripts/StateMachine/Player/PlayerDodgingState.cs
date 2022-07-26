@@ -19,16 +19,12 @@ public class PlayerDodgingState : PlayerBaseState
     public override void Enter()
     {
         remainingDodgeTime = stateMachine.dodgeDuration;
-        stateMachine.Attributes.SetInvulnerable(true);
         stateMachine.animator.SetFloat(DodgingForward, dodgeDirection.y);
         stateMachine.animator.SetFloat(DodgingRight, dodgeDirection.x);
         stateMachine.animator.CrossFadeInFixedTime(DodgingBlendTree, CrossFadeDuration);
     }
 
-    public override void Exit() 
-    {
-        stateMachine.Attributes.SetInvulnerable(false);
-    }
+    public override void Exit() {}
 
     public override void Tick(float deltaTime)
     {
