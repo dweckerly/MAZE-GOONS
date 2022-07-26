@@ -10,6 +10,7 @@ public class PlayerDodgingState : PlayerBaseState
 
     private Vector3 dodgeDirection;
     private float remainingDodgeTime;
+    private float dodgeAdjustDistance = 2f;
 
     public PlayerDodgingState(PlayerStateMachine _stateMachine, Vector3 direction) : base(_stateMachine) 
     {
@@ -33,7 +34,13 @@ public class PlayerDodgingState : PlayerBaseState
         movement += stateMachine.transform.forward * dodgeDirection.y * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
         
         Move(movement, deltaTime);
-        FaceTarget();
+
+        if (stateMachine.Targeter.CurrentTarget != null)
+        {
+            float toDistanceSqr = (stateMachine.Targeter.CurrentTarget.transform.position - stateMachine.transform.position).sqrMagnitude;
+            if (toDistanceSqr >= dodgeAdjustDistance * dodgeAdjustDistance) FaceTarget();
+        }
+        
         remainingDodgeTime -= deltaTime;
         if (remainingDodgeTime <= 0f)
         {

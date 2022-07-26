@@ -62,6 +62,14 @@ public class PlayerTargetingState : PlayerBaseState
         }
     }
 
+    private Vector3 CalculateMovement()
+    {
+        Vector3 movement = new Vector3();
+        movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        return movement;
+    }
+
     private void OnCancel()
     {
         stateMachine.Targeter.Cancel();
@@ -72,13 +80,5 @@ public class PlayerTargetingState : PlayerBaseState
     {
         if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
-    }
-
-    private Vector3 CalculateMovement()
-    {
-        Vector3 movement = new Vector3();
-        movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
-        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
-        return movement;
     }
 }

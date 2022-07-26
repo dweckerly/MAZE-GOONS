@@ -37,11 +37,11 @@ public class Targeter : MonoBehaviour
         {
             Vector2 viewPosition = mainCamera.WorldToViewportPoint(target.transform.position);
             if (viewPosition.x < 0 || viewPosition.x > 1 || viewPosition.y < 0 || viewPosition.y > 1) continue;
-            Vector2 distanceToCEnter = viewPosition - new Vector2(0.5f, 0.5f);
-            if (distanceToCEnter.sqrMagnitude < closestTargetDistance)
+            Vector2 distanceToCenter = viewPosition - new Vector2(0.5f, 0.5f);
+            if (distanceToCenter.sqrMagnitude < closestTargetDistance)
             {
                 closestTarget = target;
-                closestTargetDistance = distanceToCEnter.sqrMagnitude;
+                closestTargetDistance = distanceToCenter.sqrMagnitude;
             }
         }
         if (closestTarget == null) return false;
