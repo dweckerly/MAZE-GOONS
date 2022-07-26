@@ -67,7 +67,7 @@ public class PlayerFreeLookState : PlayerBaseState
     private void OnDodge()
     {
         if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
-        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
+        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
     }
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
