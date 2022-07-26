@@ -6,6 +6,7 @@ public class WeaponDamage : MonoBehaviour
 {
     public int baseDamage;
     public float knockback;
+    public GameObject hitParticle;
     protected Collider sourceCollider;
     protected List<Collider> alreadyCollidedWith = new List<Collider>();
     protected int additiveDamageModifier = 0;
@@ -23,6 +24,7 @@ public class WeaponDamage : MonoBehaviour
         alreadyCollidedWith.Add(other);
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
         {
+            if (hitParticle != null)  hitParticle.GetComponent<ParticleSystem>().Play();
             int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier);
             attributes.TakeDamage(damage);
         }
