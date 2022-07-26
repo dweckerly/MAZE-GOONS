@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDeadState : EnemyBaseState
 {
+    private readonly int DeadHash = Animator.StringToHash("Dead");
     public EnemyDeadState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter()
@@ -13,7 +14,7 @@ public class EnemyDeadState : EnemyBaseState
         GameObject.Destroy(stateMachine.Target);
         stateMachine.Controller.enabled = false;
         stateMachine.Agent.enabled = false;
-        stateMachine.animator.SetTrigger("die");
+        stateMachine.animator.SetBool(DeadHash, true);
     }
 
     public override void Exit() {}

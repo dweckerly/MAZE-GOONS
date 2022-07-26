@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerBaseState : State
+public abstract class  PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
 

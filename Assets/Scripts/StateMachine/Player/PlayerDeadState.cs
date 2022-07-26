@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerDeadState : PlayerBaseState
 {
+    private readonly int DeadHash = Animator.StringToHash("Dead");
     public PlayerDeadState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter() 
     {
-        //stateMachine.Ragdoll.ToggleRagdoll(true);
-        stateMachine.animator.SetTrigger("die");
+        stateMachine.animator.SetBool(DeadHash, true);
     }
 
     public override void Tick(float deltaTime)
