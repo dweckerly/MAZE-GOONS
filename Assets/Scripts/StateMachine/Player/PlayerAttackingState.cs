@@ -44,22 +44,16 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            if (stateMachine.Targeter.CurrentTarget != null)
-            {
-                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-            }
-            else
-            {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-            }
+            if (stateMachine.Targeter.CurrentTarget != null) stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
         previousFrameTime = normalizedTime;
     }
 
     public override void Exit() 
     {
-        stateMachine.WeaponHandler.DisableRightHandCollider();
-        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
+        if (attack.RightHand) stateMachine.WeaponHandler.DisableRightHandCollider();
+        else stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
 
     private void TryComboAttack(float normalizedTime)

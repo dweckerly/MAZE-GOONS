@@ -34,8 +34,8 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Exit() 
     {
-        stateMachine.WeaponHandler.DisableRightHandCollider();
-        if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
+        if (attack.RightHand) stateMachine.WeaponHandler.DisableRightHandCollider();
+        else stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
 
     public override void Tick(float deltaTime)
