@@ -70,6 +70,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void OnDodge()
     {
+        if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
     }
 

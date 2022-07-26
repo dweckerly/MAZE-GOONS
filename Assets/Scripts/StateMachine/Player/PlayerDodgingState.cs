@@ -37,7 +37,7 @@ public class PlayerDodgingState : PlayerBaseState
         movement += stateMachine.transform.forward * dodgeDirection.y * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
         
         Move(movement, deltaTime);
-
+        FaceTarget();
         remainingDodgeTime -= deltaTime;
         if (remainingDodgeTime <= 0f)
         {
