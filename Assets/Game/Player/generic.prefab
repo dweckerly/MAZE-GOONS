@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 5784837290568942105}
   - component: {fileID: 5134899267749022103}
   - component: {fileID: 980430527866985332}
+  - component: {fileID: 318222899200947598}
   m_Layer: 6
   m_Name: generic
   m_TagString: Player
@@ -830,11 +831,12 @@ MonoBehaviour:
   <Attributes>k__BackingField: {fileID: 5134899267749022103}
   <WeaponHandler>k__BackingField: {fileID: 980430527866985332}
   <Interacter>k__BackingField: {fileID: 7024153916784975196}
+  <Inventory>k__BackingField: {fileID: 318222899200947598}
   <DodgeParticles>k__BackingField: {fileID: 1010056522615571798}
   freeLookSpeed: 6
   targetingSpeed: 5
   rotationDamping: 10
-  dodgeDistance: 2.5
+  dodgeDistance: 1.5
   dodgeDuration: 0.2
 --- !u!114 &512889484171019157
 MonoBehaviour:
@@ -941,6 +943,20 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
+--- !u!114 &318222899200947598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155721020568667909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d026b61b541d3542af773dfce75f58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  items: []
 --- !u!1 &3170920922295370990
 GameObject:
   m_ObjectHideFlags: 0

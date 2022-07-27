@@ -22,7 +22,7 @@ public class PlayerInteractingState : PlayerBaseState
         }
         if (stateMachine.Interacter.Interaction.CanInteract)
         {
-            stateMachine.Interacter.Interaction.Interact();
+            stateMachine.Interacter.Interaction.Interact(stateMachine);
         }
         else
         {

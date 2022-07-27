@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public int gold = 0;
     public List<Item> items = new List<Item>();
 
     public void AddItem(Item item)

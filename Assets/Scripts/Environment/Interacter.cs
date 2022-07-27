@@ -16,9 +16,9 @@ public class Interacter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<Interactable>(out Interactable interact)) return;
-        interactables.Add(interact);
-        interact.OnDestroyed += RemoveTarget;
+        if (!other.TryGetComponent<Interactable>(out Interactable interactable)) return;
+        interactables.Add(interactable);
+        interactable.OnDestroyed += RemoveTarget;
     }
 
     private void OnTriggerExit(Collider other)
@@ -32,14 +32,14 @@ public class Interacter : MonoBehaviour
         if (interactables.Count == 0) return false;
         Interactable closestInteraction = null;
         float closestInteractionDistance = Mathf.Infinity;
-        foreach (Interactable interact in interactables)
+        foreach (Interactable interactable in interactables)
         {
-            Vector2 viewPosition = mainCamera.WorldToViewportPoint(interact.transform.position);
+            Vector2 viewPosition = mainCamera.WorldToViewportPoint(interactable.transform.position);
             if (viewPosition.x < 0 || viewPosition.x > 1 || viewPosition.y < 0 || viewPosition.y > 1) continue;
             Vector2 distanceToCEnter = viewPosition - new Vector2(0.5f, 0.5f);
             if (distanceToCEnter.sqrMagnitude < closestInteractionDistance)
             {
-                closestInteraction = interact;
+                closestInteraction = interactable;
                 closestInteractionDistance = distanceToCEnter.sqrMagnitude;
             }
         }
@@ -54,10 +54,10 @@ public class Interacter : MonoBehaviour
         Interaction = null;
     }
 
-    private void RemoveTarget(Interactable interact)
+    private void RemoveTarget(Interactable interactable)
     {
-        if (Interaction == interact) Interaction = null;
-        interact.OnDestroyed -= RemoveTarget;
-        interactables.Remove(interact);
+        if (Interaction == interactable) Interaction = null;
+        interactable.OnDestroyed -= RemoveTarget;
+        interactables.Remove(interactable);
     }
 }

@@ -606,7 +606,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777919394}
-  m_LocalRotation: {x: 0.18910754, y: -0.000000016895914, z: 0.0000000032538443, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910754, y: 0.000000017526137, z: -0.0000000033752219, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 2.9, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458481355081943074, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9238477
+      value: 2.0315614
       objectReference: {fileID: 0}
     - target: {fileID: 1710310478809094882, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308172, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9238477
+      value: 2.0315614
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -739,11 +739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008544369
+      value: 0.000000008000885
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000001004323
+      value: -9.40441e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034780, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -763,15 +763,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034780, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008386123
+      value: 0.000000008386163
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034780, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000019203725
+      value: -0.0000000019203816
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034781, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9238477
+      value: 2.0315614
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186711648724, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_FollowOffset.y
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457214, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9238477
+      value: 2.0315614
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457217, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -799,11 +799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457217, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016895914
+      value: 0.000000017526133
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457217, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000032538556
+      value: -0.000000003375225
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187384622294, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_FollowOffset.y
@@ -881,18 +881,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8297167405816148102, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
-      propertyPath: dodgeDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8297167405816148102, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
-      propertyPath: dodgeDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8297167405816148102, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
-      propertyPath: <DodgeParticles>k__BackingField
-      value: 
-      objectReference: {fileID: 1414089263}
     - target: {fileID: 8946769380566338796, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1063,11 +1051,6 @@ PrefabInstance:
 --- !u!4 &1212383465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4815569476675922919, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
-  m_PrefabInstance: {fileID: 818272202}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1414089263 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2887869907253033138, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
   m_PrefabInstance: {fileID: 818272202}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1420859745

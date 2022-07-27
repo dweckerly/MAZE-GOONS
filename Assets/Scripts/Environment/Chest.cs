@@ -12,10 +12,11 @@ public class Chest : Interactable
         animator = GetComponent<Animator>();
     }
 
-    public override void Interact()
+    public override void Interact(PlayerStateMachine stateMachine)
     {
         OpenChest();
         CanInteract = false;
+        stateMachine.Inventory.gold += Random.Range(10, 1001);
     }
 
     public void OpenChest()
