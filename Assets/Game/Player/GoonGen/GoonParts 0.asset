@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed89b4fce4bd12e49a2c0e5dcf425bb4, type: 3}
   m_Name: GoonParts 0
   m_EditorClassIdentifier: 
-  SkinMaterial: {fileID: 2100000, guid: 708cbcbd22b7c7b4b9ea4e7f2fd60b8b, type: 2}
+  SkinMaterial: {fileID: 2100000, guid: 216acc4041cd81946946cbd2b1f0e7b7, type: 2}
   SkinColors:
   - {r: 0.7372549, g: 0.6, b: 0.4117647, a: 0}
   - {r: 0.9607843, g: 0.8627451, b: 0.72156864, a: 0}
@@ -29,9 +29,9 @@ MonoBehaviour:
   - {r: 0.20784314, g: 0.17254902, b: 0.15686275, a: 0}
   - {r: 0.09411765, g: 0.09411765, b: 0.078431375, a: 0}
   - {r: 0.44313726, g: 0.32941177, b: 0.35686275, a: 0}
-  ChestMaterial: {fileID: 2100000, guid: 08a5b2a46464cbc4bb8e560a7466e9ed, type: 2}
+  ChestMaterial: {fileID: 2100000, guid: 4136bc5149dbef549b404e324d259c03, type: 2}
   ChestTexture: {fileID: 2800000, guid: 13dfb430a7fbca94e95f675a0e510ac7, type: 3}
-  EyeMaterial: {fileID: 2100000, guid: ebf33ddaf0517f049928d710880e61f3, type: 2}
+  EyeMaterial: {fileID: 2100000, guid: c8bf68549b5b4b5499278c851daa7805, type: 2}
   Eyes:
   - {fileID: 2800000, guid: 2ca7d8feb111a694d8251931d7567dd7, type: 3}
   - {fileID: 2800000, guid: 837c6af45cf612c43a4ec7a986df07e7, type: 3}
@@ -45,24 +45,24 @@ MonoBehaviour:
   - {fileID: 2800000, guid: dd413ff2067d1124cb29746a1124e1bd, type: 3}
   - {fileID: 2800000, guid: 77b2d0dcb35746845ad95fc7e2e7b275, type: 3}
   - {fileID: 2800000, guid: aeefbd4f0c6b93749a056900f38d7177, type: 3}
-  MouthMaterial: {fileID: 2100000, guid: 24368b66afcb2c34e8680268862be29c, type: 2}
+  MouthMaterial: {fileID: 2100000, guid: 5fab5ec5c8ac3364fa52223473b2ca7d, type: 2}
   Mouths:
   - {fileID: 2800000, guid: a88c8781c86df5440bfbd9a12aa99dd9, type: 3}
   - {fileID: 2800000, guid: adebfc78f81efbd40b48cf6385809620, type: 3}
   - {fileID: 2800000, guid: 54af9563f494d7c49b9c610354dae4ee, type: 3}
   - {fileID: 2800000, guid: 972ba488195ac9245810a0be94435c0b, type: 3}
   Ears:
-  - {fileID: 1590472259483891572, guid: 2945e5994b1221a41b2a41f36eeb4631, type: 3}
-  - {fileID: 3040488414019133954, guid: 65aaa28b0c70ca24c9c7396ff3a5789e, type: 3}
-  - {fileID: 2583037810443741747, guid: b734dda67c123da4c9e6353fccb0f7bc, type: 3}
-  - {fileID: 4258547408811860589, guid: 33637d242f0f9c84d806b80dd7ef466f, type: 3}
+  - {fileID: 1590472259483891572, guid: 87a00d10a19e34d4e814190d1f61fcc0, type: 3}
+  - {fileID: 3040488414019133954, guid: 7807b6a6bfcbb834c958c3e55e58860c, type: 3}
+  - {fileID: 2583037810443741747, guid: 203bb0fe99b7b3846b59d4c8139eef8f, type: 3}
+  - {fileID: 4258547408811860589, guid: f06a56172499f0f4d9e36fb1aa7c2cc7, type: 3}
   EarMaterial: {fileID: 2100000, guid: ee33572f07282b74ba4f5b8de173411d, type: 2}
   Noses:
-  - {fileID: 2251275760998179978, guid: b17cd078605b1064891196a50301ddb9, type: 3}
-  - {fileID: 7400422832151476763, guid: 0dd87f06e3751114eaf008e1a792b4ed, type: 3}
-  - {fileID: 3677328003017867426, guid: e6a276fe2a12fe64fbcfedc5c1211e11, type: 3}
-  - {fileID: 1847177729820407492, guid: 7c19efda0feb3d6458b07eb5499d74b4, type: 3}
-  NoseMaterial: {fileID: 2100000, guid: 916b55734c8cbed4fb66b25120a376ce, type: 2}
+  - {fileID: 2251275760998179978, guid: 824ed42dd079f6c49940212cc0b5653e, type: 3}
+  - {fileID: 7400422832151476763, guid: d60e4f2eeb190d24e81e327bf027d928, type: 3}
+  - {fileID: 3677328003017867426, guid: d80fefed7fe305646a2318630d0a65b7, type: 3}
+  - {fileID: 1847177729820407492, guid: fb0130dc9473785488a27dc186173fae, type: 3}
+  NoseMaterial: {fileID: 2100000, guid: 05cb4893d3e28f0478ddf165718cd7fe, type: 2}
   NoseColors:
   - {r: 0.9529412, g: 0.35686275, b: 0.30980393, a: 0}
   - {r: 0.9529412, g: 0.30980393, b: 0.4627451, a: 0}
@@ -78,13 +78,13 @@ MonoBehaviour:
   - {r: 0.11372549, g: 0.11764706, b: 0.22745098, a: 0}
   - {r: 0.36862746, g: 0.18039216, b: 0.1882353, a: 0}
   Hair:
-  - {fileID: 8707312083543907637, guid: 172f4e6c16c769846b515e279a59470b, type: 3}
-  - {fileID: 5686812183383210501, guid: 3d2123b21dc9a0a4eab69acbbfad7f39, type: 3}
-  - {fileID: 1134497853205306567, guid: 80580a39ff863564bbd897d5563a0283, type: 3}
-  - {fileID: 808561236920376933, guid: 5ead246242520094e88a5f37075c2fe3, type: 3}
-  - {fileID: 877561431488118765, guid: 0693583ddcb7e8e4aab694ec60b0248b, type: 3}
-  - {fileID: 5810940669876707999, guid: bdcfa983f9d71784582aa91674710100, type: 3}
-  HairMaterial: {fileID: 2100000, guid: 90d66dac23159524facc5e481cb57b7f, type: 2}
+  - {fileID: 8707312083543907637, guid: 6281bf90bde4e68419da417aa40b8490, type: 3}
+  - {fileID: 5686812183383210501, guid: 10a7bb61314f11c439407588485f85df, type: 3}
+  - {fileID: 1134497853205306567, guid: c422e332e7f035943865d17f9ea7e1e2, type: 3}
+  - {fileID: 808561236920376933, guid: c78d31517ea454c4fbf403cc105d750d, type: 3}
+  - {fileID: 877561431488118765, guid: e16823453d6ec414ca736301a65965ba, type: 3}
+  - {fileID: 5810940669876707999, guid: 33dc3180a1146e647b8a8fd3c1153b68, type: 3}
+  HairMaterial: {fileID: 2100000, guid: 263d58e7ce8526c489290ebf1ec4e216, type: 2}
   HairColors:
   - {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 0}
   - {r: 0.8, g: 0.7019608, b: 0.28235295, a: 0}
