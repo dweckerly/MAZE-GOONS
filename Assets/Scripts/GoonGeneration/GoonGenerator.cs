@@ -2,36 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct Position
+{
+    public float x;
+    public float y;
+    public float z;
+}
+
+[System.Serializable]
+public class GenParams
+{
+    public Position position;
+    public float yRotation;
+}
+
 public class GoonGenerator : MonoBehaviour
 {
+    public GenParams[] spawnPoints;
     public GoonParts goonParts;
-    public Transform headBone;
+    public GameObject prefab;
+
+    private  List<Goon> goons = new List<Goon>();
     private List<GameObject> parts = new List<GameObject>();
 
-    private void Start() 
+    public void MakeGoons()
     {
-        Generate();
-    }
-
-    public void Generate()
-    {
-        DestryOldParts();
-        parts.Clear();
-        SetColors(goonParts.SkinMaterial, goonParts.SkinColors, goonParts.SkinShadeColors);
-        SetColors(goonParts.NoseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
-        SetColors(goonParts.HairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
-        SetTexutre(goonParts.EyeMaterial, goonParts.Eyes);
-        SetTexutre(goonParts.MouthMaterial, goonParts.Mouths);
-        AddParts(goonParts.Ears);
-        AddParts(goonParts.Hair);
-        AddParts(goonParts.Noses);
-    }
-
-    private void DestryOldParts()
-    {
-        foreach (GameObject part in parts)
+        DestryOldGoons();
+        goons.Clear();
+        PopulateGoons();
+        foreach (Goon goon in goons)
         {
-            Destroy(part);
+            Generate(goon);
+        }
+    }
+
+    private void Generate(Goon goon)
+    {
+        goon.AddHair(goonParts.Hair);
+        goon.AddNose(goonParts.Noses);
+        SetTexutre(goon.eyeMaterial, goonParts.Eyes);
+        SetTexutre(goon.mouthMaterial, goonParts.Mouths);
+        SetColors(goon.skinMaterial, goonParts.SkinColors, goonParts.SkinShadeColors);
+        goon.AddEars(goonParts.Ears);
+        SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
+        SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
+    }
+
+    private void PopulateGoons()
+    {
+        foreach (GenParams gp in spawnPoints)
+        {
+            goons.Add(new Goon(prefab, gp));
+        }
+    }
+
+    private void DestryOldGoons()
+    {
+        foreach (Goon goon in goons)
+        {
+            Destroy(goon.go);
         }
     }
 
@@ -46,11 +76,5 @@ public class GoonGenerator : MonoBehaviour
     {
         int index = Random.Range(0, textures.Length);
         mat.mainTexture = textures[index];
-    }
-
-    private void AddParts(GameObject[] gos)
-    {
-        int index = Random.Range(0, gos.Length);
-        parts.Add(Instantiate(gos[index], headBone));
     }
 }
