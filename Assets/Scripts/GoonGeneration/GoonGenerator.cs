@@ -41,10 +41,10 @@ public class GoonGenerator : MonoBehaviour
     {
         goon.AddHair(goonParts.Hair);
         goon.AddNose(goonParts.Noses);
+        goon.AddEars(goonParts.Ears);
         SetTexutre(goon.eyeMaterial, goonParts.Eyes);
         SetTexutre(goon.mouthMaterial, goonParts.Mouths);
-        SetColors(goon.skinMaterial, goonParts.SkinColors, goonParts.SkinShadeColors);
-        goon.AddEars(goonParts.Ears);
+        SetSkinMaterial(goon);
         SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
     }
@@ -62,7 +62,17 @@ public class GoonGenerator : MonoBehaviour
         foreach (Goon goon in goons)
         {
             Destroy(goon.go);
+            Destroy(goon);
         }
+    }
+
+    private void SetSkinMaterial(Goon goon)
+    {
+        int index = Random.Range(0, goonParts.SkinColors.Length);
+        goon.skinMaterial.color = goonParts.SkinColors[index];
+        goon.earMaterial.color = goonParts.SkinColors[index];
+        goon.skinMaterial.SetColor("_ColorDim", goonParts.SkinShadeColors[index]);
+        goon.earMaterial.SetColor("_ColorDim", goonParts.SkinShadeColors[index]);
     }
 
     private void SetColors(Material mat, Color[] baseColors, Color[] shadeColors)

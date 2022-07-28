@@ -7,6 +7,7 @@ public class Goon : ScriptableObject
     public GameObject go;
     Transform headBone;
     public Material skinMaterial;
+    public Material earMaterial;
     public Material noseMaterial;
     public Material hairMaterial;
     public Material eyeMaterial;
@@ -23,6 +24,7 @@ public class Goon : ScriptableObject
         headBone = go.gameObject.transform.GetChild(0).GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(0);
         Material[] materials = go.transform.GetChild(1).GetComponent<Renderer>().materials;
         skinMaterial = materials[0];
+        earMaterial = skinMaterial;
         eyeMaterial = materials[2];
         mouthMaterial = materials[3];
     }
@@ -31,7 +33,7 @@ public class Goon : ScriptableObject
     {
         int index = Random.Range(0, gos.Length);
         ears = Instantiate(gos[index], headBone);
-        ears.GetComponent<Renderer>().materials[0] = skinMaterial;
+        earMaterial = ears.GetComponent<Renderer>().materials[0];
     }
 
     public void AddHair(GameObject[] gos)
