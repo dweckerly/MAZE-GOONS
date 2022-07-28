@@ -31,8 +31,6 @@ public class PlayerStateMachine : StateMachine
     }
     private void Start() 
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         DodgeParticles.Stop();
         SwitchState(new PlayerFreeLookState(this));    
     }

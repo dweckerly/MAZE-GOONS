@@ -6,9 +6,17 @@ public class GoonGenerator : MonoBehaviour
 {
     public GoonParts goonParts;
     public Transform headBone;
+    private List<GameObject> parts = new List<GameObject>();
 
     private void Start() 
     {
+        Generate();
+    }
+
+    public void Generate()
+    {
+        DestryOldParts();
+        parts.Clear();
         SetColors(goonParts.SkinMaterial, goonParts.SkinColors, goonParts.SkinShadeColors);
         SetColors(goonParts.NoseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goonParts.HairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
@@ -17,6 +25,14 @@ public class GoonGenerator : MonoBehaviour
         AddParts(goonParts.Ears);
         AddParts(goonParts.Hair);
         AddParts(goonParts.Noses);
+    }
+
+    private void DestryOldParts()
+    {
+        foreach (GameObject part in parts)
+        {
+            Destroy(part);
+        }
     }
 
     private void SetColors(Material mat, Color[] baseColors, Color[] shadeColors)
@@ -35,6 +51,6 @@ public class GoonGenerator : MonoBehaviour
     private void AddParts(GameObject[] gos)
     {
         int index = Random.Range(0, gos.Length);
-        Instantiate(gos[index], headBone);
+        parts.Add(Instantiate(gos[index], headBone));
     }
 }
