@@ -12,4 +12,5 @@ public class Weapon : Item
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public string blockingAnimation;
+    public int maskLayer;
 }

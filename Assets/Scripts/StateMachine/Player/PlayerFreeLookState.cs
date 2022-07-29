@@ -16,6 +16,8 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter() 
     {
         stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
+        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
+            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, true);
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.InteractEvent += OnInteract;
         stateMachine.InputReader.DodgeEvent += OnDodge;
@@ -47,6 +49,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit() 
     {
+        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
+            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, false);
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.InteractEvent -= OnInteract;
         stateMachine.InputReader.DodgeEvent -= OnDodge;

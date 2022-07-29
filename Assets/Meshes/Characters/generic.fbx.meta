@@ -7,6 +7,9 @@ ModelImporter:
       74: 3936981132527663701
     second: Armature|Apose
   - first:
+      74: -8155756288768742548
+    second: Armature|Block-One-Handed
+  - first:
       74: -8828558716948426896
     second: Armature|Block-Unarmed
   - first:
@@ -40,14 +43,14 @@ ModelImporter:
       74: 6596604988265225974
     second: Armature|Impact
   - first:
-      74: -7905577106256468940
-    second: Armature|One-Handed-Arm-Position
-  - first:
       74: 3049609708461539820
     second: Armature|One-Handed-Swing-Down
   - first:
       74: -2982488044498946465
     second: Armature|One-Handed-Swing-Left
+  - first:
+      74: -4359102787052216952
+    second: Armature|One-Handed-Swing-Right
   - first:
       74: 6389641747149026000
     second: Armature|One-Handed-Swing-Up
@@ -102,7 +105,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -169,13 +172,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
