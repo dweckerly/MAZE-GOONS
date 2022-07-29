@@ -28,7 +28,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     private void OnDestroy() 
     {
-        controls.Player.Disable();
+        controls?.Player.Disable();
     }
 
     public void OnDodge(InputAction.CallbackContext context)

@@ -16,7 +16,7 @@ public class Goon : ScriptableObject
     GameObject hair;
     GameObject nose;
 
-    public Goon(GameObject original, GenParams p)
+    public void Init(GameObject original, GenParams p)
     {
         go = Instantiate(original, new Vector3(p.position.x, p.position.y, p.position.z), Quaternion.Euler(new Vector3(0, p.yRotation, 0)));
         go.GetComponent<InputReader>().enabled = false;

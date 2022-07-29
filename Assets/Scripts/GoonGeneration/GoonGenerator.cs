@@ -53,7 +53,9 @@ public class GoonGenerator : MonoBehaviour
     {
         foreach (GenParams gp in spawnPoints)
         {
-            goons.Add(new Goon(prefab, gp));
+            Goon goon = ScriptableObject.CreateInstance("Goon") as Goon;
+            goon.Init(prefab, gp);
+            goons.Add(goon);
         }
     }
 
