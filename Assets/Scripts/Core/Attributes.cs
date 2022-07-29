@@ -38,6 +38,8 @@ public class Attributes : MonoBehaviour
 
     private bool isInvulnerable = false;
 
+    [field: SerializeField] public RectTransform HealthRect { get; private set; }
+
     private void Awake() 
     {
         currentBrains = brains;
@@ -72,6 +74,11 @@ public class Attributes : MonoBehaviour
         return currentHP;
     }
 
+    public float GetHPFraction()
+    {
+        return (float)currentHP / (float)maxHP;
+    }
+
     public void ChangeStat (Attribute attribute, int amount)
     {
         attrLookup[attribute] += amount;
@@ -81,7 +88,8 @@ public class Attributes : MonoBehaviour
     {
         currentHP += amount;
         if (currentHP > maxHP) currentHP = maxHP;
-        else if (currentHP <= 0) Die();
+        if (HealthRect != null) HealthRect.localScale = new Vector3(GetHPFraction(), 1f, 1f);
+        if (currentHP <= 0) Die();
     }
 
     public void TakeDamage(int amount)
