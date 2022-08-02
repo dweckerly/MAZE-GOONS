@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    private readonly int LocomotionHash = Animator.StringToHash("Locomotion");
-    private readonly int SpeedHash = Animator.StringToHash("Speed");
+    private readonly int LocomotionHash = Animator.StringToHash("Free Look Blend Tree");
+    private readonly int SpeedHash = Animator.StringToHash("speedPercent");
     private const float AnimationDampTime = 0.2f;
 
     public EnemyIdleState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}
@@ -18,7 +18,7 @@ public class EnemyIdleState : EnemyBaseState
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-        if (IsInDetectionRange(stateMachine.Player)) stateMachine.SwitchState(new EnemyChasingState(stateMachine)); ;
+        if (stateMachine.Player != null && IsInDetectionRange(stateMachine.Player)) stateMachine.SwitchState(new EnemyChasingState(stateMachine));
         stateMachine.animator.SetFloat(SpeedHash, 0f, AnimationDampTime, deltaTime);
     }
 

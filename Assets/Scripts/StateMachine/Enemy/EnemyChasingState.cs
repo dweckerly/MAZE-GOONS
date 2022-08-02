@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyChasingState : EnemyBaseState
 {
-    private readonly int LocomotionHash = Animator.StringToHash("Locomotion");
-    private readonly int SpeedHash = Animator.StringToHash("Speed");
+    private readonly int LocomotionHash = Animator.StringToHash("Free Look Blend Tree");
+    private readonly int SpeedHash = Animator.StringToHash("speedPercent");
     private const float AnimationDampTime = 0.2f;
 
     public EnemyChasingState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}

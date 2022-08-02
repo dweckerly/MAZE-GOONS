@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFightingState : EnemyBaseState
 {
-    private readonly int FightingIdleHash = Animator.StringToHash("FightingIdle");
+    private readonly int FightingIdleHash = Animator.StringToHash("Targeting Blend Tree");
 
     public EnemyFightingState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}
 
