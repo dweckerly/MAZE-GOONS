@@ -26,6 +26,11 @@ public class GoonGenerator : MonoBehaviour
     private  List<Goon> goons = new List<Goon>();
     private List<GameObject> parts = new List<GameObject>();
 
+    private void Start() 
+    {
+        MakeGoons();    
+    }
+
     public void MakeGoons()
     {
         DestryOldGoons();
