@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
 
     private void Start() 
     {
-        goldText.text = gold.ToString();    
+        if (goldText != null) goldText.text = gold.ToString();    
     }
 
     public void UpdateGold(int amount)
@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
         goldCounterMax = amount;
         currentGold = gold;
         gold += goldCounterMax;
-        StartCoroutine(GoldCounter());
+        if (goldText != null) StartCoroutine(GoldCounter());
     }
 
     private IEnumerator GoldCounter()
