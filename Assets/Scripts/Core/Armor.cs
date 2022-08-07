@@ -6,7 +6,9 @@ public enum BodyMapping
 {
     Head,
     LeftShoulder,
-    RightShoulder
+    RightShoulder,
+    LeftWrist,
+    RightWrist
 }
 
 [System.Serializable]
