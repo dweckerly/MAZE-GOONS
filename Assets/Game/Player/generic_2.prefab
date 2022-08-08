@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 8476488287274066269}
   - component: {fileID: 5651724049144144587}
   - component: {fileID: 5953909182342821676}
+  - component: {fileID: 7578192314172798715}
   m_Layer: 0
   m_Name: generic_2
   m_TagString: Player
@@ -804,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <animator>k__BackingField: {fileID: 8203930103171307448}
   <animationMask>k__BackingField: {fileID: 5953909182342821676}
+  <BodyPartMap>k__BackingField: {fileID: 7578192314172798715}
   <Controller>k__BackingField: {fileID: 6915681846506491821}
   <InputReader>k__BackingField: {fileID: 7782677968425473779}
   <Targeter>k__BackingField: {fileID: 3297564121632947981}
@@ -951,6 +953,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb90afcbd7f6274595724605e7072be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7578192314172798715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505373857610229193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad55275101723224db9d52f54b3e6410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyMap:
+  - bodyPart: {fileID: 3475509865296086014}
+    bodyPositionReference: 0
+  - bodyPart: {fileID: 1772073362307905084}
+    bodyPositionReference: 1
+  - bodyPart: {fileID: 7252555219121456674}
+    bodyPositionReference: 2
+  - bodyPart: {fileID: 7209737508800820449}
+    bodyPositionReference: 3
+  - bodyPart: {fileID: 1202129379253390036}
+    bodyPositionReference: 4
 --- !u!1 &1561559948792561854
 GameObject:
   m_ObjectHideFlags: 0
