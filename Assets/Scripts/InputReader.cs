@@ -15,6 +15,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue { get; private set; }
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
+
+    public bool UIOpen { get; private set; }
     
     Controls controls;
 
@@ -34,7 +36,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnDodge(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || UIOpen) return;
         DodgeEvent?.Invoke();
     }
 
@@ -46,6 +48,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (UIOpen) return;
         MovementValue = context.ReadValue<Vector2>();
     }
 
@@ -56,7 +59,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnTarget(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || UIOpen) return;
         TargetEvent?.Invoke();
     }
 
@@ -68,25 +71,36 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed) IsAttacking = true;
+        if (context.performed && !UIOpen) IsAttacking = true;
         else if (context.canceled) IsAttacking = false;
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || UIOpen) return;
         InteractEvent?.Invoke();
     }
 
     public void OnBlock(InputAction.CallbackContext context)
     {
-        if (context.performed) IsBlocking = true;
+        if (context.performed && !UIOpen) IsBlocking = true;
         else if (context.canceled) IsBlocking = false;
     }
 
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        UIOpen = !UIOpen;
+        if (UIOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         OpenInventoryEvent?.Invoke();
     }
 }

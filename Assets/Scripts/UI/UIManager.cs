@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
+    public CinemachineFreeLook freeLook;
     public InputReader InputReader;
     public Inventory Inventory;
     public GameObject InventoryCanvas;
@@ -29,6 +31,17 @@ public class UIManager : MonoBehaviour
 
     private void OpenInventory()
     {
-        InventoryCanvas.SetActive(!InventoryCanvas.activeSelf);
+        if (InventoryCanvas.activeSelf)
+        {
+            freeLook.m_XAxis.m_MaxSpeed = 300;
+            freeLook.m_YAxis.m_MaxSpeed = 2;
+            InventoryCanvas.SetActive(false);
+        }
+        else 
+        {
+            freeLook.m_XAxis.m_MaxSpeed = 0;
+            freeLook.m_YAxis.m_MaxSpeed = 0;
+            InventoryCanvas.SetActive(true);
+        }        
     }
 }
