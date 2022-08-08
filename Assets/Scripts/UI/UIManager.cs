@@ -12,12 +12,19 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
-        InputReader.OpenInventoryEvent += OpenInventory; 
+        InputReader.OpenInventoryEvent += OpenInventory;
+        Inventory.AddItemEvent += AddInventoryItem;
     }
 
     void OnDestroy()
     {
         InputReader.OpenInventoryEvent -= OpenInventory;
+    }
+
+    private void AddInventoryItem(Item item)
+    {
+        GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
+        go.GetComponent<InventoryItemDisplay>().Init(item);
     }
 
     private void OpenInventory()

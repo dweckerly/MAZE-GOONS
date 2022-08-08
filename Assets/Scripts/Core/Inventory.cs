@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
     public TextMeshProUGUI goldText;
+
+    public delegate void AddItemCallback(Item item);
+    public event AddItemCallback AddItemEvent;
 
     private void Start() 
     {
@@ -44,6 +48,7 @@ public class Inventory : MonoBehaviour
     {
         items.Add(item);
         Debug.Log("Added new item: " + item.name);
+        AddItemEvent?.Invoke(item);
     }
 
     public void RemoveItem(Item item)
