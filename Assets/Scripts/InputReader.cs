@@ -11,6 +11,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action TargetEvent;
     public event Action CancelEvent;
     public event Action InteractEvent;
+    public event Action OpenInventoryEvent;
     public Vector2 MovementValue { get; private set; }
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
@@ -81,5 +82,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (context.performed) IsBlocking = true;
         else if (context.canceled) IsBlocking = false;
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        OpenInventoryEvent?.Invoke();
     }
 }
