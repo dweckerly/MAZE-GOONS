@@ -22,4 +22,6 @@ public class ArmorBodyMap
 public class Armor : Item
 {
     public ArmorBodyMap[] ArmorObjects;
+
+    public override string itemType => "Armor";
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class Item : ScriptableObject
 {
     public string itemName;
-    public int price;
+    public abstract string itemType { get; }
+    public float weight;
+    public int value;
 
 }
