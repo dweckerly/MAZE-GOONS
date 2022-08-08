@@ -15,4 +15,9 @@ public class Weapon : Item
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public string blockingAnimation;
     public int maskLayer;
+
+    public override void UIClick()
+    {
+        Debug.Log("UI click");
+    }
 }
