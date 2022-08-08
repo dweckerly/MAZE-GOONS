@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1edf6f6a70cd44d8e4150f9e150744, type: 3}
   m_Name: Spiked Bracers
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Spiked Bracers
   price: 0
-  ArmorObjects: []
+  ArmorObjects:
+  - armorPrefab: {fileID: 1214302263211905983, guid: a42ab8f917205f14b928b571c1bc42a5, type: 3}
+    bodyPositionReference: 3
+  - armorPrefab: {fileID: 1214302263211905983, guid: a42ab8f917205f14b928b571c1bc42a5, type: 3}
+    bodyPositionReference: 4
