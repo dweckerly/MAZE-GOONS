@@ -17,14 +17,14 @@ public class InventoryItemDisplay : MonoBehaviour
     {   
         item = _item;
         ItemNameText.text = item.name;
-        TypeText.text = item.itemType;
+        TypeText.text = item.itemType.ToString();
         WeightText.text = item.weight.ToString();
         ValueText.text = item.value.ToString();
         uIManager = _uIManager;
     }
 
     public void UIClick()
-    {
-        
+    {   
+        uIManager.InventoryItemClick(item);
     }
 }

@@ -44,4 +44,20 @@ public class UIManager : MonoBehaviour
             InventoryCanvas.SetActive(true);
         }        
     }
+
+    public void InventoryItemClick(Item item)
+    {
+        switch (item.itemType)
+        {
+            case ItemType.Armor:
+                playerStateMachine.ArmorHandler.EquipArmor((Armor)item);
+                break;
+            case ItemType.Weapon:
+                playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
+                break;
+            default:
+                break;
+        }
+        
+    }
 }
