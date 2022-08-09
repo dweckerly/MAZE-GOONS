@@ -5,28 +5,28 @@ using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
+    public PlayerStateMachine playerStateMachine;
     public CinemachineFreeLook freeLook;
-    public InputReader InputReader;
-    public Inventory Inventory;
     public GameObject InventoryCanvas;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
     
     void Start()
     {
-        InputReader.OpenInventoryEvent += OpenInventory;
-        Inventory.AddItemEvent += AddInventoryItem;
+        playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
+        playerStateMachine.Inventory.AddItemEvent += AddInventoryItem;
     }
 
     void OnDestroy()
     {
-        InputReader.OpenInventoryEvent -= OpenInventory;
+        playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
+        playerStateMachine.Inventory.AddItemEvent -= AddInventoryItem;
     }
 
     private void AddInventoryItem(Item item)
     {
         GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
-        go.GetComponent<InventoryItemDisplay>().Init(item);
+        go.GetComponent<InventoryItemDisplay>().Init(item, this);
     }
 
     private void OpenInventory()

@@ -11,18 +11,20 @@ public class InventoryItemDisplay : MonoBehaviour
     public TextMeshProUGUI ValueText;
 
     Item item;
+    UIManager uIManager;
 
-    public void Init(Item _item)
+    public void Init(Item _item, UIManager _uIManager)
     {   
         item = _item;
         ItemNameText.text = item.name;
         TypeText.text = item.itemType;
         WeightText.text = item.weight.ToString();
         ValueText.text = item.value.ToString();
+        uIManager = _uIManager;
     }
 
     public void UIClick()
     {
-        item.UIClick();
+        
     }
 }

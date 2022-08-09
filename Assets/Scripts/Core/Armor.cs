@@ -24,9 +24,4 @@ public class Armor : Item
     public ArmorBodyMap[] ArmorObjects;
 
     public override string itemType => "Armor";
-
-    public override void UIClick()
-    {
-        Debug.Log("UI click");
-    }
 }

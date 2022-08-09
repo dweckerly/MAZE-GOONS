@@ -9,6 +9,4 @@ public abstract class Item : ScriptableObject
     public float weight;
     public int value;
 
-    public abstract void UIClick();
-
 }
