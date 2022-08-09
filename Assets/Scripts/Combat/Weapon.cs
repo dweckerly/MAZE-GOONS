@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "Items/New Weapon", order = 2)]
 public class Weapon : Item
 {
-    public override string itemType => "Weapon";
+    public override ItemType itemType => ItemType.Weapon;
 
     public GameObject weaponPrefab = null;
     public GameObject offHandPrefab = null;

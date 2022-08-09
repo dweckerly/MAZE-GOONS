@@ -23,5 +23,5 @@ public class Armor : Item
 {
     public ArmorBodyMap[] ArmorObjects;
 
-    public override string itemType => "Armor";
+    public override ItemType itemType => ItemType.Armor;
 }
