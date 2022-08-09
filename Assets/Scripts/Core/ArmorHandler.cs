@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class BodyPartMapReference
+{
+    public GameObject bodyPart;
+    public BodyMapping bodyPositionReference;
+}
+
 public class ArmorHandler : MonoBehaviour
 {
-    public BodyPartMap bodyPartMap;
+    public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, GameObject> equipLookup = new Dictionary<BodyMapping, GameObject>();
 
     public void EquipArmor(Armor armor)
@@ -16,7 +23,7 @@ public class ArmorHandler : MonoBehaviour
                 Destroy(equipLookup[armorBodyMap.bodyPositionReference]);
                 equipLookup[armorBodyMap.bodyPositionReference] = null;
             }
-            foreach(BodyPartMapReference bpmr in bodyPartMap.bodyMap)
+            foreach(BodyPartMapReference bpmr in bodyPartMap)
             {
                 if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
                 {
