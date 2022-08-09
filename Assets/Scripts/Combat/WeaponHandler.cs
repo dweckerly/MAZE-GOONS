@@ -25,6 +25,8 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipWeapon(Weapon weapon)
     {
+        Destroy(mainHandPrefab);
+        Destroy(offHandPrefab);
         currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();

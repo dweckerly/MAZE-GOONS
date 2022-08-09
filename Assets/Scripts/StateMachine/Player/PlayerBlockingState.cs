@@ -8,6 +8,7 @@ public class PlayerBlockingState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, false);
         stateMachine.animator.CrossFadeInFixedTime(stateMachine.WeaponHandler.currentWeapon.blockingAnimation, CrossFadeDuration);
         stateMachine.Attributes.SetInvulnerable(true);
     }
@@ -29,6 +30,7 @@ public class PlayerBlockingState : PlayerBaseState
 
     public override void Exit() 
     {
+        stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, true);
         stateMachine.Attributes.SetInvulnerable(false);
     }
 }
