@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyImpactState : EnemyBaseState
 {
     private readonly int ImpactHash = Animator.StringToHash("Impact");
-    private float duration = 1f;
+    private float duration = 0.3f;
 
     public EnemyImpactState(EnemyStateMachine _stateMachine) : base(_stateMachine) { }
 
