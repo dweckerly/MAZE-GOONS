@@ -41,6 +41,11 @@ public class PlayerStateMachine : StateMachine
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
+        if (WeaponHandler.currentWeapon.rightHanded && WeaponHandler.currentWeapon.maskLayer > 0)
+        {
+            animationMask.ApplyLayerWeight(animator, 2, true);
+            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
+        }
     }
 
     private void OnDisable()

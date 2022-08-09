@@ -12,14 +12,10 @@ public class PlayerImpactState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(ImpactHash, CrossFadeDuration);
-        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
-            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, true);
     }
 
     public override void Exit() 
     {
-        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
-            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, false);
     }
 
     public override void Tick(float deltaTime)

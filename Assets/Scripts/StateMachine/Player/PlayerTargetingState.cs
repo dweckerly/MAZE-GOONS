@@ -13,8 +13,6 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(TargetingBlendTree, CrossFadeDuration);
-        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
-            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, true);
         stateMachine.InputReader.CancelEvent += OnCancel;
         stateMachine.InputReader.DodgeEvent += OnDodge;
     }
@@ -44,8 +42,6 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
-        if (stateMachine.WeaponHandler.currentWeapon.maskLayer > 0)
-            stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, false);
         stateMachine.InputReader.CancelEvent -= OnCancel;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
     }
