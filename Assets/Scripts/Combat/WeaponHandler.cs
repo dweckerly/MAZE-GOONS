@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    public event Action OnEquip;
     [SerializeField] GameObject RightHand;
     [SerializeField] GameObject LeftHand;
     [field: SerializeField] public Weapon defaultWeapon { get; private set; }
@@ -41,6 +43,7 @@ public class WeaponHandler : MonoBehaviour
             offHandCollider = offHandPrefab.GetComponent<Collider>();
             DisableLeftHandCollider();
         }
+        OnEquip.Invoke();
     }
 
     public void EnableRightHandCollider()

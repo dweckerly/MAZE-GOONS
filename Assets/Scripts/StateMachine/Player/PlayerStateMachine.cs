@@ -41,17 +41,14 @@ public class PlayerStateMachine : StateMachine
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
-        if (WeaponHandler.currentWeapon.rightHanded && WeaponHandler.currentWeapon.maskLayer > 0)
-        {
-            animationMask.ApplyLayerWeight(animator, 2, true);
-            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
-        }
+        WeaponHandler.OnEquip += HandleEquip;
     }
 
     private void OnDisable()
     {
         Attributes.OnTakeDamage -= HandleTakeDamage;
         Attributes.OnDie -= HandleDie;
+        WeaponHandler.OnEquip -= HandleEquip;
     }
 
     private void HandleTakeDamage()
@@ -62,5 +59,19 @@ public class PlayerStateMachine : StateMachine
     private void HandleDie()
     {
         SwitchState(new PlayerDeadState(this));
+    }
+
+    private void HandleEquip()
+    {
+        if (WeaponHandler.currentWeapon.rightHanded && WeaponHandler.currentWeapon.maskLayer > 0)
+        {
+            animationMask.ApplyLayerWeight(animator, 2, true);
+            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
+        }
+        else 
+        {
+            animationMask.ApplyLayerWeight(animator, 2, false);
+            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, false);
+        }
     }
 }
