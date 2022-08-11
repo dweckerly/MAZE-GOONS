@@ -41,4 +41,16 @@ public class ArmorHandler : MonoBehaviour
             }
         }
     }
+
+    public void UnEquipArmor(Armor armor)
+    {
+        foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
+        {
+            if (equipLookup[armorBodyMap.bodyPositionReference] != null)
+            {
+                Destroy(equipLookup[armorBodyMap.bodyPositionReference]);
+                equipLookup[armorBodyMap.bodyPositionReference] = null;
+            }
+        }
+    }
 }

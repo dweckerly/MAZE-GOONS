@@ -14,5 +14,4 @@ public abstract class Item : ScriptableObject
     public abstract ItemType itemType { get; }
     public float weight;
     public int value;
-
 }

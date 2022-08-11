@@ -46,6 +46,11 @@ public class WeaponHandler : MonoBehaviour
         OnEquip?.Invoke();
     }
 
+    public void UnEquipWeapon(Weapon weapon)
+    {
+        EquipWeapon(defaultWeapon);
+    }
+
     public void EnableRightHandCollider()
     {
         mainHandCollider.enabled = true;
