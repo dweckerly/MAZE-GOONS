@@ -19,7 +19,7 @@ public class WeaponHandler : MonoBehaviour
 
     [SerializeField] private Collider sourceCollider;
 
-    private void Awake() 
+    private void Start() 
     {
         sourceCollider = GetComponent<Collider>();
         EquipWeapon(defaultWeapon);
@@ -43,7 +43,7 @@ public class WeaponHandler : MonoBehaviour
             offHandCollider = offHandPrefab.GetComponent<Collider>();
             DisableLeftHandCollider();
         }
-        OnEquip.Invoke();
+        OnEquip?.Invoke();
     }
 
     public void EnableRightHandCollider()
