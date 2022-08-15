@@ -9,10 +9,22 @@ public class BodyPartMapReference
     public BodyMapping bodyPositionReference;
 }
 
+public class ArmorObject
+{
+    public string Id;
+    public GameObject equip;
+
+    public ArmorObject(string _id, GameObject _equip)
+    {
+        Id = _id;
+        equip = _equip;
+    }
+}
+
 public class ArmorHandler : MonoBehaviour
 {
     public BodyPartMapReference[] bodyPartMap;
-    Dictionary<BodyMapping, GameObject> equipLookup = new Dictionary<BodyMapping, GameObject>();
+    Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     
     private void Start() 
     {
@@ -26,31 +38,27 @@ public class ArmorHandler : MonoBehaviour
     {
         foreach(ArmorBodyMap armorBodyMap in armor.ArmorObjects)
         {
-            if (equipLookup[armorBodyMap.bodyPositionReference] != null)
-            { 
-                Destroy(equipLookup[armorBodyMap.bodyPositionReference]);
-                equipLookup[armorBodyMap.bodyPositionReference] = null;
+            if (equipLookup[armorBodyMap.bodyPositionReference] != null && equipLookup[armorBodyMap.bodyPositionReference].Id == armor.Id)
+            {
+                UnEquipArmor(armorBodyMap);
+                continue;    
             }
             foreach (BodyPartMapReference bpmr in bodyPartMap)
             {
                 if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
                 {
+                    UnEquipArmor(armorBodyMap);
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
-                    equipLookup[armorBodyMap.bodyPositionReference] = go;
+                    equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
                 }
             }
         }
     }
 
-    public void UnEquipArmor(Armor armor)
+    public void UnEquipArmor(ArmorBodyMap armorBodyMap)
     {
-        foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
-        {
-            if (equipLookup[armorBodyMap.bodyPositionReference] != null)
-            {
-                Destroy(equipLookup[armorBodyMap.bodyPositionReference]);
-                equipLookup[armorBodyMap.bodyPositionReference] = null;
-            }
-        }
+        if (equipLookup[armorBodyMap.bodyPositionReference] == null) return;
+        Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
+        equipLookup[armorBodyMap.bodyPositionReference] = null;
     }
 }
