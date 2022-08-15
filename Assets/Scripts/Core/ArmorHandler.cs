@@ -25,9 +25,11 @@ public class ArmorHandler : MonoBehaviour
 {
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
+    int LayerPlayer;
     
     private void Start() 
     {
+        LayerPlayer = LayerMask.NameToLayer("Player");
         foreach (BodyPartMapReference bpmr in bodyPartMap)
         {
             equipLookup.Add(bpmr.bodyPositionReference, null);
@@ -49,6 +51,7 @@ public class ArmorHandler : MonoBehaviour
                 {
                     UnEquipArmor(armorBodyMap);
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
+                    go.layer = LayerPlayer;
                     equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
                 }
             }

@@ -19,8 +19,11 @@ public class WeaponHandler : MonoBehaviour
 
     [SerializeField] private Collider sourceCollider;
 
+    int LayerPlayer;
+
     private void Start() 
     {
+        LayerPlayer = LayerMask.NameToLayer("Player");
         sourceCollider = GetComponent<Collider>();
         EquipWeapon(defaultWeapon);
     }
@@ -32,6 +35,7 @@ public class WeaponHandler : MonoBehaviour
         Destroy(offHandPrefab);
         currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
+        mainHandPrefab.layer = LayerPlayer;
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = currentWeapon.weaponDamage;
@@ -40,6 +44,7 @@ public class WeaponHandler : MonoBehaviour
         if (weapon.offHandPrefab != null) 
         {
             offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
+            offHandPrefab.layer = LayerPlayer;
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
             offHandDamage.IgnoreCollider(sourceCollider);
             offHandDamage.baseDamage = currentWeapon.weaponDamage;
