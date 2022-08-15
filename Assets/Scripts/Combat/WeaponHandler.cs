@@ -27,6 +27,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipWeapon(Weapon weapon)
     {
+        if (currentWeapon != null && currentWeapon.Id == weapon.Id) weapon = defaultWeapon;
         Destroy(mainHandPrefab);
         Destroy(offHandPrefab);
         currentWeapon = weapon;
