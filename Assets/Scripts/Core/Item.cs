@@ -8,7 +8,7 @@ public enum ItemType
     Weapon
 }
 
-public abstract class Item : ScriptableObject
+public abstract class Item : BaseScriptableObject
 {
     public string itemName;
     public abstract ItemType itemType { get; }
