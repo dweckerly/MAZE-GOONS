@@ -33,6 +33,7 @@ public class WeaponHandler : MonoBehaviour
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
+        mainHandDamage.baseDamage = currentWeapon.weaponDamage;
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
         DisableRightHandCollider();
         if (weapon.offHandPrefab != null) 
@@ -40,6 +41,7 @@ public class WeaponHandler : MonoBehaviour
             offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
             offHandDamage.IgnoreCollider(sourceCollider);
+            offHandDamage.baseDamage = currentWeapon.weaponDamage;
             offHandCollider = offHandPrefab.GetComponent<Collider>();
             DisableLeftHandCollider();
         }

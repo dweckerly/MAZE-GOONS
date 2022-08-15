@@ -94,6 +94,7 @@ public class Attributes : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        Debug.Log(amount);
         if (isInvulnerable || !alive) return;
         OnTakeDamage?.Invoke();
         ChangeHP(amount * -1);
