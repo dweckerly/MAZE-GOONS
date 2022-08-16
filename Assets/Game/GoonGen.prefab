@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4cbc1eae06d5d499c51eae615cc3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponChance: 50
+  armorChance: 50
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -53,5 +55,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7273b3b6098a264588a27575b7f8923, type: 2}
   - {fileID: 11400000, guid: 54099681b3d7aee45a90fc9842b913e3, type: 2}
   - {fileID: 11400000, guid: 777a77b54a73a6e4e9d33ba30d7081b3, type: 2}
-  armors: []
+  armors:
+  - {fileID: 11400000, guid: bf1c5f51dd7c1eb49bd0d9e0dfd66100, type: 2}
+  - {fileID: 11400000, guid: 0a6008992ade1884186a123b0a75dc07, type: 2}
+  - {fileID: 11400000, guid: e4ac223083f9ff1499ca8477b5d435d4, type: 2}
+  - {fileID: 11400000, guid: 37c2a8cef8b5b30499dc1237656f1cf2, type: 2}
   prefab: {fileID: 2863882004895356543, guid: 83751ada518ecaf48ac7d97da02344f6, type: 3}

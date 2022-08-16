@@ -27,7 +27,7 @@ public class ArmorHandler : MonoBehaviour
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerPlayer;
     
-    private void Start() 
+    private void Awake() 
     {
         LayerPlayer = LayerMask.NameToLayer("Player");
         foreach (BodyPartMapReference bpmr in bodyPartMap)

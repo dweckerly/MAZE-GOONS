@@ -12,6 +12,10 @@ public struct Position
 
 public class GoonGenerator : MonoBehaviour
 {
+    [Range(0, 100)]
+    public int weaponChance = 50;
+    [Range(0, 100)]
+    public int armorChance = 50;
     public Transform[] spawnPoints;
     public GoonParts goonParts;
     public Weapon[] weapons;
@@ -58,6 +62,7 @@ public class GoonGenerator : MonoBehaviour
         SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
         GiveWeapon(goon);
+        GiveArmor(goon);
     }
 
     private void DestryOldGoons()
@@ -93,7 +98,19 @@ public class GoonGenerator : MonoBehaviour
 
     private void GiveWeapon(Goon goon)
     {
-        int weaponIndex = Random.Range(0, weapons.Length);
-        goon.go.GetComponent<EnemyStateMachine>().WeaponHandler.EquipWeapon(weapons[weaponIndex]);
+        if (Random.Range(0, 100) < weaponChance)
+        {
+            int weaponIndex = Random.Range(0, weapons.Length);
+            goon.go.GetComponent<EnemyStateMachine>().WeaponHandler.EquipWeapon(weapons[weaponIndex]);
+        }
+    }
+
+    private void GiveArmor(Goon goon)
+    {
+        if (Random.Range(0, 100) < armorChance)
+        {
+            int armorIndex = Random.Range(0, armors.Length);
+            goon.go.GetComponent<EnemyStateMachine>().ArmorHandler.EquipArmor(armors[armorIndex]);
+        }
     }
 }
