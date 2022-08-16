@@ -10,16 +10,9 @@ public struct Position
     public float z;
 }
 
-[System.Serializable]
-public class GenParams
-{
-    public Position position;
-    public float yRotation;
-}
-
 public class GoonGenerator : MonoBehaviour
 {
-    public GenParams[] spawnPoints;
+    public Transform[] spawnPoints;
     public GoonParts goonParts;
     public GameObject prefab;
 
@@ -56,10 +49,10 @@ public class GoonGenerator : MonoBehaviour
 
     private void PopulateGoons()
     {
-        foreach (GenParams gp in spawnPoints)
+        foreach (Transform transform in spawnPoints)
         {
             Goon goon = ScriptableObject.CreateInstance("Goon") as Goon;
-            goon.Init(prefab, gp);
+            goon.Init(prefab, transform);
             goons.Add(goon);
         }
     }

@@ -16,9 +16,9 @@ public class Goon : ScriptableObject
     GameObject hair;
     GameObject nose;
 
-    public void Init(GameObject original, GenParams p)
+    public void Init(GameObject original, Transform transform)
     {
-        go = Instantiate(original, new Vector3(p.position.x, p.position.y, p.position.z), Quaternion.Euler(new Vector3(0, p.yRotation, 0)));
+        go = Instantiate(original, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         headBone = go.gameObject.transform.GetChild(0).GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(0);
         Material[] materials = go.transform.GetChild(1).GetComponent<Renderer>().materials;
         skinMaterial = materials[0];
