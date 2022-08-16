@@ -13,7 +13,7 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(TargetingBlendTree, CrossFadeDuration);
-        stateMachine.InputReader.CancelEvent += OnCancel;
+        stateMachine.InputReader.TargetEvent += OnCancel;
         stateMachine.InputReader.DodgeEvent += OnDodge;
     }
 
@@ -42,7 +42,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.InputReader.CancelEvent -= OnCancel;
+        stateMachine.InputReader.TargetEvent -= OnCancel;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
     }
 

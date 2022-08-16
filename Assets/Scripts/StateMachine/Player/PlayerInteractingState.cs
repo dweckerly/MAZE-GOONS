@@ -10,7 +10,6 @@ public class PlayerInteractingState : PlayerBaseState
     public override void Enter() 
     {
         stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
-        stateMachine.InputReader.CancelEvent += OnCancel;
     }
 
     public override void Tick(float deltaTime)
@@ -31,14 +30,5 @@ public class PlayerInteractingState : PlayerBaseState
         }
     }
 
-    public override void Exit()
-    {
-        stateMachine.InputReader.CancelEvent -= OnCancel;
-    }
-
-    private void OnCancel()
-    {
-        stateMachine.Interacter.Cancel();
-        stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-    }
+    public override void Exit() {}
 }

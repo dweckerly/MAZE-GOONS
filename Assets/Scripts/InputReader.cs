@@ -9,7 +9,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action DodgeEvent;
     public event Action JumpEvent;
     public event Action TargetEvent;
-    public event Action CancelEvent;
+    public event Action PauseEvent;
     public event Action InteractEvent;
     public event Action OpenInventoryEvent;
     public Vector2 MovementValue { get; private set; }
@@ -63,12 +63,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         TargetEvent?.Invoke();
     }
 
-    public void OnCancel(InputAction.CallbackContext context)
-    {
-        if (!context.performed) return;
-        CancelEvent?.Invoke();
-    }
-
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed && !UIOpen) IsAttacking = true;
@@ -102,5 +96,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             Cursor.visible = false;
         }
         OpenInventoryEvent?.Invoke();
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        PauseEvent?.Invoke();
     }
 }
