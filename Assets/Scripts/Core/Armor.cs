@@ -22,6 +22,6 @@ public class ArmorBodyMap
 public class Armor : Item
 {
     public ArmorBodyMap[] ArmorObjects;
-
     public override ItemType itemType => ItemType.Armor;
+    public int DamageReduction = 1;
 }

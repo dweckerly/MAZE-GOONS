@@ -40,14 +40,18 @@ public class EnemyStateMachine : StateMachine
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
-        WeaponHandler.OnEquip += HandleEquip;
+        WeaponHandler.OnEquip += HandleWeaponEquip;
+        ArmorHandler.EquipArmorEvent += HandleArmorEquip;
+        ArmorHandler.UnEquipArmorEvent += HandleArmorUnEquip;
     }
 
     private void OnDisable() 
     {
         Attributes.OnTakeDamage -= HandleTakeDamage;
         Attributes.OnDie -= HandleDie;
-        WeaponHandler.OnEquip -= HandleEquip;
+        WeaponHandler.OnEquip -= HandleWeaponEquip;
+        ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
+        ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
     }
 
     private void HandleTakeDamage()
@@ -60,7 +64,7 @@ public class EnemyStateMachine : StateMachine
         SwitchState(new EnemyDeadState(this));
     }
 
-    private void HandleEquip()
+    private void HandleWeaponEquip()
     {
         if (WeaponHandler.currentWeapon.maskLayer == 0)
         {
@@ -72,5 +76,15 @@ public class EnemyStateMachine : StateMachine
             animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
         }
         if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
+    }
+
+    private void HandleArmorEquip(Armor armor)
+    {
+        Attributes.DamageReduction += armor.DamageReduction;
+    }
+
+    private void HandleArmorUnEquip(Armor armor)
+    {
+        Attributes.DamageReduction -= armor.DamageReduction;
     }
 }

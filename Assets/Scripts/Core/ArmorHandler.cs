@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,10 @@ public class ArmorObject
 
 public class ArmorHandler : MonoBehaviour
 {
+    public event OnEquip EquipArmorEvent;
+    public event OnUnEquip UnEquipArmorEvent;
+    public delegate void OnEquip(Armor Armor);
+    public delegate void OnUnEquip(Armor Armor);
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerPlayer;
@@ -42,25 +47,27 @@ public class ArmorHandler : MonoBehaviour
         {
             if (equipLookup[armorBodyMap.bodyPositionReference] != null && equipLookup[armorBodyMap.bodyPositionReference].Id == armor.Id)
             {
-                UnEquipArmor(armorBodyMap);
+                UnEquipArmor(armorBodyMap, armor);
                 continue;    
             }
             foreach (BodyPartMapReference bpmr in bodyPartMap)
             {
                 if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
                 {
-                    UnEquipArmor(armorBodyMap);
+                    UnEquipArmor(armorBodyMap, armor);
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
                     go.layer = LayerPlayer;
                     equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
+                    EquipArmorEvent?.Invoke(armor);
                 }
             }
         }
     }
 
-    public void UnEquipArmor(ArmorBodyMap armorBodyMap)
+    public void UnEquipArmor(ArmorBodyMap armorBodyMap, Armor armor)
     {
         if (equipLookup[armorBodyMap.bodyPositionReference] == null) return;
+        UnEquipArmorEvent?.Invoke(armor);
         Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
         equipLookup[armorBodyMap.bodyPositionReference] = null;
     }

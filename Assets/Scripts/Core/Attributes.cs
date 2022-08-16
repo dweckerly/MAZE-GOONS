@@ -24,6 +24,8 @@ public class Attributes : MonoBehaviour
 
     [SerializeField] int baseHP = 10;
 
+    public int DamageReduction = 0;
+
     private int currentBrains;
     private int currentBrawn;
     private int currentGuile;
@@ -95,8 +97,12 @@ public class Attributes : MonoBehaviour
     public void TakeDamage(int amount)
     {
         if (isInvulnerable || !alive) return;
-        OnTakeDamage?.Invoke();
-        ChangeHP(amount * -1);
+        int damage = Mathf.Clamp(amount - DamageReduction, 0, currentHP);
+        if (damage > 0)
+        {
+            OnTakeDamage?.Invoke();
+            ChangeHP(amount * -1);
+        }
     }
 
     public void SetInvulnerable(bool invulnerable)
