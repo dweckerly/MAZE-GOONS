@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public Animator animator { get; private set; }
+    [field: SerializeField] public AnimationMaskHandler animationMask { get; private set; }
+    [field: SerializeField] public ArmorHandler ArmorHandler { get; private set; }
     [field: SerializeField] public Attributes Attributes { get; private set; }
     [field: SerializeField] public CharacterController Controller { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
@@ -38,12 +40,14 @@ public class EnemyStateMachine : StateMachine
     {
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
+        WeaponHandler.OnEquip += HandleEquip;
     }
 
     private void OnDisable() 
     {
         Attributes.OnTakeDamage -= HandleTakeDamage;
         Attributes.OnDie -= HandleDie;
+        WeaponHandler.OnEquip -= HandleEquip;
     }
 
     private void HandleTakeDamage()
@@ -54,5 +58,19 @@ public class EnemyStateMachine : StateMachine
     private void HandleDie()
     {
         SwitchState(new EnemyDeadState(this));
+    }
+
+    private void HandleEquip()
+    {
+        if (WeaponHandler.currentWeapon.maskLayer == 0)
+        {
+            animationMask.ApplyLayerWeight(animator, 1, false);
+            animationMask.ApplyLayerWeight(animator, 2, false);
+        }
+        else
+        {
+            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
+        }
+        if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
     }
 }

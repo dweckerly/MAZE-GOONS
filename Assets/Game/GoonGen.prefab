@@ -45,20 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - position:
-      x: -1.312729
-      y: 0
-      z: -1.726774
-    yRotation: 26.904
-  - position:
-      x: 0.35
-      y: 0
-      z: -1.731879
-    yRotation: 0
-  - position:
-      x: 1.950662
-      y: 0
-      z: -1.682903
-    yRotation: -35.464
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   goonParts: {fileID: 11400000, guid: af6632c663d87314691c9f2fe830e98b, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: f7273b3b6098a264588a27575b7f8923, type: 2}
+  - {fileID: 11400000, guid: 54099681b3d7aee45a90fc9842b913e3, type: 2}
+  - {fileID: 11400000, guid: 777a77b54a73a6e4e9d33ba30d7081b3, type: 2}
+  armors: []
   prefab: {fileID: 2863882004895356543, guid: 83751ada518ecaf48ac7d97da02344f6, type: 3}

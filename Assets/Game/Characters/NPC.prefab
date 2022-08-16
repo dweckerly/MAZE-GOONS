@@ -950,15 +950,17 @@ GameObject:
   - component: {fileID: 3239597959496305861}
   - component: {fileID: 3134474910933261980}
   - component: {fileID: 3134474910933261979}
+  - component: {fileID: 3134474910933261978}
   - component: {fileID: 3134474910933261975}
   - component: {fileID: 3134474910933261974}
   - component: {fileID: 3134474910933261977}
   - component: {fileID: 3134474910933261976}
-  - component: {fileID: 3134474910933261978}
   - component: {fileID: 3134474910933261981}
+  - component: {fileID: 8465621606813905529}
+  - component: {fileID: 7119147323215391651}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1018,6 +1020,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3134474910933261978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27cb513eae377e40a62e91b18327d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <animator>k__BackingField: {fileID: 3134474910933261979}
+  <animationMask>k__BackingField: {fileID: 8465621606813905529}
+  <ArmorHandler>k__BackingField: {fileID: 7119147323215391651}
+  <Attributes>k__BackingField: {fileID: 3134474910933261976}
+  <Controller>k__BackingField: {fileID: 3134474910933261980}
+  <ForceReceiver>k__BackingField: {fileID: 3134474910933261977}
+  <Agent>k__BackingField: {fileID: 3134474910933261981}
+  <WeaponHandler>k__BackingField: {fileID: 3134474910933261974}
+  <Target>k__BackingField: {fileID: 3134474910933261975}
+  <MovementSpeed>k__BackingField: 5
+  <DetectionRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 1.2
 --- !u!114 &3134474910933261975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,28 +1112,6 @@ MonoBehaviour:
   guts: 0
   baseHP: 10
   <HealthRect>k__BackingField: {fileID: 0}
---- !u!114 &3134474910933261978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2863882004895356543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27cb513eae377e40a62e91b18327d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <animator>k__BackingField: {fileID: 3134474910933261979}
-  <Attributes>k__BackingField: {fileID: 3134474910933261976}
-  <Controller>k__BackingField: {fileID: 3134474910933261980}
-  <ForceReceiver>k__BackingField: {fileID: 3134474910933261977}
-  <Agent>k__BackingField: {fileID: 3134474910933261981}
-  <WeaponHandler>k__BackingField: {fileID: 3134474910933261974}
-  <Target>k__BackingField: {fileID: 3134474910933261975}
-  <MovementSpeed>k__BackingField: 5
-  <DetectionRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 1.2
 --- !u!195 &3134474910933261981
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1130,6 +1134,31 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8465621606813905529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb90afcbd7f6274595724605e7072be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7119147323215391651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87429c3a6736c4844b1f02cc4f9537f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPartMap: []
 --- !u!1 &3113612397037244985
 GameObject:
   m_ObjectHideFlags: 0

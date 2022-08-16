@@ -14,6 +14,8 @@ public class GoonGenerator : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GoonParts goonParts;
+    public Weapon[] weapons;
+    public Armor[] armors;
     public GameObject prefab;
 
     private  List<Goon> goons = new List<Goon>();
@@ -35,6 +37,16 @@ public class GoonGenerator : MonoBehaviour
         }
     }
 
+    private void PopulateGoons()
+    {
+        foreach (Transform transform in spawnPoints)
+        {
+            Goon goon = ScriptableObject.CreateInstance("Goon") as Goon;
+            goon.Init(prefab, transform);
+            goons.Add(goon);
+        }
+    }
+
     private void Generate(Goon goon)
     {
         goon.AddHair(goonParts.Hair);
@@ -45,16 +57,7 @@ public class GoonGenerator : MonoBehaviour
         SetSkinMaterial(goon);
         SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
-    }
-
-    private void PopulateGoons()
-    {
-        foreach (Transform transform in spawnPoints)
-        {
-            Goon goon = ScriptableObject.CreateInstance("Goon") as Goon;
-            goon.Init(prefab, transform);
-            goons.Add(goon);
-        }
+        GiveWeapon(goon);
     }
 
     private void DestryOldGoons()
@@ -86,5 +89,11 @@ public class GoonGenerator : MonoBehaviour
     {
         int index = Random.Range(0, textures.Length);
         mat.mainTexture = textures[index];
+    }
+
+    private void GiveWeapon(Goon goon)
+    {
+        int weaponIndex = Random.Range(0, weapons.Length);
+        goon.go.GetComponent<EnemyStateMachine>().WeaponHandler.EquipWeapon(weapons[weaponIndex]);
     }
 }

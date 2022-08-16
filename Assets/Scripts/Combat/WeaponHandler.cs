@@ -19,11 +19,11 @@ public class WeaponHandler : MonoBehaviour
 
     [SerializeField] private Collider sourceCollider;
 
-    int LayerPlayer;
+    int LayerInt;
 
-    private void Start() 
+    private void Awake() 
     {
-        LayerPlayer = LayerMask.NameToLayer("Player");
+        LayerInt = LayerMask.NameToLayer(gameObject.tag);
         sourceCollider = GetComponent<Collider>();
         EquipWeapon(defaultWeapon);
     }
@@ -35,7 +35,7 @@ public class WeaponHandler : MonoBehaviour
         Destroy(offHandPrefab);
         currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-        mainHandPrefab.layer = LayerPlayer;
+        mainHandPrefab.layer = LayerInt;
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = currentWeapon.weaponDamage;
@@ -44,7 +44,7 @@ public class WeaponHandler : MonoBehaviour
         if (weapon.offHandPrefab != null) 
         {
             offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
-            offHandPrefab.layer = LayerPlayer;
+            offHandPrefab.layer = LayerInt;
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
             offHandDamage.IgnoreCollider(sourceCollider);
             offHandDamage.baseDamage = currentWeapon.weaponDamage;
@@ -54,7 +54,7 @@ public class WeaponHandler : MonoBehaviour
         OnEquip?.Invoke();
     }
 
-    public void UnEquipWeapon(Weapon weapon)
+    public void UnEquipWeapon()
     {
         EquipWeapon(defaultWeapon);
     }
