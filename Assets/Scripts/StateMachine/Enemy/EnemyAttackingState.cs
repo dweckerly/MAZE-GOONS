@@ -15,6 +15,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
+        stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, false);
         if (attack.RightHand)
         {
             stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
@@ -34,6 +35,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Exit() 
     {
+        stateMachine.animationMask.ApplyLayerWeight(stateMachine.animator, stateMachine.WeaponHandler.currentWeapon.maskLayer, true);
         if (attack.RightHand) stateMachine.WeaponHandler.DisableRightHandCollider();
         else stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
