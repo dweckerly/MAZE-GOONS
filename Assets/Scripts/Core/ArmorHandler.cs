@@ -30,11 +30,11 @@ public class ArmorHandler : MonoBehaviour
     public delegate void OnUnEquip(Armor Armor);
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
-    int LayerPlayer;
+    int LayerInt;
     
     private void Awake() 
     {
-        LayerPlayer = LayerMask.NameToLayer("Player");
+        LayerInt = LayerMask.NameToLayer(gameObject.tag);
         foreach (BodyPartMapReference bpmr in bodyPartMap)
         {
             equipLookup.Add(bpmr.bodyPositionReference, null);
@@ -56,7 +56,7 @@ public class ArmorHandler : MonoBehaviour
                 {
                     UnEquipArmor(armorBodyMap, armor);
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
-                    go.layer = LayerPlayer;
+                    go.layer = LayerInt;
                     equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
                     EquipArmorEvent?.Invoke(armor);
                 }
