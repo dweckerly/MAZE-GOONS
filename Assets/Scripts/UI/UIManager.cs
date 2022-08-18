@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,17 +11,34 @@ public class UIManager : MonoBehaviour
     public GameObject InventoryCanvas;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI armorText;
+    public TextMeshProUGUI brawnText;
+    public TextMeshProUGUI brainsText;
+    public TextMeshProUGUI gutsText;
+    public TextMeshProUGUI guileText;
     
     void Start()
     {
         playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
         playerStateMachine.Inventory.AddItemEvent += AddInventoryItem;
+        playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
+        playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
+        playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
+
+        brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
+        brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
+        gutsText.text = playerStateMachine.Attributes.GetStat(Attribute.Guts).ToString();
+        guileText.text = playerStateMachine.Attributes.GetStat(Attribute.Guile).ToString();
     }
 
     void OnDestroy()
     {
         playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
         playerStateMachine.Inventory.AddItemEvent -= AddInventoryItem;
+        playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
+        playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
+        playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
     }
 
     private void AddInventoryItem(Item item)
@@ -57,7 +75,22 @@ public class UIManager : MonoBehaviour
                 break;
             default:
                 break;
-        }
-        
+        }    
     }
+
+    public void ArmorEquip(Armor armor)
+    {
+        armorText.text = playerStateMachine.Attributes.DamageReduction.ToString();
+    }
+
+    public void ArmorUnEquip(Armor armor)
+    {
+        armorText.text = playerStateMachine.Attributes.DamageReduction.ToString();
+    }
+
+    public void EquipWeapon()
+    {
+        damageText.text = playerStateMachine.WeaponHandler.currentWeapon.weaponDamage.ToString();
+    }
+
 }
