@@ -78,7 +78,7 @@ public class Attributes : MonoBehaviour
 
     public float GetHPFraction()
     {
-        return (float)currentHP / (float)maxHP;
+        return Mathf.Clamp((float)currentHP / (float)maxHP, 0f, 1f);
     }
 
     public void ChangeStat (Attribute attribute, int amount)
