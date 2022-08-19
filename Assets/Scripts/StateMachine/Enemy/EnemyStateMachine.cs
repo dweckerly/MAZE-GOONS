@@ -49,7 +49,6 @@ public class EnemyStateMachine : StateMachine
         Attributes.OnDie += HandleDie;
         WeaponHandler.OnEquip += HandleWeaponEquip;
         ArmorHandler.EquipArmorEvent += HandleArmorEquip;
-        ArmorHandler.UnEquipArmorEvent += HandleArmorUnEquip;
     }
 
     private void OnDisable() 
@@ -58,7 +57,6 @@ public class EnemyStateMachine : StateMachine
         Attributes.OnDie -= HandleDie;
         WeaponHandler.OnEquip -= HandleWeaponEquip;
         ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
-        ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
     }
 
     private void HandleTakeDamage()
@@ -88,13 +86,7 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleArmorEquip(Armor armor)
     {
-        Attributes.DamageReduction += armor.DamageReduction;
-        Loot.items.Add(armor);
-    }
-
-    private void HandleArmorUnEquip(Armor armor)
-    {
-        Loot.items.Remove(armor);
-        Attributes.DamageReduction -= armor.DamageReduction;
+        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
+        if (!Loot.items.Contains(armor)) Loot.items.Add(armor);
     }
 }

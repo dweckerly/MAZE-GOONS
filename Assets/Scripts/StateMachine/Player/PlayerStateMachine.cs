@@ -81,11 +81,11 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleArmorEquip(Armor armor)
     {
-        Attributes.DamageReduction += armor.DamageReduction;
+        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
     }
 
     private void HandleArmorUnEquip(Armor armor)
     {
-        Attributes.DamageReduction -= armor.DamageReduction;
+        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
     }
 }

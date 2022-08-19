@@ -7,8 +7,6 @@ public class Loot : Interactable
     public GameObject LootUI;
     public List<Item> items = new List<Item>();
 
-
-
     public override void Interact(PlayerStateMachine stateMachine)
     {
         foreach(Item item in items)

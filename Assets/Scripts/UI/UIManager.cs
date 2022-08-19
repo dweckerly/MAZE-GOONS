@@ -80,12 +80,12 @@ public class UIManager : MonoBehaviour
 
     public void ArmorEquip(Armor armor)
     {
-        armorText.text = playerStateMachine.Attributes.DamageReduction.ToString();
+        armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
     public void ArmorUnEquip(Armor armor)
     {
-        armorText.text = playerStateMachine.Attributes.DamageReduction.ToString();
+        armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
     public void EquipWeapon()

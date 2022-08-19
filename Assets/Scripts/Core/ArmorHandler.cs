@@ -14,11 +14,13 @@ public class ArmorObject
 {
     public string Id;
     public GameObject equip;
+    public int damageReduction = 0;
 
-    public ArmorObject(string _id, GameObject _equip)
+    public ArmorObject(string _id, GameObject _equip, int _damageReduction)
     {
         Id = _id;
         equip = _equip;
+        damageReduction = _damageReduction;
     }
 }
 
@@ -58,13 +60,23 @@ public class ArmorHandler : MonoBehaviour
                         UnEquipArmor(armorBodyMap, armor);
                         GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
                         go.layer = LayerInt;
-                        equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
+                        equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go, armor.DamageReduction);
                     }
                 }
                 EquipArmorEvent?.Invoke(armor);
             }
             
         }
+    }
+
+    public int CalculateArmorValue()
+    {
+        int armorSum = 0;
+        foreach(KeyValuePair<BodyMapping, ArmorObject> equip in equipLookup)
+        {
+            if (equip.Value != null) armorSum += equip.Value.damageReduction;
+        }
+        return armorSum;
     }
 
     public void UnEquipArmor(ArmorBodyMap armorBodyMap, Armor armor)
