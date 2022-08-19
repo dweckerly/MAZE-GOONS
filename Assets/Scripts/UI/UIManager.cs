@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
         switch (item.itemType)
         {
             case ItemType.Armor:
-                playerStateMachine.ArmorHandler.EquipArmor((Armor)item);
+                playerStateMachine.ArmorHandler.CheckArmor((Armor)item);
                 break;
             case ItemType.Weapon:
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);

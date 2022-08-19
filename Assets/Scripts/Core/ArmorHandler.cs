@@ -20,7 +20,6 @@ public class ArmorObject
     {
         Id = _id;
         equip = _equip;
-        damageReduction = _damageReduction;
     }
 }
 
@@ -30,6 +29,7 @@ public class ArmorHandler : MonoBehaviour
     public event OnUnEquip UnEquipArmorEvent;
     public delegate void OnEquip(Armor Armor);
     public delegate void OnUnEquip(Armor Armor);
+    private List<Armor> equippedArmor = new List<Armor>();
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerInt;
@@ -43,47 +43,58 @@ public class ArmorHandler : MonoBehaviour
         }
     }
 
-    public void EquipArmor(Armor armor)
+    public void CheckArmor(Armor armor)
     {
-        foreach(ArmorBodyMap armorBodyMap in armor.ArmorObjects)
+        if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null && equipLookup[armor.ArmorObjects[0].bodyPositionReference].Id == armor.Id)
         {
-            if (equipLookup[armorBodyMap.bodyPositionReference] != null && equipLookup[armorBodyMap.bodyPositionReference].Id == armor.Id)
+            foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
             {
                 UnEquipArmor(armorBodyMap, armor);
             }
-            else 
+            UnEquipArmorEvent?.Invoke(armor);
+        }
+        else
+        {
+            EquipArmor(armor);
+            EquipArmorEvent?.Invoke(armor);
+        }
+    }
+
+    public void EquipArmor(Armor armor)
+    {
+        equippedArmor.Add(armor);
+        foreach(ArmorBodyMap armorBodyMap in armor.ArmorObjects)
+        {
+            foreach (BodyPartMapReference bpmr in bodyPartMap)
             {
-                foreach (BodyPartMapReference bpmr in bodyPartMap)
+                if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
                 {
-                    if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
-                    {
-                        UnEquipArmor(armorBodyMap, armor);
-                        GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
-                        go.layer = LayerInt;
-                        equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go, armor.DamageReduction);
-                    }
+                    UnEquipArmor(armorBodyMap, armor);
+                    GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
+                    go.layer = LayerInt;
+                    equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go, armor.DamageReduction);
                 }
-                EquipArmorEvent?.Invoke(armor);
             }
             
         }
     }
 
-    public int CalculateArmorValue()
-    {
-        int armorSum = 0;
-        foreach(KeyValuePair<BodyMapping, ArmorObject> equip in equipLookup)
-        {
-            if (equip.Value != null) armorSum += equip.Value.damageReduction;
-        }
-        return armorSum;
-    }
-
     public void UnEquipArmor(ArmorBodyMap armorBodyMap, Armor armor)
     {
         if (equipLookup[armorBodyMap.bodyPositionReference] == null) return;
+        equippedArmor.Remove(armor);
         UnEquipArmorEvent?.Invoke(armor);
         Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
         equipLookup[armorBodyMap.bodyPositionReference] = null;
+    }
+
+    public int CalculateArmorValue()
+    {
+        int armorSum = 0;
+        foreach(Armor armor in equippedArmor)
+        {
+            armorSum += armor.DamageReduction;
+        }
+        return armorSum;
     }
 }
