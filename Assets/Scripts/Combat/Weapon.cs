@@ -10,6 +10,7 @@ public class Weapon : Item
     public GameObject weaponPrefab = null;
     public GameObject offHandPrefab = null;
     public int weaponDamage = 1;
+    public float weaponLength = 1f;
     public bool rightHanded = true;
     public bool dual = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
