@@ -14,6 +14,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
     [field: SerializeField] public WeaponHandler WeaponHandler { get; private set; }
     [field: SerializeField] public Target Target { get; private set; }
+    [field: SerializeField] public Loot Loot { get; private set; }
     //[field: SerializeField] public Ragdoll Ragdoll { get; private set; }
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -32,6 +33,7 @@ public class EnemyStateMachine : StateMachine
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;
         animSpeed = 1 / scaleFactor;
+        Loot.enabled = false;
         SwitchState(new EnemyIdleState(this));
     }
 
@@ -81,15 +83,18 @@ public class EnemyStateMachine : StateMachine
             animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
         }
         if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
+        if (WeaponHandler.currentWeapon != WeaponHandler.defaultWeapon) Loot.items.Add(WeaponHandler.currentWeapon);
     }
 
     private void HandleArmorEquip(Armor armor)
     {
         Attributes.DamageReduction += armor.DamageReduction;
+        Loot.items.Add(armor);
     }
 
     private void HandleArmorUnEquip(Armor armor)
     {
+        Loot.items.Remove(armor);
         Attributes.DamageReduction -= armor.DamageReduction;
     }
 }

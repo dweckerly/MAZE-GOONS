@@ -48,19 +48,22 @@ public class ArmorHandler : MonoBehaviour
             if (equipLookup[armorBodyMap.bodyPositionReference] != null && equipLookup[armorBodyMap.bodyPositionReference].Id == armor.Id)
             {
                 UnEquipArmor(armorBodyMap, armor);
-                continue;    
             }
-            foreach (BodyPartMapReference bpmr in bodyPartMap)
+            else 
             {
-                if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
+                foreach (BodyPartMapReference bpmr in bodyPartMap)
                 {
-                    UnEquipArmor(armorBodyMap, armor);
-                    GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
-                    go.layer = LayerInt;
-                    equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
-                    EquipArmorEvent?.Invoke(armor);
+                    if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
+                    {
+                        UnEquipArmor(armorBodyMap, armor);
+                        GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
+                        go.layer = LayerInt;
+                        equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
+                    }
                 }
+                EquipArmorEvent?.Invoke(armor);
             }
+            
         }
     }
 

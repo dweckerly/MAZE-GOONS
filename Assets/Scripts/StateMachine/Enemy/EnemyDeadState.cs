@@ -18,6 +18,7 @@ public class EnemyDeadState : EnemyBaseState
         stateMachine.Agent.enabled = false;
         
         stateMachine.animator.SetTrigger(DeadHash);
+        stateMachine.Loot.enabled = true;
     }
 
     public override void Exit() {}

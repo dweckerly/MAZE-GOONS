@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 3134474910933261981}
   - component: {fileID: 8465621606813905529}
   - component: {fileID: 7119147323215391651}
+  - component: {fileID: 241685724740440045}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   <Agent>k__BackingField: {fileID: 3134474910933261981}
   <WeaponHandler>k__BackingField: {fileID: 3134474910933261974}
   <Target>k__BackingField: {fileID: 3134474910933261975}
+  <Loot>k__BackingField: {fileID: 241685724740440045}
   <MovementSpeed>k__BackingField: 5
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 1
@@ -1172,6 +1174,21 @@ MonoBehaviour:
     bodyPositionReference: 3
   - bodyPart: {fileID: 2590825718348396898}
     bodyPositionReference: 4
+--- !u!114 &241685724740440045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52bb4d4200ab54e40860a4c488d309f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanInteract: 1
+  LootUI: {fileID: 0}
+  items: []
 --- !u!1 &3113612397037244985
 GameObject:
   m_ObjectHideFlags: 0
