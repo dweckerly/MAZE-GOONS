@@ -18,7 +18,10 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
-    [field: SerializeField] public float AttackRange { get; private set; }
+    [field: SerializeField] public float AttackRange { get; private set; } = 1f;
+
+    public float scaleFactor;
+    public float animSpeed;
 
     public GameObject Player { get; private set; }
 
@@ -27,6 +30,8 @@ public class EnemyStateMachine : StateMachine
         Player = GameObject.FindGameObjectWithTag("Player");
         Agent.updatePosition = false;
         Agent.updateRotation = false;
+        AttackRange *= scaleFactor;
+        animSpeed = 1 / scaleFactor;
         SwitchState(new EnemyIdleState(this));
     }
 

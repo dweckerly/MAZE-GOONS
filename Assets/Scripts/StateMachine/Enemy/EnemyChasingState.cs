@@ -13,6 +13,7 @@ public class EnemyChasingState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(LocomotionHash, CrossFadeDuration);
+        stateMachine.animator.speed = stateMachine.animSpeed;
     }
 
     public override void Tick(float deltaTime)
@@ -36,6 +37,7 @@ public class EnemyChasingState : EnemyBaseState
     {
         stateMachine.Agent.ResetPath();
         stateMachine.Agent.velocity = Vector3.zero;
+        stateMachine.animator.speed = 1f;
     }
 
     private void MoveToTarget(float deltaTime, GameObject target)

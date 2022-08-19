@@ -1043,7 +1043,9 @@ MonoBehaviour:
   <Target>k__BackingField: {fileID: 3134474910933261975}
   <MovementSpeed>k__BackingField: 5
   <DetectionRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 1.2
+  <AttackRange>k__BackingField: 1
+  scaleFactor: 0
+  animSpeed: 0
 --- !u!114 &3134474910933261975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,6 +1113,7 @@ MonoBehaviour:
   guile: 0
   guts: 0
   baseHP: 10
+  DamageReduction: 0
   <HealthRect>k__BackingField: {fileID: 0}
 --- !u!195 &3134474910933261981
 NavMeshAgent:

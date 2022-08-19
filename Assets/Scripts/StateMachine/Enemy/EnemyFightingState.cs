@@ -11,9 +11,13 @@ public class EnemyFightingState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.animator.CrossFadeInFixedTime(FightingIdleHash, CrossFadeDuration);
+        stateMachine.animator.speed = stateMachine.animSpeed;
     }
 
-    public override void Exit() {}
+    public override void Exit() 
+    {
+        stateMachine.animator.speed = 1f;
+    }
 
     public override void Tick(float deltaTime)
     {

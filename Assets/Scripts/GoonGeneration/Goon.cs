@@ -16,10 +16,10 @@ public class Goon : ScriptableObject
     GameObject hair;
     GameObject nose;
 
-    public void Init(GameObject original, Transform transform)
+    public void Init(GameObject original, Transform transform, float scale)
     {
         go = Instantiate(original, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation); 
-        go.transform.localScale = go.transform.localScale * Random.Range(0.75f, 1.25f);
+        go.transform.localScale = go.transform.localScale * scale;
         headBone = go.gameObject.transform.GetChild(0).GetChild(7).GetChild(2).GetChild(0).GetChild(0).GetChild(0);
         Material[] materials = go.transform.GetChild(1).GetComponent<Renderer>().materials;
         skinMaterial = materials[0];

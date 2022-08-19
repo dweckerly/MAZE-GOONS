@@ -12,15 +12,21 @@ public struct Position
 
 public class GoonGenerator : MonoBehaviour
 {
-    [Range(0, 100)]
-    public int weaponChance = 50;
-    [Range(0, 100)]
-    public int armorChance = 50;
     public Transform[] spawnPoints;
     public GoonParts goonParts;
+    [Range(0, 100)]
+    public int weaponChance = 50;
     public Weapon[] weapons;
+    [Range(0, 100)]
+    public int armorChance = 50;
     public Armor[] armors;
+    [Range(0.1f, 3f)]
+    public float scaleMin = 0.75f;
+    [Range(0.1f, 3f)]
+    public float scaleMax = 1.25f;
+    private float scale;
     public GameObject prefab;
+    private EnemyStateMachine stateMachine;
 
     private  List<Goon> goons = new List<Goon>();
     private List<GameObject> parts = new List<GameObject>();
@@ -46,7 +52,8 @@ public class GoonGenerator : MonoBehaviour
         foreach (Transform transform in spawnPoints)
         {
             Goon goon = ScriptableObject.CreateInstance("Goon") as Goon;
-            goon.Init(prefab, transform);
+            scale = Random.Range(scaleMin, scaleMax);
+            goon.Init(prefab, transform, scale);
             goons.Add(goon);
         }
     }
@@ -61,6 +68,8 @@ public class GoonGenerator : MonoBehaviour
         SetSkinMaterial(goon);
         SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
+        stateMachine = goon.go.GetComponent<EnemyStateMachine>();
+        stateMachine.scaleFactor = scale;
         GiveWeapon(goon);
         GiveArmor(goon);
     }
@@ -101,7 +110,7 @@ public class GoonGenerator : MonoBehaviour
         if (Random.Range(0, 100) < weaponChance)
         {
             int weaponIndex = Random.Range(0, weapons.Length);
-            goon.go.GetComponent<EnemyStateMachine>().WeaponHandler.EquipWeapon(weapons[weaponIndex]);
+            stateMachine.WeaponHandler.EquipWeapon(weapons[weaponIndex]);
         }
     }
 
@@ -110,7 +119,7 @@ public class GoonGenerator : MonoBehaviour
         if (Random.Range(0, 100) < armorChance)
         {
             int armorIndex = Random.Range(0, armors.Length);
-            goon.go.GetComponent<EnemyStateMachine>().ArmorHandler.EquipArmor(armors[armorIndex]);
+            stateMachine.ArmorHandler.EquipArmor(armors[armorIndex]);
         }
     }
 }
