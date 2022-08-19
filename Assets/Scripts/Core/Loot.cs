@@ -8,10 +8,6 @@ public class Loot : Interactable
 
     public override void Interact(PlayerStateMachine stateMachine)
     {
-        foreach(Item item in items)
-        {
-            stateMachine.Inventory.AddItem(item);
-        }
         CanInteract = false;
     }
 }

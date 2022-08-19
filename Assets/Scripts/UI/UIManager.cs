@@ -113,7 +113,6 @@ public class UIManager : MonoBehaviour
     private void UpdateLootUI()
     {
         int children = LootContentContainer.childCount;
-        Debug.Log("Loot container child count - " + children.ToString());
         if (children > 0)
         {
             for (int i = 0; i < children; i++)
@@ -130,7 +129,6 @@ public class UIManager : MonoBehaviour
 
     public void LootItemClick(Item item)
     {
-        Debug.Log("Loot Item click called");
         playerStateMachine.Inventory.AddItem(item);
         loot.items.Remove(item);
         UpdateLootUI();
