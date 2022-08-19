@@ -16,7 +16,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
 
-    public bool UIOpen { get; private set; }
+    public bool UIOpen;
     
     Controls controls;
 
@@ -85,16 +85,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         UIOpen = !UIOpen;
-        if (UIOpen)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else 
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        if (UIOpen) UnlockCursor();
+        else LockCursor();
         OpenInventoryEvent?.Invoke();
     }
 
@@ -102,5 +94,17 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         PauseEvent?.Invoke();
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

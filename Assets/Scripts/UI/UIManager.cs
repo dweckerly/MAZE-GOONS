@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public PlayerStateMachine playerStateMachine;
     public CinemachineFreeLook freeLook;
-    public GameObject InventoryCanvas;
+    public GameObject UICanvas;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
     public TextMeshProUGUI damageText;
@@ -17,6 +17,12 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
     public TextMeshProUGUI guileText;
+
+    public GameObject LootUI;
+    public Transform LootContentContainer;
+    public GameObject LootItemDisplayPrefab;
+    private Loot loot;
+
     
     void Start()
     {
@@ -25,6 +31,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
+        playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
@@ -39,6 +46,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
+        playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
     }
 
     private void AddInventoryItem(Item item)
@@ -49,17 +57,17 @@ public class UIManager : MonoBehaviour
 
     private void OpenInventory()
     {
-        if (InventoryCanvas.activeSelf)
+        if (UICanvas.activeSelf)
         {
             freeLook.m_XAxis.m_MaxSpeed = 300;
             freeLook.m_YAxis.m_MaxSpeed = 2;
-            InventoryCanvas.SetActive(false);
+            UICanvas.SetActive(false);
         }
         else 
         {
             freeLook.m_XAxis.m_MaxSpeed = 0;
             freeLook.m_YAxis.m_MaxSpeed = 0;
-            InventoryCanvas.SetActive(true);
+            UICanvas.SetActive(true);
         }        
     }
 
@@ -93,4 +101,57 @@ public class UIManager : MonoBehaviour
         damageText.text = playerStateMachine.WeaponHandler.currentWeapon.weaponDamage.ToString();
     }
 
+    public void OpenInteractionUI(Loot _loot)
+    {
+        playerStateMachine.InputReader.UIOpen = true;
+        playerStateMachine.InputReader.UnlockCursor();
+        loot = _loot;
+        UpdateLootUI();
+        LootUI.SetActive(true);
+    }
+
+    private void UpdateLootUI()
+    {
+        int children = LootContentContainer.childCount;
+        Debug.Log("Loot container child count - " + children.ToString());
+        if (children > 0)
+        {
+            for (int i = 0; i < children; i++)
+            {
+                Destroy(LootContentContainer.GetChild(i).gameObject);
+            }
+        }
+        foreach (Item item in loot.items)
+        {
+            GameObject go = Instantiate(LootItemDisplayPrefab, LootContentContainer);
+            go.GetComponent<LootItemDisplay>().Init(item, this);
+        }
+    }
+
+    public void LootItemClick(Item item)
+    {
+        Debug.Log("Loot Item click called");
+        playerStateMachine.Inventory.AddItem(item);
+        loot.items.Remove(item);
+        UpdateLootUI();
+        if (loot.items.Count == 0) CloseLootUI();
+    }
+
+    public void TakeAllLoot()
+    {
+        foreach (Item item in loot.items)
+        {
+            playerStateMachine.Inventory.AddItem(item);
+        }
+        loot.items.Clear();
+        CloseLootUI();
+    }
+
+    public void CloseLootUI()
+    {
+        playerStateMachine.InputReader.UIOpen = false;
+        playerStateMachine.InputReader.LockCursor();
+        LootUI.SetActive(false);
+        if (loot != null) loot.CanInteract = true;
+    }
 }

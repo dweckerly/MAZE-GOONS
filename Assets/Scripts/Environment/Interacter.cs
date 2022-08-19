@@ -9,6 +9,9 @@ public class Interacter : MonoBehaviour
     private List<Interactable> interactables = new List<Interactable>();
     public Interactable Interaction;
 
+    public event OnInteractWithUI OnInteractEventWithUI;
+    public delegate void OnInteractWithUI(Loot loot);
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -45,6 +48,7 @@ public class Interacter : MonoBehaviour
         }
         if (closestInteraction == null) return false;
         Interaction = closestInteraction;
+        if (Interaction is Loot) OnInteractEventWithUI?.Invoke((Loot)Interaction);
         return true;
     }
 
