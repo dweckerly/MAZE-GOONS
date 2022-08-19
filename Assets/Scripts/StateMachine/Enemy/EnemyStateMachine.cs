@@ -87,6 +87,6 @@ public class EnemyStateMachine : StateMachine
     private void HandleArmorEquip(Armor armor)
     {
         Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
-        if (!Loot.items.Contains(armor)) Loot.items.Add(armor);
+        Loot.items.Add(armor);
     }
 }

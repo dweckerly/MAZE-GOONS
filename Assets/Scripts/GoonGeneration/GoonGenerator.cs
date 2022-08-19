@@ -119,7 +119,7 @@ public class GoonGenerator : MonoBehaviour
         if (Random.Range(0, 100) < armorChance)
         {
             int armorIndex = Random.Range(0, armors.Length);
-            stateMachine.ArmorHandler.EquipArmor(armors[armorIndex]);
+            stateMachine.ArmorHandler.CheckArmor(armors[armorIndex]);
         }
     }
 }
