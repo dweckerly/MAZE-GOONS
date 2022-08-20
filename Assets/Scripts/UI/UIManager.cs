@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
-        playerStateMachine.Inventory.AddItemEvent += AddInventoryItem;
+        playerStateMachine.Inventory.AddItemEvent += UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
@@ -42,17 +42,21 @@ public class UIManager : MonoBehaviour
     void OnDestroy()
     {
         playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
-        playerStateMachine.Inventory.AddItemEvent -= AddInventoryItem;
+        playerStateMachine.Inventory.AddItemEvent -= UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
     }
 
-    private void AddInventoryItem(Item item)
+    private void UpdateInventory(SortedDictionary<Item, int> inventory)
     {
-        GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
-        go.GetComponent<InventoryItemDisplay>().Init(item, this);
+        RemoveContainerChildren(ViewPortContentContainer);
+        foreach (Item item in inventory.Keys)
+        {
+            GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
+            go.GetComponent<InventoryItemDisplay>().Init(item, this);
+        }
     }
 
     private void OpenInventory()
@@ -112,18 +116,23 @@ public class UIManager : MonoBehaviour
 
     private void UpdateLootUI()
     {
-        int children = LootContentContainer.childCount;
+        RemoveContainerChildren(LootContentContainer);
+        foreach (Item item in loot.items)
+        {
+            GameObject go = Instantiate(LootItemDisplayPrefab, LootContentContainer);
+            go.GetComponent<LootItemDisplay>().Init(item, this);
+        }
+    }
+
+    private void RemoveContainerChildren(Transform container)
+    {
+        int children = container.childCount;
         if (children > 0)
         {
             for (int i = 0; i < children; i++)
             {
                 Destroy(LootContentContainer.GetChild(i).gameObject);
             }
-        }
-        foreach (Item item in loot.items)
-        {
-            GameObject go = Instantiate(LootItemDisplayPrefab, LootContentContainer);
-            go.GetComponent<LootItemDisplay>().Init(item, this);
         }
     }
 
