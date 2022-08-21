@@ -56,7 +56,6 @@ public class Inventory : MonoBehaviour
         goldText.text = gold.ToString();
     }
 
-
     public void AddItem(Item item)
     {
         if (inventory.ContainsKey(item)) inventory[item]++;

@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
         foreach (Item item in inventory.Keys)
         {
             GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
-            go.GetComponent<InventoryItemDisplay>().Init(item, this);
+            go.GetComponent<InventoryItemDisplay>().Init(item, this, inventory);
         }
     }
 
