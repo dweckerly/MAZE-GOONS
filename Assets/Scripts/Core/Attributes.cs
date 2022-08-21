@@ -66,6 +66,11 @@ public class Attributes : MonoBehaviour
         return baseHP + guts;
     }
 
+    public float CalculateCarryWeight()
+    {
+        return 50 + 10 * currentBrawn;
+    }
+
     public int GetStat (Attribute attribute)
     {
         return attrLookup[attribute];

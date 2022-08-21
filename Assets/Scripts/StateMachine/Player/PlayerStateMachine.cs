@@ -29,11 +29,13 @@ public class PlayerStateMachine : StateMachine
 
     private void Awake() 
     {
-        MainCameraTransform = Camera.main.transform;    
+        MainCameraTransform = Camera.main.transform;
+        Inventory.carryCapacity = Attributes.CalculateCarryWeight();    
     }
     private void Start() 
     {
         DodgeParticles.Stop();
+        Inventory.carryCapacity = Attributes.CalculateCarryWeight();
         SwitchState(new PlayerFreeLookState(this));    
     }
 

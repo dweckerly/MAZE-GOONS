@@ -23,13 +23,17 @@ public class Inventory : MonoBehaviour
     //public List<Item> items = new List<Item>();
     public SortedDictionary<Item, int> inventory = new SortedDictionary<Item, int>(new ItemComparer());
     public TextMeshProUGUI goldText;
+    public float carryCapacity;
+    public TextMeshProUGUI weightText;
+    public RectTransform weightRect;
 
     public delegate void AddItemCallback(SortedDictionary<Item, int> inventory);
     public event AddItemCallback AddItemEvent;
 
     private void Start() 
     {
-        if (goldText != null) goldText.text = gold.ToString();    
+        if (goldText != null) goldText.text = gold.ToString();
+        UpdateWeightDisplay();
     }
 
     public void UpdateGold(int amount)
@@ -57,12 +61,30 @@ public class Inventory : MonoBehaviour
     {
         if (inventory.ContainsKey(item)) inventory[item]++;
         else inventory.Add(item, 1);
+        UpdateWeightDisplay();
         AddItemEvent?.Invoke(inventory);
     }
 
     public void RemoveItem(Item item)
     {
         inventory[item]--;
+        UpdateWeightDisplay();
         if (inventory[item] == 0) inventory.Remove(item);
+    }
+
+    private void UpdateWeightDisplay()
+    {
+        if (weightText != null) weightText.text = WeightOfItems() + " / " + carryCapacity;
+        if (weightRect != null) weightRect.localScale = new Vector3(WeightOfItems() / carryCapacity, 1f, 1f);
+    }
+
+    private float WeightOfItems()
+    {
+        float weight = 0;
+        foreach (Item item in inventory.Keys)
+        {
+            weight += (item.weight * inventory[item]);
+        }
+        return weight;
     }
 }

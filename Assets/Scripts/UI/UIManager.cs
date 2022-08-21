@@ -49,6 +49,18 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
     }
 
+    private void RemoveContainerChildren(Transform container)
+    {
+        int children = container.childCount;
+        if (children > 0)
+        {
+            for (int i = 0; i < children; i++)
+            {
+                Destroy(container.GetChild(i).gameObject);
+            }
+        }
+    }
+
     private void UpdateInventory(SortedDictionary<Item, int> inventory)
     {
         RemoveContainerChildren(ViewPortContentContainer);
@@ -121,18 +133,6 @@ public class UIManager : MonoBehaviour
         {
             GameObject go = Instantiate(LootItemDisplayPrefab, LootContentContainer);
             go.GetComponent<LootItemDisplay>().Init(item, this);
-        }
-    }
-
-    private void RemoveContainerChildren(Transform container)
-    {
-        int children = container.childCount;
-        if (children > 0)
-        {
-            for (int i = 0; i < children; i++)
-            {
-                Destroy(LootContentContainer.GetChild(i).gameObject);
-            }
         }
     }
 
