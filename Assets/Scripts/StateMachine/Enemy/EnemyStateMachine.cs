@@ -20,6 +20,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; } = 1f;
+    [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
 
     public float scaleFactor;
     public float animSpeed;
@@ -61,6 +62,7 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
+        BloodParticles.Play();
         SwitchState(new EnemyImpactState(this));
     }
 

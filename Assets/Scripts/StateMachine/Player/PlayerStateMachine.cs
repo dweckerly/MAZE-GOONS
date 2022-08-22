@@ -18,6 +18,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Interacter Interacter { get; private set; }
     [field: SerializeField] public Inventory Inventory { get; private set; }
     [field: SerializeField] public ParticleSystem DodgeParticles { get; private set; }
+    [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
 
@@ -59,6 +60,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
+        BloodParticles.Play();
         SwitchState(new PlayerImpactState(this));
     }
 
