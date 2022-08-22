@@ -8,6 +8,7 @@ public class InventoryItemDisplay : MonoBehaviour
     public TextMeshProUGUI ItemNameText;
     public TextMeshProUGUI TypeText;
     public TextMeshProUGUI WeightText;
+    public TextMeshProUGUI ValueText;
     public TextMeshProUGUI AmountText;
 
     Item item;
@@ -19,6 +20,7 @@ public class InventoryItemDisplay : MonoBehaviour
         ItemNameText.text = item.name;
         TypeText.text = item.itemType.ToString();
         WeightText.text = item.weight.ToString();
+        ValueText.text = item.value.ToString();
         AmountText.text = inventory[item].ToString();
         uIManager = _uIManager;
     }
