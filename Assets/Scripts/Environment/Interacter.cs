@@ -20,8 +20,12 @@ public class Interacter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<Interactable>(out Interactable interactable)) return;
-        interactables.Add(interactable);
-        interactable.OnDestroyed += RemoveTarget;
+        if (interactable.CanInteract) 
+        {
+            interactable.ShowPrompt();
+            interactables.Add(interactable);
+            interactable.OnDestroyed += RemoveTarget;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -47,7 +51,7 @@ public class Interacter : MonoBehaviour
             }
         }
         if (closestInteraction == null) return false;
-        Interaction = closestInteraction;
+        Interaction = closestInteraction; 
         if (Interaction is Loot) OnInteractEventWithUI?.Invoke((Loot)Interaction);
         return true;
     }
@@ -60,6 +64,7 @@ public class Interacter : MonoBehaviour
 
     private void RemoveTarget(Interactable interactable)
     {
+        interactable.HidePrompt();
         if (Interaction == interactable) Interaction = null;
         interactable.OnDestroyed -= RemoveTarget;
         interactables.Remove(interactable);
