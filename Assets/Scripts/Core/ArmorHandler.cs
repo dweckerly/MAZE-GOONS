@@ -14,9 +14,8 @@ public class ArmorObject
 {
     public string Id;
     public GameObject equip;
-    public int damageReduction = 0;
 
-    public ArmorObject(string _id, GameObject _equip, int _damageReduction)
+    public ArmorObject(string _id, GameObject _equip)
     {
         Id = _id;
         equip = _equip;
@@ -29,7 +28,7 @@ public class ArmorHandler : MonoBehaviour
     public event OnUnEquip UnEquipArmorEvent;
     public delegate void OnEquip(Armor Armor);
     public delegate void OnUnEquip(Armor Armor);
-    private List<Armor> equippedArmor = new List<Armor>();
+    private Dictionary<ArmorSlot, Armor> equippedArmor = new Dictionary<ArmorSlot, Armor>();
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerInt;
@@ -55,6 +54,14 @@ public class ArmorHandler : MonoBehaviour
         }
         else
         {
+            if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null)
+            {
+                foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
+                {
+                    UnEquipArmor(armorBodyMap, armor);
+                }
+                UnEquipArmorEvent?.Invoke(armor);
+            }
             EquipArmor(armor);
             EquipArmorEvent?.Invoke(armor);
         }
@@ -62,27 +69,25 @@ public class ArmorHandler : MonoBehaviour
 
     public void EquipArmor(Armor armor)
     {
-        equippedArmor.Add(armor);
         foreach(ArmorBodyMap armorBodyMap in armor.ArmorObjects)
         {
             foreach (BodyPartMapReference bpmr in bodyPartMap)
             {
                 if (bpmr.bodyPositionReference == armorBodyMap.bodyPositionReference)
                 {
-                    UnEquipArmor(armorBodyMap, armor);
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
                     go.layer = LayerInt;
-                    equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go, armor.DamageReduction);
+                    equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
                 }
             }
-            
         }
+        equippedArmor.Add(armor.slot, armor);
     }
 
     public void UnEquipArmor(ArmorBodyMap armorBodyMap, Armor armor)
     {
         if (equipLookup[armorBodyMap.bodyPositionReference] == null) return;
-        equippedArmor.Remove(armor);
+        equippedArmor.Remove(armor.slot);
         UnEquipArmorEvent?.Invoke(armor);
         Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
         equipLookup[armorBodyMap.bodyPositionReference] = null;
@@ -91,7 +96,7 @@ public class ArmorHandler : MonoBehaviour
     public int CalculateArmorValue()
     {
         int armorSum = 0;
-        foreach(Armor armor in equippedArmor)
+        foreach(Armor armor in equippedArmor.Values)
         {
             armorSum += armor.DamageReduction;
         }

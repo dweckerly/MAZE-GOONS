@@ -11,6 +11,13 @@ public enum BodyMapping
     RightWrist
 }
 
+public enum ArmorSlot
+{
+    Mask,
+    Pauldrons,
+    Wrists
+}
+
 [System.Serializable]
 public class ArmorBodyMap
 {
@@ -23,5 +30,6 @@ public class Armor : Item
 {
     public ArmorBodyMap[] ArmorObjects;
     public override ItemType itemType => ItemType.Armor;
+    public ArmorSlot slot;
     public int DamageReduction = 1;
 }
