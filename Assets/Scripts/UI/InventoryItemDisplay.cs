@@ -17,7 +17,7 @@ public class InventoryItemDisplay : MonoBehaviour
     public void Init(Item _item, UIManager _uIManager, SortedDictionary<Item, int> inventory)
     {   
         item = _item;
-        ItemNameText.text = item.name;
+        ItemNameText.text = item.itemName;
         TypeText.text = item.itemType.ToString();
         WeightText.text = item.weight.ToString();
         ValueText.text = item.value.ToString();
