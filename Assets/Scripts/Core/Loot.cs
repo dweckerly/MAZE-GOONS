@@ -5,6 +5,13 @@ using UnityEngine;
 public class Loot : Interactable
 {
     public List<Item> items = new List<Item>();
+    public Collider lootCollider;
+
+    public void Enable()
+    {
+        CanInteract = true;
+        lootCollider.enabled = true;
+    }
 
     public override void Interact(PlayerStateMachine stateMachine)
     {

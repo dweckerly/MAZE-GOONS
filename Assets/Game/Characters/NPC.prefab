@@ -1035,6 +1035,7 @@ GameObject:
   - component: {fileID: 8465621606813905529}
   - component: {fileID: 7119147323215391651}
   - component: {fileID: 241685724740440045}
+  - component: {fileID: 644783066647313546}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -1268,6 +1269,21 @@ MonoBehaviour:
   CanInteract: 0
   promptCanvas: {fileID: 4469174787543499735}
   items: []
+  lootCollider: {fileID: 644783066647313546}
+--- !u!136 &644783066647313546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3113612397037244985
 GameObject:
   m_ObjectHideFlags: 0
