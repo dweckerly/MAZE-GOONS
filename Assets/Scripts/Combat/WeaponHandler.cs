@@ -59,6 +59,19 @@ public class WeaponHandler : MonoBehaviour
         EquipWeapon(defaultWeapon);
     }
 
+    void StartHit()
+    {
+        EnableRightHandCollider();
+        if (offHandCollider != null) EnableLeftHandCollider();
+    }
+
+    void EndHit()
+    {
+        DisableRightHandCollider();
+        if (offHandCollider != null) DisableLeftHandCollider();
+
+    }
+
     public void EnableRightHandCollider()
     {
         mainHandCollider.enabled = true;
