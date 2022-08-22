@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   knockback: 0
-  hitParticle: {fileID: 5717852693467043382}
+  hitParticle: {fileID: 5717852693485139216}
 --- !u!1001 &5717852693467192214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,8 +142,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 404470, guid: fa72ee99177b4db43aaed70dcb4df679, type: 3}
   m_PrefabInstance: {fileID: 5717852693467192214}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5717852693467043382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 150944, guid: fa72ee99177b4db43aaed70dcb4df679, type: 3}
+--- !u!198 &5717852693485139216 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19820166, guid: fa72ee99177b4db43aaed70dcb4df679, type: 3}
   m_PrefabInstance: {fileID: 5717852693467192214}
   m_PrefabAsset: {fileID: 0}

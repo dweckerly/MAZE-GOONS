@@ -34,7 +34,6 @@ public class EnemyStateMachine : StateMachine
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;
         animSpeed = 1 / scaleFactor;
-        Loot.enabled = false;
         SwitchState(new EnemyIdleState(this));
     }
 
