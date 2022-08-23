@@ -33,6 +33,11 @@ public class PlayerDodgingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, stateMachine.WeaponHandler.currentWeapon.Attacks.Length - 1));
+            return;
+        }
         Vector3 movement = new Vector3();
         movement += stateMachine.transform.right * dodgeDirection.x * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
         movement += stateMachine.transform.forward * dodgeDirection.y * stateMachine.dodgeDistance / stateMachine.dodgeDuration;
