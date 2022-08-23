@@ -61,6 +61,7 @@ public class WeaponHandler : MonoBehaviour
 
     void StartHit()
     {
+        if (mainHandDamage.swingParticle != null) mainHandDamage.swingParticle.Play();
         EnableRightHandCollider();
         if (offHandCollider != null) EnableLeftHandCollider();
     }
