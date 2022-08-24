@@ -58,10 +58,8 @@ public class WeaponDamage : MonoBehaviour
 
     IEnumerator HitStop()
     {
-        Time.timeScale = 0;
-        Debug.Log("Time scale set to 0");
+        Time.timeScale = 0.1f;
         yield return new WaitForSecondsRealtime(hitStopTime);
-        Debug.Log("Time scale returning to normal");
         Time.timeScale = 1;
     }
 }
