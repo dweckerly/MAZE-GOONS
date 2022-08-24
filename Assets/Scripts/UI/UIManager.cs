@@ -121,6 +121,8 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.InputReader.UIOpen = true;
         playerStateMachine.InputReader.UnlockCursor();
+        freeLook.m_XAxis.m_MaxSpeed = 0;
+        freeLook.m_YAxis.m_MaxSpeed = 0;
         loot = _loot;
         UpdateLootUI();
         LootUI.SetActive(true);
@@ -158,6 +160,8 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.InputReader.UIOpen = false;
         playerStateMachine.InputReader.LockCursor();
+        freeLook.m_XAxis.m_MaxSpeed = 300;
+        freeLook.m_YAxis.m_MaxSpeed = 2;
         LootUI.SetActive(false);
         if (loot != null) loot.CanInteract = true;
         if (loot.items.Count == 0)
