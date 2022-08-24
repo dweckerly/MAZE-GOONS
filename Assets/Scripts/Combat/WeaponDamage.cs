@@ -11,6 +11,7 @@ public class WeaponDamage : MonoBehaviour
     protected List<Collider> alreadyCollidedWith = new List<Collider>();
     protected int additiveDamageModifier = 0;
     protected float multiplicativeDamageModifier = 1f;
+    float hitStopTime = 0.1f;
 
     private void OnEnable()
     {
@@ -26,6 +27,7 @@ public class WeaponDamage : MonoBehaviour
         {
             int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier);
             attributes.TakeDamage(damage);
+            //StartCoroutine("HitStop");
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
@@ -52,5 +54,14 @@ public class WeaponDamage : MonoBehaviour
     public void SetMultiplicativeDamageModifier(float mod)
     {
         multiplicativeDamageModifier = mod;
+    }
+
+    IEnumerator HitStop()
+    {
+        Time.timeScale = 0;
+        Debug.Log("Time scale set to 0");
+        yield return new WaitForSecondsRealtime(hitStopTime);
+        Debug.Log("Time scale returning to normal");
+        Time.timeScale = 1;
     }
 }
