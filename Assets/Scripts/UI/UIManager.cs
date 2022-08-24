@@ -160,6 +160,10 @@ public class UIManager : MonoBehaviour
         playerStateMachine.InputReader.LockCursor();
         LootUI.SetActive(false);
         if (loot != null) loot.CanInteract = true;
-        if (loot.items.Count == 0) loot.CanInteract = false;
+        if (loot.items.Count == 0)
+        {
+            loot.CanInteract = false;
+            loot.HidePrompt();
+        } 
     }
 }
