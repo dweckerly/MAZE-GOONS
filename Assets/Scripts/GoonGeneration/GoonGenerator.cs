@@ -60,15 +60,18 @@ public class GoonGenerator : MonoBehaviour
 
     private void Generate(Goon goon)
     {
+        stateMachine = goon.go.GetComponent<EnemyStateMachine>();
         goon.AddHair(goonParts.Hair);
+        stateMachine.Renderers.Add(goon.hair.GetComponent<Renderer>());
         goon.AddNose(goonParts.Noses);
+        stateMachine.Renderers.Add(goon.nose.GetComponent<Renderer>());
         goon.AddEars(goonParts.Ears);
+        stateMachine.Renderers.Add(goon.ears.GetComponent<Renderer>());
         SetTexutre(goon.eyeMaterial, goonParts.Eyes);
         SetTexutre(goon.mouthMaterial, goonParts.Mouths);
         SetSkinMaterial(goon);
         SetColors(goon.noseMaterial, goonParts.NoseColors, goonParts.NoseShadeColors);
         SetColors(goon.hairMaterial, goonParts.HairColors, goonParts.HairShadeColors);
-        stateMachine = goon.go.GetComponent<EnemyStateMachine>();
         stateMachine.scaleFactor = scale;
         GiveWeapon(goon);
         GiveArmor(goon);

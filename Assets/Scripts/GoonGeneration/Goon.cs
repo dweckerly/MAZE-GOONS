@@ -12,9 +12,9 @@ public class Goon : ScriptableObject
     public Material hairMaterial;
     public Material eyeMaterial;
     public Material mouthMaterial;
-    GameObject ears;
-    GameObject hair;
-    GameObject nose;
+    public GameObject ears;
+    public GameObject hair;
+    public GameObject nose;
 
     public void Init(GameObject original, Transform transform, float scale)
     {
