@@ -208,11 +208,23 @@ PrefabInstance:
     - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8664194776236526306}
     - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 8664194776236526306}
+      objectReference: {fileID: 3937872509400753535}
+    - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
+      propertyPath: m_Rigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
+      propertyPath: m_Rigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
+      propertyPath: m_Rigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3796451276725781963, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.7777778
@@ -223,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097383589005450630, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
       propertyPath: m_ParentHash.Array.size
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4097383589005450630, guid: ac47029af65061241b07d173fc3a4ff4, type: 3}
       propertyPath: m_ChildCameras.Array.size
