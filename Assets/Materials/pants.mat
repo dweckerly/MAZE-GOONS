@@ -10,6 +10,7 @@ Material:
   m_Name: pants
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_ValidKeywords:
+  - DR_OUTLINE_ON
   - _CELPRIMARYMODE_SINGLE
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
@@ -19,8 +20,7 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -1353,7 +1353,7 @@ Material:
     - _OutlineDepthOffset: 0
     - _OutlineDstBlend: 0
     - _OutlineEmission: 0
-    - _OutlineEnabled: 0
+    - _OutlineEnabled: 1
     - _OutlineFixedSize: 0
     - _OutlineHueOffset: 0
     - _OutlineHueOffsetSpeed: 0
@@ -1377,7 +1377,7 @@ Material:
     - _OutlineTextureUV: 0
     - _OutlineTintMix: 0
     - _OutlineUseVertexColors: 0
-    - _OutlineWidth: 1
+    - _OutlineWidth: 0.5
     - _OutlineZTest: 4
     - _OutlinesMaxDistance: 9999
     - _OverrideLightmapDir: 0
