@@ -28,7 +28,7 @@ MonoBehaviour:
   m_Name: FlatKitOutline
   m_EditorClassIdentifier: 
   m_Active: 1
-  settings: {fileID: 11400000, guid: ff3dfd77429d64938a26bd54c27dacd8, type: 2}
+  settings: {fileID: 11400000, guid: cf645ab7993e3e548bc9c37340d197b1, type: 2}
   _effectMaterial: {fileID: 0}
   _copyMaterial: {fileID: 0}
 --- !u!114 &-1344586528338988631
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: FlatKitFog
   m_EditorClassIdentifier: 
   m_Active: 0
-  settings: {fileID: 11400000, guid: f68defe9b6889484787a8d20c715e802, type: 2}
+  settings: {fileID: 11400000, guid: 79017a34fb94999488f564880e69e2e0, type: 2}
   _effectMaterial: {fileID: 0}
   _copyMaterial: {fileID: 0}
 --- !u!114 &11400000
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
-  m_Name: '[FlatKit] Example Forward Renderer'
+  m_Name: Forward Renderer
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
@@ -83,10 +83,10 @@ MonoBehaviour:
   m_AssetVersion: 1
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 3
