@@ -42,7 +42,15 @@ public class EnemyStateMachine : StateMachine
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;
         animSpeed = 1 / scaleFactor;
-        SwitchState(new EnemyIdleState(this));
+        switch (enemyType)
+        {
+            case EnemyType.SunWorshipper:
+                SwitchState(new EnemySunStareState(this));
+                break;
+            default:
+                SwitchState(new EnemyIdleState(this));
+                break;
+        }
     }
 
     private void OnDrawGizmosSelected() 
