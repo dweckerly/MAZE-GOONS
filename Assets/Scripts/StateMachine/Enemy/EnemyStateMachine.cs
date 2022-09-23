@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyType
+{
+    Default,
+    SunWorshipper
+}
+
 public class EnemyStateMachine : StateMachine
 {
+    public EnemyType enemyType;
     [field: SerializeField] public Animator animator { get; private set; }
     [field: SerializeField] public AnimationMaskHandler animationMask { get; private set; }
     [field: SerializeField] public ArmorHandler ArmorHandler { get; private set; }
