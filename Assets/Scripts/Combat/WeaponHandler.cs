@@ -23,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void Awake() 
     {
-        LayerInt = LayerMask.NameToLayer(gameObject.tag);
+        if(gameObject.CompareTag("Player")) LayerInt = LayerMask.NameToLayer(gameObject.tag);
         sourceCollider = GetComponent<Collider>();
         EquipWeapon(defaultWeapon);
     }
