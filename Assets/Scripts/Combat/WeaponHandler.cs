@@ -59,6 +59,7 @@ public class WeaponHandler : MonoBehaviour
         EquipWeapon(defaultWeapon);
     }
 
+    // animation event required to enable weapon collider
     void StartHit()
     {
         if (mainHandDamage.swingParticle != null) mainHandDamage.swingParticle.Play();
@@ -66,6 +67,7 @@ public class WeaponHandler : MonoBehaviour
         if (offHandCollider != null) EnableLeftHandCollider();
     }
 
+    // animation event required to disable weapon collider
     void EndHit()
     {
         DisableRightHandCollider();
