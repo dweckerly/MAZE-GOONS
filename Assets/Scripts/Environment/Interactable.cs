@@ -13,12 +13,12 @@ public abstract class Interactable : MonoBehaviour
 
     public void ShowPrompt()
     {
-        promptCanvas.SetActive(true);
+        if (promptCanvas != null) promptCanvas.SetActive(true);
     }
 
     public void HidePrompt()
     {
-        promptCanvas.SetActive(false);
+        if (promptCanvas != null) promptCanvas.SetActive(false);
     }
 
     private void OnDestroy()
