@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 420588}
   - component: {fileID: 10857354}
   - component: {fileID: 2656190886735859533}
+  - component: {fileID: 7970403046881312353}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -44,9 +45,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.64137924, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.61737454, b: 0, a: 1}
   m_Intensity: 3
-  m_Range: 10
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -115,6 +116,26 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &7970403046881312353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4823647ba41d0694686331e1ca12e362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxIntensityReduction: 0.5
+  maxIntensityIncrease: 0.5
+  intensityStrength: 300
+  maxRangeReduction: 0.1
+  maxRangeIncrease: 0.1
+  rangeStrength: 100
+  RateDamping: 0.1
+  StopFlickering: 0
 --- !u!1 &162906
 GameObject:
   m_ObjectHideFlags: 0
