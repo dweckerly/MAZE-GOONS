@@ -19,6 +19,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.InteractEvent += OnInteract;
         stateMachine.InputReader.DodgeEvent += OnDodge;
+        stateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
@@ -50,6 +51,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.InteractEvent -= OnInteract;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
+        stateMachine.InputReader.JumpEvent -= OnJump;
     }
 
     private void OnInteract()
@@ -68,6 +70,11 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
+    }
+
+    private void OnJump()
+    {
+        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)

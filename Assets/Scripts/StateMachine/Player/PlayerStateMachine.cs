@@ -19,6 +19,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Inventory Inventory { get; private set; }
     [field: SerializeField] public ParticleSystem DodgeParticles { get; private set; }
     [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
+    [field:SerializeField] public float JumpForce { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
 
