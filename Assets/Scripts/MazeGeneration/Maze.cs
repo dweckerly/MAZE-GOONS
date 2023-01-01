@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// adding a comment to cmmit on a new branch to archive 2021.3.2 version
+
 public enum TileType
 {
     Wall,
