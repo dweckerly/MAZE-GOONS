@@ -36,4 +36,25 @@ public abstract class  PlayerBaseState : State
         if (stateMachine.Targeter.CurrentTarget == null) stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         else stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
+
+    protected void FaceMovementDirection(Vector3 movement, float deltaTime)
+    {
+        stateMachine.transform.rotation = Quaternion.Lerp(
+            stateMachine.transform.rotation,
+            Quaternion.LookRotation(movement),
+            stateMachine.rotationDamping * deltaTime
+        );
+    }
+
+    protected Vector3 CalculateMovementDirection()
+    {
+        Vector3 forward = stateMachine.MainCameraTransform.forward;
+        Vector3 right = stateMachine.MainCameraTransform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
+
+        return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;
+    }
 }

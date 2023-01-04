@@ -24,10 +24,13 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
 
     public float freeLookSpeed = 5f;
+    public float sneakSpeed = 2.5f;
     public float targetingSpeed = 5f;
     public float rotationDamping = 10f;
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.2f;
+
+    public bool sneaking = false;
 
     private void Awake() 
     {

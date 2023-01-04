@@ -20,6 +20,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.InteractEvent += OnInteract;
         stateMachine.InputReader.DodgeEvent += OnDodge;
         stateMachine.InputReader.JumpEvent += OnJump;
+        stateMachine.InputReader.SneakEvent += OnSneak;
     }
 
     public override void Tick(float deltaTime)
@@ -52,6 +53,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.InteractEvent -= OnInteract;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
         stateMachine.InputReader.JumpEvent -= OnJump;
+        stateMachine.InputReader.SneakEvent -= OnSneak;
     }
 
     private void OnInteract()
@@ -77,24 +79,8 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
-    private void FaceMovementDirection(Vector3 movement, float deltaTime)
+    private void OnSneak()
     {
-        stateMachine.transform.rotation = Quaternion.Lerp(
-            stateMachine.transform.rotation,
-            Quaternion.LookRotation(movement),
-            stateMachine.rotationDamping * deltaTime
-        );
-    }
-
-    private Vector3 CalculateMovementDirection()
-    {
-        Vector3 forward = stateMachine.MainCameraTransform.forward;
-        Vector3 right = stateMachine.MainCameraTransform.right;
-        forward.y = 0;
-        right.y = 0;
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * stateMachine.InputReader.MovementValue.y + right * stateMachine.InputReader.MovementValue.x;
+        stateMachine.SwitchState(new PlayerSneakState(stateMachine));
     }
 }

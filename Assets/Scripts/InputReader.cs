@@ -8,6 +8,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
     public event Action DodgeEvent;
     public event Action JumpEvent;
+    public event Action SneakEvent;
     public event Action TargetEvent;
     public event Action PauseEvent;
     public event Action InteractEvent;
@@ -44,6 +45,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         JumpEvent?.Invoke();
+    }
+
+    public void OnSneak(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        SneakEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
