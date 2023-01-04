@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
     {
         if (interactable == null || !interactable.CanInteract)
         {
+            Interaction = interactable;
             Animator.SetBool("ShowPrompt", false);
             return;
         }
