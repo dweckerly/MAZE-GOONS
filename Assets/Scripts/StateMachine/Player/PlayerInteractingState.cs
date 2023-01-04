@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerInteractingState : PlayerBaseState
 {
-    private readonly int FreeLookBlendTree = Animator.StringToHash("Free Look Blend Tree");
     public PlayerInteractingState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter() 
     {
-        stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
+        if (stateMachine.sneaking) stateMachine.animator.CrossFadeInFixedTime(SneakBlendTree, CrossFadeDuration);
+        else stateMachine.animator.CrossFadeInFixedTime(FreeLookBlendTree, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)

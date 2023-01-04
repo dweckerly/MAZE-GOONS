@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerSneakState : PlayerBaseState
 {
-    private readonly int speedPercent = Animator.StringToHash("speedPercent");
-    private readonly int SneakBlendTree = Animator.StringToHash("Sneak Blend Tree");
-
     public PlayerSneakState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
     private const float animatorDampTime = 0.1f;

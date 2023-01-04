@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    private readonly int speedPercent = Animator.StringToHash("speedPercent");
-    private readonly int FreeLookBlendTree = Animator.StringToHash("Free Look Blend Tree");
-
     public PlayerFreeLookState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
     private const float animatorDampTime = 0.1f;

@@ -6,6 +6,9 @@ public abstract class  PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
 
+    protected readonly int FreeLookBlendTree = Animator.StringToHash("Free Look Blend Tree");
+    protected readonly int SneakBlendTree = Animator.StringToHash("Sneak Blend Tree");
+    protected readonly int speedPercent = Animator.StringToHash("speedPercent");
     protected const float CrossFadeDuration = 0.1f;
 
     public PlayerBaseState(PlayerStateMachine _stateMachine)
