@@ -51,10 +51,6 @@ public class PlayerDodgingState : PlayerBaseState
         }
         
         remainingDodgeTime -= deltaTime;
-        if (remainingDodgeTime <= 0f)
-        {
-            if (stateMachine.Targeter.CurrentTarget != null) stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-            else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-        }
+        if (remainingDodgeTime <= 0f) ReturnToLocomotion();
     }
 }
