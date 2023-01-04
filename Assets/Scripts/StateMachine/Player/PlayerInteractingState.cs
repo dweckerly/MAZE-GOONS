@@ -14,18 +14,13 @@ public class PlayerInteractingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.Interacter.Interaction == null)
-        {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-            return;
-        }
-        if (stateMachine.Interacter.Interaction.CanInteract)
+        if (stateMachine.Interacter.Interaction != null && stateMachine.Interacter.Interaction.CanInteract)
         {
             stateMachine.Interacter.Interaction.Interact(stateMachine);
         }
         else
         {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            ReturnToLocomotion();
             return;
         }
     }

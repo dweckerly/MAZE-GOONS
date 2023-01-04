@@ -50,7 +50,6 @@ public class PlayerSneakState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.sneaking = false;
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.InteractEvent -= OnInteract;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
@@ -83,6 +82,7 @@ public class PlayerSneakState : PlayerBaseState
 
     private void OnSneak()
     {
+        stateMachine.sneaking = false;
         ReturnToLocomotion();
     }
 }
