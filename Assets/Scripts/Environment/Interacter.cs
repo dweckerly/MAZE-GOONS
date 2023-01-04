@@ -9,8 +9,11 @@ public class Interacter : MonoBehaviour
     private List<Interactable> interactables = new List<Interactable>();
     public Interactable Interaction;
 
-    public event OnInteractWithUI OnInteractEventWithUI;
     public delegate void OnInteractWithUI(Loot loot);
+    public event OnInteractWithUI OnInteractEventWithUI;
+
+    public delegate void OnDetectInteractable(Interactable interactable);
+    public event OnDetectInteractable OnDetectInteractableEvent;
 
     private void Start()
     {
@@ -22,7 +25,6 @@ public class Interacter : MonoBehaviour
         if (!other.TryGetComponent<Interactable>(out Interactable interactable)) return;
         if (interactable.CanInteract) 
         {
-            interactable.ShowPrompt();
             interactables.Add(interactable);
             interactable.OnDestroyed += RemoveTarget;
         }
@@ -34,9 +36,15 @@ public class Interacter : MonoBehaviour
         RemoveTarget(interact);
     }
 
-    public bool SelectInteraction()
+    private void LateUpdate() 
     {
-        if (interactables.Count == 0) return false;
+        FindClosestInteraction();
+        OnDetectInteractableEvent?.Invoke(Interaction);
+    }
+
+    private void FindClosestInteraction()
+    {
+        if (interactables.Count == 0) return;
         Interactable closestInteraction = null;
         float closestInteractionDistance = Mathf.Infinity;
         foreach (Interactable interactable in interactables)
@@ -50,8 +58,12 @@ public class Interacter : MonoBehaviour
                 closestInteractionDistance = distanceToCEnter.sqrMagnitude;
             }
         }
-        if (closestInteraction == null) return false;
-        Interaction = closestInteraction; 
+        Interaction = closestInteraction;
+    }
+
+    public bool SelectInteraction()
+    {
+        if (Interaction == null) return false;
         if (Interaction is Loot) OnInteractEventWithUI?.Invoke((Loot)Interaction);
         return true;
     }
@@ -64,7 +76,6 @@ public class Interacter : MonoBehaviour
 
     private void RemoveTarget(Interactable interactable)
     {
-        interactable.HidePrompt();
         if (Interaction == interactable) Interaction = null;
         interactable.OnDestroyed -= RemoveTarget;
         interactables.Remove(interactable);

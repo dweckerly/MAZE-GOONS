@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Loot : Interactable
 {
+    public override InteractableType type { get { return InteractableType.Body; } }
     public List<Item> items = new List<Item>();
     public Collider lootCollider;
 

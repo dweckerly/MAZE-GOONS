@@ -23,6 +23,10 @@ public class UIManager : MonoBehaviour
     public GameObject LootItemDisplayPrefab;
     private Loot loot;
 
+    public Animator Animator;
+    private Interactable Interaction;
+    public TextMeshProUGUI interactableMessage;
+
     
     void Start()
     {
@@ -31,6 +35,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
+        playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
@@ -46,7 +51,38 @@ public class UIManager : MonoBehaviour
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
+        playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
+    }
+
+    private void ShowInteractablePrompt(Interactable interactable)
+    {
+        if (interactable == null || !interactable.CanInteract)
+        {
+            Animator.SetBool("ShowPrompt", false);
+            return;
+        }
+        if (interactable != Interaction)
+        {
+            Interaction = interactable;
+            switch (Interaction.type)
+            {
+                case InteractableType.Body:
+                interactableMessage.text = "Loot";
+                    break;
+                case InteractableType.Chest:
+                    interactableMessage.text = "Open Chest";
+                    break;
+                case InteractableType.Door:
+                    interactableMessage.text = "Open Door";
+                    break;
+                case InteractableType.PickUp:
+                    ItemPickup pickup = (ItemPickup) Interaction;
+                    interactableMessage.text = "Pick Up " + pickup.item.itemName;
+                    break;
+            }
+            Animator.SetBool("ShowPrompt", true);
+        }
     }
 
     private void RemoveContainerChildren(Transform container)

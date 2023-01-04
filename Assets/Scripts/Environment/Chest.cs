@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Chest : Interactable
 {
+    public override InteractableType type { get { return InteractableType.Chest; } }
     Animator animator;
     [SerializeField] GameObject particlePrefab;
 

@@ -6,6 +6,8 @@ public class Door : Interactable
 {
     Animator animator;
 
+    public override InteractableType type { get { return InteractableType.Door; } } 
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
