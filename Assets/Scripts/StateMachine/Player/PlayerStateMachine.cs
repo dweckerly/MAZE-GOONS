@@ -75,15 +75,11 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleEquip()
     {
-        if (WeaponHandler.currentWeapon.maskLayer == 0)
+        for(int i = 0; i < animator.layerCount; i++)
         {
-            animationMask.ApplyLayerWeight(animator, 1, false);
-            animationMask.ApplyLayerWeight(animator, 2, false);
+            animationMask.ApplyLayerWeight(animator, i, false);
         }
-        else 
-        {
-            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
-        }
+        animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
         if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
     }
 
