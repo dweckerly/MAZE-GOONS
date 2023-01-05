@@ -32,7 +32,7 @@ public class PlayerTargetingState : PlayerBaseState
         }
         if (stateMachine.Targeter.CurrentTarget == null)
         {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            ReturnToLocomotion();
             return;
         }
         Vector3 movement = CalculateMovement();
@@ -75,7 +75,7 @@ public class PlayerTargetingState : PlayerBaseState
     private void OnTarget()
     {
         stateMachine.Targeter.Cancel();
-        stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        ReturnToLocomotion();
     }
 
     private void OnDodge()

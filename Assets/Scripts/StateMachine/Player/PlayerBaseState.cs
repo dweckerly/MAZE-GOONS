@@ -36,8 +36,11 @@ public abstract class  PlayerBaseState : State
 
     protected void ReturnToLocomotion()
     {
-        if (stateMachine.Targeter.CurrentTarget == null) stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-        if (stateMachine.sneaking) stateMachine.SwitchState(new PlayerSneakState(stateMachine));
+        if (stateMachine.Targeter.CurrentTarget == null)
+        {
+            if (stateMachine.sneaking) stateMachine.SwitchState(new PlayerSneakState(stateMachine));
+            else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        } 
         else stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 

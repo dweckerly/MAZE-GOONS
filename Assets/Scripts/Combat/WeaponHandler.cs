@@ -36,6 +36,10 @@ public class WeaponHandler : MonoBehaviour
         currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
         mainHandPrefab.layer = LayerInt;
+        foreach(Transform t in mainHandPrefab.GetComponentInChildren<Transform>())
+        {
+            t.gameObject.layer = LayerInt;
+        }
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = currentWeapon.weaponDamage;
