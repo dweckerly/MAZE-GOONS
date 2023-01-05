@@ -819,10 +819,12 @@ MonoBehaviour:
   <BloodParticles>k__BackingField: {fileID: 7906874032056151171}
   <JumpForce>k__BackingField: 5
   freeLookSpeed: 6
+  sneakSpeed: 2.5
   targetingSpeed: 5
   rotationDamping: 10
   dodgeDistance: 2
   dodgeDuration: 0.2
+  sneaking: 0
 --- !u!114 &7782677968425473779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,7 +840,7 @@ MonoBehaviour:
   UIOpen: 0
 --- !u!95 &8203930103171307448
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -855,7 +857,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!143 &6915681846506491821
 CharacterController:
   m_ObjectHideFlags: 0

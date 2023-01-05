@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
+  m_Name: Maul
+  m_EditorClassIdentifier: 
+  Id: 6e74b42d-f9d4-46f3-a198-311cd22983ec
+  itemName: Maul
+  weight: 20
+  value: 75
+  weaponPrefab: {fileID: 5450146331199627787, guid: 7f6eec58bee5da54c9bffea648bfec85, type: 3}
+  offHandPrefab: {fileID: 0}
+  weaponDamage: 10
+  weaponLength: 1.5
+  rightHanded: 0
+  dual: 0
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: Two-Handed-Swing-Down
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 15
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 20
+  - <AnimationName>k__BackingField: Two-Handed-Swing-Down
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 15
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 20
+  blockingAnimation: Block-Two-Handed
+  maskLayer: 3
