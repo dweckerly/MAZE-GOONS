@@ -131,6 +131,9 @@ public class UIManager : MonoBehaviour
             case ItemType.Armor:
                 playerStateMachine.ArmorHandler.CheckArmor((Armor)item);
                 break;
+            case ItemType.Shield:
+                playerStateMachine.WeaponHandler.EquipShield((Shield)item);
+                break;
             case ItemType.Weapon:
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
                 break;

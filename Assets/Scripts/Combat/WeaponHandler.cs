@@ -28,6 +28,11 @@ public class WeaponHandler : MonoBehaviour
         EquipWeapon(defaultWeapon);
     }
 
+    public void EquipShield(Shield shield)
+    {
+
+    }
+
     public void EquipWeapon(Weapon weapon)
     {
         if (currentWeapon != null && currentWeapon.Id == weapon.Id) weapon = defaultWeapon;
@@ -35,20 +40,11 @@ public class WeaponHandler : MonoBehaviour
         Destroy(offHandPrefab);
         currentWeapon = weapon;
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-        mainHandPrefab.layer = LayerInt;
-        foreach(Transform t in mainHandPrefab.GetComponentInChildren<Transform>())
+        SetWeaponLayer(mainHandPrefab);
+        SetWeaponDamage();
+        if (weapon.offHandPrefab != null)
         {
-            t.gameObject.layer = LayerInt;
-        }
-        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
-        mainHandDamage.IgnoreCollider(sourceCollider);
-        mainHandDamage.baseDamage = currentWeapon.weaponDamage;
-        mainHandCollider = mainHandPrefab.GetComponent<Collider>();
-        DisableRightHandCollider();
-        if (weapon.offHandPrefab != null) 
-        {
-            offHandPrefab = Instantiate(weapon.offHandPrefab, LeftHand.transform);
-            offHandPrefab.layer = LayerInt;
+            SetWeaponLayer(offHandPrefab);
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
             offHandDamage.IgnoreCollider(sourceCollider);
             offHandDamage.baseDamage = currentWeapon.weaponDamage;
@@ -56,6 +52,24 @@ public class WeaponHandler : MonoBehaviour
             DisableLeftHandCollider();
         }
         OnEquip?.Invoke();
+    }
+
+    private void SetWeaponDamage()
+    {
+        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
+        mainHandDamage.IgnoreCollider(sourceCollider);
+        mainHandDamage.baseDamage = currentWeapon.weaponDamage;
+        mainHandCollider = mainHandPrefab.GetComponent<Collider>();
+        DisableRightHandCollider();
+    }
+
+    private void SetWeaponLayer(GameObject prefab)
+    {
+        prefab.layer = LayerInt;
+        foreach (Transform t in prefab.GetComponentInChildren<Transform>())
+        {
+            t.gameObject.layer = LayerInt;
+        }
     }
 
     public void UnEquipWeapon()
