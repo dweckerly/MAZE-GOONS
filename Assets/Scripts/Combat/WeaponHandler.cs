@@ -21,6 +21,14 @@ public class WeaponHandler : MonoBehaviour
 
     int LayerInt;
 
+
+    private const int  RIGHT_GRIP = 1;
+    private const int LEFT_GRIP = 2;
+    private const int ONE_HANDED_ARM_POSITION = 3;
+    private const int TWO_HANDED_ARM_POSITION = 4;
+    private const int SHIELD_ARM_POSITION = 5;
+    public List<int> maskLayers = new List<int>();
+
     private void Awake() 
     {
         if(gameObject.CompareTag("Player")) LayerInt = LayerMask.NameToLayer(gameObject.tag);
@@ -39,6 +47,7 @@ public class WeaponHandler : MonoBehaviour
         Destroy(mainHandPrefab);
         Destroy(offHandPrefab);
         currentWeapon = weapon;
+        SetWeaponMaskLayer();
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
         SetWeaponLayer(mainHandPrefab);
         SetWeaponDamage();
@@ -52,6 +61,39 @@ public class WeaponHandler : MonoBehaviour
             DisableLeftHandCollider();
         }
         OnEquip?.Invoke();
+    }
+
+    private void SetWeaponMaskLayer()
+    {
+        maskLayers.Clear();
+        if (currentWeapon.oneHanded) 
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(ONE_HANDED_ARM_POSITION);
+            return;
+        }
+        if (currentWeapon.dual)
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(LEFT_GRIP);
+            maskLayers.Add(ONE_HANDED_ARM_POSITION);
+            return;
+        }
+        if (currentWeapon.twoHanded)
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(LEFT_GRIP);
+            maskLayers.Add(TWO_HANDED_ARM_POSITION);
+            return;
+        }
+    }
+
+    public void ApplyWeaponMasks(AnimationMaskHandler animationMaskHandler, Animator animator, bool value)
+    {
+        foreach (int j in maskLayers)
+        {
+            animationMaskHandler.ApplyLayerWeight(animator, j, value);
+        }
     }
 
     private void SetWeaponDamage()

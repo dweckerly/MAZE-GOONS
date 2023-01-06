@@ -88,17 +88,14 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleWeaponEquip()
     {
-        if (WeaponHandler.currentWeapon.maskLayer == 0)
+        for (int i = 0; i < animator.layerCount; i++)
         {
-            animationMask.ApplyLayerWeight(animator, 1, false);
-            animationMask.ApplyLayerWeight(animator, 2, false);
+            animationMask.ApplyLayerWeight(animator, i, false);
         }
-        else
+        foreach (int j in WeaponHandler.maskLayers)
         {
-            animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
+            animationMask.ApplyLayerWeight(animator, j, true);
         }
-        if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
-        if (WeaponHandler.currentWeapon != WeaponHandler.defaultWeapon) Loot.items.Add(WeaponHandler.currentWeapon);
     }
 
     private void HandleArmorEquip(Armor armor)

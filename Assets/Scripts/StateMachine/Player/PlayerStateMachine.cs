@@ -79,8 +79,10 @@ public class PlayerStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, i, false);
         }
-        animationMask.ApplyLayerWeight(animator, WeaponHandler.currentWeapon.maskLayer, true);
-        if (WeaponHandler.currentWeapon.rightHanded) animationMask.ApplyLayerWeight(animator, 2, true);
+        foreach(int j in WeaponHandler.maskLayers)
+        {
+            animationMask.ApplyLayerWeight(animator, j, true);
+        }
     }
 
     private void HandleArmorEquip(Armor armor)

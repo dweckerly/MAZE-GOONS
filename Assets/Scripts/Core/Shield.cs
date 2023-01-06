@@ -6,4 +6,6 @@ using UnityEngine;
 public class Shield : Item
 {
     public override ItemType itemType => ItemType.Shield;
+
+    public GameObject shieldPrefab = null;
 }

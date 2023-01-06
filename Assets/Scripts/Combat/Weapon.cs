@@ -11,9 +11,9 @@ public class Weapon : Item
     public GameObject offHandPrefab = null;
     public int weaponDamage = 1;
     public float weaponLength = 1f;
-    public bool rightHanded = true;
+    public bool oneHanded = true;
     public bool dual = false;
+    public bool twoHanded = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public string blockingAnimation;
-    public int maskLayer;
 }
