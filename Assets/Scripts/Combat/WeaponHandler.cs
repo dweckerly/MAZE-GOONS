@@ -51,15 +51,6 @@ public class WeaponHandler : MonoBehaviour
         mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
         SetWeaponLayer(mainHandPrefab);
         SetWeaponDamage();
-        if (weapon.offHandPrefab != null)
-        {
-            SetWeaponLayer(offHandPrefab);
-            offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
-            offHandDamage.IgnoreCollider(sourceCollider);
-            offHandDamage.baseDamage = currentWeapon.weaponDamage;
-            offHandCollider = offHandPrefab.GetComponent<Collider>();
-            DisableLeftHandCollider();
-        }
         OnEquip?.Invoke();
     }
 
@@ -77,6 +68,7 @@ public class WeaponHandler : MonoBehaviour
             maskLayers.Add(RIGHT_GRIP);
             maskLayers.Add(LEFT_GRIP);
             maskLayers.Add(ONE_HANDED_ARM_POSITION);
+            // need to add dual arm positions
             return;
         }
         if (currentWeapon.twoHanded)
@@ -90,9 +82,9 @@ public class WeaponHandler : MonoBehaviour
 
     public void ApplyWeaponMasks(AnimationMaskHandler animationMaskHandler, Animator animator, bool value)
     {
-        foreach (int j in maskLayers)
+        foreach (int i in maskLayers)
         {
-            animationMaskHandler.ApplyLayerWeight(animator, j, value);
+            animationMaskHandler.ApplyLayerWeight(animator, i, value);
         }
     }
 
@@ -103,6 +95,16 @@ public class WeaponHandler : MonoBehaviour
         mainHandDamage.baseDamage = currentWeapon.weaponDamage;
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
         DisableRightHandCollider();
+        if (currentWeapon.offHandPrefab != null)
+        {
+            offHandPrefab = Instantiate(currentWeapon.offHandPrefab, LeftHand.transform);
+            SetWeaponLayer(offHandPrefab);
+            offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
+            offHandDamage.IgnoreCollider(sourceCollider);
+            offHandDamage.baseDamage = currentWeapon.weaponDamage;
+            offHandCollider = offHandPrefab.GetComponent<Collider>();
+            DisableLeftHandCollider();
+        }
     }
 
     private void SetWeaponLayer(GameObject prefab)
