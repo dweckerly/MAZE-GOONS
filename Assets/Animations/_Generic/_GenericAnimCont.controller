@@ -110,7 +110,7 @@ AnimatorStateMachine:
     m_Position: {x: 500, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3057438754864377027}
-    m_Position: {x: 720, y: 250, z: 0}
+    m_Position: {x: 1010, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6134661773217387998}
     m_Position: {x: 300, y: -130, z: 0}
@@ -125,13 +125,19 @@ AnimatorStateMachine:
     m_Position: {x: 570, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2524141793508957936}
-    m_Position: {x: 950, y: 250, z: 0}
+    m_Position: {x: 1230, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 219326688023156361}
     m_Position: {x: 900, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3316976863795832376}
     m_Position: {x: 1120, y: -10, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7459847595459159366}
+    m_Position: {x: 730, y: 250, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1277031169172994967}
+    m_Position: {x: 730, y: 500, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3107621331821177882}
@@ -143,6 +149,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 40, y: 220, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7429821058032380463}
+--- !u!1102 &-7459847595459159366
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: One-Handed-Swing-Down-Left
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: b75d626d42f2f3f429700fbbc2de5e46, type: 2}
+  m_Tag: Attack
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-7437176411024072816
 AnimatorState:
   serializedVersion: 6
@@ -372,6 +404,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 736805569153323879}
+--- !u!1102 &-1277031169172994967
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: One-Handed-Thrust-Left
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 6dcbe8cd069b43e459043689009df170, type: 2}
+  m_Tag: Attack
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-900794066268497017
 AnimatorState:
   serializedVersion: 6
