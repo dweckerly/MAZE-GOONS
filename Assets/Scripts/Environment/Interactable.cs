@@ -8,6 +8,7 @@ public enum InteractableType
     Body,
     Chest,
     Door,
+    Lever,
     PickUp
 }
 

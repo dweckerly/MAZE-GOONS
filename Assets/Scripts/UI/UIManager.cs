@@ -77,6 +77,9 @@ public class UIManager : MonoBehaviour
                 case InteractableType.Door:
                     interactableMessage.text = "Open Door";
                     break;
+                case InteractableType.Lever:
+                    interactableMessage.text = "Pull Lever";
+                    break;
                 case InteractableType.PickUp:
                     ItemPickup pickup = (ItemPickup) Interaction;
                     interactableMessage.text = "Pick Up " + pickup.item.itemName;
