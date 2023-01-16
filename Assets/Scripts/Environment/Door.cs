@@ -22,7 +22,6 @@ public class Door : Interactable
     public void InteractWithDoor()
     {
         bool open = animator.GetBool("IsOpen");
-        animator.SetTrigger("OpenDoor");
         animator.SetBool("IsOpen", !open);
     }
 
