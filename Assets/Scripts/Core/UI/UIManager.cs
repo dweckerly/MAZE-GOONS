@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     public PlayerStateMachine playerStateMachine;
     public CinemachineFreeLook freeLook;
     public GameObject UICanvas;
+    public GameObject InventoryPanel;
+    public GameObject EquipBtnPanel;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
     public TextMeshProUGUI damageText;
@@ -117,6 +119,8 @@ public class UIManager : MonoBehaviour
         {
             freeLook.m_XAxis.m_MaxSpeed = 300;
             freeLook.m_YAxis.m_MaxSpeed = 2;
+            InventoryPanel.SetActive(true);
+            EquipBtnPanel.SetActive(false);
             UICanvas.SetActive(false);
         }
         else 
@@ -138,6 +142,8 @@ public class UIManager : MonoBehaviour
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
             case ItemType.Weapon:
+                InventoryPanel.SetActive(false);
+                EquipBtnPanel.SetActive(true);
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
                 break;
             default:
