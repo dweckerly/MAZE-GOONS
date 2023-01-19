@@ -28,7 +28,6 @@ public class WeaponHandler : MonoBehaviour
 
     int LayerInt;
 
-
     private const int  RIGHT_GRIP = 1;
     private const int LEFT_GRIP = 2;
     private const int ONE_HANDED_ARM_POSITION = 3;
@@ -208,51 +207,11 @@ public class WeaponHandler : MonoBehaviour
 
     }
 
-    private void SetWeaponMaskLayer()
-    {
-        maskLayers.Clear();
-        if (mainHandWeapon.twoHanded)
-        {
-            maskLayers.Add(RIGHT_GRIP);
-            maskLayers.Add(LEFT_GRIP);
-            maskLayers.Add(TWO_HANDED_ARM_POSITION);
-            return;
-        }
-        if (mainHandWeapon != null && mainHandWeapon.oneHanded)
-        {
-            maskLayers.Add(RIGHT_GRIP);
-            maskLayers.Add(ONE_HANDED_ARM_POSITION);
-            return;
-        }
-        if (offHandWeapon != null && offHandWeapon.oneHanded)
-        {
-            maskLayers.Add(LEFT_GRIP);
-            maskLayers.Add(ONE_HANDED_ARM_POSITION_LEFT);
-        }
-    }
-
     public void ApplyWeaponMasks(AnimationMaskHandler animationMaskHandler, Animator animator, bool value)
     {
         foreach (int i in maskLayers)
         {
             animationMaskHandler.ApplyLayerWeight(animator, i, value);
-        }
-    }
-
-    private void SetWeaponDamage()
-    {
-        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
-        mainHandDamage.IgnoreCollider(sourceCollider);
-        mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
-        mainHandCollider = mainHandPrefab.GetComponent<Collider>();
-        DisableRightHandCollider();
-        if (offHandWeapon != null)
-        {
-            offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
-            offHandDamage.IgnoreCollider(sourceCollider);
-            offHandDamage.baseDamage = mainHandWeapon.weaponDamage;
-            offHandCollider = offHandPrefab.GetComponent<Collider>();
-            DisableLeftHandCollider();
         }
     }
 
