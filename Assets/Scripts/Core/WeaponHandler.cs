@@ -44,83 +44,168 @@ public class WeaponHandler : MonoBehaviour
         EquipDefaultWeapon();
     }
 
+    public void EquipWeapon(Weapon weapon, WeaponHand hand = WeaponHand.Right)
+    {
+        if (weapon.twoHanded)
+        {
+            if (weapon.Id == mainHandWeapon.Id)
+            {
+                UnEquipAllWeapons();
+                EquipDefaultWeapon();
+            } 
+            else 
+            {
+                UnEquipAllWeapons();
+                EquipMainHand(weapon);
+            }
+        }
+        if (weapon.oneHanded)
+        {
+            if (hand == WeaponHand.Right)
+            {
+                if (weapon.Id == mainHandWeapon.Id)
+                {
+                    UnEquipMainHand();
+                    EquipDefaultMainHand();
+                } 
+                else 
+                {
+                    UnEquipMainHand();
+                    EquipMainHand(weapon);
+                }
+            }
+            else
+            {
+                if (mainHandWeapon.twoHanded)
+                {
+                    UnEquipMainHand();
+                    EquipDefaultMainHand();
+                    EquipOffHand(weapon);
+                }
+                else
+                {
+                    if (weapon.Id == offHandWeapon.Id)
+                    {
+                        UnEquipOffHand();
+                        EquipDefaultOffHand();
+                    }
+                    else
+                    {
+                        UnEquipOffHand();
+                        EquipOffHand(weapon);
+                    }
+                }
+                
+            }
+        }
+        OnEquip?.Invoke();
+    }
+
     private void EquipDefaultWeapon()
     {
-        Destroy(mainHandPrefab);
-        Destroy(offHandPrefab);
-        if (mainHandWeapon == null)
-        {
-            mainHandWeapon = defaultWeapon;
-            mainHandPrefab = Instantiate(defaultWeapon.weaponPrefab, RightHand.transform);
-        }
-        if (offHandWeapon == null)
-        {
-            offHandWeapon = defaultWeapon;
-            offHandPrefab = Instantiate(defaultWeapon.offHandPrefab, LeftHand.transform);
-        }
-        SetWeaponMaskLayer();
-        SetWeaponDamage();
+        EquipDefaultMainHand();
+        EquipDefaultOffHand();
+        maskLayers.Clear();
         OnEquip?.Invoke();
+    }
+
+    private void EquipDefaultOffHand()
+    {
+        offHandWeapon = defaultWeapon;
+        offHandPrefab = Instantiate(offHandWeapon.weaponPrefab, LeftHand.transform);
+        offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
+        offHandDamage.IgnoreCollider(sourceCollider);
+        offHandDamage.baseDamage = offHandWeapon.weaponDamage;
+        offHandCollider = offHandPrefab.GetComponent<Collider>();
+        DisableLeftHandCollider();
+    }
+
+    private void EquipDefaultMainHand()
+    {
+        mainHandWeapon = defaultWeapon;
+        mainHandPrefab = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
+        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
+        mainHandDamage.IgnoreCollider(sourceCollider);
+        mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
+        mainHandCollider = mainHandPrefab.GetComponent<Collider>();
+        DisableRightHandCollider();
+    }
+
+    private void EquipMainHand(Weapon weapon)
+    {
+        mainHandWeapon = weapon;
+        mainHandPrefab = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
+        mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
+        mainHandDamage.IgnoreCollider(sourceCollider);
+        mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
+        mainHandCollider = mainHandPrefab.GetComponent<Collider>();
+        if (mainHandWeapon.twoHanded)
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(LEFT_GRIP);
+            maskLayers.Add(TWO_HANDED_ARM_POSITION);
+        }
+        else
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(ONE_HANDED_ARM_POSITION);
+        }
+        SetWeaponLayer(mainHandPrefab);
+        DisableRightHandCollider();
+    }
+
+    private void EquipOffHand(Weapon weapon)
+    {
+        offHandWeapon = weapon;
+        offHandPrefab = Instantiate(offHandWeapon.weaponPrefab, LeftHand.transform);
+        offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
+        offHandDamage.IgnoreCollider(sourceCollider);
+        offHandDamage.baseDamage = offHandWeapon.weaponDamage;
+        offHandCollider = offHandPrefab.GetComponent<Collider>();
+        maskLayers.Add(LEFT_GRIP);
+        maskLayers.Add(ONE_HANDED_ARM_POSITION_LEFT);
+        SetWeaponLayer(offHandPrefab);
+        DisableLeftHandCollider();
+    }
+
+    private void UnEquipMainHand()
+    {
+        if (mainHandPrefab != null) Destroy(mainHandPrefab);
+        if (mainHandWeapon != null && mainHandWeapon.twoHanded)
+        {
+            maskLayers.Remove(RIGHT_GRIP);
+            maskLayers.Remove(LEFT_GRIP);
+            maskLayers.Remove(TWO_HANDED_ARM_POSITION);
+        }
+        if (mainHandWeapon != null && mainHandWeapon.oneHanded)
+        {
+            maskLayers.Remove(RIGHT_GRIP);
+            maskLayers.Remove(ONE_HANDED_ARM_POSITION);
+        }
+        mainHandWeapon = null;
+        mainHandDamage = null;
+        mainHandCollider = null;
+    }
+
+    private void UnEquipOffHand()
+    {
+        if (offHandPrefab != null) Destroy(offHandPrefab);
+        offHandWeapon = null;
+        offHandDamage = null;
+        offHandCollider = null;
+        maskLayers.Remove(LEFT_GRIP);
+        maskLayers.Remove(ONE_HANDED_ARM_POSITION_LEFT);
+    }
+
+    private void UnEquipAllWeapons()
+    {
+        UnEquipMainHand();
+        UnEquipOffHand();
     }
 
     public void EquipShield(Shield shield)
     {
 
-    }
-
-    public void EquipWeapon(Weapon weapon, WeaponHand hand = WeaponHand.Right)
-    {
-        if (weapon.twoHanded)
-        {
-            Destroy(mainHandPrefab);
-            Destroy(offHandPrefab);
-            if (weapon.Id == mainHandWeapon.Id)
-            {
-                mainHandWeapon = null;
-                offHandWeapon = null;
-                EquipDefaultWeapon();
-            }
-            else 
-            {
-                mainHandWeapon = weapon;
-                mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-                SetWeaponLayer(mainHandPrefab);
-            }
-        }
-        else if (hand == WeaponHand.Right)
-        {
-            Destroy(mainHandPrefab);
-            if (weapon.Id != mainHandWeapon.Id) 
-            {
-                mainHandWeapon = weapon;
-                mainHandPrefab = Instantiate(weapon.weaponPrefab, RightHand.transform);
-                SetWeaponLayer(mainHandPrefab);
-            }
-            else
-            {
-                mainHandWeapon = null;
-                EquipDefaultWeapon();
-            }
-        }
-        else
-        {
-            Destroy(offHandPrefab);
-            if (weapon.Id != offHandWeapon.Id)
-            {
-                offHandWeapon = weapon;
-                offHandPrefab = Instantiate(weapon.weaponPrefab, LeftHand.transform);
-                SetWeaponLayer(offHandPrefab);
-            }
-            else
-            {
-                offHandWeapon = null;
-                EquipDefaultWeapon();
-            }           
-        }
-        //if (mainHandWeapon != null && mainHandWeapon.Id == weapon.Id) weapon = defaultWeapon;
-        SetWeaponMaskLayer();
-        SetWeaponDamage();
-        OnEquip?.Invoke();
     }
 
     private void SetWeaponMaskLayer()
@@ -161,10 +246,8 @@ public class WeaponHandler : MonoBehaviour
         mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
         DisableRightHandCollider();
-        if (mainHandWeapon.offHandPrefab != null)
+        if (offHandWeapon != null)
         {
-            offHandPrefab = Instantiate(mainHandWeapon.offHandPrefab, LeftHand.transform);
-            SetWeaponLayer(offHandPrefab);
             offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
             offHandDamage.IgnoreCollider(sourceCollider);
             offHandDamage.baseDamage = mainHandWeapon.weaponDamage;
@@ -180,11 +263,6 @@ public class WeaponHandler : MonoBehaviour
         {
             t.gameObject.layer = LayerInt;
         }
-    }
-
-    public void UnEquipWeapon()
-    {
-        EquipWeapon(defaultWeapon);
     }
 
     // animation event required to enable weapon collider

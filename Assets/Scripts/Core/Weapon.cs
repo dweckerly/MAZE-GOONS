@@ -14,5 +14,4 @@ public class Weapon : Item
     public bool oneHanded = true;
     public bool twoHanded = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
-    public string blockingAnimation;
 }
