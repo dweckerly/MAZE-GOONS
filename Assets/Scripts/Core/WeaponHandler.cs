@@ -83,7 +83,7 @@ public class WeaponHandler : MonoBehaviour
                 }
                 else
                 {
-                    if (weapon.Id == offHandWeapon.Id)
+                    if (offHandWeapon != null && weapon.Id == offHandWeapon.Id)
                     {
                         UnEquipOffHand();
                         EquipDefaultOffHand();
@@ -111,7 +111,7 @@ public class WeaponHandler : MonoBehaviour
     private void EquipDefaultOffHand()
     {
         offHandWeapon = defaultWeapon;
-        offHandPrefab = Instantiate(offHandWeapon.weaponPrefab, LeftHand.transform);
+        offHandPrefab = Instantiate(offHandWeapon.offHandPrefab, LeftHand.transform);
         offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
         offHandDamage.IgnoreCollider(sourceCollider);
         offHandDamage.baseDamage = offHandWeapon.weaponDamage;
@@ -156,7 +156,7 @@ public class WeaponHandler : MonoBehaviour
     private void EquipOffHand(Weapon weapon)
     {
         offHandWeapon = weapon;
-        offHandPrefab = Instantiate(offHandWeapon.weaponPrefab, LeftHand.transform);
+        offHandPrefab = Instantiate(offHandWeapon.offHandPrefab, LeftHand.transform);
         offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
         offHandDamage.IgnoreCollider(sourceCollider);
         offHandDamage.baseDamage = offHandWeapon.weaponDamage;

@@ -17,11 +17,11 @@ MonoBehaviour:
   weight: 2
   value: 50
   weaponPrefab: {fileID: 1083137039538708416, guid: 7433591eabf206a4b8f254e476fe67a0, type: 3}
-  offHandPrefab: {fileID: 0}
+  offHandPrefab: {fileID: 4396657769362903456, guid: b1e9d892df6d7b441aeeb5b0b4236041, type: 3}
   weaponDamage: 2
   weaponLength: 1.25
-  rightHanded: 1
-  dual: 0
+  oneHanded: 1
+  twoHanded: 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: One-Handed-Thrust
     <TransitionDuration>k__BackingField: 0.1
@@ -55,5 +55,3 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.3
     RightHand: 1
     Knockback: 10
-  blockingAnimation: Block-One-Handed
-  maskLayer: 1
