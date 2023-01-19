@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerBlockingState : PlayerBaseState
 {
+    private const string UNARMED_BLOCK = "Block-Unarmed";
+    private const string ONE_HANDED_BLOCK = "Block-One-Handed";
+    private const string TWO_HANDED_BLOCK = "Block-Two-Handed";
+
     public PlayerBlockingState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter()
     {
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
-        stateMachine.animator.CrossFadeInFixedTime(stateMachine.WeaponHandler.currentWeapon.blockingAnimation, CrossFadeDuration);
+        if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded) stateMachine.animator.CrossFadeInFixedTime(TWO_HANDED_BLOCK, CrossFadeDuration);
+        else if (stateMachine.WeaponHandler.mainHandWeapon.oneHanded) stateMachine.animator.CrossFadeInFixedTime(ONE_HANDED_BLOCK, CrossFadeDuration);
+        else stateMachine.animator.CrossFadeInFixedTime(UNARMED_BLOCK, CrossFadeDuration);
         stateMachine.Attributes.SetInvulnerable(true);
     }
 

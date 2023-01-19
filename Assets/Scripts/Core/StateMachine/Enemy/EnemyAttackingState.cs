@@ -10,8 +10,8 @@ public class EnemyAttackingState : EnemyBaseState
 
     public EnemyAttackingState(EnemyStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
-        int atkIndex = Random.Range(0, stateMachine.WeaponHandler.currentWeapon.Attacks.Length);
-        attack = stateMachine.WeaponHandler.currentWeapon.Attacks[atkIndex];
+        int atkIndex = Random.Range(0, stateMachine.WeaponHandler.mainHandWeapon.Attacks.Length);
+        attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[atkIndex];
     }
 
     public override void Enter()

@@ -26,7 +26,7 @@ public abstract class EnemyBaseState : State
 
     protected bool IsInAttackRange(GameObject go)
     {
-        return IsInRange(go, stateMachine.AttackRange * stateMachine.WeaponHandler.currentWeapon.weaponLength);
+        return IsInRange(go, stateMachine.AttackRange * stateMachine.WeaponHandler.mainHandWeapon.weaponLength);
     }
 
     protected void Move(float deltaTime)

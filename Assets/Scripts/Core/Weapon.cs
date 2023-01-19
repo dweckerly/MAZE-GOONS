@@ -12,7 +12,6 @@ public class Weapon : Item
     public int weaponDamage = 1;
     public float weaponLength = 1f;
     public bool oneHanded = true;
-    public bool dual = false;
     public bool twoHanded = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     public string blockingAnimation;

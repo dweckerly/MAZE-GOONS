@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     private Interactable Interaction;
     public TextMeshProUGUI interactableMessage;
 
+    private Item SelectedItem;
     
     void Start()
     {
@@ -133,6 +134,7 @@ public class UIManager : MonoBehaviour
 
     public void InventoryItemClick(Item item)
     {
+        SelectedItem = item;
         switch (item.itemType)
         {
             case ItemType.Armor:
@@ -142,13 +144,32 @@ public class UIManager : MonoBehaviour
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
             case ItemType.Weapon:
-                InventoryPanel.SetActive(false);
-                EquipBtnPanel.SetActive(true);
+                Weapon weapon = (Weapon)SelectedItem;
+                if (weapon.oneHanded)
+                {
+                    InventoryPanel.SetActive(false);
+                    EquipBtnPanel.SetActive(true);
+                    return;
+                } 
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
                 break;
             default:
                 break;
         }    
+    }
+
+    public void MainHandEquipBtn()
+    {
+        playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem);
+        InventoryPanel.SetActive(true);
+        EquipBtnPanel.SetActive(false);
+    }
+
+    public void OffHandEquipBtn()
+    {
+        playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem, WeaponHand.Left);
+        InventoryPanel.SetActive(true);
+        EquipBtnPanel.SetActive(false);
     }
 
     public void ArmorEquip(Armor armor)
@@ -163,7 +184,7 @@ public class UIManager : MonoBehaviour
 
     public void EquipWeapon()
     {
-        damageText.text = playerStateMachine.WeaponHandler.currentWeapon.weaponDamage.ToString();
+        damageText.text = playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
     }
 
     public void OpenInteractionUI(Loot _loot)

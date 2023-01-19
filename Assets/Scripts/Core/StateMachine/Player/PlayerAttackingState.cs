@@ -11,7 +11,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
-        attack = stateMachine.WeaponHandler.currentWeapon.Attacks[attackIndex];
+        attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[attackIndex];
     }
 
     public override void Enter()
