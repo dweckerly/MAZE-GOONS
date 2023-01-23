@@ -194,6 +194,7 @@ public class WeaponHandler : MonoBehaviour
         offHandCollider = null;
         maskLayers.Remove(LEFT_GRIP);
         maskLayers.Remove(ONE_HANDED_ARM_POSITION_LEFT);
+        maskLayers.Remove(SHIELD_ARM_POSITION);
     }
 
     private void UnEquipAllWeapons()
@@ -204,7 +205,20 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipShield(Shield shield)
     {
-
+        if (mainHandWeapon != null && mainHandWeapon.twoHanded)
+        {
+            UnEquipMainHand();
+            EquipDefaultMainHand();
+        }
+        else
+        {
+            UnEquipOffHand();
+        }
+        offHandPrefab = Instantiate(shield.shieldPrefab, LeftHand.transform);
+        maskLayers.Add(LEFT_GRIP);
+        maskLayers.Add(SHIELD_ARM_POSITION);
+        SetWeaponLayer(offHandPrefab);
+        OnEquip?.Invoke();
     }
 
     public void ApplyWeaponMasks(AnimationMaskHandler animationMaskHandler, Animator animator, bool value)
