@@ -21,7 +21,6 @@ MonoBehaviour:
   weaponDamage: 10
   weaponLength: 1.5
   oneHanded: 0
-  dual: 0
   twoHanded: 1
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Two-Handed-Swing-Down
@@ -32,7 +31,7 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.3
     RightHand: 1
     Knockback: 20
-  - <AnimationName>k__BackingField: Two-Handed-Swing-Down
+  - <AnimationName>k__BackingField: Two-Handed-Swing-Left
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.7
@@ -40,5 +39,3 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.3
     RightHand: 1
     Knockback: 20
-  blockingAnimation: Block-Two-Handed
-  maskLayer: 3
