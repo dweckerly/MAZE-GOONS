@@ -28,6 +28,8 @@ public class WeaponHandler : MonoBehaviour
 
     int LayerInt;
 
+    public bool shieldEquipped = false;
+
     private const int  RIGHT_GRIP = 1;
     private const int LEFT_GRIP = 2;
     private const int ONE_HANDED_ARM_POSITION = 3;
@@ -195,6 +197,7 @@ public class WeaponHandler : MonoBehaviour
         maskLayers.Remove(LEFT_GRIP);
         maskLayers.Remove(ONE_HANDED_ARM_POSITION_LEFT);
         maskLayers.Remove(SHIELD_ARM_POSITION);
+        shieldEquipped = false;
     }
 
     private void UnEquipAllWeapons()
@@ -218,6 +221,7 @@ public class WeaponHandler : MonoBehaviour
         maskLayers.Add(LEFT_GRIP);
         maskLayers.Add(SHIELD_ARM_POSITION);
         SetWeaponLayer(offHandPrefab);
+        shieldEquipped = true;
         OnEquip?.Invoke();
     }
 
