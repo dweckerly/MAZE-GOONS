@@ -18,13 +18,12 @@ MonoBehaviour:
   value: 75
   weaponPrefab: {fileID: 5450146331199627787, guid: 7f6eec58bee5da54c9bffea648bfec85, type: 3}
   offHandPrefab: {fileID: 0}
-  weaponDamage: 10
+  weaponDamage: 1
   weaponLength: 1.5
   oneHanded: 0
-  dual: 0
   twoHanded: 1
   <Attacks>k__BackingField:
-  - <AnimationName>k__BackingField: Two-Handed-Swing-Down
+  - <AnimationName>k__BackingField: Two-Handed-Swing-Left
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.7
@@ -34,11 +33,17 @@ MonoBehaviour:
     Knockback: 20
   - <AnimationName>k__BackingField: Two-Handed-Swing-Down
     <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: -1
+    <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.7
     <Force>k__BackingField: 15
     <ForceTime>k__BackingField: 0.3
     RightHand: 1
     Knockback: 20
-  blockingAnimation: Block-Two-Handed
-  maskLayer: 3
+  - <AnimationName>k__BackingField: Two-Handed-Swing-Right
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 15
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 30
