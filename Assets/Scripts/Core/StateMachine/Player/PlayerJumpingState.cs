@@ -22,6 +22,11 @@ public class PlayerJumpingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Move(momentum, deltaTime);
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerJumpAttackState(stateMachine));
+            return;
+        }
         if (stateMachine.Controller.velocity.y <= 0) 
         {
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
