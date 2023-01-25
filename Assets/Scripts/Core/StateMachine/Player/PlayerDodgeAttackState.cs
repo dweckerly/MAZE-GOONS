@@ -16,8 +16,8 @@ public class PlayerDodgeAttackState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         stateMachine.animator.CrossFadeInFixedTime(AttackHash, CrossFadeDuration);
+        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
     }
 
     public override void Exit()

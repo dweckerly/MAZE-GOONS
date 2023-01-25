@@ -18,11 +18,7 @@ public class PlayerInteractingState : PlayerBaseState
         {
             stateMachine.Interacter.Interaction.Interact(stateMachine);
         }
-        else
-        {
-            ReturnToLocomotion();
-            return;
-        }
+        ReturnToLocomotion();
     }
 
     public override void Exit() {}

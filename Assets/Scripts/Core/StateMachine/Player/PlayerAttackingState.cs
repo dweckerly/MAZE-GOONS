@@ -16,7 +16,6 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         if (attack.RightHand)
         {
             stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
@@ -30,6 +29,7 @@ public class PlayerAttackingState : PlayerBaseState
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
         }
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
+        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
     }
 
     public override void Tick(float deltaTime)

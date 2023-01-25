@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Pig Mask
   m_EditorClassIdentifier: 
   Id: b0e6589a-fe68-478d-a0c4-a6de13de48a8
-  itemName: 
-  weight: 0
-  value: 0
-  ArmorObjects: []
+  itemName: Pig Mask
+  weight: 0.5
+  value: 100
+  ArmorObjects:
+  - armorPrefab: {fileID: 7117237004582912976, guid: 299bd78190a198f45b54c3afa455c917, type: 3}
+    bodyPositionReference: 0
   slot: 0
   DamageReduction: 1
