@@ -8,14 +8,16 @@ public enum BodyMapping
     LeftShoulder,
     RightShoulder,
     LeftWrist,
-    RightWrist
+    RightWrist,
+    Waist
 }
 
 public enum ArmorSlot
 {
     Mask,
     Pauldrons,
-    Wrists
+    Wrists,
+    Waist
 }
 
 [System.Serializable]
