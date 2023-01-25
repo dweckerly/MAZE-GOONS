@@ -22,6 +22,8 @@ public class PlayerJumpAttackState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.WeaponHandler.DisableRightHandCollider();
+        if (stateMachine.WeaponHandler.offHandCollider != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
     }
 

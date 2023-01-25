@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   knockback: 6
-  hitParticle: {fileID: 0}
+  swingParticle: {fileID: 0}
 --- !u!136 &8025057627686427001
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.002
-  m_Height: 0.01
+  m_Height: 0.015
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!54 &4779753445038798507

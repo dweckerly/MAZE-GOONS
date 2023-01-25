@@ -98,10 +98,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.001
-  m_Height: 0.0035
+  m_Radius: 0.002
+  m_Height: 0.007
   m_Direction: 2
-  m_Center: {x: -0.0001, y: 0, z: 0.006}
+  m_Center: {x: 0, y: 0, z: 0.005}
 --- !u!54 &5941453775924435812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   knockback: 10
-  hitParticle: {fileID: 0}
+  swingParticle: {fileID: 0}

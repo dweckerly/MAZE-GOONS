@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4677304437905897649}
   - component: {fileID: 3827180251071831842}
   - component: {fileID: -511693279396463784}
-  - component: {fileID: 2481974643137231517}
+  - component: {fileID: 2879039286937706723}
   m_Layer: 0
   m_Name: maul
   m_TagString: Untagged
@@ -109,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5450146331199627787}
-  m_LocalRotation: {x: -0.0665993, y: 0.079904355, z: 0.039013956, w: 0.9938097}
+  m_LocalRotation: {x: -0.06659648, y: 0.07990599, z: 0.03900955, w: 0.99380994}
   m_LocalPosition: {x: 0.00066, y: 0.00213, z: 0.0017}
   m_LocalScale: {x: 0.011, y: 0.011, z: 0.011}
   m_ConstrainProportionsScale: 0
@@ -151,19 +151,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &2481974643137231517
-SphereCollider:
+--- !u!136 &2879039286937706723
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5450146331199627787}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 1}
+  m_Height: 1.69
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.62}
 --- !u!1 &5543866732562771262
 GameObject:
   m_ObjectHideFlags: 0
