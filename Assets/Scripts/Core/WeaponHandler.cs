@@ -263,7 +263,6 @@ public class WeaponHandler : MonoBehaviour
     {
         DisableRightHandCollider();
         if (offHandCollider != null) DisableLeftHandCollider();
-
     }
 
     public void EnableRightHandCollider()
