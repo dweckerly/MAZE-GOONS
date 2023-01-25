@@ -51,11 +51,11 @@ public class Interacter : MonoBehaviour
         {
             Vector2 viewPosition = mainCamera.WorldToViewportPoint(interactable.transform.position);
             if (viewPosition.x < 0 || viewPosition.x > 1 || viewPosition.y < 0 || viewPosition.y > 1) continue;
-            Vector2 distanceToCEnter = viewPosition - new Vector2(0.5f, 0.5f);
-            if (distanceToCEnter.sqrMagnitude < closestInteractionDistance)
+            Vector2 distanceToCenter = viewPosition - new Vector2(0.5f, 0.5f);
+            if (distanceToCenter.sqrMagnitude < closestInteractionDistance)
             {
                 closestInteraction = interactable;
-                closestInteractionDistance = distanceToCEnter.sqrMagnitude;
+                closestInteractionDistance = distanceToCenter.sqrMagnitude;
             }
         }
         Interaction = closestInteraction;

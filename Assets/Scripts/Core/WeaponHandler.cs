@@ -28,7 +28,7 @@ public class WeaponHandler : MonoBehaviour
 
     int LayerInt;
 
-    public bool shieldEquipped = false;
+    public string shieldEquipped = null;
 
     private const int  RIGHT_GRIP = 1;
     private const int LEFT_GRIP = 2;
@@ -197,7 +197,7 @@ public class WeaponHandler : MonoBehaviour
         maskLayers.Remove(LEFT_GRIP);
         maskLayers.Remove(ONE_HANDED_ARM_POSITION_LEFT);
         maskLayers.Remove(SHIELD_ARM_POSITION);
-        shieldEquipped = false;
+        shieldEquipped = null;
     }
 
     private void UnEquipAllWeapons()
@@ -208,20 +208,28 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipShield(Shield shield)
     {
-        if (mainHandWeapon != null && mainHandWeapon.twoHanded)
+        if (!string.IsNullOrEmpty(shieldEquipped) && shieldEquipped.Equals(shield.Id))
         {
-            UnEquipMainHand();
-            EquipDefaultMainHand();
+            UnEquipOffHand();
+            EquipDefaultOffHand();
         }
         else
         {
-            UnEquipOffHand();
+            if (mainHandWeapon != null && mainHandWeapon.twoHanded)
+            {
+                UnEquipMainHand();
+                EquipDefaultMainHand();
+            }
+            else
+            {
+                UnEquipOffHand();
+            }
+            offHandPrefab = Instantiate(shield.shieldPrefab, LeftHand.transform);
+            maskLayers.Add(LEFT_GRIP);
+            maskLayers.Add(SHIELD_ARM_POSITION);
+            SetWeaponLayer(offHandPrefab);
+            shieldEquipped = shield.Id;
         }
-        offHandPrefab = Instantiate(shield.shieldPrefab, LeftHand.transform);
-        maskLayers.Add(LEFT_GRIP);
-        maskLayers.Add(SHIELD_ARM_POSITION);
-        SetWeaponLayer(offHandPrefab);
-        shieldEquipped = true;
         OnEquip?.Invoke();
     }
 

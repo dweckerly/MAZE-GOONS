@@ -14,7 +14,7 @@ public class PlayerBlockingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
-        if (stateMachine.WeaponHandler.shieldEquipped) stateMachine.animator.CrossFadeInFixedTime(SHIELD_BLOCK, CrossFadeDuration);
+        if (!string.IsNullOrEmpty(stateMachine.WeaponHandler.shieldEquipped)) stateMachine.animator.CrossFadeInFixedTime(SHIELD_BLOCK, CrossFadeDuration);
         else if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded) stateMachine.animator.CrossFadeInFixedTime(TWO_HANDED_BLOCK, CrossFadeDuration);
         else if (stateMachine.WeaponHandler.mainHandWeapon.oneHanded) stateMachine.animator.CrossFadeInFixedTime(ONE_HANDED_BLOCK, CrossFadeDuration);
         else stateMachine.animator.CrossFadeInFixedTime(UNARMED_BLOCK, CrossFadeDuration);
