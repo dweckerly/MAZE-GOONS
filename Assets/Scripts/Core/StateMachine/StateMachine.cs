@@ -13,6 +13,7 @@ public abstract class StateMachine : MonoBehaviour
 
     public void SwitchState(State newState)
     {
+        print("Exiting " + currentState + "\nEntering " + newState);
         currentState?.Exit();
         currentState = newState;
         currentState?.Enter();
