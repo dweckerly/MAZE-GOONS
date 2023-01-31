@@ -68,7 +68,7 @@ public class PlayerSneakState : PlayerBaseState
 
     private void OnDodge()
     {
-        if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
+        if (stateMachine.InputReader.MovementValue == Vector2.zero || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
     }
 

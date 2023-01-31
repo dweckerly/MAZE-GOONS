@@ -35,12 +35,16 @@ public class Attributes : MonoBehaviour
 
     private int maxHP;
     private int currentHP;
+    private int maxStamina = 10;
+    private int currentStamina;
+    private float staminaRecoveryRate = 0.1f;
 
     Animator animator;
 
     private bool isInvulnerable = false;
 
     [field: SerializeField] public RectTransform HealthRect { get; private set; }
+    [field: SerializeField] public RectTransform StaminaRect { get; private set; }
 
     private void Awake() 
     {
@@ -50,6 +54,7 @@ public class Attributes : MonoBehaviour
         currentGuts = guts;
         maxHP = CalculateMaxHP();
         currentHP = maxHP;
+        currentStamina = maxStamina;
 
         attrLookup = new Dictionary<Attribute, int> ()
         {
@@ -59,6 +64,11 @@ public class Attributes : MonoBehaviour
             { Attribute.Guts, currentGuts },
         };
         animator = GetComponent<Animator>();
+    }
+
+    private void Start() 
+    {
+        StartCoroutine("RecoverStamina");
     }
 
     private int CalculateMaxHP()
@@ -81,9 +91,19 @@ public class Attributes : MonoBehaviour
         return currentHP;
     }
 
+    public int GetStamina()
+    {
+        return currentStamina;
+    }
+
     public float GetHPFraction()
     {
         return Mathf.Clamp((float)currentHP / (float)maxHP, 0f, 1f);
+    }
+
+    public float GetStaminaFraction()
+    {
+        return Mathf.Clamp((float)currentStamina / (float)maxStamina, 0f, 1f);
     }
 
     public void ChangeStat (Attribute attribute, int amount)
@@ -110,6 +130,12 @@ public class Attributes : MonoBehaviour
         }
     }
 
+    public void SpendStamina(int amount)
+    {
+        currentStamina -= Mathf.Clamp(amount, 0, maxStamina);
+        if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
+    }
+
     public void SetInvulnerable(bool invulnerable)
     {
         isInvulnerable = invulnerable;
@@ -120,4 +146,16 @@ public class Attributes : MonoBehaviour
         OnDie?.Invoke();
         alive = false;
     }
+
+    private IEnumerator RecoverStamina()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            currentStamina += Mathf.Clamp(Mathf.RoundToInt(maxStamina * staminaRecoveryRate), 0, maxStamina);
+            if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
+            
+        }
+    }
+
 }
