@@ -36,8 +36,8 @@ public class Attributes : MonoBehaviour
     private int maxHP;
     private int currentHP;
     private int maxStamina = 10;
-    private int currentStamina;
-    private float staminaRecoveryRate = 0.1f;
+    private float currentStamina;
+    private float staminaRecoveryRate = 0.01f;
 
     Animator animator;
 
@@ -91,7 +91,7 @@ public class Attributes : MonoBehaviour
         return currentHP;
     }
 
-    public int GetStamina()
+    public float GetStamina()
     {
         return currentStamina;
     }
@@ -151,10 +151,9 @@ public class Attributes : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(1f);
-            currentStamina += Mathf.Clamp(Mathf.RoundToInt(maxStamina * staminaRecoveryRate), 0, maxStamina);
+            yield return new WaitForSeconds(0.1f);
+            currentStamina = Mathf.Clamp(currentStamina + (maxStamina * staminaRecoveryRate), 0, maxStamina);
             if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
-            
         }
     }
 
