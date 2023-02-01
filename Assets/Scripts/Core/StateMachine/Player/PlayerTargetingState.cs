@@ -75,4 +75,10 @@ public class PlayerTargetingState : PlayerLocomotiveState
         stateMachine.Targeter.Cancel();
         ReturnToLocomotion();
     }
+
+    protected override void OnDodge()
+    {
+        if (stateMachine.InputReader.MovementValue == Vector2.zero || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq) return;
+        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
+    }
 }

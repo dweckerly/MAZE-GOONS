@@ -20,7 +20,7 @@ public class PlayerLocomotiveState : PlayerBaseState
 
     public override void Tick(float deltaTime) {}
 
-    private void OnDodge()
+    protected virtual void OnDodge()
     {
         if (stateMachine.InputReader.MovementValue == Vector2.zero || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
