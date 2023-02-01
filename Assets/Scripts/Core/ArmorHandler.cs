@@ -77,6 +77,10 @@ public class ArmorHandler : MonoBehaviour
                 {
                     GameObject go = Instantiate(armorBodyMap.armorPrefab, bpmr.bodyPart.transform);
                     go.layer = LayerInt;
+                    foreach (Transform t in go.GetComponentInChildren<Transform>())
+                    {
+                        t.gameObject.layer = LayerInt;
+                    }
                     equipLookup[armorBodyMap.bodyPositionReference] = new ArmorObject(armor.Id, go);
                 }
             }
