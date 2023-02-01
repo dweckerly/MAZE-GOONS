@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTargetingState : PlayerBaseState
+public class PlayerTargetingState : PlayerLocomotiveState
 {
     private readonly int TargetingBlendTree = Animator.StringToHash("Targeting Blend Tree");
     private readonly int TargetingForward = Animator.StringToHash("TargetingForward");
@@ -12,10 +12,9 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
+        base.Enter();
         stateMachine.animator.CrossFadeInFixedTime(TargetingBlendTree, CrossFadeDuration);
         stateMachine.InputReader.TargetEvent += OnTarget;
-        stateMachine.InputReader.DodgeEvent += OnDodge;
-        stateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
@@ -43,9 +42,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
+        base.Exit();
         stateMachine.InputReader.TargetEvent -= OnTarget;
-        stateMachine.InputReader.DodgeEvent -= OnDodge;
-        stateMachine.InputReader.JumpEvent -= OnJump;
     }
 
     private void UpdateAnimator(float deltaTime)
@@ -76,16 +74,5 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.Targeter.Cancel();
         ReturnToLocomotion();
-    }
-
-    private void OnDodge()
-    {
-        if (stateMachine.InputReader.MovementValue == Vector2.zero) return;
-        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
-    }
-
-    private void OnJump()
-    {
-        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 }

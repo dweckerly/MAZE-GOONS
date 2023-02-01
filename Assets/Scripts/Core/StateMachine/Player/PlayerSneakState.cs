@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSneakState : PlayerBaseState
+public class PlayerSneakState : PlayerLocomotiveState
 {
     public PlayerSneakState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
@@ -12,12 +12,11 @@ public class PlayerSneakState : PlayerBaseState
 
     public override void Enter()
     {
+        base.Enter();
         stateMachine.sneaking = true;
         stateMachine.animator.CrossFadeInFixedTime(SneakBlendTree, CrossFadeDuration);
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.InteractEvent += OnInteract;
-        stateMachine.InputReader.DodgeEvent += OnDodge;
-        stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.SneakEvent += OnSneak;
     }
 
@@ -47,10 +46,9 @@ public class PlayerSneakState : PlayerBaseState
 
     public override void Exit()
     {
+        base.Exit();
         stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.InteractEvent -= OnInteract;
-        stateMachine.InputReader.DodgeEvent -= OnDodge;
-        stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.SneakEvent -= OnSneak;
     }
 
@@ -64,17 +62,6 @@ public class PlayerSneakState : PlayerBaseState
     {
         if (!stateMachine.Targeter.SelectTarget()) return;
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-    }
-
-    private void OnDodge()
-    {
-        if (stateMachine.InputReader.MovementValue == Vector2.zero || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq) return;
-        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
-    }
-
-    private void OnJump()
-    {
-        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
     private void OnSneak()
