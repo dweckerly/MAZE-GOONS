@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyImpactState : EnemyBaseState
 {
     private readonly int ImpactHash = Animator.StringToHash("Impact");
+    private readonly int Impact2Hash = Animator.StringToHash("Impact-2");
+    private readonly int Impact3Hash = Animator.StringToHash("Impact-3");
+
     private float duration = 0.3f;
     private Color impactColor = Color.red;
     protected List<Color> materialColors = new List<Color>();
@@ -13,7 +16,12 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.animator.CrossFadeInFixedTime(ImpactHash, CrossFadeDuration);
+        int[] animArray = new int[3];
+        animArray[0] = ImpactHash;
+        animArray[1] = Impact2Hash;
+        animArray[2] = Impact3Hash;
+        int animSelection = Random.Range(0, 3);
+        stateMachine.animator.CrossFadeInFixedTime(animArray[animSelection], CrossFadeDuration);
         SetImpactColor();
     }
 
