@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     private Item SelectedItem;
 
-    public GameObject TargetPanels;
+    public Animator TargetPanelAnimator;
     
     void Start()
     {
@@ -52,7 +52,8 @@ public class UIManager : MonoBehaviour
 
     private void OnTarget()
     {
-        TargetPanels.SetActive(!TargetPanels.activeSelf);
+        bool show = TargetPanelAnimator.GetBool("ShowPanels");
+        TargetPanelAnimator.SetBool("ShowPanels", !show);
     }
 
     void OnDestroy()
@@ -64,7 +65,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
         playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
-        playerStateMachine.InputReader.TargetEvent -= OnTarget;
+        playerStateMachine.Targeter.TargetAction -= OnTarget;
     }
 
     private void ShowInteractablePrompt(Interactable interactable)
