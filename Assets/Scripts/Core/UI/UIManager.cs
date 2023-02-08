@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
         playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
-        playerStateMachine.InputReader.TargetEvent += OnTarget;
+        playerStateMachine.Targeter.TargetAction += OnTarget;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();

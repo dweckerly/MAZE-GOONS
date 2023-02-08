@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -9,6 +9,8 @@ public class Targeter : MonoBehaviour
     private Camera mainCamera;
     private List<Target> targets = new List<Target>();
     public Target CurrentTarget { get; private set; }
+
+    public Action TargetAction;
 
     private void Start() 
     {
@@ -46,6 +48,7 @@ public class Targeter : MonoBehaviour
         }
         if (closestTarget == null) return false;
         CurrentTarget = closestTarget;
+        TargetAction.Invoke();
         cinTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
         return true;
     }
@@ -53,6 +56,7 @@ public class Targeter : MonoBehaviour
     public void Cancel()
     {
         if (CurrentTarget == null) return;
+        TargetAction.Invoke();
         cinTargetGroup.RemoveMember(CurrentTarget.transform);
         CurrentTarget = null;
     }
@@ -61,6 +65,7 @@ public class Targeter : MonoBehaviour
     {
         if (CurrentTarget == target)
         {
+            TargetAction.Invoke();
             cinTargetGroup.RemoveMember(CurrentTarget.transform);
             CurrentTarget = null;
         }
