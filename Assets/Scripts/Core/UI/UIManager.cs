@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI interactableMessage;
 
     private Item SelectedItem;
+
+    public GameObject TargetPanels;
     
     void Start()
     {
@@ -40,11 +42,17 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
         playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
+        playerStateMachine.InputReader.TargetEvent += OnTarget;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
         gutsText.text = playerStateMachine.Attributes.GetStat(Attribute.Guts).ToString();
         guileText.text = playerStateMachine.Attributes.GetStat(Attribute.Guile).ToString();
+    }
+
+    private void OnTarget()
+    {
+        TargetPanels.SetActive(!TargetPanels.activeSelf);
     }
 
     void OnDestroy()
@@ -56,6 +64,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
         playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
+        playerStateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
     private void ShowInteractablePrompt(Interactable interactable)
