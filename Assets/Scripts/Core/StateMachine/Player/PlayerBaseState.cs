@@ -41,7 +41,11 @@ public abstract class  PlayerBaseState : State
             if (stateMachine.sneaking) stateMachine.SwitchState(new PlayerSneakState(stateMachine));
             else stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         } 
-        else stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        else 
+        {
+            if (stateMachine.sneaking) stateMachine.SwitchState(new PlayerTargetingSneakState(stateMachine));
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
     }
 
     protected void FaceMovementDirection(Vector3 movement, float deltaTime)
