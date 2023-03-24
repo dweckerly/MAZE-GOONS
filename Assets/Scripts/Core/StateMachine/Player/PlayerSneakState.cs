@@ -61,7 +61,7 @@ public class PlayerSneakState : PlayerLocomotiveState
     private void OnTarget()
     {
         if (!stateMachine.Targeter.SelectTarget()) return;
-        stateMachine.SwitchState(new PlayerTargetingSneakState(stateMachine));
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
     private void OnSneak()

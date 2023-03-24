@@ -19,7 +19,6 @@ public class PlayerDodgingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.sneaking = false;
         remainingDodgeTime = stateMachine.dodgeDuration;
         stateMachine.animator.SetFloat(DodgingForward, dodgeDirection.y);
         stateMachine.animator.SetFloat(DodgingRight, dodgeDirection.x);
