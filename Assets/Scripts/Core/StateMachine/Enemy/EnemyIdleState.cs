@@ -19,7 +19,19 @@ public class EnemyIdleState : EnemyBaseState
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-        if (stateMachine.Player != null && IsInDetectionRange(stateMachine.Player)) stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+        if (stateMachine.Player != null)
+        {
+            if (!stateMachine.playerStateMachine.sneaking) 
+            {
+                if (IsInDetectionRange(stateMachine.Player))
+                    stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            }
+            else {
+                if(IsInSneakingDetectionRange(stateMachine.Player))
+                    stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            }
+                
+        }
         stateMachine.animator.SetFloat(SpeedHash, 0f, AnimationDampTime, deltaTime);
     }
 

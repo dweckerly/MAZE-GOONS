@@ -1081,7 +1081,8 @@ MonoBehaviour:
   RightHand: {fileID: 7623981536511477963}
   LeftHand: {fileID: 2056203881759658949}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: af0934f11f22d444a99ca766e2392493, type: 2}
-  currentWeapon: {fileID: 0}
+  mainHandWeapon: {fileID: 0}
+  offHandWeapon: {fileID: 0}
   mainHandPrefab: {fileID: 0}
   offHandPrefab: {fileID: 0}
   mainHandDamage: {fileID: 0}
@@ -1089,6 +1090,8 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
+  shieldEquipped: 
+  maskLayers: 
 --- !u!114 &3134474910933261977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,6 +1126,7 @@ MonoBehaviour:
   baseHP: 10
   DamageReduction: 0
   <HealthRect>k__BackingField: {fileID: 0}
+  <StaminaRect>k__BackingField: {fileID: 0}
 --- !u!195 &3134474910933261981
 NavMeshAgent:
   m_ObjectHideFlags: 0

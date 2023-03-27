@@ -34,10 +34,12 @@ public class EnemyStateMachine : StateMachine
     public float animSpeed;
 
     public GameObject Player { get; private set; }
+    public PlayerStateMachine playerStateMachine;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        playerStateMachine = Player.GetComponent<PlayerStateMachine>();
         Agent.updatePosition = false;
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;

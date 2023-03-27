@@ -24,6 +24,11 @@ public abstract class EnemyBaseState : State
         return IsInRange(go, stateMachine.DetectionRange);
     }
 
+    protected bool IsInSneakingDetectionRange(GameObject go)
+    {
+        return IsInRange(go, stateMachine.DetectionRange / 2);
+    }
+
     protected bool IsInAttackRange(GameObject go)
     {
         return IsInRange(go, stateMachine.AttackRange * stateMachine.WeaponHandler.mainHandWeapon.weaponLength);
