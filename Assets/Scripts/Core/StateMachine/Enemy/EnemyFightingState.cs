@@ -21,15 +21,18 @@ public class EnemyFightingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        FaceTarget(stateMachine.Player);
-        if (!IsInAttackRange(stateMachine.Player))
+        if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            FaceTarget(stateMachine.Player);
+            if (!IsInAttackRange(stateMachine.Player))
+            {
+                stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+                return;
+            }
+            stateMachine.SwitchState(new EnemyAttackingState(stateMachine, 0));
             return;
         }
-        else 
-        {
-            stateMachine.SwitchState(new EnemyAttackingState(stateMachine, 0));
-        }
+        stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+        return;
     }
 }

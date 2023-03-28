@@ -18,19 +18,25 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (!IsInDetectionRange(stateMachine.Player)) 
+        if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+            if (!IsInDetectionRange(stateMachine.Player))
+            {
+                stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+                return;
+            }
+            if (IsInAttackRange(stateMachine.Player))
+            {
+                stateMachine.SwitchState(new EnemyFightingState(stateMachine));
+                return;
+            }
+            MoveToTarget(deltaTime, stateMachine.Player);
+            FaceTarget(stateMachine.Player);
+            stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
             return;
         }
-        if (IsInAttackRange(stateMachine.Player))
-        {
-            stateMachine.SwitchState(new EnemyFightingState(stateMachine));
-            return;
-        }
-        MoveToTarget(deltaTime, stateMachine.Player);
-        FaceTarget(stateMachine.Player);
-        stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
+        stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+        return;
     }
 
     public override void Exit() 

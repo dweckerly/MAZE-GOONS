@@ -19,7 +19,7 @@ public class EnemyIdleState : EnemyBaseState
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-        if (stateMachine.Player != null)
+        if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
             if (!stateMachine.playerStateMachine.sneaking) 
             {

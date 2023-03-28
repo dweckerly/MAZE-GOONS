@@ -22,14 +22,12 @@ public class EnemyAttackingState : EnemyBaseState
             stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
             stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
-            //stateMachine.WeaponHandler.EnableRightHandCollider();
         }
         else
         {
             stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
             stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
-            //stateMachine.WeaponHandler.EnableLeftHandCollider();
         }
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
     }
@@ -37,8 +35,6 @@ public class EnemyAttackingState : EnemyBaseState
     public override void Exit() 
     {
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
-        //if (attack.RightHand) stateMachine.WeaponHandler.DisableRightHandCollider();
-        //else stateMachine.WeaponHandler.DisableLeftHandCollider();
     }
 
     public override void Tick(float deltaTime)
