@@ -529,9 +529,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 708cbcbd22b7c7b4b9ea4e7f2fd60b8b, type: 2}
+  - {fileID: 2100000, guid: 708cbcbd22b7c7b4b9ea4e7f2fd60b8b, type: 2}
   - {fileID: 2100000, guid: 034148f5b4e4b8245b32249cc0cb7dc4, type: 2}
-  - {fileID: 2100000, guid: ebf33ddaf0517f049928d710880e61f3, type: 2}
-  - {fileID: 2100000, guid: 24368b66afcb2c34e8680268862be29c, type: 2}
+  - {fileID: 2100000, guid: 4a54364d00f4a7248bddc8eb58bcb924, type: 2}
+  - {fileID: 2100000, guid: e22a2f45c37b93f4b889d81cbbe9620d, type: 2}
   - {fileID: 2100000, guid: 08a5b2a46464cbc4bb8e560a7466e9ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -824,6 +825,7 @@ MonoBehaviour:
   rotationDamping: 10
   dodgeDistance: 2
   dodgeDuration: 0.2
+  dodgeStaminaReq: 3
   sneaking: 0
 --- !u!114 &7782677968425473779
 MonoBehaviour:
@@ -927,6 +929,7 @@ MonoBehaviour:
   baseHP: 10
   DamageReduction: 0
   <HealthRect>k__BackingField: {fileID: 0}
+  <StaminaRect>k__BackingField: {fileID: 0}
 --- !u!114 &5953909182342821676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,7 +957,8 @@ MonoBehaviour:
   RightHand: {fileID: 6527816884518714237}
   LeftHand: {fileID: 3446307631184994419}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: af0934f11f22d444a99ca766e2392493, type: 2}
-  currentWeapon: {fileID: 0}
+  mainHandWeapon: {fileID: 0}
+  offHandWeapon: {fileID: 0}
   mainHandPrefab: {fileID: 0}
   offHandPrefab: {fileID: 0}
   mainHandDamage: {fileID: 0}
@@ -962,6 +966,8 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
+  shieldEquipped: 
+  maskLayers: 
 --- !u!114 &4598053074635153495
 MonoBehaviour:
   m_ObjectHideFlags: 0
