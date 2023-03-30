@@ -757,10 +757,10 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2a4b5076a05e3cd4b8e7e7f2aa155d64, type: 2}
+  - {fileID: 2100000, guid: 2a4b5076a05e3cd4b8e7e7f2aa155d64, type: 2}
   - {fileID: 2100000, guid: 034148f5b4e4b8245b32249cc0cb7dc4, type: 2}
-  - {fileID: 2100000, guid: bef7cac6bf159814f91d73c8b0f6b228, type: 2}
+  - {fileID: 2100000, guid: ab36c0b71ca1c7b4aa15bdc896a09e58, type: 2}
   - {fileID: 2100000, guid: 421807fe8aa72424190b0c1c5d7d762f, type: 2}
-  - {fileID: 2100000, guid: 2c3e8987e8471a745aab5b1f24216001, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   - {fileID: 4458100944043783804}
   scaleFactor: 0
   animSpeed: 0
+  playerStateMachine: {fileID: 0}
 --- !u!114 &3134474910933261975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2819,6 +2820,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19945494, guid: d03730c3abcf63d44865fd96f761de02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c3e8987e8471a745aab5b1f24216001, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03730c3abcf63d44865fd96f761de02, type: 3}
 --- !u!198 &2734901866298208732 stripped
