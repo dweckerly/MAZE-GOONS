@@ -88,7 +88,10 @@ public class UIManager : MonoBehaviour
                     interactableMessage.text = "Open Chest";
                     break;
                 case InteractableType.Door:
-                    interactableMessage.text = "Open Door";
+                    if(((Door)interactable).isOpen)
+                        interactableMessage.text = "Close Door";
+                    else
+                        interactableMessage.text = "Open Door";
                     break;
                 case InteractableType.Lever:
                     interactableMessage.text = "Pull Lever";

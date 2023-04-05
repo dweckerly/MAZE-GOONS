@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door : Interactable
 {
     Animator animator;
+    public bool isOpen = false;
 
     public override InteractableType type { get { return InteractableType.Door; } } 
 
@@ -21,8 +22,8 @@ public class Door : Interactable
 
     public void InteractWithDoor()
     {
-        bool open = animator.GetBool("IsOpen");
-        animator.SetBool("IsOpen", !open);
+        isOpen = !isOpen;
+        animator.SetBool("IsOpen", isOpen);
     }
 
     // animation event used in the last frame of the opening and closing animations
