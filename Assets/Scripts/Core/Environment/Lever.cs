@@ -7,7 +7,7 @@ public class Lever : Interactable
     Animator animator;
     public LeverTarget leverTarget;
 
-    public override InteractableType type { get { return InteractableType.Door; } }
+    public override InteractableType type { get { return InteractableType.Lever; } }
 
     private void Awake()
     {
