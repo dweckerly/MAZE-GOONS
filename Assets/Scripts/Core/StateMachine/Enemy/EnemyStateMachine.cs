@@ -77,10 +77,11 @@ public class EnemyStateMachine : StateMachine
         ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
     }
 
-    private void HandleTakeDamage()
+    private void HandleTakeDamage(bool impact)
     {
         BloodParticles.Play();
-        SwitchState(new EnemyImpactState(this));
+        if (impact)
+            SwitchState(new EnemyImpactState(this));
     }
 
     private void HandleDie()

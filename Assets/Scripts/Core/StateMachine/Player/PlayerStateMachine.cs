@@ -63,10 +63,11 @@ public class PlayerStateMachine : StateMachine
         ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
     }
 
-    private void HandleTakeDamage()
+    private void HandleTakeDamage(bool impact)
     {
         BloodParticles.Play();
-        SwitchState(new PlayerImpactState(this));
+        if (impact)
+            SwitchState(new PlayerImpactState(this));
     }
 
     private void HandleDie()

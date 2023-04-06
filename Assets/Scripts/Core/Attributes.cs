@@ -13,7 +13,7 @@ public enum Attribute
 
 public class Attributes : MonoBehaviour
 {
-    public event Action OnTakeDamage;
+    public event Action<bool> OnTakeDamage;
     public event Action OnDie;
 
     public bool alive = true;
@@ -122,10 +122,13 @@ public class Attributes : MonoBehaviour
     public void TakeDamage(int amount)
     {
         if (isInvulnerable || !alive) return;
-        int damage = Mathf.Clamp(amount - DamageReduction, 0, currentHP);
+        int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
         if (damage > 0)
         {
-            OnTakeDamage?.Invoke();
+            if (damage > 1) 
+                OnTakeDamage?.Invoke(true);
+            else
+                OnTakeDamage?.Invoke(false);
             ChangeHP(amount * -1);
         }
     }
