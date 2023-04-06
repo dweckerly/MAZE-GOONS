@@ -71,6 +71,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleDie()
     {
+        BloodParticles.Play();
         SwitchState(new PlayerDeadState(this));
     }
 

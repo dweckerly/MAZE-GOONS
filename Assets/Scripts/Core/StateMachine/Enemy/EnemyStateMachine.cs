@@ -85,6 +85,7 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleDie()
     {
+        BloodParticles.Play();
         SwitchState(new EnemyDeadState(this));
     }
 
