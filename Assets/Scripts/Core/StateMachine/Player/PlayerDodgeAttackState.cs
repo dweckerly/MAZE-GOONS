@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerDodgeAttackState : PlayerBaseState
 {
-    private readonly int AttackHash = Animator.StringToHash("One-Handed-Dodge-Forward");
+    private readonly int OneHandedAttackHash = Animator.StringToHash("One-Handed-Dodge-Forward");
+    private readonly int TwoHandedAttackHash = Animator.StringToHash("Two-Handed-Dodge-Forward");
     private float previousFrameTime;
     private bool appliedForce = false;
 
@@ -16,8 +17,13 @@ public class PlayerDodgeAttackState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.animator.CrossFadeInFixedTime(AttackHash, CrossFadeDuration);
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
+        if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded)
+        {
+            stateMachine.animator.CrossFadeInFixedTime(TwoHandedAttackHash, CrossFadeDuration);
+            return;
+        }
+        stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
     }
 
     public override void Exit()
