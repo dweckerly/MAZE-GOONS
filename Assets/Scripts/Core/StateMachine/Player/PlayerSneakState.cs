@@ -24,7 +24,7 @@ public class PlayerSneakState : PlayerLocomotiveState
     {
         if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            stateMachine.SwitchState(new PlayerSneakAttackState(stateMachine));
             return;
         }
         if (stateMachine.InputReader.IsBlocking)
