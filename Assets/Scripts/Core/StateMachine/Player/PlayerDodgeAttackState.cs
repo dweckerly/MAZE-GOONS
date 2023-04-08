@@ -29,7 +29,6 @@ public class PlayerDodgeAttackState : PlayerAttackingState
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
             if (normalizedTime >= forceTime) TryApplyForce();
-            if (stateMachine.InputReader.IsAttacking) TryComboAttack(normalizedTime);
         }
         else
         {
