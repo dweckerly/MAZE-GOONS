@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerJumpAttackState : PlayerAttackingState
 {
     private readonly int AttackHash = Animator.StringToHash("Two-Handed-Jump-Attack");
-    private float animationTime = 0.5f;
     private float forceTime = 0.1f;
     private float force = 10f;
 
