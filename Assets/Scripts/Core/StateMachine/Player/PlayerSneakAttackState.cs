@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSneakAttackState : PlayerAttackingState
 {
     private readonly int OneHandedAttackHash = Animator.StringToHash("One-Handed-Sneak-Attack");
+    private float forceTime = 0.1f;
 
     public PlayerSneakAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
@@ -20,11 +21,10 @@ public class PlayerSneakAttackState : PlayerAttackingState
         float normalizedTime = GetNormalizedAnimationTime(stateMachine.animator);
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
-            if (normalizedTime >= attack.ForceTime) TryApplyForce();
+            if (normalizedTime >= forceTime) TryApplyForce();
         }
         else
         {
-            stateMachine.sneaking = false;
             ReturnToLocomotion();
         }
         previousFrameTime = normalizedTime;

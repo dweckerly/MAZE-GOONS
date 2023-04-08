@@ -41,7 +41,7 @@ public class PlayerAttackingState : PlayerBaseState
         float normalizedTime = GetNormalizedAnimationTime(stateMachine.animator);
         if (normalizedTime >= previousFrameTime && normalizedTime < 1)
         {
-            if (normalizedTime >= attack.ForceTime) TryApplyForce();
+            if (normalizedTime >= attack.ForceTime) TryApplyForce(attack.Force);
             if (stateMachine.InputReader.IsAttacking) TryComboAttack(normalizedTime);
         }
         else
@@ -63,10 +63,10 @@ public class PlayerAttackingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
-    protected void TryApplyForce()
+    protected void TryApplyForce(float force = 20f)
     {
         if (appliedForce) return;
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * force);
         appliedForce = true;
     }
 }

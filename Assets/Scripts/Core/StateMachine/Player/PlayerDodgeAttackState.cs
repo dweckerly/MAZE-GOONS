@@ -8,7 +8,6 @@ public class PlayerDodgeAttackState : PlayerAttackingState
     private readonly int TwoHandedAttackHash = Animator.StringToHash("Two-Handed-Dodge-Forward");
     private float animationTime = 0.5f;
     private float forceTime = 0.1f;
-    private float force = 20f;
 
     public PlayerDodgeAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
