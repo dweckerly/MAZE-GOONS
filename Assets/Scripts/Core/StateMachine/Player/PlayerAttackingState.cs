@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerAttackingState : PlayerBaseState
 {
-    private float previousFrameTime;
-    private Attack attack;
-    private bool appliedForce = false;
+    protected float previousFrameTime;
+    protected Attack attack;
+    protected bool appliedForce = false;
+
+    public PlayerAttackingState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
@@ -54,14 +56,14 @@ public class PlayerAttackingState : PlayerBaseState
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
     }
 
-    private void TryComboAttack(float normalizedTime)
+    protected void TryComboAttack(float normalizedTime)
     {
         if (attack.ComboStateIndex == -1) return;
         if (normalizedTime < attack.ComboAttackTime) return;
         stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
-    private void TryApplyForce()
+    protected void TryApplyForce()
     {
         if (appliedForce) return;
         stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);

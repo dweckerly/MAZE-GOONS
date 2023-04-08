@@ -2,34 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSneakAttackState : PlayerBaseState
+public class PlayerSneakAttackState : PlayerAttackingState
 {
-    private float previousFrameTime;
-    private Attack attack;
-    private bool appliedForce = false;
+    private readonly int OneHandedAttackHash = Animator.StringToHash("One-Handed-Sneak-Attack");
 
-    public PlayerSneakAttackState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine)
-    {
-        attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[attackIndex];
-    }
+    public PlayerSneakAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine) {}
 
     public override void Enter()
     {
-        stateMachine.sneaking = false;
-        if (attack.RightHand)
-        {
-            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-            stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
-            stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
-        }
-        else
-        {
-            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
-            stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
-            stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
-        }
-        stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
+        stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
@@ -46,17 +28,5 @@ public class PlayerSneakAttackState : PlayerBaseState
             ReturnToLocomotion();
         }
         previousFrameTime = normalizedTime;
-    }
-
-    public override void Exit()
-    {
-        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
-    }
-
-    private void TryApplyForce()
-    {
-        if (appliedForce) return;
-        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
-        appliedForce = true;
     }
 }
