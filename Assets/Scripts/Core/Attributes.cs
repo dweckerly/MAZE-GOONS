@@ -121,15 +121,19 @@ public class Attributes : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isInvulnerable || !alive) return;
+        if (!alive) return;
         int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
         if (damage > 0)
         {
-            if (damage > 1) 
-                OnTakeDamage?.Invoke(true);
+            if (isInvulnerable) SpendStamina(damage);
             else
-                OnTakeDamage?.Invoke(false);
-            ChangeHP(amount * -1);
+            {
+                if (damage > 1)
+                    OnTakeDamage?.Invoke(true);
+                else
+                    OnTakeDamage?.Invoke(false);
+                ChangeHP(amount * -1);
+            }
         }
     }
 
