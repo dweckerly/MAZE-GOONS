@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerJumpAttackState : PlayerAttackingState
 {
-    private readonly int AttackHash = Animator.StringToHash("Two-Handed-Jump-Attack");
+    private readonly int OneHandedAttackHash = Animator.StringToHash("One-Handed-Jump");
+    private readonly int TwoHandedAttackHash = Animator.StringToHash("Two-Handed-Jump-Attack");
     private float forceTime = 0.1f;
     private float force = 10f;
 
@@ -12,7 +13,8 @@ public class PlayerJumpAttackState : PlayerAttackingState
 
     public override void Enter()
     {
-        stateMachine.animator.CrossFadeInFixedTime(AttackHash, CrossFadeDuration);
+        if (stateMachine.WeaponHandler.mainHandWeapon.oneHanded) stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
+        else stateMachine.animator.CrossFadeInFixedTime(TwoHandedAttackHash, CrossFadeDuration);
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
     }
 
