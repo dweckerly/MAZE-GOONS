@@ -24,7 +24,7 @@ public class PlayerTargetingState : PlayerLocomotiveState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
-        if (stateMachine.InputReader.IsBlocking)
+        if (stateMachine.InputReader.IsBlocking && stateMachine.canBlock)
         {
             stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
             return;

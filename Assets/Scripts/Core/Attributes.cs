@@ -128,10 +128,7 @@ public class Attributes : MonoBehaviour
             if (isInvulnerable) SpendStamina(damage);
             else
             {
-                if (damage > 1)
-                    OnTakeDamage?.Invoke(true);
-                else
-                    OnTakeDamage?.Invoke(false);
+                OnTakeDamage?.Invoke(true);
                 ChangeHP(amount * -1);
             }
         }

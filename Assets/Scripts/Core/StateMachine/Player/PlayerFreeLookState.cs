@@ -26,7 +26,7 @@ public class PlayerFreeLookState : PlayerLocomotiveState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;
         }
-        if (stateMachine.InputReader.IsBlocking && stateMachine.Attributes.GetStamina() > 0)
+        if (stateMachine.InputReader.IsBlocking && stateMachine.canBlock)
         {
             stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
             return;

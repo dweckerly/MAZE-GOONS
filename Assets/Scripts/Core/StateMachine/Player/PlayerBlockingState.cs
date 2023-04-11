@@ -26,6 +26,12 @@ public class PlayerBlockingState : PlayerBaseState
     {
         Move(deltaTime);
         if (!stateMachine.InputReader.IsBlocking) ReturnToLocomotion();
+        if (stateMachine.Attributes.GetStamina() <= 0)
+        {
+            stateMachine.canBlock = false;
+            stateMachine.StartCoroutine("BlockCooldown");
+            stateMachine.HandleTakeDamage(true);
+        }
     }
 
     public override void Exit() 

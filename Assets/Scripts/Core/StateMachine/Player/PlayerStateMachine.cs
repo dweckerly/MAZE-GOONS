@@ -30,6 +30,8 @@ public class PlayerStateMachine : StateMachine
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.2f;
     public int dodgeStaminaReq = 3;
+    public float blockCooldown = 1f;
+    public bool canBlock = true;
 
     public bool sneaking = false;
 
@@ -63,7 +65,7 @@ public class PlayerStateMachine : StateMachine
         ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
     }
 
-    private void HandleTakeDamage(bool impact)
+    public void HandleTakeDamage(bool impact)
     {
         BloodParticles.Play();
         if (impact)
@@ -96,5 +98,11 @@ public class PlayerStateMachine : StateMachine
     private void HandleArmorUnEquip(Armor armor)
     {
         Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
+    }
+
+    public IEnumerator BlockCooldown()
+    {
+        yield return new WaitForSeconds(blockCooldown);
+        canBlock = true;
     }
 }
