@@ -257,13 +257,22 @@ public class UIManager : MonoBehaviour
     {
         if (PauseCanvas.activeSelf) 
         {
+            playerStateMachine.InputReader.UIOpen = false;
+            playerStateMachine.InputReader.LockCursor();
             PauseCanvas.SetActive(false);
             Time.timeScale = 1;
         }
         else
         {
+            playerStateMachine.InputReader.UIOpen = true;
+            playerStateMachine.InputReader.UnlockCursor();
             PauseCanvas.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
