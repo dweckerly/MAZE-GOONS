@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject UICanvas;
     public GameObject InventoryPanel;
     public GameObject EquipBtnPanel;
+    public GameObject PauseCanvas;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
     public TextMeshProUGUI damageText;
@@ -43,17 +44,12 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction += OnTarget;
+        playerStateMachine.InputReader.PauseEvent += OnPause;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
         gutsText.text = playerStateMachine.Attributes.GetStat(Attribute.Guts).ToString();
         guileText.text = playerStateMachine.Attributes.GetStat(Attribute.Guile).ToString();
-    }
-
-    private void OnTarget()
-    {
-        bool show = TargetPanelAnimator.GetBool("ShowPanels");
-        TargetPanelAnimator.SetBool("ShowPanels", !show);
     }
 
     void OnDestroy()
@@ -66,6 +62,13 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction -= OnTarget;
+        playerStateMachine.InputReader.PauseEvent -= OnPause;
+    }
+
+    private void OnTarget()
+    {
+        bool show = TargetPanelAnimator.GetBool("ShowPanels");
+        TargetPanelAnimator.SetBool("ShowPanels", !show);
     }
 
     private void ShowInteractablePrompt(Interactable interactable)
@@ -248,5 +251,19 @@ public class UIManager : MonoBehaviour
         LootUI.SetActive(false);
         if (loot != null) loot.CanInteract = true;
         if (loot.items.Count == 0) loot.CanInteract = false;
+    }
+
+    public void OnPause()
+    {
+        if (PauseCanvas.activeSelf) 
+        {
+            PauseCanvas.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            PauseCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }
