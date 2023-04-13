@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -10,6 +11,7 @@ public class CharacterCreator : MonoBehaviour
     public GameObject HUD;
     public PlayableAsset playable;
     public PlayableDirector playableDirector;
+    public CinemachineVirtualCamera createCam;
 
     public void FinishCharacterCreation()
     {
@@ -20,6 +22,7 @@ public class CharacterCreator : MonoBehaviour
 
     IEnumerator CameraPan()
     {
+        createCam.Priority = 0;
         while(playableDirector.state == PlayState.Playing)
         {
             yield return null;
@@ -29,7 +32,6 @@ public class CharacterCreator : MonoBehaviour
 
     private void OnCameraFinished()
     {
-        print("CameraFinished triggered...");
         inputReader.enabled = true;
         HUD.SetActive(true);
     }
