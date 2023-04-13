@@ -16,12 +16,16 @@ public class CharacterCreator : MonoBehaviour
     public Material EyeMaterial;
     public List<GameObject> NosePrefabs = new List<GameObject>();
     public Material NoseMaterial;
+    GameObject currentNose;
     public List<Texture2D> MouthTextures = new List<Texture2D>();
     public Material MouthMaterial;
     public Material SkinMaterial;
 
     private int hairIndex = 0;
     private int earIndex = 0;
+    private int eyeIndex = 0;
+    private int noseIndex = 0;
+    private int mouthIndex = 0;
 
     public GameObject CCUI;
     public InputReader inputReader;
@@ -33,50 +37,91 @@ public class CharacterCreator : MonoBehaviour
     private void Start() 
     {
         currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform); 
-        currentEars = Instantiate(EarPrefabs[earIndex], HeadBone.transform);  
+        currentEars = Instantiate(EarPrefabs[earIndex], HeadBone.transform);
+        EyeMaterial.mainTexture = EyeTextures[eyeIndex];
+        currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+        MouthMaterial.mainTexture = MouthTextures[mouthIndex];
     }
 
     public void IncreaseHairIndex()
     {
-        hairIndex = IncreaseIndex(hairIndex, HairPrefabs);
+        hairIndex = IncreaseIndex(hairIndex, HairPrefabs.Count);
         Destroy(currentHair);
         currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
     }
 
     public void DecreaseHairIndex()
     {
-        hairIndex = DecreaseIndex(hairIndex, HairPrefabs);
+        hairIndex = DecreaseIndex(hairIndex, HairPrefabs.Count);
         Destroy(currentHair);
         currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
     }
 
     public void IncreaseEarIndex()
     {
-        earIndex = IncreaseIndex(earIndex, EarPrefabs);
+        earIndex = IncreaseIndex(earIndex, EarPrefabs.Count);
         Destroy(currentEars);
         currentEars = Instantiate(EarPrefabs[earIndex], HeadBone.transform);
     }
 
     public void DecreaseEarIndex()
     {
-        earIndex = DecreaseIndex(earIndex, EarPrefabs);
+        earIndex = DecreaseIndex(earIndex, EarPrefabs.Count);
         Destroy(currentEars);
         currentEars = Instantiate(EarPrefabs[earIndex], HeadBone.transform);
     }
 
-    public int IncreaseIndex(int index, List<GameObject> bpList)
+    public void IncreaseEyeIndex()
+    {
+        eyeIndex = IncreaseIndex(eyeIndex, EyeTextures.Count);
+        EyeMaterial.mainTexture = EyeTextures[eyeIndex];
+    }
+
+    public void DecreaseEyeIndex()
+    {
+        eyeIndex = DecreaseIndex(eyeIndex, EyeTextures.Count);
+        EyeMaterial.mainTexture = EyeTextures[eyeIndex];
+    }
+
+    public void IncreaseMouthIndex()
+    {
+        mouthIndex = IncreaseIndex(mouthIndex, MouthTextures.Count);
+        MouthMaterial.mainTexture = MouthTextures[mouthIndex];
+    }
+
+    public void DecreaseMouthIndex()
+    {
+        mouthIndex = DecreaseIndex(mouthIndex, MouthTextures.Count);
+        MouthMaterial.mainTexture = MouthTextures[mouthIndex];
+    }
+
+    public void IncreaseNoseIndex()
+    {
+        noseIndex = IncreaseIndex(noseIndex, NosePrefabs.Count);
+        Destroy(currentNose);
+        currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+    }
+
+    public void DecreaseNoseIndex()
+    {
+        noseIndex = DecreaseIndex(noseIndex, NosePrefabs.Count);
+        Destroy(currentNose);
+        currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+    }
+
+    public int IncreaseIndex(int index, int count)
     {
         int i = index;
         i++;
-        if (i >= bpList.Count) i = 0;
+        if (i >= count) i = 0;
         return i;
     }
 
-    public int DecreaseIndex(int index, List<GameObject> bpList)
+    public int DecreaseIndex(int index, int count)
     {
         int i = index;
         i--;
-        if (i <= 0) i = bpList.Count - 1;
+        if (i < 0) i = count - 1;
         return i;
     }
 
