@@ -14,7 +14,6 @@ public class SceneChanger : MonoBehaviour
     public Image fadeImage;
 
     float fadeTime = 3f;
-    float fadeRate = 0.1f;
 
     private void Start() 
     {
