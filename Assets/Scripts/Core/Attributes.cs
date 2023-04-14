@@ -28,7 +28,7 @@ public class Attributes : MonoBehaviour
 
     private int currentBrains;
     private int currentBrawn;
-    private int currentGuile;
+    public int currentGuile;
     private int currentGuts;
 
     private Dictionary<Attribute, int> attrLookup;
