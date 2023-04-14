@@ -14,6 +14,8 @@ public class PlayerAttackingState : PlayerBaseState
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[attackIndex];
+        if (stateMachine.WeaponHandler.mainHandWeapon.weight < 5) 
+            stateMachine.animator.speed = 1 + (stateMachine.Attributes.currentGuile / 10);
     }
 
     public override void Enter()

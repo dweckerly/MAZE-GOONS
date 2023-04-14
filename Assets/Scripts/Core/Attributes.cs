@@ -22,7 +22,7 @@ public class Attributes : MonoBehaviour
     [SerializeField] int guile;
     [SerializeField] int guts;
 
-    [SerializeField] int baseHP = 10;
+    [SerializeField] int baseHP = 100;
 
     public int DamageReduction = 0;
 
@@ -54,6 +54,7 @@ public class Attributes : MonoBehaviour
         currentGuts = guts;
         maxHP = CalculateMaxHP();
         currentHP = maxHP;
+        maxStamina = (brains + guts) * 10;
         currentStamina = maxStamina;
 
         attrLookup = new Dictionary<Attribute, int> ()
@@ -73,7 +74,7 @@ public class Attributes : MonoBehaviour
 
     private int CalculateMaxHP()
     {
-        return baseHP + guts;
+        return baseHP + (10 * guts + 2 * brawn);
     }
 
     public float CalculateCarryWeight()
