@@ -100,6 +100,7 @@ public class EnemyStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
+        if (WeaponHandler.mainHandWeapon.itemName != "Unarmed") Loot.items.Add(WeaponHandler.mainHandWeapon);
     }
 
     private void HandleArmorEquip(Armor armor)

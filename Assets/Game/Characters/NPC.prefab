@@ -1126,6 +1126,7 @@ MonoBehaviour:
   guts: 0
   baseHP: 10
   DamageReduction: 0
+  currentGuile: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
 --- !u!195 &3134474910933261981
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   CanInteract: 0
   items: []
   lootCollider: {fileID: 644783066647313546}
+  enemyStateMachine: {fileID: 3134474910933261978}
 --- !u!136 &644783066647313546
 CapsuleCollider:
   m_ObjectHideFlags: 0

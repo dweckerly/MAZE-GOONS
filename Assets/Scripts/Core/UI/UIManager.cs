@@ -228,6 +228,20 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.Inventory.AddItem(item);
         loot.items.Remove(item);
+        switch (item.itemType)
+        {
+            case ItemType.Armor:
+                loot.enemyStateMachine.ArmorHandler.CheckArmor((Armor)item);
+                break;
+            case ItemType.Shield:
+                loot.enemyStateMachine.WeaponHandler.EquipShield((Shield)item);
+                break;
+            case ItemType.Weapon:
+                loot.enemyStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
+                break;
+            default:
+                break;
+        }
         UpdateLootUI();
         if (loot.items.Count == 0) CloseLootUI();
     }
