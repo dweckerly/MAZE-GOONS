@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
+using TMPro;
 
 public class CharacterCreator : MonoBehaviour
 {
+    public TMP_InputField inputField;
+    public GameObject nameWarning;
     public GameObject HeadBone;
     public List<GameObject> HairPrefabs = new List<GameObject>();
     public Material HairMaterial;
@@ -128,9 +131,17 @@ public class CharacterCreator : MonoBehaviour
 
     public void FinishCharacterCreation()
     {
-        CCUI.SetActive(false);
-        playableDirector.Play(playable);
-        StartCoroutine(CameraPan());
+        string name = inputField.text;
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            CCUI.SetActive(false);
+            playableDirector.Play(playable);
+            StartCoroutine(CameraPan());
+        }
+        else
+        {
+            nameWarning.SetActive(true);
+        }
     }
 
     IEnumerator CameraPan()
