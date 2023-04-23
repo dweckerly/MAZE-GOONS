@@ -267,7 +267,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 36400380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &36400380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.8, g: 0.7019608, b: 0.28235295, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2871,11 +2883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000001732913
+      value: 0.00000001733193
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -6.218744e-10
+      value: -6.219752e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2883,7 +2895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13512474
+      value: 0.13512471
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355633040201, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
@@ -2907,11 +2919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0000000010684544
+      value: -0.0000000010771999
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -1.2201534e-10
+      value: 1.2301404e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2935,11 +2947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1e-45
+      value: -4.1912087e-30
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 3.0865503e-31
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4372,7 +4384,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 447700017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &447700017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4386,7 +4410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7028,7 +7052,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 798617739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &798617739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7042,7 +7078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.12941177, g: 0.26666668, b: 0.5764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8783,7 +8819,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1065086097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1065086097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8797,7 +8845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.47058824, g: 0.29411766, b: 0.21176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9831,8 +9879,8 @@ MonoBehaviour:
     shaded: {r: 0.3764706, g: 0.34117648, b: 0.29411766, a: 0}
   - main: {r: 0.6784314, g: 0.43529412, b: 0.30588236, a: 0}
     shaded: {r: 0.30980393, g: 0.2, b: 0.14117648, a: 0}
-  - main: {r: 0.7921569, g: 0.627451, b: 0.33333334, a: 0}
-    shaded: {r: 0.3764706, g: 0.3137255, b: 0.19607843, a: 0}
+  - main: {r: 0.8018868, g: 0.7314918, b: 0.38203096, a: 0}
+    shaded: {r: 0.3679245, g: 0.33978847, b: 0.18222676, a: 0}
   - main: {r: 0.42352942, g: 0.35686275, b: 0.3254902, a: 0}
     shaded: {r: 0.20784314, g: 0.17254902, b: 0.15686275, a: 0}
   - main: {r: 0.59607846, g: 0.25882354, b: 0.2, a: 0}
@@ -9840,27 +9888,27 @@ MonoBehaviour:
   - main: {r: 1, g: 0.73333335, b: 0.68235296, a: 0}
     shaded: {r: 0.3882353, g: 0.30588236, b: 0.2901961, a: 0}
   HairColors:
-  - main: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 0}
-    shaded: {r: 0.44313726, g: 0.3647059, b: 0.2627451, a: 0}
-  - main: {r: 0.7372549, g: 0.46666667, b: 0.4117647, a: 0}
-    shaded: {r: 0.44313726, g: 0.24313726, b: 0.20392157, a: 0}
-  - main: {r: 0.9607843, g: 0.8627451, b: 0.72156864, a: 0}
-    shaded: {r: 0.3764706, g: 0.34117648, b: 0.29411766, a: 0}
-  - main: {r: 0.6784314, g: 0.43529412, b: 0.30588236, a: 0}
-    shaded: {r: 0.30980393, g: 0.2, b: 0.14117648, a: 0}
-  - main: {r: 0.7921569, g: 0.627451, b: 0.33333334, a: 0}
-    shaded: {r: 0.3764706, g: 0.3137255, b: 0.19607843, a: 0}
-  - main: {r: 0.42352942, g: 0.35686275, b: 0.3254902, a: 0}
-    shaded: {r: 0.20784314, g: 0.17254902, b: 0.15686275, a: 0}
-  - main: {r: 0.59607846, g: 0.25882354, b: 0.2, a: 0}
-    shaded: {r: 0.32156864, g: 0.19607843, b: 0.17254902, a: 0}
-  - main: {r: 1, g: 0.73333335, b: 0.68235296, a: 0}
-    shaded: {r: 0.3882353, g: 0.30588236, b: 0.2901961, a: 0}
+  - main: {r: 0.50980395, g: 0.15686275, b: 0.17254902, a: 0}
+    shaded: {r: 0.18039216, g: 0.09803922, b: 0.101960786, a: 0}
+  - main: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 0}
+    shaded: {r: 0.14901961, g: 0.14901961, b: 0.14901961, a: 0}
+  - main: {r: 0.8, g: 0.7019608, b: 0.28235295, a: 0}
+    shaded: {r: 0.22745098, g: 0.20784314, b: 0.13725491, a: 0}
+  - main: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 0}
+    shaded: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 0}
+  - main: {r: 0.47058824, g: 0.29411766, b: 0.21176471, a: 0}
+    shaded: {r: 0.12156863, g: 0.08235294, b: 0.0627451, a: 0}
+  - main: {r: 0.9607843, g: 0.34901962, b: 0.011764706, a: 0}
+    shaded: {r: 0.28235295, g: 0.105882354, b: 0.007843138, a: 0}
+  - main: {r: 0.12941177, g: 0.26666668, b: 0.5764706, a: 0}
+    shaded: {r: 0.11764706, g: 0.15686275, b: 0.24705882, a: 0}
+  - main: {r: 0.60784316, g: 0.99215686, b: 0.2, a: 0}
+    shaded: {r: 0.23137255, g: 0.34901962, b: 0.101960786, a: 0}
   NoseColors:
   - main: {r: 0.54901963, g: 0.27450982, b: 0.30588236, a: 0}
     shaded: {r: 0.36862746, g: 0.18039216, b: 0.1882353, a: 0}
-  - main: {r: 0.54901963, g: 0.27450982, b: 0.43529412, a: 0}
-    shaded: {r: 0.32941177, g: 0.15686275, b: 0.25882354, a: 0}
+  - main: {r: 0.27450982, g: 0.40710363, b: 0.54901963, a: 0}
+    shaded: {r: 0.14382343, g: 0.22059709, b: 0.3018868, a: 0}
   - main: {r: 0.43137255, g: 0.27450982, b: 0.54901963, a: 0}
     shaded: {r: 0.27450982, g: 0.18039216, b: 0.34901962, a: 0}
   - main: {r: 0.8117647, g: 0.5411765, b: 0.68235296, a: 0}
@@ -10657,7 +10705,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1346483759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1346483759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10671,7 +10731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.60784316, g: 0.99215686, b: 0.2, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12486,7 +12546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.54901963, g: 0.27450982, b: 0.43529412, a: 1}
+  m_Color: {r: 0.27450982, g: 0.40784314, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12748,7 +12808,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1658248606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1658248606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12762,7 +12834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14262,7 +14334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7921569, g: 0.627451, b: 0.33333334, a: 1}
+  m_Color: {r: 0.8117647, g: 0.7019608, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14747,7 +14819,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1920818241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1920818241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14761,7 +14845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.9607843, g: 0.34901962, b: 0.011764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16029,7 +16113,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2060508268}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236735606}
+        m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
+        m_MethodName: HairButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2060508268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16043,7 +16139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 1}
+  m_Color: {r: 0.50980395, g: 0.15686275, b: 0.17254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
