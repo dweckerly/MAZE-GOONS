@@ -572,12 +572,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton3
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -715,8 +715,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton0
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2835,7 +2835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925626518225924539, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.094960205
+      value: 0.09496021
       objectReference: {fileID: 0}
     - target: {fileID: 3925626518225924539, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2987,7 +2987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058533434950268058, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: 5058533434950268058, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3233,12 +3233,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton1
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4989,12 +4989,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton6
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6495,12 +6495,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton2
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8517,12 +8517,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton5
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8900,12 +8900,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton7
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9810,6 +9810,13 @@ MonoBehaviour:
   SkinMaterial: {fileID: 2100000, guid: 708cbcbd22b7c7b4b9ea4e7f2fd60b8b, type: 2}
   HairMaterial: {fileID: 2100000, guid: 90d66dac23159524facc5e481cb57b7f, type: 2}
   NoseMaterial: {fileID: 2100000, guid: 916b55734c8cbed4fb66b25120a376ce, type: 2}
+  SkinColors: []
+  HairColors:
+  - main: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 0}
+    shaded: {r: 0.44313726, g: 0.3647059, b: 0.2627451, a: 0}
+  - main: {r: 0.7372549, g: 0.46666667, b: 0.4117647, a: 0}
+    shaded: {r: 0.44313726, g: 0.24313726, b: 0.20392157, a: 0}
+  NoseColors: []
 --- !u!1001 &1242586652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14148,12 +14155,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1236735606}
         m_TargetAssemblyTypeName: ColorButtons, Assembly-CSharp
-        m_MethodName: SkinButton4
-        m_Mode: 1
+        m_MethodName: SkinButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
