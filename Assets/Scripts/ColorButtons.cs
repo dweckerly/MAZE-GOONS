@@ -14,12 +14,22 @@ public class ColorButtons : MonoBehaviour
 
     public void SkinButton(int index)
     {
-        ChangeMaterialColor(SkinMaterial, index);
+        ChangeMaterialColor(SkinMaterial, SkinColors, index);
     }
 
-    void ChangeMaterialColor(Material material, int index)
+    public void HairButton(int index)
     {
-        material.color = SkinColors[index].main;
-        material.SetColor("_ColorDim", SkinColors[index].shaded);
+        ChangeMaterialColor(HairMaterial, HairColors, index);
+    }
+
+    public void NoseButton(int index)
+    {
+        ChangeMaterialColor(NoseMaterial, NoseColors, index);
+    }
+
+    void ChangeMaterialColor(Material material, ShadedColor[] colorArr, int index)
+    {
+        material.color = colorArr[index].main;
+        material.SetColor("_ColorDim", colorArr[index].shaded);
     }
 }
