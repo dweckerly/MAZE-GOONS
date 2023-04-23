@@ -38,8 +38,29 @@ public class ColorButtons : MonoBehaviour
 
     public void SkinButton4()
     {
-        Color32 primary = new Color32(173, 111, 78, 255);
-        Color32 secondary = new Color32(79, 51, 36, 255);
+        Color32 primary = new Color32(202, 160, 85, 255);
+        Color32 secondary = new Color32(96, 80, 50, 255);
+        ChangeMaterialColor(SkinMaterial, primary, secondary);
+    }
+
+    public void SkinButton5()
+    {
+        Color32 primary = new Color32(108, 91, 83, 255);
+        Color32 secondary = new Color32(53, 44, 40, 255);
+        ChangeMaterialColor(SkinMaterial, primary, secondary);
+    }
+
+    public void SkinButton6()
+    {
+        Color32 primary = new Color32(152, 66, 51, 255);
+        Color32 secondary = new Color32(82, 50, 44, 255);
+        ChangeMaterialColor(SkinMaterial, primary, secondary);
+    }
+
+    public void SkinButton7()
+    {
+        Color32 primary = new Color32(255, 187, 174, 255);
+        Color32 secondary = new Color32(99, 78, 74, 255);
         ChangeMaterialColor(SkinMaterial, primary, secondary);
     }
 
