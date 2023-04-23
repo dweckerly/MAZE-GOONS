@@ -2835,7 +2835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925626518225924539, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09496021
+      value: 0.094960205
       objectReference: {fileID: 0}
     - target: {fileID: 3925626518225924539, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2859,11 +2859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000001732913
+      value: 0.00000001732913
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 6.218744e-10
+      value: -6.218744e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2895,7 +2895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0000000010684545
+      value: 0.0000000010684544
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9810,12 +9810,40 @@ MonoBehaviour:
   SkinMaterial: {fileID: 2100000, guid: 708cbcbd22b7c7b4b9ea4e7f2fd60b8b, type: 2}
   HairMaterial: {fileID: 2100000, guid: 90d66dac23159524facc5e481cb57b7f, type: 2}
   NoseMaterial: {fileID: 2100000, guid: 916b55734c8cbed4fb66b25120a376ce, type: 2}
-  SkinColors: []
+  SkinColors:
+  - main: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 0}
+    shaded: {r: 0.44313726, g: 0.3647059, b: 0.2627451, a: 0}
+  - main: {r: 0.7372549, g: 0.46666667, b: 0.4117647, a: 0}
+    shaded: {r: 0.44313726, g: 0.24313726, b: 0.20392157, a: 0}
+  - main: {r: 0.9607843, g: 0.8627451, b: 0.72156864, a: 0}
+    shaded: {r: 0.3764706, g: 0.34117648, b: 0.29411766, a: 0}
+  - main: {r: 0.6784314, g: 0.43529412, b: 0.30588236, a: 0}
+    shaded: {r: 0.30980393, g: 0.2, b: 0.14117648, a: 0}
+  - main: {r: 0.7921569, g: 0.627451, b: 0.33333334, a: 0}
+    shaded: {r: 0.3764706, g: 0.3137255, b: 0.19607843, a: 0}
+  - main: {r: 0.42352942, g: 0.35686275, b: 0.3254902, a: 0}
+    shaded: {r: 0.20784314, g: 0.17254902, b: 0.15686275, a: 0}
+  - main: {r: 0.59607846, g: 0.25882354, b: 0.2, a: 0}
+    shaded: {r: 0.32156864, g: 0.19607843, b: 0.17254902, a: 0}
+  - main: {r: 1, g: 0.73333335, b: 0.68235296, a: 0}
+    shaded: {r: 0.3882353, g: 0.30588236, b: 0.2901961, a: 0}
   HairColors:
   - main: {r: 0.7372549, g: 0.6, b: 0.4117647, a: 0}
     shaded: {r: 0.44313726, g: 0.3647059, b: 0.2627451, a: 0}
   - main: {r: 0.7372549, g: 0.46666667, b: 0.4117647, a: 0}
     shaded: {r: 0.44313726, g: 0.24313726, b: 0.20392157, a: 0}
+  - main: {r: 0.9607843, g: 0.8627451, b: 0.72156864, a: 0}
+    shaded: {r: 0.3764706, g: 0.34117648, b: 0.29411766, a: 0}
+  - main: {r: 0.6784314, g: 0.43529412, b: 0.30588236, a: 0}
+    shaded: {r: 0.30980393, g: 0.2, b: 0.14117648, a: 0}
+  - main: {r: 0.7921569, g: 0.627451, b: 0.33333334, a: 0}
+    shaded: {r: 0.3764706, g: 0.3137255, b: 0.19607843, a: 0}
+  - main: {r: 0.42352942, g: 0.35686275, b: 0.3254902, a: 0}
+    shaded: {r: 0.20784314, g: 0.17254902, b: 0.15686275, a: 0}
+  - main: {r: 0.59607846, g: 0.25882354, b: 0.2, a: 0}
+    shaded: {r: 0.32156864, g: 0.19607843, b: 0.17254902, a: 0}
+  - main: {r: 1, g: 0.73333335, b: 0.68235296, a: 0}
+    shaded: {r: 0.3882353, g: 0.30588236, b: 0.2901961, a: 0}
   NoseColors: []
 --- !u!1001 &1242586652
 PrefabInstance:
