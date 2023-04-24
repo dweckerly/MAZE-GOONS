@@ -7,6 +7,7 @@ using TMPro;
 
 public class CharacterCreator : MonoBehaviour
 {
+    public GameObject Player;
     public TMP_InputField inputField;
     public GameObject nameWarning;
     public GameObject HeadBone;
@@ -128,12 +129,27 @@ public class CharacterCreator : MonoBehaviour
         return i;
     }
 
+    public void RotateRight()
+    {
+        Vector3 rotation = Player.transform.localEulerAngles;
+        rotation += new Vector3(0, -15, 0); 
+        Player.transform.localEulerAngles = rotation;
+    }
+
+    public void RotateLeft()
+    {
+        Vector3 rotation = Player.transform.localEulerAngles;
+        rotation += new Vector3(0, 15, 0);
+        Player.transform.localEulerAngles = rotation;
+    }
+
 
     public void FinishCharacterCreation()
     {
         string name = inputField.text;
         if (!string.IsNullOrWhiteSpace(name))
         {
+            Player.transform.localEulerAngles = Vector3.zero;
             CCUI.SetActive(false);
             playableDirector.Play(playable);
             StartCoroutine(CameraPan());
