@@ -162,6 +162,8 @@ public class CharacterCreator : MonoBehaviour
         if (!string.IsNullOrWhiteSpace(name))
         {
             Player.transform.localEulerAngles = Vector3.zero;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             CCUI.SetActive(false);
             playableDirector.Play(playable);
             StartCoroutine(CameraPan());
