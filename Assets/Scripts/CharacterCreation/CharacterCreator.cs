@@ -50,15 +50,21 @@ public class CharacterCreator : MonoBehaviour
     public void IncreaseHairIndex()
     {
         hairIndex = IncreaseIndex(hairIndex, HairPrefabs.Count);
-        Destroy(currentHair);
-        currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
+        if (currentHair != null) Destroy(currentHair);
+        if (HairPrefabs[hairIndex] != null)
+            currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
+        else
+            currentHair = null;
     }
 
     public void DecreaseHairIndex()
     {
         hairIndex = DecreaseIndex(hairIndex, HairPrefabs.Count);
-        Destroy(currentHair);
-        currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
+        if (currentHair != null) Destroy(currentHair);
+        if (HairPrefabs[hairIndex] != null)
+            currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform);
+        else
+            currentHair = null;
     }
 
     public void IncreaseEarIndex()
@@ -102,15 +108,21 @@ public class CharacterCreator : MonoBehaviour
     public void IncreaseNoseIndex()
     {
         noseIndex = IncreaseIndex(noseIndex, NosePrefabs.Count);
-        Destroy(currentNose);
-        currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+        if (currentNose != null) Destroy(currentNose);
+        if (NosePrefabs[noseIndex] != null)
+            currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+        else
+            currentNose = null;
     }
 
     public void DecreaseNoseIndex()
     {
         noseIndex = DecreaseIndex(noseIndex, NosePrefabs.Count);
-        Destroy(currentNose);
-        currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+        if (currentNose != null) Destroy(currentNose);
+        if (NosePrefabs[noseIndex] != null)
+            currentNose = Instantiate(NosePrefabs[noseIndex], HeadBone.transform);
+        else
+            currentNose = null;
     }
 
     public int IncreaseIndex(int index, int count)
