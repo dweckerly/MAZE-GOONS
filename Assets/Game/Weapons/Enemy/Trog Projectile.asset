@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
-  m_Name: Trog Bite
+  m_Name: Trog Projectile
   m_EditorClassIdentifier: 
-  Id: c1ce8dbd-85d3-4903-bb4a-abc65d9bc427
+  Id: 4a7498cd-e931-4bb4-a720-82c17652c37b
   itemName: 
   weight: 0
   value: 0
-  weaponPrefab: {fileID: 2566938134648312129, guid: 4b11bc78f59e4f144862fc92482d4c8d, type: 3}
-  offHandPrefab: {fileID: 2566938134648312129, guid: 4b11bc78f59e4f144862fc92482d4c8d, type: 3}
-  weaponDamage: 5
-  weaponLength: 1
-  oneHanded: 1
-  twoHanded: 0
-  projectile: 0
+  weaponPrefab: {fileID: 21411341779074308, guid: 6f441644b00824046a548a2b2426b704, type: 3}
+  offHandPrefab: {fileID: 21411341779074308, guid: 6f441644b00824046a548a2b2426b704, type: 3}
+  weaponDamage: 3
+  weaponLength: 20
+  oneHanded: 0
+  twoHanded: 1
+  projectile: 1
   lootable: 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack-Unarmed
@@ -31,5 +31,5 @@ MonoBehaviour:
     <ComboAttackTime>k__BackingField: 0
     <Force>k__BackingField: 5
     <ForceTime>k__BackingField: 0.3
-    RightHand: 1
-    Knockback: 5
+    RightHand: 0
+    Knockback: 10

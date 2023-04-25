@@ -265,6 +265,12 @@ public class WeaponHandler : MonoBehaviour
         if (offHandCollider != null) DisableLeftHandCollider();
     }
 
+    void Shoot()
+    {
+        if (!mainHandWeapon.projectile) return;
+        Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
+    }
+
     public void EnableRightHandCollider()
     {
         mainHandCollider.enabled = true;

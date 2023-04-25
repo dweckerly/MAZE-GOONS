@@ -13,6 +13,7 @@ public class Weapon : Item
     public float weaponLength = 1f;
     public bool oneHanded = true;
     public bool twoHanded = false;
+    public bool projectile = false;
     public bool lootable = true;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 }
