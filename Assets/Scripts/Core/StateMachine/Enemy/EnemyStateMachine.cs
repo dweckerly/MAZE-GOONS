@@ -30,8 +30,8 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
     [field: SerializeField] public List<Renderer> Renderers = new List<Renderer>();
 
-    public float scaleFactor;
-    public float animSpeed;
+    public float scaleFactor = 1;
+    public float animSpeed = 1;
 
     public GameObject Player { get; private set; }
     public PlayerStateMachine playerStateMachine;
@@ -100,7 +100,7 @@ public class EnemyStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
-        if (WeaponHandler.mainHandWeapon.itemName != "Unarmed") Loot.items.Add(WeaponHandler.mainHandWeapon);
+        if (WeaponHandler.mainHandWeapon.lootable) Loot.items.Add(WeaponHandler.mainHandWeapon);
     }
 
     private void HandleArmorEquip(Armor armor)

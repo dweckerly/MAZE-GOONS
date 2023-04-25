@@ -1361,6 +1361,8 @@ GameObject:
   - component: {fileID: 4816429052547790095}
   - component: {fileID: 4816429052547790080}
   - component: {fileID: 4816429052547790081}
+  - component: {fileID: 2849685502866264075}
+  - component: {fileID: 2135722227513638905}
   m_Layer: 0
   m_Name: Trog
   m_TagString: Untagged
@@ -1405,7 +1407,7 @@ CharacterController:
   m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!95 &4816429052547790094
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1413,7 +1415,7 @@ Animator:
   m_GameObject: {fileID: 5626699514287376454}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 465de73c4fffce940a5ccb2fdffce77f, type: 2}
-  m_Controller: {fileID: 9100000, guid: ed60c65e324f4d34b801f34495b35cf7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4571d6e6027b4144f8eff140b9b02681, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1422,7 +1424,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &4816429052547790091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1440,8 @@ MonoBehaviour:
   RightHand: {fileID: 2695233540358773287}
   LeftHand: {fileID: 1340582180148991577}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: 2f5c9f17e17048f46b557155aaf0140e, type: 2}
-  currentWeapon: {fileID: 0}
+  mainHandWeapon: {fileID: 0}
+  offHandWeapon: {fileID: 0}
   mainHandPrefab: {fileID: 0}
   offHandPrefab: {fileID: 0}
   mainHandDamage: {fileID: 0}
@@ -1446,6 +1449,8 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
+  shieldEquipped: 
+  maskLayers: 
 --- !u!195 &4816429052547790092
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1500,7 +1505,10 @@ MonoBehaviour:
   guile: 0
   guts: 0
   baseHP: 10
+  DamageReduction: 0
+  currentGuile: 0
   <HealthRect>k__BackingField: {fileID: 0}
+  <StaminaRect>k__BackingField: {fileID: 0}
 --- !u!114 &4816429052547790080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,16 +1533,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27cb513eae377e40a62e91b18327d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   <animator>k__BackingField: {fileID: 4816429052547790094}
+  <animationMask>k__BackingField: {fileID: 2135722227513638905}
+  <ArmorHandler>k__BackingField: {fileID: 2849685502866264075}
   <Attributes>k__BackingField: {fileID: 4816429052547790095}
   <Controller>k__BackingField: {fileID: 4816429052547790082}
   <ForceReceiver>k__BackingField: {fileID: 4816429052547790093}
   <Agent>k__BackingField: {fileID: 4816429052547790092}
   <WeaponHandler>k__BackingField: {fileID: 4816429052547790091}
   <Target>k__BackingField: {fileID: 4816429052547790080}
+  <Loot>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 5
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 1.3
+  <BloodParticles>k__BackingField: {fileID: 0}
+  Renderers: []
+  scaleFactor: 1
+  animSpeed: 1
+  playerStateMachine: {fileID: 0}
+--- !u!114 &2849685502866264075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626699514287376454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87429c3a6736c4844b1f02cc4f9537f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPartMap: []
+--- !u!114 &2135722227513638905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626699514287376454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb90afcbd7f6274595724605e7072be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6031524375357273762
 GameObject:
   m_ObjectHideFlags: 0
