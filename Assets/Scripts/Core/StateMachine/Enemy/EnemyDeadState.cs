@@ -15,7 +15,7 @@ public class EnemyDeadState : EnemyBaseState
         stateMachine.animator.SetTrigger(DeadHash);
         stateMachine.WeaponHandler.DisableRightHandCollider();
         if (stateMachine.WeaponHandler.offHandPrefab != null) stateMachine.WeaponHandler.DisableLeftHandCollider();
-        stateMachine.Loot.Enable();
+        if (stateMachine.Loot != null) stateMachine.Loot.Enable();
     }
 
     public override void Exit() {}
