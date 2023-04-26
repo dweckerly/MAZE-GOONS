@@ -125,6 +125,7 @@ public class WeaponHandler : MonoBehaviour
     {
         mainHandWeapon = defaultWeapon;
         mainHandPrefab = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
+        mainHandPrefab.layer = gameObject.layer;
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
@@ -136,6 +137,7 @@ public class WeaponHandler : MonoBehaviour
     {
         mainHandWeapon = weapon;
         mainHandPrefab = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
+        mainHandPrefab.layer = gameObject.layer;
         mainHandDamage = mainHandPrefab.GetComponent<WeaponDamage>();
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
@@ -159,6 +161,7 @@ public class WeaponHandler : MonoBehaviour
     {
         offHandWeapon = weapon;
         offHandPrefab = Instantiate(offHandWeapon.offHandPrefab, LeftHand.transform);
+        offHandPrefab.layer = gameObject.layer;
         offHandDamage = offHandPrefab.GetComponent<WeaponDamage>();
         offHandDamage.IgnoreCollider(sourceCollider);
         offHandDamage.baseDamage = offHandWeapon.weaponDamage;
@@ -270,6 +273,7 @@ public class WeaponHandler : MonoBehaviour
         if (!mainHandWeapon.projectile) return;
         GameObject proj = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform.position, gameObject.transform.rotation);
         proj.GetComponent<WeaponDamage>().IgnoreCollider(sourceCollider);
+        proj.layer = gameObject.layer;
     }
 
     public void EnableRightHandCollider()

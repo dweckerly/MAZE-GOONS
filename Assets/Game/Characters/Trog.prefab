@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5247098390093510649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JawUpper_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4722439272303972889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JawUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5929539552791518851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4653214180175186833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JawLower_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796698070051523728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JawLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 4816429052547790081}
   - component: {fileID: 2849685502866264075}
   - component: {fileID: 2135722227513638905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2124,9 +2124,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4998395017149420284}
     m_Modifications:
+    - target: {fileID: 104480, guid: ffd0baf041f7b5d4ea8307671c046d82, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 124754, guid: ffd0baf041f7b5d4ea8307671c046d82, type: 3}
       propertyPath: m_Name
       value: GreenBloodSplatWide2 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 124754, guid: ffd0baf041f7b5d4ea8307671c046d82, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 474732, guid: ffd0baf041f7b5d4ea8307671c046d82, type: 3}
       propertyPath: m_RootOrder
