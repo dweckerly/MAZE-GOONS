@@ -45,7 +45,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 21411341779074308}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b89bb9985991984994c0b5b529b4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  Lifespan: 60
+  Speed: 2000
+  Lifespan: 3
 --- !u!1001 &3771647445408866774
 PrefabInstance:
   m_ObjectHideFlags: 0
