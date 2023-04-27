@@ -65,7 +65,7 @@ public class Targeter : MonoBehaviour
     {
         if (CurrentTarget == target)
         {
-            TargetAction.Invoke();
+            TargetAction?.Invoke();
             cinTargetGroup.RemoveMember(CurrentTarget.transform);
             CurrentTarget = null;
         }

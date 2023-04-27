@@ -278,21 +278,21 @@ public class WeaponHandler : MonoBehaviour
 
     public void EnableRightHandCollider()
     {
-        mainHandCollider.enabled = true;
+        if (mainHandCollider != null) mainHandCollider.enabled = true;
     }
 
     public virtual void DisableRightHandCollider()
     {
-        mainHandCollider.enabled = false;
+        if (mainHandCollider != null) mainHandCollider.enabled = false;
     }
 
     public void EnableLeftHandCollider()
     {
-        offHandCollider.enabled = true;
+        if (offHandCollider != null) offHandCollider.enabled = true;
     }
 
     public void DisableLeftHandCollider()
     {
-        offHandCollider.enabled = false;
+        if (offHandCollider != null) offHandCollider.enabled = false;
     }
 }
