@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class Targeter : MonoBehaviour
 {
+    public CinemachineVirtualCamera CombatCamera;
+    public Transform DefaultTarget;
     private Camera mainCamera;
     private List<Target> targets = new List<Target>();
     public Target CurrentTarget { get; private set; }
@@ -48,6 +50,7 @@ public class Targeter : MonoBehaviour
         if (closestTarget == null) return false;
         CurrentTarget = closestTarget;
         TargetAction.Invoke();
+        CombatCamera.LookAt = closestTarget.transform;
         return true;
     }
 
@@ -55,6 +58,7 @@ public class Targeter : MonoBehaviour
     {
         if (CurrentTarget == null) return;
         TargetAction.Invoke();
+        CombatCamera.LookAt = DefaultTarget;
         CurrentTarget = null;
     }
 
@@ -63,6 +67,7 @@ public class Targeter : MonoBehaviour
         if (CurrentTarget == target)
         {
             TargetAction?.Invoke();
+            CombatCamera.LookAt = DefaultTarget;
             CurrentTarget = null;
         }
         target.OnDestroyed -= RemoveTarget;
