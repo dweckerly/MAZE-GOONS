@@ -29,7 +29,8 @@ public class EnemyAttackingState : EnemyBaseState
             stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
         }
-        stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
+        if (stateMachine.enemyType == EnemyType.Trog) stateMachine.animator.CrossFadeInFixedTime("One-Handed-Swing-Down", CrossFadeDuration);
+        else stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
     }
 
     public override void Exit() 
