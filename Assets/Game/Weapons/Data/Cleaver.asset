@@ -22,6 +22,11 @@ MonoBehaviour:
   weaponLength: 1.25
   oneHanded: 0
   twoHanded: 1
+  projectile: 0
+  dual: 0
+  head: 0
+  lootable: 1
+  unarmed: 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: One-Handed-Swing-Down-2
     <TransitionDuration>k__BackingField: 0.1
@@ -47,11 +52,3 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.3
     RightHand: 1
     Knockback: 15
-  - <AnimationName>k__BackingField: One-Handed-Dodge-Forward
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 0
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 10
-    <ForceTime>k__BackingField: 0.3
-    RightHand: 1
-    Knockback: 10
