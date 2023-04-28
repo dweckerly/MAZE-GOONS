@@ -64,6 +64,37 @@ Transform:
   m_Father: {fileID: 5851093784589087659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &479518874163489051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5044533554456355313}
+  m_Layer: 0
+  m_Name: RWeaponHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5044533554456355313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479518874163489051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5851093784589087659}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522205395577211760
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +220,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5777185313945186693}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &997363228484393501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7432902868334694851}
+  m_Layer: 0
+  m_Name: LWeaponHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7432902868334694851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997363228484393501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1801410556957527876}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005250388658315424
 GameObject:
@@ -380,6 +442,7 @@ Transform:
   - {fileID: 8339327377957984349}
   - {fileID: 7457856940868470826}
   - {fileID: 4524775527086223744}
+  - {fileID: 7432902868334694851}
   m_Father: {fileID: 8916094278456812764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1439,8 +1502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 2695233540358773287}
-  RightHand: {fileID: 8520985814532135245}
-  LeftHand: {fileID: 1340582180148991577}
+  RightHand: {fileID: 479518874163489051}
+  LeftHand: {fileID: 997363228484393501}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: 2f5c9f17e17048f46b557155aaf0140e, type: 2}
   mainHandWeapon: {fileID: 0}
   offHandWeapon: {fileID: 0}
@@ -2052,6 +2115,7 @@ Transform:
   - {fileID: 8905478889132911796}
   - {fileID: 5997619698080500208}
   - {fileID: 373813778610160680}
+  - {fileID: 5044533554456355313}
   m_Father: {fileID: 8975020524978709050}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
