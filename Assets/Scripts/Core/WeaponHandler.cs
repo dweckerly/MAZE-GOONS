@@ -105,13 +105,13 @@ public class WeaponHandler : MonoBehaviour
 
     private void EquipDefaultWeapon()
     {
+        maskLayers.Clear();
         if (defaultWeapon.head) EquipDefaultHead();
         else
         {
             EquipDefaultMainHand();
             if (defaultWeapon.dual) EquipDefaultOffHand();
         }
-        maskLayers.Clear();
         OnEquip?.Invoke();
     }
 
@@ -123,6 +123,11 @@ public class WeaponHandler : MonoBehaviour
         offHandDamage.IgnoreCollider(sourceCollider);
         offHandDamage.baseDamage = offHandWeapon.weaponDamage;
         offHandCollider = offHandPrefab.GetComponent<Collider>();
+        if (!defaultWeapon.unarmed)
+        {
+            maskLayers.Add(LEFT_GRIP);
+            maskLayers.Add(ONE_HANDED_ARM_POSITION_LEFT);
+        }
         DisableLeftHandCollider();
     }
 
@@ -135,6 +140,11 @@ public class WeaponHandler : MonoBehaviour
         mainHandDamage.IgnoreCollider(sourceCollider);
         mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
+        if (!defaultWeapon.unarmed)
+        {
+            maskLayers.Add(RIGHT_GRIP);
+            maskLayers.Add(ONE_HANDED_ARM_POSITION);
+        }
         DisableRightHandCollider();
     }
 
@@ -148,6 +158,7 @@ public class WeaponHandler : MonoBehaviour
         mainHandDamage.baseDamage = mainHandWeapon.weaponDamage;
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
         DisableRightHandCollider();
+        OnEquip?.Invoke();
     }
 
     private void EquipMainHand(Weapon weapon)

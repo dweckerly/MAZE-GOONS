@@ -17,5 +17,6 @@ public class Weapon : Item
     public bool dual = false;
     public bool head = false;
     public bool lootable = true;
+    public bool unarmed = false;
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 }

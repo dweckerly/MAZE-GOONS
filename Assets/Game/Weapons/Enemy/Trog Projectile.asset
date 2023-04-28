@@ -17,13 +17,16 @@ MonoBehaviour:
   weight: 0
   value: 0
   weaponPrefab: {fileID: 21411341779074308, guid: 6f441644b00824046a548a2b2426b704, type: 3}
-  offHandPrefab: {fileID: 21411341779074308, guid: 6f441644b00824046a548a2b2426b704, type: 3}
+  offHandPrefab: {fileID: 0}
   weaponDamage: 3
   weaponLength: 20
   oneHanded: 0
-  twoHanded: 1
+  twoHanded: 0
   projectile: 1
+  dual: 0
+  head: 1
   lootable: 0
+  unarmed: 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack-Unarmed
     <TransitionDuration>k__BackingField: 0.1
