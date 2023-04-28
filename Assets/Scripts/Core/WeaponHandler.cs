@@ -12,6 +12,7 @@ public enum WeaponHand
 public class WeaponHandler : MonoBehaviour
 {
     public event Action OnEquip;
+    [SerializeField] GameObject Head;
     [SerializeField] GameObject RightHand;
     [SerializeField] GameObject LeftHand;
     [field: SerializeField] public Weapon defaultWeapon { get; private set; }
@@ -268,6 +269,7 @@ public class WeaponHandler : MonoBehaviour
         if (offHandCollider != null) DisableLeftHandCollider();
     }
 
+    // animation event used to instantiate projectile
     void Shoot()
     {
         if (!mainHandWeapon.projectile) return;
