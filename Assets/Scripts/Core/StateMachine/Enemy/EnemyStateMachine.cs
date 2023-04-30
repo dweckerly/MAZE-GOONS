@@ -113,16 +113,11 @@ public class EnemyStateMachine : StateMachine
 
     public void AlertNearbyEnemies()
     {
-        Debug.Log("ALERT!");
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up);
         foreach(RaycastHit hit in hits)
         {
             EnemyStateMachine esm = hit.collider.GetComponent<EnemyStateMachine>();
-            if(esm != null) 
-            {
-                Debug.Log("Found nearby enemy to alert");
-                Alert(esm);
-            }
+            if(esm != null) Alert(esm);
         }
     }
 
