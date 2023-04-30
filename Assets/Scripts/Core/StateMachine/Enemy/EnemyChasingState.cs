@@ -20,11 +20,11 @@ public class EnemyChasingState : EnemyBaseState
     {
         if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            if (!IsInDetectionRange(stateMachine.Player))
-            {
-                stateMachine.SwitchState(new EnemyIdleState(stateMachine));
-                return;
-            }
+            // if (!IsInDetectionRange(stateMachine.Player))
+            // {
+            //     stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+            //     return;
+            // }
             if (IsInAttackRange(stateMachine.Player))
             {
                 stateMachine.SwitchState(new EnemyFightingState(stateMachine));

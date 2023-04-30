@@ -24,7 +24,10 @@ public class EnemyIdleState : EnemyBaseState
             if (!stateMachine.playerStateMachine.sneaking) 
             {
                 if (IsInDetectionRange(stateMachine.Player))
+                {
+                    stateMachine.AlertNearbyEnemies();
                     stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+                }
             }
             else {
                 if(IsInSneakingDetectionRange(stateMachine.Player))

@@ -33,6 +33,7 @@ public class EnemyStateMachine : StateMachine
 
     public float scaleFactor = 1;
     public float animSpeed = 1;
+    private float shoutDistance = 10f;
 
     public GameObject Player { get; private set; }
     public PlayerStateMachine playerStateMachine;
@@ -108,5 +109,25 @@ public class EnemyStateMachine : StateMachine
     {
         Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
         Loot.items.Add(armor);
+    }
+
+    public void AlertNearbyEnemies()
+    {
+        Debug.Log("ALERT!");
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up);
+        foreach(RaycastHit hit in hits)
+        {
+            EnemyStateMachine esm = hit.collider.GetComponent<EnemyStateMachine>();
+            if(esm != null) 
+            {
+                Debug.Log("Found nearby enemy to alert");
+                Alert(esm);
+            }
+        }
+    }
+
+    private void Alert(EnemyStateMachine esm)
+    {
+        esm.SwitchState(new EnemyChasingState(esm));
     }
 }
