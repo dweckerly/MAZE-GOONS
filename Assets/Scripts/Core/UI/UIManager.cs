@@ -132,20 +132,23 @@ public class UIManager : MonoBehaviour
 
     private void OpenInventory()
     {
-        if (UICanvas.activeSelf)
+        if(!PauseCanvas.activeSelf)
         {
-            freeLook.m_XAxis.m_MaxSpeed = 300;
-            freeLook.m_YAxis.m_MaxSpeed = 2;
-            InventoryPanel.SetActive(true);
-            EquipBtnPanel.SetActive(false);
-            UICanvas.SetActive(false);
+            if (UICanvas.activeSelf)
+            {
+                CloseInventoryUI();
+                playerStateMachine.InputReader.UIOpen = false;
+            }
+            else 
+            {
+                if (LootUI.activeSelf) CloseLootUI();
+                playerStateMachine.InputReader.UIOpen = true;
+                playerStateMachine.InputReader.UnlockCursor();
+                freeLook.m_XAxis.m_MaxSpeed = 0;
+                freeLook.m_YAxis.m_MaxSpeed = 0;
+                UICanvas.SetActive(true);
+            }
         }
-        else 
-        {
-            freeLook.m_XAxis.m_MaxSpeed = 0;
-            freeLook.m_YAxis.m_MaxSpeed = 0;
-            UICanvas.SetActive(true);
-        }        
     }
 
     public void InventoryItemClick(Item item)
@@ -205,13 +208,16 @@ public class UIManager : MonoBehaviour
 
     public void OpenInteractionUI(Loot _loot)
     {
-        playerStateMachine.InputReader.UIOpen = true;
-        playerStateMachine.InputReader.UnlockCursor();
-        freeLook.m_XAxis.m_MaxSpeed = 0;
-        freeLook.m_YAxis.m_MaxSpeed = 0;
-        loot = _loot;
-        UpdateLootUI();
-        LootUI.SetActive(true);
+        if(!PauseCanvas.activeSelf && !UICanvas.activeSelf)
+        {
+            playerStateMachine.InputReader.UIOpen = true;
+            playerStateMachine.InputReader.UnlockCursor();
+            freeLook.m_XAxis.m_MaxSpeed = 0;
+            freeLook.m_YAxis.m_MaxSpeed = 0;
+            loot = _loot;
+            UpdateLootUI();
+            LootUI.SetActive(true);
+        }
     }
 
     private void UpdateLootUI()
@@ -278,11 +284,22 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            if (LootUI.activeSelf) CloseLootUI();
+            CloseInventoryUI();
             playerStateMachine.InputReader.UIOpen = true;
             playerStateMachine.InputReader.UnlockCursor();
             PauseCanvas.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    void CloseInventoryUI()
+    {
+        freeLook.m_XAxis.m_MaxSpeed = 300;
+        freeLook.m_YAxis.m_MaxSpeed = 2;
+        InventoryPanel.SetActive(true);
+        EquipBtnPanel.SetActive(false);
+        UICanvas.SetActive(false);
     }
 
     public void QuitGame()

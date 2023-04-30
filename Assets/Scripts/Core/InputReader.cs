@@ -92,9 +92,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnInventory(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        UIOpen = !UIOpen;
-        if (UIOpen) UnlockCursor();
-        else LockCursor();
         OpenInventoryEvent?.Invoke();
     }
 
