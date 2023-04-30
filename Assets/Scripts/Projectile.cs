@@ -20,4 +20,10 @@ public class Projectile : MonoBehaviour
         rigidBody.AddForce(rigidBody.transform.forward * Speed);
         Destroy(gameObject, Lifespan);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Projectile collided!");
+        Destroy(gameObject);
+    }
 }
