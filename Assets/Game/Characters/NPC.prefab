@@ -1052,8 +1052,8 @@ MonoBehaviour:
   <BloodParticles>k__BackingField: {fileID: 2734901866298208732}
   Renderers:
   - {fileID: 4458100944043783804}
-  scaleFactor: 0
-  animSpeed: 0
+  scaleFactor: 1
+  animSpeed: 1
   playerStateMachine: {fileID: 0}
 --- !u!114 &3134474910933261975
 MonoBehaviour:
@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337939797b73b6044abab7aeed9d303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Head: {fileID: 0}
   RightHand: {fileID: 7623981536511477963}
   LeftHand: {fileID: 2056203881759658949}
   <defaultWeapon>k__BackingField: {fileID: 11400000, guid: af0934f11f22d444a99ca766e2392493, type: 2}
@@ -1200,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bb4d4200ab54e40860a4c488d309f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanInteract: 0
+  CanInteract: 1
   items: []
   lootCollider: {fileID: 644783066647313546}
   enemyStateMachine: {fileID: 3134474910933261978}
@@ -1213,7 +1214,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2863882004895356543}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1

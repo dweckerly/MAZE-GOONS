@@ -97,6 +97,26 @@ public class ArmorHandler : MonoBehaviour
         equipLookup[armorBodyMap.bodyPositionReference] = null;
     }
 
+    public void UnEquipAllArmor()
+    {
+        List<Armor> tempArmor = new List<Armor>();
+        foreach (Armor armor in equippedArmor.Values)
+        {
+            tempArmor.Add(armor);
+        }
+        equippedArmor.Clear();
+
+        foreach (Armor armor in tempArmor)
+        {
+            UnEquipArmorEvent?.Invoke(armor);
+        }
+
+        foreach (BodyMapping bodyMap in equipLookup.Keys)
+        {
+            if (equipLookup[bodyMap]?.equip != null) Destroy(equipLookup[bodyMap].equip);
+        }
+    }
+
     public int CalculateArmorValue()
     {
         int armorSum = 0;

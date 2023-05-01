@@ -259,6 +259,7 @@ public class UIManager : MonoBehaviour
             playerStateMachine.Inventory.AddItem(item);
         }
         loot.enemyStateMachine.WeaponHandler.UnEquipAllWeapons();
+        loot.enemyStateMachine.ArmorHandler.UnEquipAllArmor();
         loot.items.Clear();
         CloseLootUI();
     }
