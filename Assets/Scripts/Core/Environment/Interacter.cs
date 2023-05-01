@@ -63,7 +63,7 @@ public class Interacter : MonoBehaviour
 
     public bool SelectInteraction()
     {
-        if (Interaction == null) return false;
+        if (Interaction == null || !Interaction.CanInteract) return false;
         if (Interaction is Loot) OnInteractEventWithUI?.Invoke((Loot)Interaction);
         return true;
     }
