@@ -200,7 +200,7 @@ public class WeaponHandler : MonoBehaviour
         DisableLeftHandCollider();
     }
 
-    private void UnEquipMainHand()
+    public void UnEquipMainHand()
     {
         if (mainHandPrefab != null) Destroy(mainHandPrefab);
         if (mainHandWeapon != null && mainHandWeapon.twoHanded)
@@ -231,7 +231,7 @@ public class WeaponHandler : MonoBehaviour
         shieldEquipped = null;
     }
 
-    private void UnEquipAllWeapons()
+    public void UnEquipAllWeapons()
     {
         UnEquipMainHand();
         UnEquipOffHand();

@@ -243,7 +243,7 @@ public class UIManager : MonoBehaviour
                 loot.enemyStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
             case ItemType.Weapon:
-                loot.enemyStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
+                loot.enemyStateMachine.WeaponHandler.UnEquipMainHand();
                 break;
             default:
                 break;
@@ -258,6 +258,7 @@ public class UIManager : MonoBehaviour
         {
             playerStateMachine.Inventory.AddItem(item);
         }
+        loot.enemyStateMachine.WeaponHandler.UnEquipAllWeapons();
         loot.items.Clear();
         CloseLootUI();
     }
