@@ -9,7 +9,7 @@ public class Loot : Interactable
     public Collider lootCollider;
     public EnemyStateMachine enemyStateMachine;
 
-    public void Enable()
+    public void Awake()
     {
         DisableLoot();
     }
@@ -34,6 +34,5 @@ public class Loot : Interactable
     public void AddItem(Item item)
     {
         items.Add(item);
-        EnableLoot();
     }
 }

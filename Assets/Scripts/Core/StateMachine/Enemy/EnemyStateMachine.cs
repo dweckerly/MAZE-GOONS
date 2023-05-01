@@ -102,13 +102,13 @@ public class EnemyStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
-        if (WeaponHandler.mainHandWeapon.lootable) Loot.items.Add(WeaponHandler.mainHandWeapon);
+        if (WeaponHandler.mainHandWeapon.lootable) Loot.AddItem(WeaponHandler.mainHandWeapon);
     }
 
     private void HandleArmorEquip(Armor armor)
     {
         Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
-        Loot.items.Add(armor);
+        Loot.AddItem(armor);
     }
 
     public void AlertNearbyEnemies()
