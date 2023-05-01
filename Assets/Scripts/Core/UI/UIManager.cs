@@ -269,8 +269,8 @@ public class UIManager : MonoBehaviour
         freeLook.m_XAxis.m_MaxSpeed = 300;
         freeLook.m_YAxis.m_MaxSpeed = 2;
         LootUI.SetActive(false);
-        if (loot != null) loot.CanInteract = true;
-        if (loot.items.Count == 0) loot.CanInteract = false;
+        if (loot != null) loot.EnableLoot();
+        if (loot.items.Count == 0) loot.DisableLoot();
     }
 
     public void OnPause()

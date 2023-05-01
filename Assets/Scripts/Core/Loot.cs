@@ -11,12 +11,29 @@ public class Loot : Interactable
 
     public void Enable()
     {
+        DisableLoot();
+    }
+
+    public void EnableLoot()
+    {
         CanInteract = true;
         lootCollider.enabled = true;
+    }
+
+    public void DisableLoot()
+    {
+        CanInteract = false;
+        lootCollider.enabled = false;
     }
 
     public override void Interact(PlayerStateMachine stateMachine)
     {
         CanInteract = false;
+    }
+
+    public void AddItem(Item item)
+    {
+        items.Add(item);
+        EnableLoot();
     }
 }
