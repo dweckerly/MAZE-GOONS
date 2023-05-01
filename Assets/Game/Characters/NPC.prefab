@@ -950,17 +950,17 @@ GameObject:
   - component: {fileID: 3239597959496305861}
   - component: {fileID: 3134474910933261980}
   - component: {fileID: 3134474910933261979}
+  - component: {fileID: 3134474910933261981}
+  - component: {fileID: 424930013535571807}
   - component: {fileID: 3134474910933261978}
-  - component: {fileID: 3134474910933261975}
   - component: {fileID: 3134474910933261974}
   - component: {fileID: 3134474910933261977}
   - component: {fileID: 3134474910933261976}
-  - component: {fileID: 3134474910933261981}
   - component: {fileID: 8465621606813905529}
   - component: {fileID: 7119147323215391651}
   - component: {fileID: 241685724740440045}
   - component: {fileID: 644783066647313546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -997,10 +997,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.4
-  m_Radius: 0.25
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.0001
+  m_SkinWidth: 0.05
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!95 &3134474910933261979
@@ -1023,6 +1023,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!195 &3134474910933261981
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &424930013535571807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863882004895356543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae156143501dcbf439771ea0ace32eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3134474910933261978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,7 +1078,7 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 3134474910933261977}
   <Agent>k__BackingField: {fileID: 3134474910933261981}
   <WeaponHandler>k__BackingField: {fileID: 3134474910933261974}
-  <Target>k__BackingField: {fileID: 3134474910933261975}
+  <Target>k__BackingField: {fileID: 424930013535571807}
   <Loot>k__BackingField: {fileID: 241685724740440045}
   <MovementSpeed>k__BackingField: 5
   <DetectionRange>k__BackingField: 10
@@ -1055,18 +1089,6 @@ MonoBehaviour:
   scaleFactor: 1
   animSpeed: 1
   playerStateMachine: {fileID: 0}
---- !u!114 &3134474910933261975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2863882004895356543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae156143501dcbf439771ea0ace32eba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3134474910933261974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.1
-  agent: {fileID: 0}
+  agent: {fileID: 3134474910933261981}
 --- !u!114 &3134474910933261976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,28 +1152,6 @@ MonoBehaviour:
   currentGuile: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
---- !u!195 &3134474910933261981
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2863882004895356543}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.5
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &8465621606813905529
 MonoBehaviour:
   m_ObjectHideFlags: 0

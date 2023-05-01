@@ -102,7 +102,7 @@ public class Maze : MonoBehaviour
         DrawMap();
         PlaceObjects();
         surface.BuildNavMesh();
-        //AddEnemiesToRooms();
+        AddEnemiesToRooms();
         PlacePlayer();
     }
 
