@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject InventoryPanel;
     public GameObject EquipBtnPanel;
     public GameObject PauseCanvas;
+    public GameObject GameOverCanvas;
     public Transform ViewPortContentContainer;
     public GameObject ItemDisplayPrefab;
     public TextMeshProUGUI damageText;
@@ -45,6 +47,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction += OnTarget;
         playerStateMachine.InputReader.PauseEvent += OnPause;
+        playerStateMachine.Attributes.OnDie += OnDeath;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
@@ -63,6 +66,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction -= OnTarget;
         playerStateMachine.InputReader.PauseEvent -= OnPause;
+        playerStateMachine.Attributes.OnDie -= OnDeath;
     }
 
     private void OnTarget()
@@ -132,7 +136,7 @@ public class UIManager : MonoBehaviour
 
     private void OpenInventory()
     {
-        if(!PauseCanvas.activeSelf)
+        if(!PauseCanvas.activeSelf && !GameOverCanvas.activeSelf)
         {
             if (UICanvas.activeSelf)
             {
@@ -208,7 +212,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenInteractionUI(Loot _loot)
     {
-        if(!PauseCanvas.activeSelf && !UICanvas.activeSelf)
+        if(!PauseCanvas.activeSelf && !UICanvas.activeSelf && !GameOverCanvas.activeSelf)
         {
             playerStateMachine.InputReader.UIOpen = true;
             playerStateMachine.InputReader.UnlockCursor();
@@ -277,21 +281,24 @@ public class UIManager : MonoBehaviour
 
     public void OnPause()
     {
-        if (PauseCanvas.activeSelf) 
+        if (!GameOverCanvas.activeSelf)
         {
-            playerStateMachine.InputReader.UIOpen = false;
-            playerStateMachine.InputReader.LockCursor();
-            PauseCanvas.SetActive(false);
-            Time.timeScale = 1;
-        }
-        else
-        {
-            if (LootUI.activeSelf) CloseLootUI();
-            CloseInventoryUI();
-            playerStateMachine.InputReader.UIOpen = true;
-            playerStateMachine.InputReader.UnlockCursor();
-            PauseCanvas.SetActive(true);
-            Time.timeScale = 0;
+            if (PauseCanvas.activeSelf) 
+            {
+                playerStateMachine.InputReader.UIOpen = false;
+                playerStateMachine.InputReader.LockCursor();
+                PauseCanvas.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                if (LootUI.activeSelf) CloseLootUI();
+                CloseInventoryUI();
+                playerStateMachine.InputReader.UIOpen = true;
+                playerStateMachine.InputReader.UnlockCursor();
+                PauseCanvas.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 
@@ -304,8 +311,22 @@ public class UIManager : MonoBehaviour
         UICanvas.SetActive(false);
     }
 
+    void OnDeath()
+    {
+        if (LootUI.activeSelf) CloseLootUI();
+        CloseInventoryUI();
+        playerStateMachine.InputReader.UIOpen = true;
+        playerStateMachine.InputReader.UnlockCursor();
+        GameOverCanvas.SetActive(true);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
