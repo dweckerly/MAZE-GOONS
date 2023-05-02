@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
+  m_Name: Sllime Melee
+  m_EditorClassIdentifier: 
+  Id: 0bba8fb2-3510-47e0-8d3b-737f9862a2f2
+  itemName: Slime Melee
+  weight: 0
+  value: 0
+  weaponPrefab: {fileID: 2566938134648312129, guid: 75ff28dc5564e614eb686b4da01a5d5e, type: 3}
+  offHandPrefab: {fileID: 0}
+  weaponDamage: 1
+  weaponLength: 1
+  oneHanded: 0
+  twoHanded: 0
+  projectile: 0
+  dual: 0
+  head: 1
+  lootable: 0
+  unarmed: 0
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: Slime-Melee
+    <TransitionDuration>k__BackingField: 0
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
+    <Force>k__BackingField: 10
+    <ForceTime>k__BackingField: 0.2
+    RightHand: 1
+    Knockback: 10
