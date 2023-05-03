@@ -14,6 +14,7 @@ public class PlayerSneakAttackState : PlayerAttackingState
     {
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
+        stateMachine.WeaponHandler.mainHandDamage.SetMultiplicativeDamageModifier(2f);
     }
 
     public override void Tick(float deltaTime)
@@ -29,5 +30,11 @@ public class PlayerSneakAttackState : PlayerAttackingState
             ReturnToLocomotion();
         }
         previousFrameTime = normalizedTime;
+    }
+
+    public override void Exit()
+    {
+        stateMachine.WeaponHandler.mainHandDamage.SetMultiplicativeDamageModifier(1f);
+        stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
     }
 }
