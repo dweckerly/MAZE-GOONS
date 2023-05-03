@@ -39,6 +39,7 @@ public class CharacterCreator : MonoBehaviour
     public CinemachineVirtualCamera createCam;
 
     public StatsButtons statsButtons;
+    public TMP_Text goonName;
 
     private void Start() 
     {
@@ -169,6 +170,7 @@ public class CharacterCreator : MonoBehaviour
             CCUI.SetActive(false);
             playableDirector.Play(playable);
             Player.GetComponent<Attributes>().SetStats(statsButtons.brawn, statsButtons.brains, statsButtons.guts, statsButtons.guile);
+            goonName.text = name;
             StartCoroutine(CameraPan());
         }
         else
