@@ -17,18 +17,18 @@ MonoBehaviour:
   weight: 0
   value: 0
   weaponPrefab: {fileID: 2566938134648312129, guid: 75ff28dc5564e614eb686b4da01a5d5e, type: 3}
-  offHandPrefab: {fileID: 0}
+  offHandPrefab: {fileID: 2566938134648312129, guid: aefdd1a2354121c4692dbf10b83bf407, type: 3}
   weaponDamage: 1
   weaponLength: 1
   oneHanded: 0
   twoHanded: 0
   projectile: 0
-  dual: 0
-  head: 1
+  dual: 1
+  head: 0
   lootable: 0
-  unarmed: 0
+  unarmed: 1
   <Attacks>k__BackingField:
-  - <AnimationName>k__BackingField: Slime-Melee
+  - <AnimationName>k__BackingField: Slime-Attack-0
     <TransitionDuration>k__BackingField: 0
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
@@ -36,3 +36,11 @@ MonoBehaviour:
     <ForceTime>k__BackingField: 0.2
     RightHand: 1
     Knockback: 10
+  - <AnimationName>k__BackingField: Slime-Attack-1
+    <TransitionDuration>k__BackingField: 0
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
+    <Force>k__BackingField: 5
+    <ForceTime>k__BackingField: 0.2
+    RightHand: 0
+    Knockback: 5

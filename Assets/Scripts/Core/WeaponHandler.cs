@@ -286,14 +286,14 @@ public class WeaponHandler : MonoBehaviour
     {
         if (mainHandDamage.swingParticle != null) mainHandDamage.swingParticle.Play();
         EnableRightHandCollider();
-        if (offHandCollider != null) EnableLeftHandCollider();
+        EnableLeftHandCollider();
     }
 
     // animation event required to disable weapon collider
     void EndHit()
     {
         DisableRightHandCollider();
-        if (offHandCollider != null) DisableLeftHandCollider();
+        DisableLeftHandCollider();
     }
 
     // animation event used to instantiate projectile
