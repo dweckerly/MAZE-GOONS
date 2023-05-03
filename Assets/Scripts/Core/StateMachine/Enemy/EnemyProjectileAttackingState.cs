@@ -16,7 +16,7 @@ public class EnemyProjectileAttackingState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
-        stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+        stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Guile));
         stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
         stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
         stateMachine.animator.CrossFadeInFixedTime(attack.AnimationName, CrossFadeDuration);
