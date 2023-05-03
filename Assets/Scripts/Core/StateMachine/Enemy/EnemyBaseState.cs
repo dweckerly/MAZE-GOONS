@@ -21,12 +21,10 @@ public abstract class EnemyBaseState : State
 
     protected bool IsInDetectionRange(GameObject go)
     {
-        return IsInRange(go, stateMachine.DetectionRange);
-    }
-
-    protected bool IsInSneakingDetectionRange(GameObject go)
-    {
-        return IsInRange(go, stateMachine.DetectionRange / 2);
+        if (stateMachine.playerStateMachine.sneaking)
+            return IsInRange(go, Mathf.Clamp(stateMachine.DetectionRange - stateMachine.playerStateMachine.Attributes.currentGuile, 0, stateMachine.DetectionRange));
+        else 
+            return IsInRange(go, stateMachine.DetectionRange);
     }
 
     protected bool IsInAttackRange(GameObject go)

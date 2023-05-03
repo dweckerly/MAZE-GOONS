@@ -21,19 +21,11 @@ public class EnemyIdleState : EnemyBaseState
         Move(deltaTime);
         if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            if (!stateMachine.playerStateMachine.sneaking) 
+            if (IsInDetectionRange(stateMachine.Player))
             {
-                if (IsInDetectionRange(stateMachine.Player))
-                {
-                    stateMachine.AlertNearbyEnemies();
-                    stateMachine.SwitchState(new EnemyChasingState(stateMachine));
-                }
-            }
-            else {
-                if(IsInSneakingDetectionRange(stateMachine.Player))
-                    stateMachine.SwitchState(new EnemyChasingState(stateMachine));
-            }
-                
+                stateMachine.AlertNearbyEnemies();
+                stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            } 
         }
         stateMachine.animator.SetFloat(SpeedHash, 0f, AnimationDampTime, deltaTime);
     }
