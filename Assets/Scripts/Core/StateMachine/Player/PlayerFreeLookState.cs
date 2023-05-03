@@ -35,7 +35,8 @@ public class PlayerFreeLookState : PlayerLocomotiveState
         Move(movement * stateMachine.freeLookSpeed, deltaTime);
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.animator.SetFloat(speedPercent, 0, animatorDampTime, deltaTime);
+            if (stateMachine.animator.GetFloat(speedPercent) > 0.01f) stateMachine.animator.SetFloat(speedPercent, 0, animatorDampTime, deltaTime);
+            else stateMachine.animator.SetFloat(speedPercent, 0);
             return;
         }
         FaceMovementDirection(movement, deltaTime);
