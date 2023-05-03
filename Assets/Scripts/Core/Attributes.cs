@@ -37,7 +37,7 @@ public class Attributes : MonoBehaviour
     private int currentHP;
     private int maxStamina = 10;
     public float currentStamina;
-    private float staminaRecoveryRate = 0.01f;
+    private float staminaRecoveryRate = 0.005f;
 
     Animator animator;
 
