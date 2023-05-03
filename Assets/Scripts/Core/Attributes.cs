@@ -37,7 +37,8 @@ public class Attributes : MonoBehaviour
     private int currentHP;
     private int maxStamina = 10;
     public float currentStamina;
-    private float staminaRecoveryRate = 0.005f;
+    private float staminaRecoveryRate;
+    private float baseStaminaRecoveryRate = 0.005f;
 
     Animator animator;
 
@@ -61,6 +62,7 @@ public class Attributes : MonoBehaviour
         maxHP = CalculateMaxHP();
         currentHP = maxHP;
         maxStamina = (brains + guts) * 10;
+        staminaRecoveryRate = baseStaminaRecoveryRate + (0.001f * brains);
         currentStamina = maxStamina;
 
         attrLookup = new Dictionary<Attribute, int>()
