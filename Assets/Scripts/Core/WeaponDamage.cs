@@ -13,6 +13,8 @@ public class WeaponDamage : MonoBehaviour
     protected float multiplicativeDamageModifier = 1f;
     float hitStopTime = 0.1f;
 
+    public bool staminaDrain = false;
+
     private void OnEnable()
     {
         alreadyCollidedWith.Clear();
@@ -26,6 +28,11 @@ public class WeaponDamage : MonoBehaviour
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
         {
             int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier);
+            if (staminaDrain)
+            {
+                damage = Mathf.CeilToInt(damage / 2f);
+                attributes.SpendStamina(damage);
+            }
             attributes.TakeDamage(damage);
             //StartCoroutine("HitStop");
         }
