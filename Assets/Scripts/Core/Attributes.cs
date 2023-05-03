@@ -27,7 +27,7 @@ public class Attributes : MonoBehaviour
     public int DamageReduction = 0;
 
     private int currentBrains;
-    private int currentBrawn;
+    public int currentBrawn;
     public int currentGuile;
     private int currentGuts;
 
