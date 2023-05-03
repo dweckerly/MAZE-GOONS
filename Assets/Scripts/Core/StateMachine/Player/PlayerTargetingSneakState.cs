@@ -19,12 +19,12 @@ public class PlayerTargetingSneakState : PlayerLocomotiveState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.IsAttacking)
+        if (stateMachine.InputReader.IsAttacking && (stateMachine.Attributes.currentStamina > stateMachine.WeaponHandler.mainHandWeapon.staminaReq))
         {
             stateMachine.SwitchState(new PlayerSneakAttackState(stateMachine));
             return;
         }
-        if (stateMachine.InputReader.IsBlocking)
+        if (stateMachine.InputReader.IsBlocking && stateMachine.canBlock)
         {
             stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
             return;

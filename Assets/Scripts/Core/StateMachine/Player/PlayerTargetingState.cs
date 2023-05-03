@@ -19,7 +19,7 @@ public class PlayerTargetingState : PlayerLocomotiveState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.IsAttacking)
+        if (stateMachine.InputReader.IsAttacking && (stateMachine.Attributes.currentStamina > stateMachine.WeaponHandler.mainHandWeapon.staminaReq))
         {
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
             return;

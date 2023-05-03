@@ -23,7 +23,7 @@ public class PlayerJumpingState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Move(momentum, deltaTime);
-        if (stateMachine.InputReader.IsAttacking)
+        if (stateMachine.InputReader.IsAttacking && (stateMachine.Attributes.currentStamina > stateMachine.WeaponHandler.mainHandWeapon.staminaReq))
         {
             stateMachine.SwitchState(new PlayerJumpAttackState(stateMachine));
             return;

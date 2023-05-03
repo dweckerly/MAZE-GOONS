@@ -11,6 +11,7 @@ public class Weapon : Item
     public GameObject offHandPrefab = null;
     public int weaponDamage = 1;
     public float weaponLength = 1f;
+    public int staminaReq = 1;
     public bool oneHanded = true;
     public bool twoHanded = false;
     public bool projectile = false;
