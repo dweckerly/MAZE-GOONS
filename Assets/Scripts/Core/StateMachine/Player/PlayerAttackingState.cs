@@ -8,12 +8,14 @@ public class PlayerAttackingState : PlayerBaseState
     protected float previousFrameTime;
     protected Attack attack;
     protected bool appliedForce = false;
+    private float storedAnimSpeed;
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine, int attackIndex) : base(_stateMachine) 
     {
         attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[attackIndex];
+        storedAnimSpeed = stateMachine.animator.speed;
         if (stateMachine.WeaponHandler.mainHandWeapon.weight < stateMachine.Attributes.currentBrawn) 
             stateMachine.animator.speed = 1 + (stateMachine.Attributes.currentGuile / 10);
     }
@@ -57,6 +59,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Exit() 
     {
+        stateMachine.animator.speed = storedAnimSpeed;
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, true);
     }
 
