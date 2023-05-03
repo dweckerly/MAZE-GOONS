@@ -48,6 +48,12 @@ public class Attributes : MonoBehaviour
 
     private void Awake() 
     {
+        InstantiateStats();
+        animator = GetComponent<Animator>();
+    }
+
+    private void InstantiateStats()
+    {
         currentBrains = brains;
         currentBrawn = brawn;
         currentGuile = guile;
@@ -57,14 +63,13 @@ public class Attributes : MonoBehaviour
         maxStamina = (brains + guts) * 10;
         currentStamina = maxStamina;
 
-        attrLookup = new Dictionary<Attribute, int> ()
+        attrLookup = new Dictionary<Attribute, int>()
         {
             { Attribute.Brains, currentBrains },
             { Attribute.Brawn, currentBrawn },
             { Attribute.Guile, currentGuile },
             { Attribute.Guts, currentGuts },
         };
-        animator = GetComponent<Animator>();
     }
 
     private void Start() 
@@ -160,6 +165,15 @@ public class Attributes : MonoBehaviour
             currentStamina = Mathf.Clamp(currentStamina + (maxStamina * staminaRecoveryRate), 0, maxStamina);
             if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
         }
+    }
+
+    public void SetStats(int _brawn, int _brains, int _guts, int _guile)
+    {
+        brawn = _brawn;
+        brains = _brains;
+        guts = _guts;
+        guile = _guile;
+        InstantiateStats();
     }
 
 }

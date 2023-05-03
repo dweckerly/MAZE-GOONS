@@ -38,6 +38,8 @@ public class CharacterCreator : MonoBehaviour
     public PlayableDirector playableDirector;
     public CinemachineVirtualCamera createCam;
 
+    public StatsButtons statsButtons;
+
     private void Start() 
     {
         currentHair = Instantiate(HairPrefabs[hairIndex], HeadBone.transform); 
@@ -166,6 +168,7 @@ public class CharacterCreator : MonoBehaviour
             Cursor.visible = false;
             CCUI.SetActive(false);
             playableDirector.Play(playable);
+            Player.GetComponent<Attributes>().SetStats(statsButtons.brawn, statsButtons.brains, statsButtons.guts, statsButtons.guile);
             StartCoroutine(CameraPan());
         }
         else

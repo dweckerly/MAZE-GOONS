@@ -11,12 +11,12 @@ public class StatsButtons : MonoBehaviour
     public TMP_Text GutsPoints;
     public TMP_Text GuilePoints;
 
-    int points = 9;
+    public int points = 9;
 
-    int brawn = 1;
-    int brains = 1;
-    int guts = 1;
-    int guile = 1;
+    public int brawn = 1;
+    public int brains = 1;
+    public int guts = 1;
+    public int guile = 1;
 
     private void Start() 
     {
