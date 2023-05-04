@@ -22,7 +22,7 @@ public class PlayerSneakState : PlayerLocomotiveState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.IsAttacking && (stateMachine.Attributes.currentStamina > stateMachine.WeaponHandler.mainHandWeapon.staminaReq))
+        if (stateMachine.InputReader.IsAttacking && (stateMachine.Attributes.currentStamina >= stateMachine.WeaponHandler.mainHandWeapon.staminaReq))
         {
             stateMachine.SwitchState(new PlayerSneakAttackState(stateMachine));
             return;

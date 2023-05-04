@@ -67,6 +67,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         if (attack.ComboStateIndex == -1) return;
         if (normalizedTime < attack.ComboAttackTime) return;
+        if (stateMachine.Attributes.currentStamina < stateMachine.WeaponHandler.mainHandWeapon.staminaReq) return;
         stateMachine.SwitchState(new PlayerAttackingState(stateMachine, attack.ComboStateIndex));
     }
 
