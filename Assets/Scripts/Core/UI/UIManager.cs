@@ -107,6 +107,9 @@ public class UIManager : MonoBehaviour
                     ItemPickup pickup = (ItemPickup) Interaction;
                     interactableMessage.text = "Pick Up " + pickup.item.itemName;
                     break;
+                case InteractableType.Gold:
+                    interactableMessage.text = "Take Coin Purse";
+                    break;
             }
             Animator.SetBool("ShowPrompt", true);
         }
