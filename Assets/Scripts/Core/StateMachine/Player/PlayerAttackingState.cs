@@ -8,7 +8,7 @@ public class PlayerAttackingState : PlayerBaseState
     protected float previousFrameTime;
     protected Attack attack;
     protected bool appliedForce = false;
-    private float storedAnimSpeed;
+    protected float storedAnimSpeed;
 
     public PlayerAttackingState(PlayerStateMachine _stateMachine) : base(_stateMachine) { }
 

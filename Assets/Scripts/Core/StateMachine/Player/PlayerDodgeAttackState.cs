@@ -12,6 +12,7 @@ public class PlayerDodgeAttackState : PlayerAttackingState
 
     public override void Enter()
     {
+        storedAnimSpeed = stateMachine.animator.speed;
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded)
         {

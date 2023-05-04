@@ -13,6 +13,7 @@ public class PlayerJumpAttackState : PlayerAttackingState
 
     public override void Enter()
     {
+        storedAnimSpeed = stateMachine.animator.speed;
         if (stateMachine.WeaponHandler.mainHandWeapon.oneHanded) stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
         else stateMachine.animator.CrossFadeInFixedTime(TwoHandedAttackHash, CrossFadeDuration);
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
