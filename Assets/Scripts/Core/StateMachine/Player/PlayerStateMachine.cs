@@ -29,7 +29,7 @@ public class PlayerStateMachine : StateMachine
     public float rotationDamping = 10f;
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.2f;
-    public int dodgeStaminaReq = 3;
+    public int dodgeStaminaReq = 10;
     public float blockCooldown = 1f;
     public bool canBlock = true;
 

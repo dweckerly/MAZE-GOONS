@@ -38,7 +38,7 @@ public class Attributes : MonoBehaviour
     private int maxStamina = 10;
     public float currentStamina;
     private float staminaRecoveryRate;
-    private float baseStaminaRecoveryRate = 0.005f;
+    private float baseStaminaRecoveryRate = 0.001f;
 
     Animator animator;
 
@@ -46,6 +46,10 @@ public class Attributes : MonoBehaviour
 
     [field: SerializeField] public RectTransform HealthRect { get; private set; }
     [field: SerializeField] public RectTransform StaminaRect { get; private set; }
+    [field: SerializeField] public RectTransform HealthBGRect { get; private set; }
+    [field: SerializeField] public RectTransform StaminaBGRect { get; private set; }
+
+    float rectScaleFactor = 2f;
 
     private void Awake() 
     {
@@ -72,6 +76,11 @@ public class Attributes : MonoBehaviour
             { Attribute.Guile, currentGuile },
             { Attribute.Guts, currentGuts },
         };
+
+        HealthBGRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
+        HealthRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
+        StaminaBGRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
+        StaminaRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
     }
 
     private void Start() 
