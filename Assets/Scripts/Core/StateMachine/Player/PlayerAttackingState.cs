@@ -26,7 +26,9 @@ public class PlayerAttackingState : PlayerBaseState
         if (attack.RightHand)
         {
             stateMachine.Attributes.SpendStamina(stateMachine.WeaponHandler.mainHandWeapon.staminaReq);
-            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded)
+                stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(Mathf.RoundToInt(stateMachine.Attributes.GetStat(Attribute.Brawn) * 1.5f));
+            else stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
             stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
         }
