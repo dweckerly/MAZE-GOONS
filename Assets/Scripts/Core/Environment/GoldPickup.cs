@@ -11,6 +11,7 @@ public class GoldPickup : Interactable
     {
         if (GoldAmount == 0) GoldAmount = Random.Range(10, 1001);
         stateMachine.Inventory.UpdateGold(GoldAmount);
+        stateMachine.Notifier.NotifyGold(GoldAmount);
         Destroy(this.gameObject);
     }
 }

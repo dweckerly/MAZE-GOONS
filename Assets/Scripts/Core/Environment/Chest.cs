@@ -7,6 +7,7 @@ public class Chest : Interactable
     public override InteractableType type { get { return InteractableType.Chest; } }
     Animator animator;
     [SerializeField] GameObject particlePrefab;
+    public int Gold = 0;
 
     private void Awake() 
     {
@@ -17,7 +18,9 @@ public class Chest : Interactable
     {
         OpenChest();
         CanInteract = false;
-        stateMachine.Inventory.UpdateGold(Random.Range(10, 1001));
+        if (Gold == 0) Gold = Random.Range(10, 1001);
+        stateMachine.Inventory.UpdateGold(Gold);
+        stateMachine.Notifier.NotifyGold(Gold);
     }
 
     public void OpenChest()
