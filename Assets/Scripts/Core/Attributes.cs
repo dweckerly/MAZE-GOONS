@@ -77,10 +77,13 @@ public class Attributes : MonoBehaviour
             { Attribute.Guts, currentGuts },
         };
 
-        HealthBGRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
-        HealthRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
-        StaminaBGRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
-        StaminaRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
+        if (HealthRect != null)
+        {
+            HealthBGRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
+            HealthRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
+            StaminaBGRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
+            StaminaRect.sizeDelta = new Vector2(maxStamina * rectScaleFactor, 30);
+        }
     }
 
     private void Start() 
