@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
+  m_Name: Stone Axe
+  m_EditorClassIdentifier: 
+  Id: dddd63eb-9d4f-4fea-8ebe-6d9ee348297f
+  itemName: Stone Axe
+  weight: 15
+  value: 10
+  weaponPrefab: {fileID: 2216532564255793168, guid: c9905d01ce348d242a2cc65da511a87c, type: 3}
+  offHandPrefab: {fileID: 0}
+  weaponDamage: 10
+  weaponLength: 0.8
+  staminaReq: 5
+  oneHanded: 1
+  twoHanded: 0
+  projectile: 0
+  dual: 0
+  head: 0
+  lootable: 1
+  unarmed: 0
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: One-Handed-Swing-Down
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 5
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 10
+  - <AnimationName>k__BackingField: One-Handed-Swing-Down-2
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 0
+    <ComboAttackTime>k__BackingField: 0
+    <Force>k__BackingField: 7
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 10
