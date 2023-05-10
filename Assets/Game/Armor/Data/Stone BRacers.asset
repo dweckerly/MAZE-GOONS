@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1edf6f6a70cd44d8e4150f9e150744, type: 3}
+  m_Name: Stone BRacers
+  m_EditorClassIdentifier: 
+  Id: cf744c4c-480d-4292-b5b6-b74c995bdfa3
+  itemName: Stone Bracers
+  weight: 5
+  value: 10
+  ArmorObjects:
+  - armorPrefab: {fileID: 463636393969734424, guid: f1eafcea4cd3f8e49b44d73e1954b2dc, type: 3}
+    bodyPositionReference: 3
+  - armorPrefab: {fileID: 3500260975746993514, guid: b7a2c6bdf333c3a47a1e251e3d74f2ab, type: 3}
+    bodyPositionReference: 4
+  slot: 2
+  DamageReduction: 3
