@@ -14,7 +14,6 @@ public class Notifier : MonoBehaviour
     private void Notify()
     {
         Animator.Play("ShowNotification");
-        //notificationCanvas.gameObject.SetActive(true);
         StartCoroutine(DisplayNotification());
     }
 
@@ -31,7 +30,6 @@ public class Notifier : MonoBehaviour
     private IEnumerator DisplayNotification()
     {
         yield return new WaitForSeconds(displayTime);
-        //notificationCanvas.gameObject.SetActive(false);
         Animator.Play("HideNotification");
     }
 }
