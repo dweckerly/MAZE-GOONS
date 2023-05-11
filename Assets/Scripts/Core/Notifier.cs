@@ -9,12 +9,12 @@ public class Notifier : MonoBehaviour
     public TMP_Text notificationText;
     public Animator Animator;
 
-    private float displayTime = 1f;
-
     private void Notify()
     {
+        Animator.enabled = false;
+        Animator.enabled = true;
+        Animator.Play("IdleNotification");
         Animator.Play("ShowNotification");
-        StartCoroutine(DisplayNotification());
     }
 
     public void NotifyGold(int amount)
@@ -25,11 +25,5 @@ public class Notifier : MonoBehaviour
            notificationText.text = "- " + amount.ToString() + " gold";
 
         Notify();
-    }
-
-    private IEnumerator DisplayNotification()
-    {
-        yield return new WaitForSeconds(displayTime);
-        Animator.Play("HideNotification");
     }
 }
