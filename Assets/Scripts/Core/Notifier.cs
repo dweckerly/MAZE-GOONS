@@ -6,6 +6,7 @@ using TMPro;
 public class Notifier : MonoBehaviour
 {
     public GameObject Notification;
+    public AudioSource audioSource;
     string message;
 
     private void Notify()
@@ -20,6 +21,7 @@ public class Notifier : MonoBehaviour
             message = "+ " + amount.ToString() + " gold";
         else
             message = "- " + amount.ToString() + " gold";
+        audioSource.Play();
         Notify();
     }
 }
