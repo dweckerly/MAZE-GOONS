@@ -9,11 +9,12 @@ public class Notifier : MonoBehaviour
     public TMP_Text notificationText;
     public Animator Animator;
 
-    private float displayTime = 2f;
+    private float displayTime = 1f;
 
     private void Notify()
     {
-        notificationCanvas.gameObject.SetActive(true);
+        Animator.Play("ShowNotification");
+        //notificationCanvas.gameObject.SetActive(true);
         StartCoroutine(DisplayNotification());
     }
 
@@ -30,6 +31,7 @@ public class Notifier : MonoBehaviour
     private IEnumerator DisplayNotification()
     {
         yield return new WaitForSeconds(displayTime);
-        notificationCanvas.gameObject.SetActive(false);
+        //notificationCanvas.gameObject.SetActive(false);
+        Animator.Play("HideNotification");
     }
 }
