@@ -7,6 +7,7 @@ public class Notifier : MonoBehaviour
 {
     public Canvas notificationCanvas;
     public TMP_Text notificationText;
+    public Animator Animator;
 
     private float displayTime = 2f;
 
