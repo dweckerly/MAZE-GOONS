@@ -5,25 +5,21 @@ using TMPro;
 
 public class Notifier : MonoBehaviour
 {
-    public Canvas notificationCanvas;
-    public TMP_Text notificationText;
-    public Animator Animator;
+    public GameObject Notification;
+    string message;
 
     private void Notify()
     {
-        Animator.enabled = false;
-        Animator.enabled = true;
-        Animator.Play("IdleNotification");
-        Animator.Play("ShowNotification");
+        GameObject go = Instantiate(Notification, gameObject.transform);
+        go.GetComponent<Notification>().Notify(message);
     }
 
     public void NotifyGold(int amount)
     {
         if (amount > 0)
-            notificationText.text = "+ " + amount.ToString() + " gold";
+            message = "+ " + amount.ToString() + " gold";
         else
-           notificationText.text = "- " + amount.ToString() + " gold";
-
+            message = "- " + amount.ToString() + " gold";
         Notify();
     }
 }
