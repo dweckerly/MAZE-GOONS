@@ -45,6 +45,8 @@ public class Attributes : MonoBehaviour
     private bool isInvulnerable = false;
     public bool isBlocking = false;
     private float blockAngle = 70f;
+    private float flankAngle = 140f;
+    private float flankMod = 1.5f;
 
     [field: SerializeField] public RectTransform HealthRect { get; private set; }
     [field: SerializeField] public RectTransform StaminaRect { get; private set; }
@@ -147,20 +149,15 @@ public class Attributes : MonoBehaviour
         int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
         if (damage > 0)
         {
-            if (isBlocking)
+            Vector3 targetDir = trans.position - gameObject.transform.position;
+            float attackAngle = Vector3.Angle(targetDir, gameObject.transform.forward);
+            if (isBlocking && (attackAngle <= blockAngle))
             {
-                Vector3 targetDir = trans.position - gameObject.transform.position;
-                float angle = Vector3.Angle(targetDir, gameObject.transform.forward);
-
-                if (angle > blockAngle) SpendStamina(damage);
-                else 
-                {
-                    OnTakeDamage?.Invoke(true);
-                    ChangeHP(amount * -1);
-                }
+                SpendStamina(damage);
             } 
             else
             {
+                if (attackAngle > flankAngle) damage = Mathf.FloorToInt(damage * flankMod);
                 OnTakeDamage?.Invoke(true);
                 ChangeHP(amount * -1);
             }
