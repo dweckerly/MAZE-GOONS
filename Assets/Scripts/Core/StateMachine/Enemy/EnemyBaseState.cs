@@ -15,6 +15,9 @@ public abstract class EnemyBaseState : State
 
     protected bool IsInRange(GameObject go, float range)
     {
+        Vector3 targetDir = go.transform.position - stateMachine.gameObject.transform.position;
+        float angle = Vector3.Angle(targetDir, stateMachine.gameObject.transform.forward);
+        if (angle > stateMachine.DetectionAngle) return false;
         float toDistanceSqr = (go.transform.position - stateMachine.transform.position).sqrMagnitude;
         return toDistanceSqr <= range * range;
     }

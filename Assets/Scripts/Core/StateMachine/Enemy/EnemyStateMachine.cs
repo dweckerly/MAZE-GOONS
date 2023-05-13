@@ -27,6 +27,7 @@ public class EnemyStateMachine : StateMachine
 
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
+    [field: SerializeField] public float DetectionAngle { get; private set; } = 85f;
     [field: SerializeField] public float AttackRange { get; private set; } = 1f;
     [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
     [field: SerializeField] public List<Renderer> Renderers = new List<Renderer>();
