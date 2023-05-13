@@ -425,6 +425,7 @@ MonoBehaviour:
   <Loot>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 7
   <DetectionRange>k__BackingField: 8
+  <DetectionAngle>k__BackingField: 175
   <AttackRange>k__BackingField: 2.25
   <BloodParticles>k__BackingField: {fileID: 1251443142394368660}
   Renderers: []
@@ -507,9 +508,13 @@ MonoBehaviour:
   guts: 30
   baseHP: 30
   DamageReduction: 0
+  currentBrawn: 0
   currentGuile: 0
+  currentStamina: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
+  <HealthBGRect>k__BackingField: {fileID: 0}
+  <StaminaBGRect>k__BackingField: {fileID: 0}
 --- !u!114 &169622813061402331
 MonoBehaviour:
   m_ObjectHideFlags: 0
