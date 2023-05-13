@@ -33,6 +33,7 @@ public class PlayerStateMachine : StateMachine
     public int dodgeStaminaReq = 10;
     public float blockCooldown = 1f;
     public bool canBlock = true;
+    private float defaultBlockAngle = 60f;
 
     public bool sneaking = false;
 
@@ -53,6 +54,8 @@ public class PlayerStateMachine : StateMachine
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
         WeaponHandler.OnEquip += HandleEquip;
+        WeaponHandler.OnEquipShield += HandleShieldEquip;
+        WeaponHandler.OnUnEquipShield += HandleShieldUnEquip;
         ArmorHandler.EquipArmorEvent += HandleArmorEquip;
         ArmorHandler.UnEquipArmorEvent += HandleArmorUnEquip;
     }
@@ -62,6 +65,8 @@ public class PlayerStateMachine : StateMachine
         Attributes.OnTakeDamage -= HandleTakeDamage;
         Attributes.OnDie -= HandleDie;
         WeaponHandler.OnEquip -= HandleEquip;
+        WeaponHandler.OnEquipShield -= HandleShieldEquip;
+        WeaponHandler.OnUnEquipShield -= HandleShieldUnEquip;
         ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
         ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
     }
@@ -89,6 +94,18 @@ public class PlayerStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
+    }
+
+    private void HandleShieldEquip()
+    {
+        Attributes.DamageReduction += WeaponHandler.shieldEquipped.DamageReduction;
+        Attributes.SetBlockAngle(WeaponHandler.shieldEquipped.blockingAngle);
+    }
+
+    private void HandleShieldUnEquip()
+    {
+        Attributes.DamageReduction -= WeaponHandler.shieldEquipped.DamageReduction;
+        Attributes.SetBlockAngle(defaultBlockAngle);
     }
 
     private void HandleArmorEquip(Armor armor)

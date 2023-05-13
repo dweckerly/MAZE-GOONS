@@ -12,6 +12,8 @@ public enum WeaponHand
 public class WeaponHandler : MonoBehaviour
 {
     public event Action OnEquip;
+    public event Action OnEquipShield;
+    public event Action OnUnEquipShield;
     [SerializeField] GameObject Head;
     [SerializeField] GameObject RightHand;
     [SerializeField] GameObject LeftHand;
@@ -29,7 +31,7 @@ public class WeaponHandler : MonoBehaviour
 
     int LayerInt;
 
-    public string shieldEquipped = null;
+    public Shield shieldEquipped = null;
 
     private const int  RIGHT_GRIP = 1;
     private const int LEFT_GRIP = 2;
@@ -239,10 +241,11 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipShield(Shield shield)
     {
-        if (!string.IsNullOrEmpty(shieldEquipped) && shieldEquipped.Equals(shield.Id))
+        if (!string.IsNullOrEmpty(shieldEquipped.Id) && shieldEquipped.Equals(shield.Id))
         {
             UnEquipOffHand();
             EquipDefaultOffHand();
+            OnUnEquipShield?.Invoke();
         }
         else
         {
@@ -259,7 +262,8 @@ public class WeaponHandler : MonoBehaviour
             maskLayers.Add(LEFT_GRIP);
             maskLayers.Add(SHIELD_ARM_POSITION);
             SetWeaponLayer(offHandPrefab);
-            shieldEquipped = shield.Id;
+            shieldEquipped = shield;
+            OnEquipShield?.Invoke();
         }
         OnEquip?.Invoke();
     }

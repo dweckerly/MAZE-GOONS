@@ -198,4 +198,9 @@ public class Attributes : MonoBehaviour
         guile = _guile;
         InstantiateStats();
     }
+
+    public void SetBlockAngle(float angle)
+    {
+        blockAngle = angle;
+    }
 }
