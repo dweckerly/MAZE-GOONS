@@ -147,20 +147,19 @@ public class Attributes : MonoBehaviour
     {
         if (!alive) return;
         int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
-        if (damage > 0)
+
+        Vector3 targetDir = trans.position - gameObject.transform.position;
+        float attackAngle = Vector3.Angle(targetDir, gameObject.transform.forward);
+
+        if (isBlocking && (attackAngle <= blockAngle))
         {
-            Vector3 targetDir = trans.position - gameObject.transform.position;
-            float attackAngle = Vector3.Angle(targetDir, gameObject.transform.forward);
-            if (isBlocking && (attackAngle <= blockAngle))
-            {
-                SpendStamina(damage);
-            } 
-            else
-            {
-                if (attackAngle > flankAngle) damage = Mathf.FloorToInt(damage * flankMod);
-                OnTakeDamage?.Invoke(true);
-                ChangeHP(amount * -1);
-            }
+            SpendStamina(damage);
+        } 
+        else
+        {
+            if (attackAngle > flankAngle) damage = Mathf.FloorToInt(damage * flankMod);
+            OnTakeDamage?.Invoke(true);
+            ChangeHP(amount * -1);
         }
     }
 
@@ -199,5 +198,4 @@ public class Attributes : MonoBehaviour
         guile = _guile;
         InstantiateStats();
     }
-
 }
