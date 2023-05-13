@@ -33,7 +33,7 @@ public class WeaponDamage : MonoBehaviour
                 damage = Mathf.CeilToInt(damage / 2f);
                 attributes.SpendStamina(damage);
             }
-            attributes.TakeDamage(damage);
+            attributes.TakeDamage(damage, transform);
             //StartCoroutine("HitStop");
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))

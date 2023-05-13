@@ -43,6 +43,8 @@ public class Attributes : MonoBehaviour
     Animator animator;
 
     private bool isInvulnerable = false;
+    public bool isBlocking = false;
+    private float blockAngle = 70f;
 
     [field: SerializeField] public RectTransform HealthRect { get; private set; }
     [field: SerializeField] public RectTransform StaminaRect { get; private set; }
@@ -139,13 +141,24 @@ public class Attributes : MonoBehaviour
         if (currentHP <= 0) Die();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, Transform trans)
     {
         if (!alive) return;
         int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
         if (damage > 0)
         {
-            if (isInvulnerable) SpendStamina(damage);
+            if (isBlocking)
+            {
+                Vector3 targetDir = trans.position - gameObject.transform.position;
+                float angle = Vector3.Angle(targetDir, gameObject.transform.forward);
+
+                if (angle > blockAngle) SpendStamina(damage);
+                else 
+                {
+                    OnTakeDamage?.Invoke(true);
+                    ChangeHP(amount * -1);
+                }
+            } 
             else
             {
                 OnTakeDamage?.Invoke(true);
