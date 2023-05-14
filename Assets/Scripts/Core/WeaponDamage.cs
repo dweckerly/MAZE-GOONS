@@ -14,6 +14,7 @@ public class WeaponDamage : MonoBehaviour
     float hitStopTime = 0.1f;
 
     public bool staminaDrain = false;
+    public Transform sourceTransform;
 
     private void OnEnable()
     {
@@ -33,7 +34,7 @@ public class WeaponDamage : MonoBehaviour
                 damage = Mathf.CeilToInt(damage / 2f);
                 attributes.SpendStamina(damage);
             }
-            attributes.TakeDamage(damage, transform);
+            attributes.TakeDamage(damage, sourceTransform);
             //StartCoroutine("HitStop");
         }
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
