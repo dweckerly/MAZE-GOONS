@@ -13,11 +13,14 @@ public abstract class EnemyBaseState : State
         stateMachine = _stateMachine;
     }
 
-    protected bool IsInRange(GameObject go, float range)
+    protected bool IsInRange(GameObject go, float range, bool checkAngle = false)
     {
-        Vector3 targetDir = go.transform.position - stateMachine.gameObject.transform.position;
-        float angle = Vector3.Angle(targetDir, stateMachine.gameObject.transform.forward);
-        if (angle > stateMachine.DetectionAngle) return false;
+        if (checkAngle)
+        {
+            Vector3 targetDir = go.transform.position - stateMachine.gameObject.transform.position;
+            float angle = Vector3.Angle(targetDir, stateMachine.gameObject.transform.forward);
+            if (angle > stateMachine.DetectionAngle) return false;
+        }
         float toDistanceSqr = (go.transform.position - stateMachine.transform.position).sqrMagnitude;
         return toDistanceSqr <= range * range;
     }
@@ -25,7 +28,7 @@ public abstract class EnemyBaseState : State
     protected bool IsInDetectionRange(GameObject go)
     {
         if (stateMachine.playerStateMachine.sneaking)
-            return IsInRange(go, Mathf.Clamp(stateMachine.DetectionRange - stateMachine.playerStateMachine.Attributes.currentGuile, 0, stateMachine.DetectionRange));
+            return IsInRange(go, Mathf.Clamp(stateMachine.DetectionRange - stateMachine.playerStateMachine.Attributes.currentGuile, 0, stateMachine.DetectionRange), true);
         else 
             return IsInRange(go, stateMachine.DetectionRange);
     }
