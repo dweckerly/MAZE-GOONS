@@ -163,6 +163,12 @@ public class Attributes : MonoBehaviour
         }
     }
 
+    public void HealStamina(int amount)
+    {
+        currentStamina += Mathf.Clamp(amount, 0, maxStamina);
+        if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
+    }
+
     public void SpendStamina(int amount)
     {
         currentStamina -= Mathf.Clamp(amount, 0, maxStamina);

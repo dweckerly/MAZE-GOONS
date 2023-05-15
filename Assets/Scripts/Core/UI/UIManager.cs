@@ -166,6 +166,12 @@ public class UIManager : MonoBehaviour
             case ItemType.Armor:
                 playerStateMachine.ArmorHandler.CheckArmor((Armor)item);
                 break;
+            case ItemType.Consumable:
+                Consumable consumable = (Consumable) item;
+                consumable.Consume(playerStateMachine);
+                playerStateMachine.Inventory.RemoveItem(item);
+                UpdateInventory(playerStateMachine.Inventory.inventory);
+                break;
             case ItemType.Shield:
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
