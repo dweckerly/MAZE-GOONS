@@ -150,7 +150,6 @@ public class Attributes : MonoBehaviour
 
         Vector3 targetDir = trans.position - gameObject.transform.position;
         float attackAngle = Vector3.Angle(targetDir, gameObject.transform.forward);
-        Debug.Log("attack: " + attackAngle + ", block: " + blockAngle + ", flank: " + flankAngle);
         if (isBlocking && (attackAngle <= blockAngle))
         {
             SpendStamina(damage);

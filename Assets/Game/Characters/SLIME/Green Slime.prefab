@@ -236,6 +236,8 @@ GameObject:
   - component: {fileID: 6148565206975668956}
   - component: {fileID: 6554217749663321034}
   - component: {fileID: 4081434236957861274}
+  - component: {fileID: 2151001242129200630}
+  - component: {fileID: 376068173431197647}
   m_Layer: 0
   m_Name: Green Slime
   m_TagString: Untagged
@@ -323,7 +325,7 @@ MonoBehaviour:
   <Agent>k__BackingField: {fileID: 8933020014595544507}
   <WeaponHandler>k__BackingField: {fileID: 4081434236957861274}
   <Target>k__BackingField: {fileID: 1860320878793798222}
-  <Loot>k__BackingField: {fileID: 0}
+  <Loot>k__BackingField: {fileID: 2151001242129200630}
   <MovementSpeed>k__BackingField: 3
   <DetectionRange>k__BackingField: 5
   <DetectionAngle>k__BackingField: 170
@@ -412,6 +414,7 @@ MonoBehaviour:
   currentBrawn: 0
   currentGuile: 0
   currentStamina: 0
+  isBlocking: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
   <HealthBGRect>k__BackingField: {fileID: 0}
@@ -455,8 +458,39 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
-  shieldEquipped: 
+  shieldEquipped: {fileID: 0}
   maskLayers: 
+--- !u!114 &2151001242129200630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681096930202416978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52bb4d4200ab54e40860a4c488d309f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanInteract: 0
+  items:
+  - {fileID: 11400000, guid: 52e102ed64f747e4ca14421a7748c3ac, type: 2}
+  lootCollider: {fileID: 376068173431197647}
+  enemyStateMachine: {fileID: 4577231811076356675}
+--- !u!136 &376068173431197647
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681096930202416978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 1.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1789653587645848661
 GameObject:
   m_ObjectHideFlags: 0
