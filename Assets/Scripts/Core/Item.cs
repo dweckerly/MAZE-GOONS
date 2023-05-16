@@ -16,4 +16,6 @@ public abstract class Item : BaseScriptableObject
     public abstract ItemType itemType { get; }
     public float weight;
     public int value;
+    public string description;
+    public Sprite icon;
 }
