@@ -10,8 +10,8 @@ public class UIManager : MonoBehaviour
     public PlayerStateMachine playerStateMachine;
     public CinemachineFreeLook freeLook;
     public GameObject UICanvas;
-    public GameObject InventoryPanel;
-    public GameObject EquipBtnPanel;
+    //public GameObject InventoryPanel;
+    //public GameObject EquipBtnPanel;
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
     public Transform ViewPortContentContainer;
@@ -179,8 +179,8 @@ public class UIManager : MonoBehaviour
                 Weapon weapon = (Weapon)SelectedItem;
                 if (weapon.oneHanded)
                 {
-                    InventoryPanel.SetActive(false);
-                    EquipBtnPanel.SetActive(true);
+                    //InventoryPanel.SetActive(false);
+                    //EquipBtnPanel.SetActive(true);
                     return;
                 } 
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
@@ -193,15 +193,15 @@ public class UIManager : MonoBehaviour
     public void MainHandEquipBtn()
     {
         playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem);
-        InventoryPanel.SetActive(true);
-        EquipBtnPanel.SetActive(false);
+        //InventoryPanel.SetActive(true);
+        //EquipBtnPanel.SetActive(false);
     }
 
     public void OffHandEquipBtn()
     {
         playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem, WeaponHand.Left);
-        InventoryPanel.SetActive(true);
-        EquipBtnPanel.SetActive(false);
+        //InventoryPanel.SetActive(true);
+        //EquipBtnPanel.SetActive(false);
     }
 
     public void ArmorEquip(Armor armor)
@@ -315,8 +315,8 @@ public class UIManager : MonoBehaviour
     {
         freeLook.m_XAxis.m_MaxSpeed = 300;
         freeLook.m_YAxis.m_MaxSpeed = 2;
-        InventoryPanel.SetActive(true);
-        EquipBtnPanel.SetActive(false);
+        //InventoryPanel.SetActive(true);
+        //EquipBtnPanel.SetActive(false);
         UICanvas.SetActive(false);
     }
 
