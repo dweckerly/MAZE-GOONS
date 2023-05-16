@@ -86,4 +86,20 @@ public class Inventory : MonoBehaviour
         }
         return weight;
     }
+
+    public List<Item> GetAllOfItemType(ItemType itemType)
+    {
+        List<Item> items = new List<Item>();
+        foreach(Item item in inventory.Keys)
+        {
+            if (item.itemType == itemType)
+            {
+                for(int i = 0; i < inventory[item]; i++)
+                {
+                    items.Add(item);
+                }
+            } 
+        }
+        return items;
+    }
 }
