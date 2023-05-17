@@ -5,13 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
-public class InventoryIcon
-{
-    public Image iconBackGround;
-    public Image itemIcon;
-}
-
-[System.Serializable]
 public class PanelType
 {
     public string title;
@@ -22,7 +15,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 {
     public Inventory inventory;
     public TMP_Text panelTitle;
-    public InventoryIcon[] icons;
+    public InventoryItemReference[] icons;
     public PanelType[] panels;
 
     private Color iconBGDefaultColor = new Color(0.5176471f, 0.5176471f, 0.5176471f, 0.3921569f);
@@ -64,6 +57,7 @@ public class InventoryDisplayPanel : MonoBehaviour
         int i = 0;
         foreach(Item item in inventory.GetAllOfItemType(panels[panelIndex].itemType))
         {
+            icons[i].item = item;
             icons[i].itemIcon.sprite = item.icon;
             icons[i].itemIcon.color = itemIconFilledColor;
             icons[i].iconBackGround.color = iconBGFilledColor;
@@ -75,9 +69,16 @@ public class InventoryDisplayPanel : MonoBehaviour
     {
         for(int i = 0; i < icons.Length; i++)
         {
+            icons[i].item = null;
             icons[i].iconBackGround.color = iconBGDefaultColor;
             icons[i].itemIcon.sprite = null;
             icons[i].itemIcon.color = itemIconDefaultColor;
         }
+    }
+
+    public void IconItemClick(int index)
+    {
+        Debug.Log(icons[index].item.name);
+        Debug.Log("Clicked!");
     }
 }
