@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
@@ -17,11 +16,6 @@ public class InventoryDisplayPanel : MonoBehaviour
     public TMP_Text panelTitle;
     public InventoryItemReference[] icons;
     public PanelType[] panels;
-
-    private Color iconBGDefaultColor = new Color(0.5176471f, 0.5176471f, 0.5176471f, 0.3921569f);
-    private Color iconBGFilledColor = new Color(0.5990566f, 1f, 0.9917222f, 1f);
-    private Color itemIconDefaultColor = new Color(1, 1, 1, 0);
-    private Color itemIconFilledColor = new Color(1, 1, 1, 1);
 
     private Item selectedItem;
 
