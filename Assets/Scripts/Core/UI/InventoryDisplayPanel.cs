@@ -23,6 +23,8 @@ public class InventoryDisplayPanel : MonoBehaviour
     private Color itemIconDefaultColor = new Color(1, 1, 1, 0);
     private Color itemIconFilledColor = new Color(1, 1, 1, 1);
 
+    private Item selectedItem;
+
     private int panelIndex = 0;
 
     private void Start() 
@@ -58,9 +60,7 @@ public class InventoryDisplayPanel : MonoBehaviour
         foreach(Item item in inventory.GetAllOfItemType(panels[panelIndex].itemType))
         {
             icons[i].item = item;
-            icons[i].itemIcon.sprite = item.icon;
-            icons[i].itemIcon.color = itemIconFilledColor;
-            icons[i].iconBackGround.color = iconBGFilledColor;
+            icons[i].ShowIcon();
             i++;
         }
     }
@@ -69,16 +69,14 @@ public class InventoryDisplayPanel : MonoBehaviour
     {
         for(int i = 0; i < icons.Length; i++)
         {
-            icons[i].item = null;
-            icons[i].iconBackGround.color = iconBGDefaultColor;
-            icons[i].itemIcon.sprite = null;
-            icons[i].itemIcon.color = itemIconDefaultColor;
+            icons[i].Clear();
         }
     }
 
     public void IconItemClick(int index)
     {
-        Debug.Log(icons[index].item.name);
-        Debug.Log("Clicked!");
+        PopulatePanel();
+        selectedItem = icons[index].item;
+        icons[index].Selected();
     }
 }
