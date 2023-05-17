@@ -37,7 +37,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
-        //playerStateMachine.Inventory.AddItemEvent += UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
@@ -56,7 +55,6 @@ public class UIManager : MonoBehaviour
     void OnDestroy()
     {
         playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
-        //playerStateMachine.Inventory.AddItemEvent -= UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;

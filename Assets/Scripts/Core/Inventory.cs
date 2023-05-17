@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     public RectTransform weightRect;
 
     public delegate void AddItemCallback(SortedDictionary<Item, int> inventory);
-    public event AddItemCallback AddItemEvent;
+    public event Action AddItemEvent;
 
     private void Start() 
     {
@@ -61,7 +61,7 @@ public class Inventory : MonoBehaviour
         if (inventory.ContainsKey(item)) inventory[item]++;
         else inventory.Add(item, 1);
         UpdateWeightDisplay();
-        AddItemEvent?.Invoke(inventory);
+        AddItemEvent?.Invoke();
     }
 
     public void RemoveItem(Item item)

@@ -35,6 +35,12 @@ public class InventoryDisplayPanel : MonoBehaviour
     private void Start() 
     {
         PopulatePanel();
+        inventory.AddItemEvent += PopulatePanel;
+    }
+
+    private void OnDestroy() 
+    {
+        inventory.AddItemEvent -= PopulatePanel;
     }
 
     public void NextPanel()
