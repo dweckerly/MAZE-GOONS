@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour
     //public GameObject EquipBtnPanel;
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
-    public Transform ViewPortContentContainer;
-    public GameObject ItemDisplayPrefab;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI armorText;
     public TextMeshProUGUI brawnText;
@@ -39,7 +37,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
-        playerStateMachine.Inventory.AddItemEvent += UpdateInventory;
+        //playerStateMachine.Inventory.AddItemEvent += UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
@@ -58,7 +56,7 @@ public class UIManager : MonoBehaviour
     void OnDestroy()
     {
         playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
-        playerStateMachine.Inventory.AddItemEvent -= UpdateInventory;
+        //playerStateMachine.Inventory.AddItemEvent -= UpdateInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
         playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
@@ -127,16 +125,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void UpdateInventory(SortedDictionary<Item, int> inventory)
-    {
-        RemoveContainerChildren(ViewPortContentContainer);
-        foreach (Item item in inventory.Keys)
-        {
-            GameObject go = Instantiate(ItemDisplayPrefab, ViewPortContentContainer);
-            go.GetComponent<InventoryItemDisplay>().Init(item, this, inventory);
-        }
-    }
-
     private void OpenInventory()
     {
         if(!PauseCanvas.activeSelf && !GameOverCanvas.activeSelf)
@@ -170,7 +158,7 @@ public class UIManager : MonoBehaviour
                 Consumable consumable = (Consumable) item;
                 consumable.Consume(playerStateMachine);
                 playerStateMachine.Inventory.RemoveItem(item);
-                UpdateInventory(playerStateMachine.Inventory.inventory);
+                //UpdateInventory(playerStateMachine.Inventory.inventory);
                 break;
             case ItemType.Shield:
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
