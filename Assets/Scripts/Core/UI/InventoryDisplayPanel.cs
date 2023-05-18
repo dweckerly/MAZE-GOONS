@@ -17,6 +17,8 @@ public class InventoryDisplayPanel : MonoBehaviour
     public InventoryItemReference[] icons;
     public PanelType[] panels;
     public ItemDetails itemDetails;
+    public GameObject BtnContainer;
+    public UIManager UIManager;
 
     private Item selectedItem;
 
@@ -24,6 +26,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     private void Start() 
     {
+        BtnContainer.gameObject.SetActive(false);
         itemDetails.gameObject.SetActive(false);
         PopulatePanel();
         inventory.AddItemEvent += PopulatePanel;
@@ -37,6 +40,7 @@ public class InventoryDisplayPanel : MonoBehaviour
     public void NextPanel()
     {
         itemDetails.gameObject.SetActive(false);
+        BtnContainer.gameObject.SetActive(false);
         panelIndex++;
         if (panelIndex >= panels.Length) panelIndex = 0;
         PopulatePanel();
@@ -45,6 +49,7 @@ public class InventoryDisplayPanel : MonoBehaviour
     public void PreviousPanel()
     {
         itemDetails.gameObject.SetActive(false);
+        BtnContainer.gameObject.SetActive(false);
         panelIndex--;
         if (panelIndex < 0) panelIndex = panels.Length - 1;
         PopulatePanel();
@@ -73,10 +78,29 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     public void IconItemClick(int index)
     {
+        if (icons[index].item != null)
+        {
+            PopulatePanel();
+            selectedItem = icons[index].item;
+            icons[index].Selected();
+            itemDetails.gameObject.SetActive(true);
+            BtnContainer.gameObject.SetActive(true);
+            itemDetails.ShowDetails(selectedItem);
+        }
+    }
+
+    public void ActionBtnClick()
+    {
+        if (selectedItem is Equippable) ((Equippable)selectedItem).equipped = !((Equippable)selectedItem).equipped;
+        UIManager.InventoryItemClick(selectedItem);
         PopulatePanel();
-        selectedItem = icons[index].item;
-        icons[index].Selected();
-        itemDetails.gameObject.SetActive(true);
+        if (selectedItem.itemType == ItemType.Consumable) 
+        {
+            BtnContainer.gameObject.SetActive(false);
+            itemDetails.gameObject.SetActive(false);
+            selectedItem = null;
+            return;
+        }
         itemDetails.ShowDetails(selectedItem);
     }
 }

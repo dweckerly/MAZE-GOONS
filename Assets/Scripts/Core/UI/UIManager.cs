@@ -10,8 +10,6 @@ public class UIManager : MonoBehaviour
     public PlayerStateMachine playerStateMachine;
     public CinemachineFreeLook freeLook;
     public GameObject UICanvas;
-    //public GameObject InventoryPanel;
-    //public GameObject EquipBtnPanel;
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
     public TextMeshProUGUI damageText;
@@ -29,8 +27,6 @@ public class UIManager : MonoBehaviour
     public Animator Animator;
     private Interactable Interaction;
     public TextMeshProUGUI interactableMessage;
-
-    private Item SelectedItem;
 
     public Animator TargetPanelAnimator;
     
@@ -146,7 +142,6 @@ public class UIManager : MonoBehaviour
 
     public void InventoryItemClick(Item item)
     {
-        SelectedItem = item;
         switch (item.itemType)
         {
             case ItemType.Armor:
@@ -156,19 +151,12 @@ public class UIManager : MonoBehaviour
                 Consumable consumable = (Consumable) item;
                 consumable.Consume(playerStateMachine);
                 playerStateMachine.Inventory.RemoveItem(item);
-                //UpdateInventory(playerStateMachine.Inventory.inventory);
                 break;
             case ItemType.Shield:
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
             case ItemType.Weapon:
-                Weapon weapon = (Weapon)SelectedItem;
-                if (weapon.oneHanded)
-                {
-                    //InventoryPanel.SetActive(false);
-                    //EquipBtnPanel.SetActive(true);
-                    return;
-                } 
+                Weapon weapon = (Weapon)item;
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
                 break;
             default:
@@ -176,33 +164,19 @@ public class UIManager : MonoBehaviour
         }    
     }
 
-    public void MainHandEquipBtn()
-    {
-        playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem);
-        //InventoryPanel.SetActive(true);
-        //EquipBtnPanel.SetActive(false);
-    }
-
-    public void OffHandEquipBtn()
-    {
-        playerStateMachine.WeaponHandler.EquipWeapon((Weapon)SelectedItem, WeaponHand.Left);
-        //InventoryPanel.SetActive(true);
-        //EquipBtnPanel.SetActive(false);
-    }
-
     public void ArmorEquip(Armor armor)
     {
-        armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        //armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
     public void ArmorUnEquip(Armor armor)
     {
-        armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        //armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
     public void EquipWeapon()
     {
-        damageText.text = playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
+        //damageText.text = playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
     }
 
     public void OpenInteractionUI(Loot _loot)
@@ -301,8 +275,6 @@ public class UIManager : MonoBehaviour
     {
         freeLook.m_XAxis.m_MaxSpeed = 300;
         freeLook.m_YAxis.m_MaxSpeed = 2;
-        //InventoryPanel.SetActive(true);
-        //EquipBtnPanel.SetActive(false);
         UICanvas.SetActive(false);
     }
 
