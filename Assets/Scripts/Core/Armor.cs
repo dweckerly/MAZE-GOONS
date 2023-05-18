@@ -28,7 +28,7 @@ public class ArmorBodyMap
 }
 
 [CreateAssetMenu(fileName = "Armor", menuName = "Items/New Armor", order = 1)]
-public class Armor : Item
+public class Armor : Equippable
 {
     public ArmorBodyMap[] ArmorObjects;
     public override ItemType itemType => ItemType.Armor;

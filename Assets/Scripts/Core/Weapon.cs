@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Items/New Weapon", order = 2)]
-public class Weapon : Item
+public class Weapon : Equippable
 {
     public override ItemType itemType => ItemType.Weapon;
 
