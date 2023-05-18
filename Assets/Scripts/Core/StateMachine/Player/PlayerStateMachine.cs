@@ -104,7 +104,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleShieldUnEquip()
     {
-        Attributes.DamageReduction -= WeaponHandler.shieldEquipped.DamageReduction;
+        //Attributes.DamageReduction -= WeaponHandler.shieldEquipped.DamageReduction;
         Attributes.SetBlockAngle(defaultBlockAngle);
     }
 

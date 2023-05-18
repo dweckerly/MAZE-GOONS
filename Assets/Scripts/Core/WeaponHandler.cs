@@ -246,7 +246,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipShield(Shield shield)
     {
-        if (!string.IsNullOrEmpty(shieldEquipped?.Id) && shieldEquipped.Equals(shield?.Id))
+        if (!string.IsNullOrEmpty(shieldEquipped?.Id) && shieldEquipped.Id.Equals(shield?.Id))
         {
             UnEquipOffHand();
             EquipDefaultOffHand();
