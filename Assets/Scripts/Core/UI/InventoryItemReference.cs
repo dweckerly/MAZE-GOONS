@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryItemReference : MonoBehaviour
 {
     public Item item;
     public Image iconBackGround;
     public Image itemIcon;
+    public GameObject countDisplay;
+    public TMP_Text count; 
 
     private Color iconBGDefaultColor = new Color(0.5176471f, 0.5176471f, 0.5176471f, 0.3921569f);
     private Color iconBGFilledColor = new Color(0.5990566f, 1f, 0.9917222f, 1f);
