@@ -16,6 +16,7 @@ public class InventoryDisplayPanel : MonoBehaviour
     public TMP_Text panelTitle;
     public InventoryItemReference[] icons;
     public PanelType[] panels;
+    public ItemDetails itemDetails;
 
     private Item selectedItem;
 
@@ -23,6 +24,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     private void Start() 
     {
+        itemDetails.gameObject.SetActive(false);
         PopulatePanel();
         inventory.AddItemEvent += PopulatePanel;
     }
@@ -34,6 +36,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     public void NextPanel()
     {
+        itemDetails.gameObject.SetActive(false);
         panelIndex++;
         if (panelIndex >= panels.Length) panelIndex = 0;
         PopulatePanel();
@@ -41,6 +44,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     public void PreviousPanel()
     {
+        itemDetails.gameObject.SetActive(false);
         panelIndex--;
         if (panelIndex < 0) panelIndex = panels.Length - 1;
         PopulatePanel();
@@ -72,5 +76,7 @@ public class InventoryDisplayPanel : MonoBehaviour
         PopulatePanel();
         selectedItem = icons[index].item;
         icons[index].Selected();
+        itemDetails.gameObject.SetActive(true);
+        itemDetails.ShowDetails(selectedItem);
     }
 }
