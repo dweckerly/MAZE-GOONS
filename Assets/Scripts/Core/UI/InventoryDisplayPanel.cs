@@ -130,7 +130,5 @@ public class InventoryDisplayPanel : MonoBehaviour
     public void HotKeyBtnSet(int index)
     {
         UIManager.SetHotKey(selectedItem, index);
-        ClearDetails();
-        PopulatePanel();
     }
 }
