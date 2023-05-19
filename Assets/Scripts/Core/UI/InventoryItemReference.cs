@@ -13,7 +13,8 @@ public class InventoryItemReference : MonoBehaviour
     public TMP_Text count; 
 
     private Color iconBGDefaultColor = new Color(0.5176471f, 0.5176471f, 0.5176471f, 0.3921569f);
-    private Color iconBGFilledColor = new Color(0.5990566f, 1f, 0.9917222f, 1f);
+    private Color iconBGSelectedColor = new Color(0.5990566f, 1f, 0.9917222f, 1f);
+    private Color iconBGEquippedColor = new Color(0.5990566f, 1f, 0.9917222f, 1f);
     private Color itemIconDefaultColor = new Color(1, 1, 1, 0);
     private Color itemIconFilledColor = new Color(1, 1, 1, 1);
 
@@ -21,7 +22,20 @@ public class InventoryItemReference : MonoBehaviour
     {
         itemIcon.sprite = item.icon;
         itemIcon.color = itemIconFilledColor;
-        iconBackGround.color = iconBGDefaultColor;
+        if (item is Equippable && ((Equippable) item).equipped) iconBackGround.color = iconBGEquippedColor;
+        else iconBackGround.color = iconBGDefaultColor;
+    }
+
+    public void ShowCountDisplay(int amount)
+    {
+        count.text = amount.ToString();
+        countDisplay.SetActive(true);
+    }
+
+    private void HideCountDisplay()
+    {
+        count.text = "";
+        countDisplay.SetActive(false);
     }
 
     public void Clear()
@@ -30,10 +44,11 @@ public class InventoryItemReference : MonoBehaviour
         iconBackGround.color = iconBGDefaultColor;
         itemIcon.sprite = null;
         itemIcon.color = itemIconDefaultColor;
+        HideCountDisplay();
     }
 
     public void Selected()
     {
-        iconBackGround.color = iconBGFilledColor;
+        iconBackGround.color = iconBGSelectedColor;
     }
 }

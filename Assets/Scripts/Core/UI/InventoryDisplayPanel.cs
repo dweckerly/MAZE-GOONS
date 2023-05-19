@@ -60,9 +60,10 @@ public class InventoryDisplayPanel : MonoBehaviour
         ClearAllIcons();
         panelTitle.text = panels[panelIndex].title;
         int i = 0;
-        foreach(Item item in inventory.GetAllOfItemType(panels[panelIndex].itemType))
+        foreach(KeyValuePair<Item, int> item in inventory.GetAllOfItemType(panels[panelIndex].itemType))
         {
-            icons[i].item = item;
+            icons[i].item = item.Key;
+            if (item.Value > 1) icons[i].ShowCountDisplay(item.Value);
             icons[i].ShowIcon();
             i++;
         }

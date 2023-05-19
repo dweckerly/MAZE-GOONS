@@ -88,17 +88,14 @@ public class Inventory : MonoBehaviour
         return weight;
     }
 
-    public List<Item> GetAllOfItemType(ItemType itemType)
+    public SortedDictionary<Item, int> GetAllOfItemType(ItemType itemType)
     {
-        List<Item> items = new List<Item>();
+        SortedDictionary<Item, int> items = new SortedDictionary<Item, int>(new ItemComparer());
         foreach(Item item in inventory.Keys)
         {
             if (item.itemType == itemType)
             {
-                for(int i = 0; i < inventory[item]; i++)
-                {
-                    items.Add(item);
-                }
+                items.Add(item, inventory[item]);
             } 
         }
         return items;
