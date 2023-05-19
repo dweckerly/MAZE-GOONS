@@ -50,6 +50,7 @@ public class ArmorHandler : MonoBehaviour
             {
                 UnEquipArmor(armorBodyMap, armor);
             }
+            armor.equipped = false;
             UnEquipArmorEvent?.Invoke(armor);
         }
         else
@@ -60,9 +61,11 @@ public class ArmorHandler : MonoBehaviour
                 {
                     UnEquipArmor(armorBodyMap, armor);
                 }
+                armor.equipped = false;
                 UnEquipArmorEvent?.Invoke(armor);
             }
             EquipArmor(armor);
+            armor.equipped = true;
             EquipArmorEvent?.Invoke(armor);
         }
     }

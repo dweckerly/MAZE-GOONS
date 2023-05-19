@@ -168,6 +168,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void EquipMainHand(Weapon weapon)
     {
+        weapon.equipped = true;
         mainHandWeapon = weapon;
         mainHandPrefab = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform);
         mainHandPrefab.layer = gameObject.layer;
@@ -193,6 +194,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void EquipOffHand(Weapon weapon)
     {
+        weapon.equipped = true;
         offHandWeapon = weapon;
         offHandPrefab = Instantiate(offHandWeapon.offHandPrefab, LeftHand.transform);
         offHandPrefab.layer = gameObject.layer;
@@ -221,6 +223,7 @@ public class WeaponHandler : MonoBehaviour
             maskLayers.Remove(RIGHT_GRIP);
             maskLayers.Remove(ONE_HANDED_ARM_POSITION);
         }
+        if (mainHandWeapon != null) mainHandWeapon.equipped = false;
         mainHandWeapon = null;
         mainHandDamage = null;
         mainHandCollider = null;
@@ -229,12 +232,14 @@ public class WeaponHandler : MonoBehaviour
     private void UnEquipOffHand()
     {
         if (offHandPrefab != null) Destroy(offHandPrefab);
+        if (offHandWeapon != null) offHandWeapon.equipped = false;
         offHandWeapon = null;
         offHandDamage = null;
         offHandCollider = null;
         maskLayers.Remove(LEFT_GRIP);
         maskLayers.Remove(ONE_HANDED_ARM_POSITION_LEFT);
         maskLayers.Remove(SHIELD_ARM_POSITION);
+        if (shieldEquipped != null) shieldEquipped.equipped = false;
         shieldEquipped = null;
     }
 
@@ -250,6 +255,7 @@ public class WeaponHandler : MonoBehaviour
         {
             UnEquipOffHand();
             EquipDefaultOffHand();
+            shield.equipped = false;
             OnUnEquipShield?.Invoke();
         }
         else
@@ -268,6 +274,7 @@ public class WeaponHandler : MonoBehaviour
             maskLayers.Add(SHIELD_ARM_POSITION);
             SetWeaponLayer(offHandPrefab);
             shieldEquipped = shield;
+            shield.equipped = true;
             OnEquipShield?.Invoke();
         }
         OnEquip?.Invoke();

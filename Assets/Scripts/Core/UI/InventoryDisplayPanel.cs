@@ -65,6 +65,7 @@ public class InventoryDisplayPanel : MonoBehaviour
             icons[i].item = item.Key;
             if (item.Value > 1) icons[i].ShowCountDisplay(item.Value);
             icons[i].ShowIcon();
+            if (icons[i].item == selectedItem) icons[i].Selected();
             i++;
         }
     }
@@ -81,27 +82,24 @@ public class InventoryDisplayPanel : MonoBehaviour
     {
         if (icons[index].item != null)
         {
-            PopulatePanel();
             selectedItem = icons[index].item;
-            icons[index].Selected();
             itemDetails.gameObject.SetActive(true);
             BtnContainer.gameObject.SetActive(true);
             itemDetails.ShowDetails(selectedItem);
+            PopulatePanel();
         }
     }
 
     public void ActionBtnClick()
     {
-        if (selectedItem is Equippable) ((Equippable)selectedItem).equipped = !((Equippable)selectedItem).equipped;
         UIManager.InventoryItemClick(selectedItem);
-        PopulatePanel();
         if (selectedItem.itemType == ItemType.Consumable) 
         {
             BtnContainer.gameObject.SetActive(false);
             itemDetails.gameObject.SetActive(false);
             selectedItem = null;
-            return;
         }
-        itemDetails.ShowDetails(selectedItem);
+        else itemDetails.ShowDetails(selectedItem);
+        PopulatePanel();
     }
 }
