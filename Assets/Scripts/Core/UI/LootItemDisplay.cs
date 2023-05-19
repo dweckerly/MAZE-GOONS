@@ -18,7 +18,7 @@ public class LootItemDisplay : MonoBehaviour
         item = _item;
         ItemIcon.sprite = item.icon;
         ItemNameText.text = item.itemName;
-        WeightText.text = item.weight.ToString();
+        WeightText.text = item.weight.ToString() + " lbs.";
         uIManager = _uIManager;
     }
 
