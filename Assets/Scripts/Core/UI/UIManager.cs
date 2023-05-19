@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
     public Item[] hotKeyItems = new Item[4];
     public Image[] hotKeyImages;
     public Sprite baseUISprite;
+
+    public event Action OnInventoryOpen;
     
     void Start()
     {
@@ -151,6 +154,7 @@ public class UIManager : MonoBehaviour
                 freeLook.m_XAxis.m_MaxSpeed = 0;
                 freeLook.m_YAxis.m_MaxSpeed = 0;
                 UICanvas.SetActive(true);
+                OnInventoryOpen?.Invoke();
             }
         }
     }
@@ -355,21 +359,21 @@ public class UIManager : MonoBehaviour
 
     private void HotKey1()
     {
-        if (hotKeyItems[0] != null) InventoryItemClick(hotKeyItems[0]);
+        if (hotKeyItems[0] != null && !UICanvas.activeSelf) InventoryItemClick(hotKeyItems[0]);
     }
 
     private void HotKey2()
     {
-        if (hotKeyItems[1] != null) InventoryItemClick(hotKeyItems[1]);
+        if (hotKeyItems[1] != null && !UICanvas.activeSelf) InventoryItemClick(hotKeyItems[1]);
     }
 
     private void HotKey3()
     {
-        if (hotKeyItems[2] != null) InventoryItemClick(hotKeyItems[2]);
+        if (hotKeyItems[2] != null && !UICanvas.activeSelf) InventoryItemClick(hotKeyItems[2]);
     }
 
     private void HotKey4()
     {
-        if (hotKeyItems[3] != null) InventoryItemClick(hotKeyItems[3]);
+        if (hotKeyItems[3] != null && !UICanvas.activeSelf) InventoryItemClick(hotKeyItems[3]);
     }
 }

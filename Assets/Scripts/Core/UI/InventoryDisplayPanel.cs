@@ -31,11 +31,19 @@ public class InventoryDisplayPanel : MonoBehaviour
         ClearDetails();
         PopulatePanel();
         inventory.AddItemEvent += PopulatePanel;
+        UIManager.OnInventoryOpen += OnOpenClear;
     }
 
     private void OnDestroy() 
     {
         inventory.AddItemEvent -= PopulatePanel;
+        UIManager.OnInventoryOpen -= OnOpenClear;
+    }
+
+    public void OnOpenClear()
+    {
+        ClearDetails();
+        PopulatePanel();
     }
 
     public void NextPanel()
@@ -122,5 +130,7 @@ public class InventoryDisplayPanel : MonoBehaviour
     public void HotKeyBtnSet(int index)
     {
         UIManager.SetHotKey(selectedItem, index);
+        ClearDetails();
+        PopulatePanel();
     }
 }
