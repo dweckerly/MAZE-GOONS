@@ -58,7 +58,13 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        if (inventory.ContainsKey(item)) inventory[item]++;
+        if (item.stackable)
+        {
+            foreach(Item i in inventory.Keys)
+            {
+                if (i.Id == item.Id) inventory[item]++;
+            }
+        }
         else inventory.Add(item, 1);
         UpdateWeightDisplay();
         AddItemEvent?.Invoke();

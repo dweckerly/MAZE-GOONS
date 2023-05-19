@@ -18,4 +18,5 @@ public abstract class Item : BaseScriptableObject
     public int value;
     public string description;
     public Sprite icon;
+    public bool stackable = false;
 }
