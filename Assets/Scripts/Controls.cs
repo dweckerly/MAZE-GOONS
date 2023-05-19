@@ -134,6 +134,42 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HotKey1"",
+                    ""type"": ""Button"",
+                    ""id"": ""af5db986-4779-428d-b16a-8323c2e095e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HotKey2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b294ddf-33c1-4892-8080-9815cc32b9c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HotKey3"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3007ecf-311f-4a68-9d27-8132d8319d8c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HotKey4"",
+                    ""type"": ""Button"",
+                    ""id"": ""84cedf8e-ef6c-450b-9254-3727f8ac0f53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -477,6 +513,50 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4da38bb-36db-4542-b202-ceb997784422"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""HotKey1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a9a295b-6df6-4fc9-9cda-84bf347d1afb"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""HotKey2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee8c3dbb-5679-424c-96a0-e83d5a512d07"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""HotKey3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7473cb45-422e-4a5a-a1a7-647fd54a5eb5"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""HotKey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -525,6 +605,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Sneak = m_Player.FindAction("Sneak", throwIfNotFound: true);
         m_Player_Confirm = m_Player.FindAction("Confirm", throwIfNotFound: true);
+        m_Player_HotKey1 = m_Player.FindAction("HotKey1", throwIfNotFound: true);
+        m_Player_HotKey2 = m_Player.FindAction("HotKey2", throwIfNotFound: true);
+        m_Player_HotKey3 = m_Player.FindAction("HotKey3", throwIfNotFound: true);
+        m_Player_HotKey4 = m_Player.FindAction("HotKey4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -596,6 +680,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Sneak;
     private readonly InputAction m_Player_Confirm;
+    private readonly InputAction m_Player_HotKey1;
+    private readonly InputAction m_Player_HotKey2;
+    private readonly InputAction m_Player_HotKey3;
+    private readonly InputAction m_Player_HotKey4;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -612,6 +700,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Sneak => m_Wrapper.m_Player_Sneak;
         public InputAction @Confirm => m_Wrapper.m_Player_Confirm;
+        public InputAction @HotKey1 => m_Wrapper.m_Player_HotKey1;
+        public InputAction @HotKey2 => m_Wrapper.m_Player_HotKey2;
+        public InputAction @HotKey3 => m_Wrapper.m_Player_HotKey3;
+        public InputAction @HotKey4 => m_Wrapper.m_Player_HotKey4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -657,6 +749,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Confirm.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
                 @Confirm.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
                 @Confirm.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConfirm;
+                @HotKey1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey1;
+                @HotKey1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey1;
+                @HotKey1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey1;
+                @HotKey2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey2;
+                @HotKey2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey2;
+                @HotKey2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey2;
+                @HotKey3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey3;
+                @HotKey3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey3;
+                @HotKey3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey3;
+                @HotKey4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey4;
+                @HotKey4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey4;
+                @HotKey4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHotKey4;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -697,6 +801,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Confirm.started += instance.OnConfirm;
                 @Confirm.performed += instance.OnConfirm;
                 @Confirm.canceled += instance.OnConfirm;
+                @HotKey1.started += instance.OnHotKey1;
+                @HotKey1.performed += instance.OnHotKey1;
+                @HotKey1.canceled += instance.OnHotKey1;
+                @HotKey2.started += instance.OnHotKey2;
+                @HotKey2.performed += instance.OnHotKey2;
+                @HotKey2.canceled += instance.OnHotKey2;
+                @HotKey3.started += instance.OnHotKey3;
+                @HotKey3.performed += instance.OnHotKey3;
+                @HotKey3.canceled += instance.OnHotKey3;
+                @HotKey4.started += instance.OnHotKey4;
+                @HotKey4.performed += instance.OnHotKey4;
+                @HotKey4.canceled += instance.OnHotKey4;
             }
         }
     }
@@ -733,5 +849,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnSneak(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+        void OnHotKey1(InputAction.CallbackContext context);
+        void OnHotKey2(InputAction.CallbackContext context);
+        void OnHotKey3(InputAction.CallbackContext context);
+        void OnHotKey4(InputAction.CallbackContext context);
     }
 }

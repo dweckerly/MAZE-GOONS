@@ -14,6 +14,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action InteractEvent;
     public event Action OpenInventoryEvent;
     public event Action ConfirmEvent;
+    public event Action HotKey1Event;
+    public event Action HotKey2Event;
+    public event Action HotKey3Event;
+    public event Action HotKey4Event;
     public Vector2 MovementValue { get; private set; }
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
@@ -117,5 +121,29 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-    }   
+    }
+
+    public void OnHotKey1(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        HotKey1Event?.Invoke();
+    }
+
+    public void OnHotKey2(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        HotKey2Event?.Invoke();
+    }
+
+    public void OnHotKey3(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        HotKey3Event?.Invoke();
+    }
+
+    public void OnHotKey4(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        HotKey4Event?.Invoke();
+    }
 }
