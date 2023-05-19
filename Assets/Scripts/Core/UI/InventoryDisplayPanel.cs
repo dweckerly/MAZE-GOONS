@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
@@ -18,6 +19,7 @@ public class InventoryDisplayPanel : MonoBehaviour
     public PanelType[] panels;
     public ItemDetails itemDetails;
     public GameObject BtnContainer;
+    public GameObject AssignBtns;
     public UIManager UIManager;
 
     private Item selectedItem;
@@ -75,10 +77,19 @@ public class InventoryDisplayPanel : MonoBehaviour
         }
     }
 
+    private void ClearDetails()
+    {
+        selectedItem = null;
+        BtnContainer.gameObject.SetActive(false);
+        itemDetails.gameObject.SetActive(false);
+        AssignBtns.SetActive(false);
+    }
+
     public void IconItemClick(int index)
     {
         if (icons[index].item != null)
         {
+            AssignBtns.SetActive(false);
             selectedItem = icons[index].item;
             itemDetails.gameObject.SetActive(true);
             BtnContainer.gameObject.SetActive(true);
@@ -102,10 +113,14 @@ public class InventoryDisplayPanel : MonoBehaviour
         PopulatePanel();
     }
 
-    private void ClearDetails()
+    public void AssignBtnClick()
     {
-        selectedItem = null;
-        BtnContainer.gameObject.SetActive(false);
-        itemDetails.gameObject.SetActive(false);
+        if (AssignBtns.activeSelf) AssignBtns.SetActive(false);
+        else AssignBtns.SetActive(true);
+    }
+
+    public void HotKeyBtnSet(int index)
+    {
+        UIManager.SetHotKey(selectedItem, index);
     }
 }

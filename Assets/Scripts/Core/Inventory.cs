@@ -58,7 +58,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-
         if (inventory.ContainsKey(item)) inventory[item]++;
         else inventory.Add(item, 1);
         UpdateWeightDisplay();

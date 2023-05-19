@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI interactableMessage;
 
     public Animator TargetPanelAnimator;
+
+    public Item[] hotKeyItems = new Item[4];
+    public Image[] hotKeyImages;
+    public Sprite baseUISprite;
     
     void Start()
     {
@@ -41,6 +46,11 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Targeter.TargetAction += OnTarget;
         playerStateMachine.InputReader.PauseEvent += OnPause;
         playerStateMachine.Attributes.OnDie += OnDeath;
+
+        playerStateMachine.InputReader.HotKey1Event += HotKey1;
+        playerStateMachine.InputReader.HotKey2Event += HotKey2;
+        playerStateMachine.InputReader.HotKey3Event += HotKey3;
+        playerStateMachine.InputReader.HotKey4Event += HotKey4;
 
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
@@ -59,6 +69,11 @@ public class UIManager : MonoBehaviour
         playerStateMachine.Targeter.TargetAction -= OnTarget;
         playerStateMachine.InputReader.PauseEvent -= OnPause;
         playerStateMachine.Attributes.OnDie -= OnDeath;
+
+        playerStateMachine.InputReader.HotKey1Event -= HotKey1;
+        playerStateMachine.InputReader.HotKey2Event -= HotKey2;
+        playerStateMachine.InputReader.HotKey3Event -= HotKey3;
+        playerStateMachine.InputReader.HotKey4Event -= HotKey4;
     }
 
     private void OnTarget()
@@ -150,6 +165,7 @@ public class UIManager : MonoBehaviour
             case ItemType.Consumable:
                 ((Consumable) item).Consume(playerStateMachine);
                 playerStateMachine.Inventory.RemoveItem(item);
+                if (!playerStateMachine.Inventory.inventory.ContainsKey(item)) CheckHotKeys(item);
                 break;
             case ItemType.Shield:
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
@@ -183,6 +199,7 @@ public class UIManager : MonoBehaviour
             }
         }
         playerStateMachine.Inventory.RemoveItem(item);
+        if (!playerStateMachine.Inventory.inventory.ContainsKey(item)) CheckHotKeys(item);
     }
 
     public void ArmorEquip(Armor armor)
@@ -316,5 +333,43 @@ public class UIManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetHotKey(Item item, int index)
+    {
+        hotKeyItems[index] = item;
+        hotKeyImages[index].sprite = item.icon;
+    }
+
+    private void CheckHotKeys(Item item)
+    {
+        for(int i = 0; i < hotKeyItems.Length; i++)
+        {
+            if (hotKeyItems[i] == item)
+            {
+                hotKeyItems[i] = null;
+                hotKeyImages[i].sprite = baseUISprite;
+            }
+        }
+    }
+
+    private void HotKey1()
+    {
+        if (hotKeyItems[0] != null) InventoryItemClick(hotKeyItems[0]);
+    }
+
+    private void HotKey2()
+    {
+        if (hotKeyItems[1] != null) InventoryItemClick(hotKeyItems[1]);
+    }
+
+    private void HotKey3()
+    {
+        if (hotKeyItems[2] != null) InventoryItemClick(hotKeyItems[2]);
+    }
+
+    private void HotKey4()
+    {
+        if (hotKeyItems[3] != null) InventoryItemClick(hotKeyItems[3]);
     }
 }
