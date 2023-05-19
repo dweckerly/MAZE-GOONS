@@ -148,20 +148,41 @@ public class UIManager : MonoBehaviour
                 playerStateMachine.ArmorHandler.CheckArmor((Armor)item);
                 break;
             case ItemType.Consumable:
-                Consumable consumable = (Consumable) item;
-                consumable.Consume(playerStateMachine);
+                ((Consumable) item).Consume(playerStateMachine);
                 playerStateMachine.Inventory.RemoveItem(item);
                 break;
             case ItemType.Shield:
                 playerStateMachine.WeaponHandler.EquipShield((Shield)item);
                 break;
             case ItemType.Weapon:
-                Weapon weapon = (Weapon)item;
                 playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
                 break;
             default:
                 break;
         }    
+    }
+
+    public void DropItem(Item item)
+    {
+        Instantiate(item.pickup, playerStateMachine.gameObject.transform.position, Quaternion.identity);
+        if (item is Equippable && ((Equippable) item).equipped)
+        {
+            switch (item.itemType)
+            {
+                case ItemType.Armor:
+                    playerStateMachine.ArmorHandler.CheckArmor((Armor)item);
+                    break;
+                case ItemType.Shield:
+                    playerStateMachine.WeaponHandler.EquipShield((Shield)item);
+                    break;
+                case ItemType.Weapon:
+                    playerStateMachine.WeaponHandler.EquipWeapon((Weapon)item);
+                    break;
+                default:
+                    break;
+            }
+        }
+        playerStateMachine.Inventory.RemoveItem(item);
     }
 
     public void ArmorEquip(Armor armor)

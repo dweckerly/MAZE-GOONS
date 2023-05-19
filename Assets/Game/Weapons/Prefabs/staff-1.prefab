@@ -102,6 +102,7 @@ MonoBehaviour:
   knockback: 0
   swingParticle: {fileID: 0}
   staminaDrain: 0
+  sourceTransform: {fileID: 0}
 --- !u!54 &2873801915000183903
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2224746071848347543}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.3
   m_Height: 1
   m_Direction: 2

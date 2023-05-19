@@ -1913,8 +1913,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852786953951905805}
-  m_LocalRotation: {x: 0.05899692, y: 0.6591323, z: -0.05199434, w: 0.7479042}
-  m_LocalPosition: {x: -5.5775743, y: 2.2931924, z: 7.853983}
+  m_LocalRotation: {x: -0.1978641, y: -0.29632455, z: -0.06289313, w: 0.9322479}
+  m_LocalPosition: {x: 2.886382, y: 0.10000012, z: 13.318401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5009,7 +5009,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 892669983787796486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2463390285495163700}
+        m_TargetAssemblyTypeName: InventoryDisplayPanel, Assembly-CSharp
+        m_MethodName: DropItemClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2074585578195543801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,7 +6841,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -9941,11 +9953,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193417181176647229, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.6304592e-23
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 193417181176647229, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.5244882e-24
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 376007888696888681, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: <HealthRect>k__BackingField
@@ -10021,15 +10033,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000014901159
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000008940696
+      value: 0.00000008940697
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186620308175, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000004097819
+      value: 0.000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034780, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10057,7 +10069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186669034780, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011175871
+      value: -0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 2744864186711648724, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_XAxis.Value
@@ -10081,11 +10093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457217, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000119209275
+      value: 0.000000059604638
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187195457217, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000372529
+      value: 0.00000001862645
       objectReference: {fileID: 0}
     - target: {fileID: 2744864187384622294, guid: 1c138c97c8f8f16489426eda68f3263b, type: 3}
       propertyPath: m_XAxis.Value

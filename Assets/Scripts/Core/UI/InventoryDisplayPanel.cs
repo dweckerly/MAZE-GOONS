@@ -26,8 +26,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     private void Start() 
     {
-        BtnContainer.gameObject.SetActive(false);
-        itemDetails.gameObject.SetActive(false);
+        ClearDetails();
         PopulatePanel();
         inventory.AddItemEvent += PopulatePanel;
     }
@@ -39,8 +38,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     public void NextPanel()
     {
-        itemDetails.gameObject.SetActive(false);
-        BtnContainer.gameObject.SetActive(false);
+        ClearDetails();
         panelIndex++;
         if (panelIndex >= panels.Length) panelIndex = 0;
         PopulatePanel();
@@ -48,8 +46,7 @@ public class InventoryDisplayPanel : MonoBehaviour
 
     public void PreviousPanel()
     {
-        itemDetails.gameObject.SetActive(false);
-        BtnContainer.gameObject.SetActive(false);
+        ClearDetails();
         panelIndex--;
         if (panelIndex < 0) panelIndex = panels.Length - 1;
         PopulatePanel();
@@ -93,13 +90,22 @@ public class InventoryDisplayPanel : MonoBehaviour
     public void ActionBtnClick()
     {
         UIManager.InventoryItemClick(selectedItem);
-        if (selectedItem.itemType == ItemType.Consumable) 
-        {
-            BtnContainer.gameObject.SetActive(false);
-            itemDetails.gameObject.SetActive(false);
-            selectedItem = null;
-        }
+        if (selectedItem.itemType == ItemType.Consumable) ClearDetails();
         else itemDetails.ShowDetails(selectedItem);
         PopulatePanel();
+    }
+
+    public void DropItemClick()
+    {
+        UIManager.DropItem(selectedItem);
+        if (!inventory.inventory.ContainsKey(selectedItem)) ClearDetails();
+        PopulatePanel();
+    }
+
+    private void ClearDetails()
+    {
+        selectedItem = null;
+        BtnContainer.gameObject.SetActive(false);
+        itemDetails.gameObject.SetActive(false);
     }
 }
