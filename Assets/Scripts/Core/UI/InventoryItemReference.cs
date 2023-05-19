@@ -24,16 +24,8 @@ public class InventoryItemReference : MonoBehaviour
     {
         itemIcon.sprite = item.icon;
         itemIcon.color = itemIconFilledColor;
-        iconBackGround.color = iconBGFilledColor;
-        // if (item is Equippable && ((Equippable) item).equipped) 
-        // {
-        //     iconBackGround.color = iconBGEquippedColor;
-        // }
-        // else 
-        // {
-        //     selectedBackGround.SetActive(true);
-        //     iconBackGround.color = iconBGDefaultColor;
-        // }
+        if (item is Equippable && ((Equippable)item).equipped) iconBackGround.color = iconBGEquippedColor;
+        else iconBackGround.color = iconBGFilledColor;
     }
 
     public void ShowCountDisplay(int amount)
@@ -62,5 +54,7 @@ public class InventoryItemReference : MonoBehaviour
     {
         iconBackGround.color = iconBGSelectedColor;
         selectedBackGround.color = iconBGFilledColor;
+        if (item is Equippable && ((Equippable) item).equipped) selectedBackGround.color = iconBGEquippedColor;
+        else selectedBackGround.color = iconBGFilledColor;
     }
 }
