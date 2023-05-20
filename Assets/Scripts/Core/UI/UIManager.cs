@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
     public TextMeshProUGUI guileText;
+    public TMP_Text attackText;
+    public TMP_Text defenseText;
 
     public GameObject LootUI;
     public Transform LootContentContainer;
@@ -42,8 +44,10 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.InputReader.OpenInventoryEvent += OpenInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent += ArmorEquip;
-        playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorUnEquip;
+        playerStateMachine.ArmorHandler.UnEquipArmorEvent += ArmorEquip;
         playerStateMachine.WeaponHandler.OnEquip += EquipWeapon;
+        playerStateMachine.WeaponHandler.OnEquipShield += ShieldEquip;
+        playerStateMachine.WeaponHandler.OnUnEquipShield += ShieldEquip;
         playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction += OnTarget;
@@ -65,8 +69,10 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.InputReader.OpenInventoryEvent -= OpenInventory;
         playerStateMachine.ArmorHandler.EquipArmorEvent -= ArmorEquip;
-        playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorUnEquip;
+        playerStateMachine.ArmorHandler.UnEquipArmorEvent -= ArmorEquip;
         playerStateMachine.WeaponHandler.OnEquip -= EquipWeapon;
+        playerStateMachine.WeaponHandler.OnEquipShield -= ShieldEquip;
+        playerStateMachine.WeaponHandler.OnUnEquipShield -= ShieldEquip;
         playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
         playerStateMachine.Targeter.TargetAction -= OnTarget;
@@ -208,17 +214,18 @@ public class UIManager : MonoBehaviour
 
     public void ArmorEquip(Armor armor)
     {
-        //armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        armorText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
-    public void ArmorUnEquip(Armor armor)
+    public void ShieldEquip()
     {
-        //armorText.text = playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        armorText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        damageText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
     }
 
     public void EquipWeapon()
     {
-        //damageText.text = playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
+        damageText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
     }
 
     public void OpenInteractionUI(Loot _loot)
