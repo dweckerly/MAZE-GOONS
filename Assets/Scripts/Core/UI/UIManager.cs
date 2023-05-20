@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour
     public GameObject UICanvas;
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
-    public TextMeshProUGUI damageText;
-    public TextMeshProUGUI armorText;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -214,18 +212,19 @@ public class UIManager : MonoBehaviour
 
     public void ArmorEquip(Armor armor)
     {
-        armorText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        defenseText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
     }
 
     public void ShieldEquip()
     {
-        armorText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
-        damageText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
+        attackText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
+        defenseText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+
     }
 
     public void EquipWeapon()
     {
-        damageText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
+        attackText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
     }
 
     public void OpenInteractionUI(Loot _loot)
