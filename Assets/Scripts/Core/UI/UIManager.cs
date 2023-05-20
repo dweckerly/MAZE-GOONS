@@ -212,13 +212,13 @@ public class UIManager : MonoBehaviour
 
     public void ArmorEquip(Armor armor)
     {
-        defenseText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        defenseText.text = "DEF " + playerStateMachine.Attributes.DamageReduction.ToString();
     }
 
     public void ShieldEquip()
     {
         attackText.text = "ATK " + playerStateMachine.WeaponHandler.mainHandWeapon.weaponDamage.ToString();
-        defenseText.text = "DEF " + playerStateMachine.ArmorHandler.CalculateArmorValue().ToString();
+        defenseText.text = "DEF " + playerStateMachine.Attributes.DamageReduction.ToString();
 
     }
 

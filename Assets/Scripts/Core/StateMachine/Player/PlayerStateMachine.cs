@@ -104,18 +104,22 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleShieldUnEquip()
     {
-        //Attributes.DamageReduction -= WeaponHandler.shieldEquipped.DamageReduction;
+        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
         Attributes.SetBlockAngle(defaultBlockAngle);
     }
 
     private void HandleArmorEquip(Armor armor)
     {
-        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
+        Attributes.DamageReduction = 0;
+        if (WeaponHandler.shieldEquipped != null) Attributes.DamageReduction += WeaponHandler.shieldEquipped.DamageReduction;
+        Attributes.DamageReduction += ArmorHandler.CalculateArmorValue();
     }
 
     private void HandleArmorUnEquip(Armor armor)
     {
-        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
+        Attributes.DamageReduction = 0;
+        if (WeaponHandler.shieldEquipped != null) Attributes.DamageReduction += WeaponHandler.shieldEquipped.DamageReduction;
+        Attributes.DamageReduction += ArmorHandler.CalculateArmorValue();
     }
 
     public IEnumerator BlockCooldown()
