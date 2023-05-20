@@ -42,7 +42,6 @@ public class Attributes : MonoBehaviour
 
     Animator animator;
 
-    private bool isInvulnerable = false;
     public bool isBlocking = false;
     private float blockAngle = 70f;
     private float flankAngle = 140f;
@@ -172,11 +171,6 @@ public class Attributes : MonoBehaviour
     {
         currentStamina -= Mathf.Clamp(amount, 0, maxStamina);
         if (StaminaRect != null) StaminaRect.localScale = new Vector3(GetStaminaFraction(), 1f, 1f);
-    }
-
-    public void SetInvulnerable(bool invulnerable)
-    {
-        isInvulnerable = invulnerable;
     }
 
     public void Die()
