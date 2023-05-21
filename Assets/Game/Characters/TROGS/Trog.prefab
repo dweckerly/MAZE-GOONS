@@ -1516,7 +1516,7 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
-  shieldEquipped: 
+  shieldEquipped: {fileID: 0}
   maskLayers: 
 --- !u!195 &4816429052547790092
 NavMeshAgent:
@@ -1576,6 +1576,7 @@ MonoBehaviour:
   currentBrawn: 0
   currentGuile: 0
   currentStamina: 0
+  isBlocking: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
   <HealthBGRect>k__BackingField: {fileID: 0}

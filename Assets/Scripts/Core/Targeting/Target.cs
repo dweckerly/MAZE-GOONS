@@ -6,6 +6,9 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public event Action<Target> OnDestroyed;
+    public GameObject HealthBar;
+
+
 
     private void OnDestroy()
     {

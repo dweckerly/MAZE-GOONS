@@ -57,7 +57,7 @@ public class Targeter : MonoBehaviour
     public void Cancel()
     {
         if (CurrentTarget == null) return;
-        TargetAction.Invoke();
+        TargetAction?.Invoke();
         CombatCamera.LookAt = DefaultTarget;
         CurrentTarget = null;
     }
