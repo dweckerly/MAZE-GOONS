@@ -56,7 +56,11 @@ public class UIManager : MonoBehaviour
         playerStateMachine.InputReader.HotKey2Event += HotKey2;
         playerStateMachine.InputReader.HotKey3Event += HotKey3;
         playerStateMachine.InputReader.HotKey4Event += HotKey4;
+        UpdateStats();
+    }
 
+    public void UpdateStats()
+    {
         brawnText.text = playerStateMachine.Attributes.GetStat(Attribute.Brawn).ToString();
         brainsText.text = playerStateMachine.Attributes.GetStat(Attribute.Brains).ToString();
         gutsText.text = playerStateMachine.Attributes.GetStat(Attribute.Guts).ToString();

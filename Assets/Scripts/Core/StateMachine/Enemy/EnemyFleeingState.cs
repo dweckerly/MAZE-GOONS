@@ -66,7 +66,6 @@ public class EnemyFleeingState : EnemyBaseState
                     stateMachine.gameObject.transform.rotation = Quaternion.LookRotation(newPosition);
                     isDirectionSafe = true;
                 }
-                Debug.Log(vRotation);
             }
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;

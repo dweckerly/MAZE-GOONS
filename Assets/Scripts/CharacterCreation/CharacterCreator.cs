@@ -40,6 +40,7 @@ public class CharacterCreator : MonoBehaviour
 
     public StatsButtons statsButtons;
     public TMP_Text goonName;
+    public UIManager uIManager;
 
     private void Start() 
     {
@@ -170,6 +171,7 @@ public class CharacterCreator : MonoBehaviour
             CCUI.SetActive(false);
             playableDirector.Play(playable);
             Player.GetComponent<Attributes>().SetStats(statsButtons.brawn, statsButtons.brains, statsButtons.guts, statsButtons.guile);
+            uIManager.UpdateStats();
             goonName.text = name;
             StartCoroutine(CameraPan());
         }
