@@ -49,6 +49,7 @@ public class Targeter : MonoBehaviour
         }
         if (closestTarget == null) return false;
         CurrentTarget = closestTarget;
+        CurrentTarget.ShowHealth();
         TargetAction.Invoke();
         CombatCamera.LookAt = closestTarget.transform;
         return true;
@@ -59,11 +60,13 @@ public class Targeter : MonoBehaviour
         if (CurrentTarget == null) return;
         TargetAction?.Invoke();
         CombatCamera.LookAt = DefaultTarget;
+        CurrentTarget.HideHealth();
         CurrentTarget = null;
     }
 
     private void RemoveTarget(Target target)
     {
+        target.HideHealth();
         if (CurrentTarget == target)
         {
             TargetAction?.Invoke();

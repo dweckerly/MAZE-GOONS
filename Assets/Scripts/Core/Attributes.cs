@@ -80,7 +80,7 @@ public class Attributes : MonoBehaviour
             { Attribute.Guts, currentGuts },
         };
 
-        if (HealthRect != null)
+        if (HealthBGRect != null)
         {
             HealthBGRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
             HealthRect.sizeDelta = new Vector2(maxHP * rectScaleFactor, 30);
