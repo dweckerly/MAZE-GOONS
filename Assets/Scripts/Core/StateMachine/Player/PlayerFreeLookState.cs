@@ -32,7 +32,7 @@ public class PlayerFreeLookState : PlayerLocomotiveState
             return;
         }
         Vector3 movement = CalculateMovementDirection();
-        Move(movement * stateMachine.freeLookSpeed, deltaTime);
+        Move(movement * stateMachine.freeLookSpeed * stateMachine.encumberanceModifier, deltaTime);
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             if (stateMachine.animator.GetFloat(speedPercent) > 0.01f) stateMachine.animator.SetFloat(speedPercent, 0, animatorDampTime, deltaTime);

@@ -36,6 +36,7 @@ public class PlayerStateMachine : StateMachine
     private float defaultBlockAngle = 60f;
 
     public bool sneaking = false;
+    public float encumberanceModifier = 1f;
 
     private void Awake() 
     {
@@ -58,6 +59,8 @@ public class PlayerStateMachine : StateMachine
         WeaponHandler.OnUnEquipShield += HandleShieldUnEquip;
         ArmorHandler.EquipArmorEvent += HandleArmorEquip;
         ArmorHandler.UnEquipArmorEvent += HandleArmorUnEquip;
+        Inventory.AddItemEvent += CheckEncumberance;
+        Inventory.RemoveItemEvent += CheckEncumberance;
     }
 
     private void OnDisable()
@@ -69,6 +72,8 @@ public class PlayerStateMachine : StateMachine
         WeaponHandler.OnUnEquipShield -= HandleShieldUnEquip;
         ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
         ArmorHandler.UnEquipArmorEvent -= HandleArmorUnEquip;
+        Inventory.AddItemEvent -= CheckEncumberance;
+        Inventory.RemoveItemEvent -= CheckEncumberance;
     }
 
     public void HandleTakeDamage(bool impact)
@@ -126,5 +131,11 @@ public class PlayerStateMachine : StateMachine
     {
         yield return new WaitForSeconds(blockCooldown);
         canBlock = true;
+    }
+
+    private void CheckEncumberance()
+    {
+        if (Inventory.encumbered) encumberanceModifier = 0.5f;
+        else encumberanceModifier = 1f;
     }
 }

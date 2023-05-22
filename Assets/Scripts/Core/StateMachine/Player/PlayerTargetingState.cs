@@ -36,7 +36,7 @@ public class PlayerTargetingState : PlayerLocomotiveState
         }
         Vector3 movement = CalculateMovement();
         UpdateAnimator(deltaTime);
-        Move(movement * stateMachine.targetingSpeed, deltaTime);
+        Move(movement * stateMachine.targetingSpeed * stateMachine.encumberanceModifier, deltaTime);
         FaceTarget();
     }
 

@@ -29,6 +29,8 @@ public class Inventory : MonoBehaviour
 
     public delegate void AddItemCallback(SortedDictionary<Item, int> inventory);
     public event Action AddItemEvent;
+    public event Action RemoveItemEvent;
+    public bool encumbered = false;
 
     private void Start() 
     {
@@ -69,12 +71,16 @@ public class Inventory : MonoBehaviour
         inventory[item]--;
         UpdateWeightDisplay();
         if (inventory[item] == 0) inventory.Remove(item);
+        RemoveItemEvent?.Invoke();
     }
 
     private void UpdateWeightDisplay()
     {
-        if (weightText != null) weightText.text = WeightOfItems() + " / " + carryCapacity;
-        if (weightRect != null) weightRect.localScale = new Vector3(WeightOfItems() / carryCapacity, 1f, 1f);
+        float weightOfItems = WeightOfItems();
+        if (weightText != null) weightText.text = weightOfItems + " / " + carryCapacity;
+        if (weightRect != null) weightRect.localScale = new Vector3(weightOfItems / carryCapacity, 1f, 1f);
+        if (weightOfItems > carryCapacity) encumbered = true;
+        else encumbered = false;
     }
 
     private float WeightOfItems()
