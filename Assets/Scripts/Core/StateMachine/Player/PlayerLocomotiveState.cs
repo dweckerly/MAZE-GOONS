@@ -22,7 +22,9 @@ public class PlayerLocomotiveState : PlayerBaseState
 
     protected virtual void OnDodge()
     {
-        if (stateMachine.InputReader.MovementValue == Vector2.zero || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq) return;
+        if (stateMachine.InputReader.MovementValue == Vector2.zero 
+        || stateMachine.Attributes.GetStamina() < stateMachine.dodgeStaminaReq
+        || stateMachine.Inventory.encumbered) return;
         stateMachine.SwitchState(new PlayerDodgingState(stateMachine, new Vector2(0f, 1f)));
     }
 
