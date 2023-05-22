@@ -55,4 +55,12 @@ public abstract class EnemyBaseState : State
         lookPosition.y = 0f;
         stateMachine.transform.rotation = Quaternion.LookRotation(lookPosition);
     }
+
+    protected void FaceAwayFromTarget(GameObject go)
+    {
+        if (go == null) return;
+        Vector3 lookPosition = stateMachine.transform.position - go.transform.position;
+        lookPosition.y = 0f;
+        stateMachine.transform.rotation = Quaternion.LookRotation(lookPosition);
+    }
 }

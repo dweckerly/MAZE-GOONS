@@ -25,6 +25,7 @@ public class EnemyFleeingState : EnemyBaseState
                 stateMachine.SwitchState(new EnemyIdleState(stateMachine));
                 return;
             }
+            FaceAwayFromTarget(stateMachine.Player);
             MoveAwayFromTarget(deltaTime, stateMachine.Player);
             stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
             return;
@@ -44,7 +45,8 @@ public class EnemyFleeingState : EnemyBaseState
     {
         if (stateMachine.Agent.isOnNavMesh)
         {
-            stateMachine.Agent.destination = target.transform.position - stateMachine.gameObject.transform.position;
+            Vector3 direction = stateMachine.gameObject.transform.position - target.transform.position;
+            stateMachine.Agent.destination = stateMachine.gameObject.transform.position + direction;
             Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
