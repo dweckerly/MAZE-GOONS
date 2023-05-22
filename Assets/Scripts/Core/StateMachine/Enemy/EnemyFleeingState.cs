@@ -25,8 +25,8 @@ public class EnemyFleeingState : EnemyBaseState
                 stateMachine.SwitchState(new EnemyIdleState(stateMachine));
                 return;
             }
-            FaceAwayFromTarget(stateMachine.Player);
-            MoveAwayFromTarget(deltaTime, stateMachine.Player);
+            //FaceAwayFromTarget(stateMachine.Player);
+            FleeFromTarget(deltaTime, stateMachine.Player);
             stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
             return;
         }
@@ -41,13 +41,33 @@ public class EnemyFleeingState : EnemyBaseState
         stateMachine.animator.speed = 1f;
     }
 
-    private void MoveAwayFromTarget(float deltaTime, GameObject target)
+    float vRotation = 0f;
+
+    private void FleeFromTarget(float deltaTime, GameObject target)
     {
         if (stateMachine.Agent.isOnNavMesh)
         {
-            Vector3 direction = stateMachine.gameObject.transform.position - target.transform.position;
-            stateMachine.Agent.destination = stateMachine.gameObject.transform.position + direction;
-            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+            bool isDirectionSafe = false;
+            while (!isDirectionSafe)
+            {
+                Vector3 directionToPlayer = stateMachine.gameObject.transform.position - target.transform.position;
+                Vector3 newPosition = stateMachine.gameObject.transform.position + directionToPlayer;
+                newPosition = Quaternion.Euler(0, vRotation, 0) * newPosition;
+                bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, 3f);
+                if (isHit && hit.transform.CompareTag("Wall"))
+                {
+                    vRotation += 20;
+                    isDirectionSafe = false;
+                }
+                else
+                {
+                    stateMachine.Agent.destination = newPosition;
+                    Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+                    stateMachine.gameObject.transform.rotation = Quaternion.LookRotation(newPosition);
+                    isDirectionSafe = true;
+                }
+                Debug.Log(vRotation);
+            }
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }
