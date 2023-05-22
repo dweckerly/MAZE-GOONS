@@ -148,6 +148,7 @@ public class UIManager : MonoBehaviour
             if (UICanvas.activeSelf)
             {
                 CloseInventoryUI();
+                playerStateMachine.InputReader.LockCursor();
                 playerStateMachine.InputReader.UIOpen = false;
             }
             else 
