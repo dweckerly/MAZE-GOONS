@@ -12,7 +12,7 @@ public class PlayerJumpingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.sneaking = false;
-        stateMachine.ForceReceiver.Jump(stateMachine.JumpForce);
+        stateMachine.ForceReceiver.Jump(stateMachine.JumpForce * stateMachine.encumberanceModifier);
         momentum = stateMachine.Controller.velocity;
         momentum.y = 0;
         stateMachine.animator.CrossFadeInFixedTime(JumpHash, CrossFadeDuration);
