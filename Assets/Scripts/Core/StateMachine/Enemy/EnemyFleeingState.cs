@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFleeingState : EnemyBaseState
 {
-    private readonly int LocomotionHash = Animator.StringToHash("Free Look Blend Tree");
+    private readonly int LocomotionHash = Animator.StringToHash("Fleeing Blend Tree");
     private readonly int SpeedHash = Animator.StringToHash("speedPercent");
     private const float AnimationDampTime = 0.2f;
 
@@ -25,7 +25,6 @@ public class EnemyFleeingState : EnemyBaseState
                 stateMachine.SwitchState(new EnemyIdleState(stateMachine));
                 return;
             }
-            //FaceAwayFromTarget(stateMachine.Player);
             FleeFromTarget(deltaTime, stateMachine.Player);
             stateMachine.animator.SetFloat(SpeedHash, 1f, AnimationDampTime, deltaTime);
             return;
@@ -42,7 +41,6 @@ public class EnemyFleeingState : EnemyBaseState
     }
 
     float vRotation = 0f;
-
     private void FleeFromTarget(float deltaTime, GameObject target)
     {
         if (stateMachine.Agent.isOnNavMesh)
