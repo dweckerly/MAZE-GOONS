@@ -7,6 +7,7 @@ public class EnemyFleeingState : EnemyBaseState
     private readonly int LocomotionHash = Animator.StringToHash("Fleeing Blend Tree");
     private readonly int SpeedHash = Animator.StringToHash("speedPercent");
     private const float AnimationDampTime = 0.2f;
+    private float wallDetectionDistance = 3f;
 
     public EnemyFleeingState(EnemyStateMachine _stateMachine) : base(_stateMachine) {}
 
@@ -51,10 +52,12 @@ public class EnemyFleeingState : EnemyBaseState
                 Vector3 directionToPlayer = stateMachine.gameObject.transform.position - target.transform.position;
                 Vector3 newPosition = stateMachine.gameObject.transform.position + directionToPlayer;
                 newPosition = Quaternion.Euler(0, vRotation, 0) * newPosition;
-                bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, 3f);
+                bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, wallDetectionDistance);
                 if (isHit && hit.transform.CompareTag("Wall"))
                 {
-                    vRotation += 20;
+                    int lor = Random.Range(0, 2);
+                    if (lor == 0) vRotation += Random.Range(30, 90);
+                    else vRotation += Random.Range(-90, -30);
                     isDirectionSafe = false;
                 }
                 else
