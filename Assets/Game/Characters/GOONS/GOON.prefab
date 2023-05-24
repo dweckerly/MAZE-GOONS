@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 241685724740440045}
   - component: {fileID: 644783066647313546}
   - component: {fileID: 1455800177717612762}
-  - component: {fileID: 1661172290533193652}
+  - component: {fileID: 1099909780946418004}
   m_Layer: 7
   m_Name: GOON
   m_TagString: NPC
@@ -1065,6 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 2715550381138886493}
+  targetRenderer: {fileID: 4458100944043783804}
 --- !u!114 &3134474910933261978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,7 +1241,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863882004895356543}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -1329,7 +1330,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1661172290533193652
+--- !u!114 &1099909780946418004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1338,15 +1339,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2863882004895356543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c0d79c5fc56dd42aebc522bb984c9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 985dee276e00ce84cb2a41bf67108386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footSteps:
-  - {fileID: 8300000, guid: caadd0d67f4b5c242b310df1df7b50c8, type: 3}
-  - {fileID: 8300000, guid: 5ab6e5b7ae76a894c8b370d7218ead52, type: 3}
-  - {fileID: 8300000, guid: bd2fc9cbeaaa19f458029fadc1e88818, type: 3}
-  - {fileID: 8300000, guid: 19d4b45dffc273f45912167304a6e10e, type: 3}
-  - {fileID: 8300000, guid: 1235d2a1f0671674382738ba873cafad, type: 3}
   audioSource: {fileID: 1455800177717612762}
 --- !u!1 &3113612397037244985
 GameObject:

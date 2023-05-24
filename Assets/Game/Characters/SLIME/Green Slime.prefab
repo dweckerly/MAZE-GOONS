@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 1554233808619369654, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: 4355b705e1038124cbcd65d2b0ffa2c7, type: 3}
+      objectReference: {fileID: 9000000, guid: b5b776370622f7d4c96a29efe2a4acaf, type: 2}
     - target: {fileID: 1554233808619369654, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_Controller
       value: 
@@ -165,6 +165,14 @@ PrefabInstance:
       propertyPath: targetRenderer
       value: 
       objectReference: {fileID: 2004178383111290616}
+    - target: {fileID: 1554233808619369806, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554233808619369806, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 52e102ed64f747e4ca14421a7748c3ac, type: 2}
     - target: {fileID: 1824193951635458070, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_Name
       value: Green Slime

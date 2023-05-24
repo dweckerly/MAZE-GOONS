@@ -23,11 +23,11 @@ public class EnemyFightingState : EnemyBaseState
     {
         if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            if (stateMachine.Attributes.GetHPFraction() < 0.5f)
-            {
-                stateMachine.SwitchState(new EnemyFleeingState(stateMachine));
-                return;
-            }
+            // if (stateMachine.Attributes.GetHPFraction() < 0.5f)
+            // {
+            //     stateMachine.SwitchState(new EnemyFleeingState(stateMachine));
+            //     return;
+            // }
             FaceTarget(stateMachine.Player);
             if (!IsInAttackRange(stateMachine.Player))
             {
