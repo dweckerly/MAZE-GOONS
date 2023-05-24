@@ -10,15 +10,15 @@ public class LootItemDisplay : MonoBehaviour
     public TMP_Text ItemNameText;
     public TMP_Text WeightText;
 
-    Item item;
+    LootItem item;
     UIManager uIManager;
 
-    public void Init(Item _item, UIManager _uIManager)
+    public void Init(LootItem _item, UIManager _uIManager)
     {
         item = _item;
-        ItemIcon.sprite = item.icon;
-        ItemNameText.text = item.itemName;
-        WeightText.text = item.weight.ToString() + " lbs.";
+        ItemIcon.sprite = item.item.icon;
+        ItemNameText.text = item.item.itemName;
+        WeightText.text = item.item.weight.ToString() + " lbs.";
         uIManager = _uIManager;
     }
 

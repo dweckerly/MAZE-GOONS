@@ -249,43 +249,29 @@ public class UIManager : MonoBehaviour
     private void UpdateLootUI()
     {
         RemoveContainerChildren(LootContentContainer);
-        foreach (Item item in loot.items)
+        foreach (LootItem item in loot.items)
         {
             GameObject go = Instantiate(LootItemDisplayPrefab, LootContentContainer);
             go.GetComponent<LootItemDisplay>().Init(item, this);
         }
     }
 
-    public void LootItemClick(Item item)
+    public void LootItemClick(LootItem item)
     {
-        playerStateMachine.Inventory.AddItem(item);
+        playerStateMachine.Inventory.AddItem(item.item);
         loot.items.Remove(item);
-        switch (item.itemType)
-        {
-            case ItemType.Armor:
-                loot.enemyStateMachine.ArmorHandler.CheckArmor((Armor)item);
-                break;
-            case ItemType.Shield:
-                loot.enemyStateMachine.WeaponHandler.EquipShield((Shield)item);
-                break;
-            case ItemType.Weapon:
-                loot.enemyStateMachine.WeaponHandler.UnEquipMainHand();
-                break;
-            default:
-                break;
-        }
+        if (item.prefab != null) Destroy(item.prefab);
         UpdateLootUI();
         if (loot.items.Count == 0) CloseLootUI();
     }
 
     public void TakeAllLoot()
     {
-        foreach (Item item in loot.items)
+        foreach (LootItem item in loot.items)
         {
-            playerStateMachine.Inventory.AddItem(item);
+            playerStateMachine.Inventory.AddItem(item.item);
+            if (item.prefab != null) Destroy(item.prefab);
         }
-        loot.enemyStateMachine.WeaponHandler.UnEquipAllWeapons();
-        loot.enemyStateMachine.ArmorHandler.UnEquipAllArmor();
         loot.items.Clear();
         CloseLootUI();
     }

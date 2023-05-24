@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class LootItem
+{
+    public Item item;
+    public GameObject prefab;
+}
+
 public class Loot : Interactable
 {
     public override InteractableType type { get { return InteractableType.Body; } }
-    public List<Item> items = new List<Item>();
+    public List<LootItem> items = new List<LootItem>();
     public Collider lootCollider;
     public EnemyStateMachine enemyStateMachine;
 
@@ -31,8 +38,8 @@ public class Loot : Interactable
         CanInteract = false;
     }
 
-    public void AddItem(Item item)
-    {
-        items.Add(item);
-    }
+    // public void AddItem(Item item)
+    // {
+    //     items.Add(item);
+    // }
 }
