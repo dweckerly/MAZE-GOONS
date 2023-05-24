@@ -7,6 +7,7 @@ public class Target : MonoBehaviour
 {
     public event Action<Target> OnDestroyed;
     public GameObject HealthBar;
+    public Renderer targetRenderer;
 
     public void ShowHealth()
     {
