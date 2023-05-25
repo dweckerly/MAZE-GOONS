@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
                 deadEnemies.Clear();
                 if (spawnedAttributes.Count < maxSpawns)
                 {
-                    float angle = Random.Range(maxAngle * (-1f), maxAngle);
+                    float angle = Random.Range(maxAngle, maxAngle * 2f);
                     Vector3 spawnPos = new Vector3();
                     spawnPos.x = transform.position.x + (spawnDistance * Mathf.Cos(angle / (180f / Mathf.PI)));
                     spawnPos.y = transform.position.y;
