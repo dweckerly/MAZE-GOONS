@@ -118,7 +118,7 @@ public class EnemyStateMachine : StateMachine
         foreach(RaycastHit hit in hits)
         {
             EnemyStateMachine esm = hit.collider.GetComponent<EnemyStateMachine>();
-            if(esm != null) Alert(esm);
+            if(esm != null && esm.Attributes.alive) Alert(esm);
         }
     }
 

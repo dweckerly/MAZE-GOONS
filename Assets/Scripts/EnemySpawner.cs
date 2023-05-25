@@ -38,11 +38,11 @@ public class EnemySpawner : MonoBehaviour
                 deadEnemies.Clear();
                 if (spawnedAttributes.Count < maxSpawns)
                 {
-                    float angle = Random.Range(maxAngle, maxAngle * 2f);
+                    float angle = Random.Range(maxAngle * (-1f), maxAngle);
                     Vector3 spawnPos = new Vector3();
-                    spawnPos.x = transform.position.x + (spawnDistance * Mathf.Cos(angle / (180f / Mathf.PI)));
+                    spawnPos.x = transform.position.x + (spawnDistance * Mathf.Sin((angle + transform.eulerAngles.y) / (180f / Mathf.PI))) ;
                     spawnPos.y = transform.position.y;
-                    spawnPos.z = transform.position.z + (spawnDistance * Mathf.Sin(angle / (180f / Mathf.PI)));
+                    spawnPos.z = transform.position.z + (spawnDistance * Mathf.Cos((angle + transform.eulerAngles.y) / (180f / Mathf.PI)));
                     GameObject go = Instantiate(spawn, spawnPos, Quaternion.identity);
                     spawnedAttributes.Add(go.GetComponent<Attributes>());
                 }
