@@ -14,7 +14,6 @@ public class Loot : Interactable
     public override InteractableType type { get { return InteractableType.Body; } }
     public List<LootItem> items = new List<LootItem>();
     public Collider lootCollider;
-    public EnemyStateMachine enemyStateMachine;
 
     public void Awake()
     {
