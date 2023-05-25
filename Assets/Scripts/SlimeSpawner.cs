@@ -15,7 +15,11 @@ public class SlimeSpawner : EnemySpawner
 
     private void Update() 
     {
-        if (loot.items.Count == 0) DisableWater();
+        if (loot.items.Count == 0) 
+        {
+            DisableWater();
+            canSpawn = false;
+        }
     }
 
     private void DisableWater()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool canSpawn = true;
     public float spawnTime = 30f;
     public GameObject spawn;
     public int maxSpawns = 4;
@@ -20,22 +21,31 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        while (true)
+        while (canSpawn)
         {
             yield return new WaitForSeconds(spawnTime);
-            foreach (Attributes attr in spawnedAttributes)
+            if (canSpawn)
             {
-                if (!attr.alive) spawnedAttributes.Remove(attr);
-            }
-            if (spawnedAttributes.Count < maxSpawns)
-            {
-                float angle = Random.Range(maxAngle * (-1f), maxAngle);
-                Vector3 spawnPos = new Vector3();
-                spawnPos.x = transform.position.x + (spawnDistance * Mathf.Cos(angle / (180f / Mathf.PI)));
-                spawnPos.y = transform.position.y;
-                spawnPos.z = transform.position.z + (spawnDistance * Mathf.Sin(angle / (180f / Mathf.PI)));
-                GameObject go = Instantiate(spawn, spawnPos, Quaternion.identity);
-                spawnedAttributes.Add(go.GetComponent<Attributes>());
+                List<Attributes> deadEnemies = new List<Attributes>();
+                foreach (Attributes attr in spawnedAttributes)
+                {
+                    if (!attr.alive) deadEnemies.Add(attr);
+                }
+                foreach (Attributes attr in deadEnemies)
+                {
+                    spawnedAttributes.Remove(attr);
+                }
+                deadEnemies.Clear();
+                if (spawnedAttributes.Count < maxSpawns)
+                {
+                    float angle = Random.Range(maxAngle * (-1f), maxAngle);
+                    Vector3 spawnPos = new Vector3();
+                    spawnPos.x = transform.position.x + (spawnDistance * Mathf.Cos(angle / (180f / Mathf.PI)));
+                    spawnPos.y = transform.position.y;
+                    spawnPos.z = transform.position.z + (spawnDistance * Mathf.Sin(angle / (180f / Mathf.PI)));
+                    GameObject go = Instantiate(spawn, spawnPos, Quaternion.identity);
+                    spawnedAttributes.Add(go.GetComponent<Attributes>());
+                }
             }
         }
     }
