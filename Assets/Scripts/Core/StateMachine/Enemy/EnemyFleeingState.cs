@@ -46,29 +46,20 @@ public class EnemyFleeingState : EnemyBaseState
     {
         if (stateMachine.Agent.isOnNavMesh)
         {
-            bool isDirectionSafe = false;
-            while (!isDirectionSafe)
+            Vector3 directionToPlayer = stateMachine.gameObject.transform.position - target.transform.position;
+            Vector3 newPosition = stateMachine.gameObject.transform.position + directionToPlayer;
+            newPosition = Quaternion.Euler(0, vRotation, 0) * newPosition;
+            bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, wallDetectionDistance);
+            if (isHit && hit.transform.CompareTag("Wall"))
             {
-                Vector3 directionToPlayer = stateMachine.gameObject.transform.position - target.transform.position;
-                Vector3 newPosition = stateMachine.gameObject.transform.position + directionToPlayer;
-                newPosition = Quaternion.Euler(0, vRotation, 0) * newPosition;
-                bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, wallDetectionDistance);
-                if (isHit && hit.transform.CompareTag("Wall"))
-                {
-                    // int lor = Random.Range(0, 2);
-                    // if (lor == 0) vRotation += Random.Range(30, 90);
-                    // else vRotation += Random.Range(-90, -30);
-                    // isDirectionSafe = false;
-                    isDirectionSafe = true;
-                    stateMachine.SwitchState(new EnemyCoweringState(stateMachine));
-                }
-                else
-                {
-                    stateMachine.Agent.destination = newPosition;
-                    Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
-                    stateMachine.gameObject.transform.rotation = Quaternion.LookRotation(newPosition);
-                    isDirectionSafe = true;
-                }
+                stateMachine.SwitchState(new EnemyCoweringState(stateMachine));
+                return;
+            }
+            else
+            {
+                stateMachine.Agent.destination = newPosition;
+                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+                stateMachine.gameObject.transform.rotation = Quaternion.LookRotation(newPosition);
             }
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;

@@ -32,7 +32,7 @@ public class Loot : Interactable
     {
         CanInteract = false;
         lootCollider.enabled = false;
-        if (lootParticles != null) lootParticles?.SetActive(false);
+        if (lootParticles != null) lootParticles.SetActive(false);
     }
 
     public override void Interact(PlayerStateMachine stateMachine)
