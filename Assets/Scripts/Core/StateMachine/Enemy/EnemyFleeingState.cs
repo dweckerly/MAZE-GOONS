@@ -55,10 +55,12 @@ public class EnemyFleeingState : EnemyBaseState
                 bool isHit = Physics.Raycast(stateMachine.gameObject.transform.position, newPosition, out RaycastHit hit, wallDetectionDistance);
                 if (isHit && hit.transform.CompareTag("Wall"))
                 {
-                    int lor = Random.Range(0, 2);
-                    if (lor == 0) vRotation += Random.Range(30, 90);
-                    else vRotation += Random.Range(-90, -30);
-                    isDirectionSafe = false;
+                    // int lor = Random.Range(0, 2);
+                    // if (lor == 0) vRotation += Random.Range(30, 90);
+                    // else vRotation += Random.Range(-90, -30);
+                    // isDirectionSafe = false;
+                    isDirectionSafe = true;
+                    stateMachine.SwitchState(new EnemyCoweringState(stateMachine));
                 }
                 else
                 {
