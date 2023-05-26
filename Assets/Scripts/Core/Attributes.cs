@@ -17,10 +17,10 @@ public class Attributes : MonoBehaviour
     public event Action OnDie;
 
     public bool alive = true;
-    [SerializeField] int brains;
-    [SerializeField] int brawn;
-    [SerializeField] int guile;
-    [SerializeField] int guts;
+    public int brains;
+    public int brawn;
+    public int guile;
+    public int guts;
 
     [SerializeField] int baseHP = 100;
 
@@ -60,7 +60,7 @@ public class Attributes : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void InstantiateStats()
+    public void InstantiateStats()
     {
         currentBrains = brains;
         currentBrawn = brawn;
