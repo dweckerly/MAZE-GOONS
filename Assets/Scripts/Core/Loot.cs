@@ -14,6 +14,7 @@ public class Loot : Interactable
     public override InteractableType type { get { return InteractableType.Body; } }
     public List<LootItem> items = new List<LootItem>();
     public Collider lootCollider;
+    public GameObject lootParticles;
 
     public void Awake()
     {
@@ -24,12 +25,14 @@ public class Loot : Interactable
     {
         CanInteract = true;
         lootCollider.enabled = true;
+        if (lootParticles != null) lootParticles.SetActive(true);
     }
 
     public void DisableLoot()
     {
         CanInteract = false;
         lootCollider.enabled = false;
+        if (lootParticles != null) lootParticles?.SetActive(false);
     }
 
     public override void Interact(PlayerStateMachine stateMachine)
