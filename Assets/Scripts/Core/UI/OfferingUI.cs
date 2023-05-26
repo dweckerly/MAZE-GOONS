@@ -121,6 +121,7 @@ public class OfferingUI : MonoBehaviour
         playerStateMachine.Inventory.gold = tempGold;
         playerStateMachine.Attributes.InstantiateStats();
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void CancelOffering()
@@ -129,5 +130,6 @@ public class OfferingUI : MonoBehaviour
         GetStatReferences();
         SetStatValues();
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

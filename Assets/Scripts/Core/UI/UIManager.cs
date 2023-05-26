@@ -165,6 +165,8 @@ public class UIManager : MonoBehaviour
             {
                 if (LootUI.activeSelf) CloseLootUI();
                 CloseOfferingUI();
+                UpdateStats();
+                playerStateMachine.Inventory.goldText.text = playerStateMachine.Inventory.gold.ToString();
                 playerStateMachine.InputReader.UIOpen = true;
                 playerStateMachine.InputReader.UnlockCursor();
                 freeLook.m_XAxis.m_MaxSpeed = 0;
