@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject UICanvas;
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
+    public GameObject OfferingCanvas;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -48,6 +49,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnUnEquipShield += ShieldEquip;
         playerStateMachine.Interacter.OnDetectInteractableEvent += ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI += OpenInteractionUI;
+        playerStateMachine.Interacter.OnMakeOffering += OpenOfferingUI;
         playerStateMachine.Targeter.TargetAction += OnTarget;
         playerStateMachine.InputReader.PauseEvent += OnPause;
         playerStateMachine.Attributes.OnDie += OnDeath;
@@ -77,6 +79,7 @@ public class UIManager : MonoBehaviour
         playerStateMachine.WeaponHandler.OnUnEquipShield -= ShieldEquip;
         playerStateMachine.Interacter.OnDetectInteractableEvent -= ShowInteractablePrompt;
         playerStateMachine.Interacter.OnInteractEventWithUI -= OpenInteractionUI;
+        playerStateMachine.Interacter.OnMakeOffering -= OpenOfferingUI;
         playerStateMachine.Targeter.TargetAction -= OnTarget;
         playerStateMachine.InputReader.PauseEvent -= OnPause;
         playerStateMachine.Attributes.OnDie -= OnDeath;
@@ -128,6 +131,9 @@ public class UIManager : MonoBehaviour
                 case InteractableType.Gold:
                     interactableMessage.text = "Take Coin Purse";
                     break;
+                case InteractableType.Statue:
+                    interactableMessage.text = "Make Offering";
+                    break;
             }
             Animator.SetBool("ShowPrompt", true);
         }
@@ -158,6 +164,7 @@ public class UIManager : MonoBehaviour
             else 
             {
                 if (LootUI.activeSelf) CloseLootUI();
+                CloseOfferingUI();
                 playerStateMachine.InputReader.UIOpen = true;
                 playerStateMachine.InputReader.UnlockCursor();
                 freeLook.m_XAxis.m_MaxSpeed = 0;
@@ -246,6 +253,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void OpenOfferingUI()
+    {
+        if (!PauseCanvas.activeSelf && !UICanvas.activeSelf && !GameOverCanvas.activeSelf)
+        {
+            playerStateMachine.InputReader.UIOpen = true;
+            playerStateMachine.InputReader.UnlockCursor();
+            OfferingCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    private void CloseOfferingUI()
+    {
+        OfferingCanvas.SetActive(false);
+    }
+
     private void UpdateLootUI()
     {
         RemoveContainerChildren(LootContentContainer);
@@ -302,6 +325,7 @@ public class UIManager : MonoBehaviour
             {
                 if (LootUI.activeSelf) CloseLootUI();
                 CloseInventoryUI();
+                CloseOfferingUI();
                 playerStateMachine.InputReader.UIOpen = true;
                 playerStateMachine.InputReader.UnlockCursor();
                 PauseCanvas.SetActive(true);

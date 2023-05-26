@@ -10,7 +10,8 @@ public enum InteractableType
     Door,
     Gold,
     Lever,
-    PickUp
+    PickUp,
+    Statue
 }
 
 public abstract class Interactable : MonoBehaviour 

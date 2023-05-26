@@ -11,6 +11,7 @@ public class Interacter : MonoBehaviour
 
     public delegate void OnInteractWithUI(Loot loot);
     public event OnInteractWithUI OnInteractEventWithUI;
+    public event Action OnMakeOffering;
 
     public delegate void OnDetectInteractable(Interactable interactable);
     public event OnDetectInteractable OnDetectInteractableEvent;
@@ -65,6 +66,7 @@ public class Interacter : MonoBehaviour
     {
         if (Interaction == null || !Interaction.CanInteract) return false;
         if (Interaction is Loot) OnInteractEventWithUI?.Invoke((Loot)Interaction);
+        if (Interaction is OfferingStatue) OnMakeOffering?.Invoke();
         return true;
     }
 
