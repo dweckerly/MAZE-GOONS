@@ -316,7 +316,7 @@ public class WeaponHandler : MonoBehaviour
     void Shoot()
     {
         if (!mainHandWeapon.projectile) return;
-        GameObject proj = Instantiate(mainHandWeapon.weaponPrefab, RightHand.transform.position, gameObject.transform.rotation);
+        GameObject proj = Instantiate(mainHandWeapon.weaponPrefab, Head.transform.position, gameObject.transform.rotation);
         proj.layer = gameObject.layer;
         WeaponDamage projWD = proj.GetComponent<WeaponDamage>();
         projWD.IgnoreCollider(sourceCollider);
