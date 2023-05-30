@@ -41,7 +41,7 @@ public class WeaponHandler : MonoBehaviour
     private const int SHIELD_ARM_POSITION = 6;
     public List<int> maskLayers = new List<int>();
 
-    private void Awake() 
+    private void Start() 
     {
         if(gameObject.CompareTag("Player")) LayerInt = LayerMask.NameToLayer(gameObject.tag);
         sourceCollider = GetComponent<Collider>();
