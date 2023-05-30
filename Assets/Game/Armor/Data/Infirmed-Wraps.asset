@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1edf6f6a70cd44d8e4150f9e150744, type: 3}
+  m_Name: Infirmed-Wraps
+  m_EditorClassIdentifier: 
+  Id: dc0af278-03db-4947-884a-33a83421b1a4
+  itemName: Infirmed Wrist Wraps
+  weight: 1
+  value: 1
+  description: 
+  icon: {fileID: 21300000, guid: 6dc1a46d8ad1c5a4bb9d523631cfb8f1, type: 3}
+  pickup: {fileID: 3564053005253535086, guid: 9cc4b127ab07c794cb287649440140f5, type: 3}
+  equipped: 0
+  ArmorObjects:
+  - armorPrefab: {fileID: 5179430177278561479, guid: 18fd2ebd5ef4f2244814a7fc1020773f, type: 3}
+    bodyPositionReference: 4
+  - armorPrefab: {fileID: 5033749078848631711, guid: c34fe65919fd2fa438723c260a91408e, type: 3}
+    bodyPositionReference: 3
+  slot: 2
+  DamageReduction: 1

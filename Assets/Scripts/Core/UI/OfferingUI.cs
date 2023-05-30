@@ -120,8 +120,8 @@ public class OfferingUI : MonoBehaviour
         playerStateMachine.Attributes.guile = tempGuile;
         playerStateMachine.Inventory.gold = tempGold;
         playerStateMachine.Attributes.InstantiateStats();
-        gameObject.SetActive(false);
         Time.timeScale = 1;
+        gameObject.SetActive(false);
     }
 
     public void CancelOffering()
@@ -129,7 +129,7 @@ public class OfferingUI : MonoBehaviour
         errorMessage.text = "";
         GetStatReferences();
         SetStatValues();
-        gameObject.SetActive(false);
         Time.timeScale = 1;
+        gameObject.SetActive(false);
     }
 }
