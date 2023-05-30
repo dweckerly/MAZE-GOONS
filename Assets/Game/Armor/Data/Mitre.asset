@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1edf6f6a70cd44d8e4150f9e150744, type: 3}
+  m_Name: Mitre
+  m_EditorClassIdentifier: 
+  Id: 381797c0-245e-4578-806f-0f2b39884e55
+  itemName: Mitre
+  weight: 4
+  value: 500
+  description: 
+  icon: {fileID: 21300000, guid: 99b78696eb318dd48895f541ed98109c, type: 3}
+  pickup: {fileID: 4423859536012181716, guid: 525d30be5cb7aae4f86c10eee552df47, type: 3}
+  equipped: 0
+  ArmorObjects:
+  - armorPrefab: {fileID: 4796560172891173507, guid: e0ed7bae271523f4f928c66d9b453188, type: 3}
+    bodyPositionReference: 0
+  slot: 0
+  DamageReduction: 1
