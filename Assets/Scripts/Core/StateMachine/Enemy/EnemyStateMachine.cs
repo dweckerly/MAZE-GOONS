@@ -95,7 +95,12 @@ public class EnemyStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
-        if (WeaponHandler.mainHandWeapon.lootable) Loot.AddItem(new LootItem(WeaponHandler.mainHandWeapon, WeaponHandler.mainHandPrefab));
+        if (WeaponHandler.mainHandWeapon.lootable) 
+        {
+            List<GameObject> prefabs = new List<GameObject>();
+            prefabs.Add(WeaponHandler.mainHandPrefab);
+            Loot.AddItem(new LootItem(WeaponHandler.mainHandWeapon, prefabs));
+        }
     }
 
     private void HandleArmorEquip(Armor armor)

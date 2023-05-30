@@ -6,9 +6,9 @@ using UnityEngine;
 public class LootItem
 {
     public Item item;
-    public GameObject prefab;
+    public List<GameObject> prefab;
 
-    public LootItem(Item _item, GameObject _prefab = null)
+    public LootItem(Item _item, List<GameObject> _prefab = null)
     {
         item = _item;
         if (_prefab != null) prefab = _prefab;

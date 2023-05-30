@@ -286,7 +286,13 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.Inventory.AddItem(item.item);
         loot.items.Remove(item);
-        if (item.prefab != null) item.prefab.SetActive(false);
+        if (item.prefab != null)
+        {
+            foreach (GameObject prefab in item.prefab)
+            {
+                prefab.SetActive(false);
+            }
+        } 
         UpdateLootUI();
         if (loot.items.Count == 0) CloseLootUI();
     }
@@ -296,7 +302,13 @@ public class UIManager : MonoBehaviour
         foreach (LootItem item in loot.items)
         {
             playerStateMachine.Inventory.AddItem(item.item);
-            if (item.prefab != null) item.prefab.SetActive(false);
+            if (item.prefab != null)
+            {
+                foreach (GameObject prefab in item.prefab)
+                {
+                    prefab.SetActive(false);
+                }
+            }
         }
         loot.items.Clear();
         CloseLootUI();
