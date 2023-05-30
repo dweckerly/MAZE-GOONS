@@ -8,10 +8,10 @@ public class LootItem
     public Item item;
     public GameObject prefab;
 
-    public LootItem(Item _item)
+    public LootItem(Item _item, GameObject _prefab = null)
     {
         item = _item;
-        if (item is Weapon) prefab = ((Weapon) item).weaponPrefab;
+        if (_prefab != null) prefab = _prefab;
     }
 }
 
