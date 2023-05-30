@@ -103,7 +103,7 @@ public class EnemyStateMachine : StateMachine
         {
             animationMask.ApplyLayerWeight(animator, j, true);
         }
-        //if (WeaponHandler.mainHandWeapon.lootable) Loot.AddItem(WeaponHandler.mainHandWeapon);
+        if (WeaponHandler.mainHandWeapon.lootable) Loot.AddItem(new LootItem(WeaponHandler.mainHandWeapon));
     }
 
     private void HandleArmorEquip(Armor armor)

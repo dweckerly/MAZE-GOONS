@@ -7,6 +7,12 @@ public class LootItem
 {
     public Item item;
     public GameObject prefab;
+
+    public LootItem(Item _item)
+    {
+        item = _item;
+        if (item is Weapon) prefab = ((Weapon) item).weaponPrefab;
+    }
 }
 
 public class Loot : Interactable
@@ -40,8 +46,8 @@ public class Loot : Interactable
         CanInteract = false;
     }
 
-    // public void AddItem(Item item)
-    // {
-    //     items.Add(item);
-    // }
+    public void AddItem(LootItem item)
+    {
+        items.Add(item);
+    }
 }
