@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyIdleState : EnemyBaseState
 {
     private readonly int LocomotionHash = Animator.StringToHash("Free Look Blend Tree");
+    private readonly int StareHash = Animator.StringToHash("Sun-stare");
     private readonly int SpeedHash = Animator.StringToHash("speedPercent");
     private const float AnimationDampTime = 0.2f;
 
@@ -12,7 +13,8 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.animator.CrossFadeInFixedTime(LocomotionHash, CrossFadeDuration);
+        if (stateMachine.enemyType == EnemyType.Worshipper) stateMachine.animator.CrossFadeInFixedTime(StareHash, CrossFadeDuration);
+        else stateMachine.animator.CrossFadeInFixedTime(LocomotionHash, CrossFadeDuration);
         stateMachine.animator.speed = stateMachine.animSpeed;
     }
 

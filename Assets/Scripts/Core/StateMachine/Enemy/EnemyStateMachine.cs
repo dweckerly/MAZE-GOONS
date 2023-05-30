@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public enum EnemyType
 {
     Default,
-    SunWorshipper,
+    Worshipper,
     Trog
 }
 
@@ -47,15 +47,7 @@ public class EnemyStateMachine : StateMachine
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;
         animSpeed = 1 / scaleFactor;
-        switch (enemyType)
-        {
-            case EnemyType.SunWorshipper:
-                SwitchState(new EnemySunStareState(this));
-                break;
-            default:
-                SwitchState(new EnemyIdleState(this));
-                break;
-        }
+        SwitchState(new EnemyIdleState(this));
     }
 
     private void OnDrawGizmosSelected() 
