@@ -15,6 +15,7 @@ public class PlayerSneakAttackState : PlayerAttackingState
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         stateMachine.animator.CrossFadeInFixedTime(OneHandedAttackHash, CrossFadeDuration);
         stateMachine.WeaponHandler.mainHandDamage.SetMultiplicativeDamageModifier(2f);
+        stateMachine.Notifier.NofityDamageMultiple(2);
     }
 
     public override void Tick(float deltaTime)

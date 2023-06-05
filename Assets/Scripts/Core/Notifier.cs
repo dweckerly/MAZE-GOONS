@@ -8,10 +8,10 @@ public class Notifier : MonoBehaviour
     public GameObject Notification;
     string message;
 
-    private void Notify()
+    private void Notify(bool sfx)
     {
         GameObject go = Instantiate(Notification, gameObject.transform);
-        go.GetComponent<Notification>().Notify(message);
+        go.GetComponent<Notification>().Notify(message, sfx);
     }
 
     public void NotifyGold(int amount)
@@ -20,6 +20,12 @@ public class Notifier : MonoBehaviour
             message = "+ " + amount.ToString() + " gold";
         else
             message = "- " + amount.ToString() + " gold";
-        Notify();
+        Notify(true);
+    }
+
+    public void NofityDamageMultiple(int amount)
+    {
+        message = "x" + amount.ToString();
+        Notify(false);
     }
 }
