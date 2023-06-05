@@ -40,8 +40,6 @@ public class Attributes : MonoBehaviour
     private float staminaRecoveryRate;
     private float baseStaminaRecoveryRate = 0.001f;
 
-    Animator animator;
-
     public bool isBlocking = false;
     private float blockAngle = 70f;
     private float flankAngle = 140f;
@@ -57,7 +55,6 @@ public class Attributes : MonoBehaviour
     private void Awake() 
     {
         InstantiateStats();
-        animator = GetComponent<Animator>();
     }
 
     public void InstantiateStats()
