@@ -152,7 +152,7 @@ public class Attributes : MonoBehaviour
         } 
         else
         {
-            if (attackAngle > flankAngle) damage = Mathf.FloorToInt(damage * flankMod);
+            if (attackAngle > flankAngle) damage = Mathf.FloorToInt(damage * (flankMod + (currentGuile / 10)));
             OnTakeDamage?.Invoke(true);
             ChangeHP(amount * -1);
         }
