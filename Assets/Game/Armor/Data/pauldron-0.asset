@@ -17,10 +17,13 @@ MonoBehaviour:
   weight: 1.5
   value: 25
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 70b488cfdabc8f046b64d03439d3a80d, type: 3}
+  pickup: {fileID: 4454381023918527294, guid: 7711623a651190248835b3a7aa7457c5, type: 3}
   equipped: 0
   ArmorObjects:
   - armorPrefab: {fileID: 3396354949192227647, guid: 4647c13d6cb3a8345bde1c476c7af2fa, type: 3}
     bodyPositionReference: 1
+  - armorPrefab: {fileID: 1775884486643728034, guid: 10313b2c133c1534bb2613bc47b9932c, type: 3}
+    bodyPositionReference: 2
   slot: 1
   DamageReduction: 1
