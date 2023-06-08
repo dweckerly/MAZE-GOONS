@@ -268,6 +268,7 @@ public class UIManager : MonoBehaviour
 
     private void CloseOfferingUI()
     {
+        playerStateMachine.InputReader.UIOpen = false;
         playerStateMachine.InputReader.LockCursor();
         OfferingCanvas.SetActive(false);
     }

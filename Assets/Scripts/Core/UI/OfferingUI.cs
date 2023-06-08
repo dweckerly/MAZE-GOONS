@@ -56,7 +56,7 @@ public class OfferingUI : MonoBehaviour
         gutsPrice.text = (tempGuts * STAT_INCREASE_PRICE_FACTOR).ToString();
         guilePrice.text = (tempGuile * STAT_INCREASE_PRICE_FACTOR).ToString();
 
-        gold.text = tempGold.ToString();
+        gold.text = "$" + tempGold.ToString();
     }
 
     public void BuyBrawn()
@@ -122,6 +122,7 @@ public class OfferingUI : MonoBehaviour
         playerStateMachine.Attributes.InstantiateStats();
         Time.timeScale = 1;
         gameObject.SetActive(false);
+        playerStateMachine.InputReader.UIOpen = false;
     }
 
     public void CancelOffering()
@@ -131,5 +132,6 @@ public class OfferingUI : MonoBehaviour
         SetStatValues();
         Time.timeScale = 1;
         gameObject.SetActive(false);
+        playerStateMachine.InputReader.UIOpen = false;
     }
 }
