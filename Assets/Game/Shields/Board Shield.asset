@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdfc97cd726bffd4daf3d0ccfcfa128e, type: 3}
-  m_Name: wooden-shield
+  m_Name: Board Shield
   m_EditorClassIdentifier: 
-  Id: 83af394a-97e9-42a4-a721-fd1a12bee71d
-  itemName: Wooden Shield
+  Id: 4accc4bb-73f1-42df-a93d-c6e37ba54278
+  itemName: Board Shield
   weight: 10
-  value: 30
+  value: 10
   description: 
-  icon: {fileID: 0}
-  pickup: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8296a85b9c7108b4e8e5552a4f2e78e2, type: 3}
+  pickup: {fileID: 9101626751747357030, guid: dfdaefb8fb0106c49b6da939f96f5df5, type: 3}
   equipped: 0
-  shieldPrefab: {fileID: 6383163557966364065, guid: df886da50906e2d40a3ec68bcd85e638, type: 3}
-  blockingAngle: 80
-  DamageReduction: 3
+  shieldPrefab: {fileID: 2610442749269969760, guid: c3a02d0bbe4eca94098d208d997cfdf2, type: 3}
+  blockingAngle: 60
+  DamageReduction: 1
