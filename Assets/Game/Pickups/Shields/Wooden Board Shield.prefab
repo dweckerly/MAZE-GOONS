@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3418785674336883162, guid: c3a02d0bbe4eca94098d208d997cfdf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.021
+      value: 0.066
       objectReference: {fileID: 0}
     - target: {fileID: 3418785674336883162, guid: c3a02d0bbe4eca94098d208d997cfdf2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -78,7 +78,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 61981504932339001, guid: 8340e2ad0ecc1634e95db9bc228aee2b, type: 3}
       propertyPath: m_Name
-      value: _PickUp
+      value: Wooden Board Shield
       objectReference: {fileID: 0}
     - target: {fileID: 1606637905636634700, guid: 8340e2ad0ecc1634e95db9bc228aee2b, type: 3}
       propertyPath: m_Radius
@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3991598071573177276, guid: 8340e2ad0ecc1634e95db9bc228aee2b, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 743d603474ba2184f8f887fcbeea3680, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8340e2ad0ecc1634e95db9bc228aee2b, type: 3}
 --- !u!4 &5735915256800968505 stripped
