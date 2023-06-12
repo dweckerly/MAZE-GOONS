@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8dd5b50a4f7e142a693a549b551f33, type: 3}
+  m_Name: Wooden Shovel
+  m_EditorClassIdentifier: 
+  Id: 4c125170-658b-47cf-a459-748e3492f98e
+  itemName: Wooden Shovel
+  weight: 5
+  value: 15
+  description: 
+  icon: {fileID: 21300000, guid: daaf67988452266449485d4f4217d638, type: 3}
+  pickup: {fileID: 4272514322381497979, guid: 90a33de0dcde4b24aa6b1a772d98b694, type: 3}
+  equipped: 0
+  weaponPrefab: {fileID: 1876745112833889758, guid: 0ee5ad83a79baac4fb4d3925bd2362f3, type: 3}
+  offHandPrefab: {fileID: 0}
+  weaponDamage: 5
+  weaponLength: 1
+  staminaReq: 5
+  oneHanded: 1
+  twoHanded: 0
+  projectile: 0
+  dual: 0
+  head: 0
+  lootable: 1
+  unarmed: 0
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: One-Handed-Swing-Down
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.7
+    <Force>k__BackingField: 5
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 6
+  - <AnimationName>k__BackingField: One-Handed-Swing-Right
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.6
+    <Force>k__BackingField: 6
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 8
+  - <AnimationName>k__BackingField: One-Handed-Swing-Left
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
+    <Force>k__BackingField: 5
+    <ForceTime>k__BackingField: 0.3
+    RightHand: 1
+    Knockback: 6
