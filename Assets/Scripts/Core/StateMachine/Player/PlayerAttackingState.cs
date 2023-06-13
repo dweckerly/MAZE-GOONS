@@ -23,12 +23,15 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.sneaking = false;
+        //float comboMultiplier = Mathf.Abs((attack.ComboStateIndex - 1) / 2) + 1;
+        float comboMultiplier = attack.ComboStateIndex > 1 || attack.ComboStateIndex < 0 ? 1.5f : 1f;
         if (attack.RightHand)
         {
             stateMachine.Attributes.SpendStamina(stateMachine.WeaponHandler.mainHandWeapon.staminaReq);
             if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded)
                 stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(Mathf.RoundToInt(stateMachine.Attributes.GetStat(Attribute.Brawn) * 1.5f) + attack.AdditiveDamage);
             else stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
+            stateMachine.WeaponHandler.mainHandDamage.SetMultiplicativeDamageModifier(comboMultiplier);
             stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
         }
@@ -36,6 +39,7 @@ public class PlayerAttackingState : PlayerBaseState
         {
             stateMachine.Attributes.SpendStamina(stateMachine.WeaponHandler.offHandWeapon.staminaReq);
             stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
+            stateMachine.WeaponHandler.offHandDamage.SetMultiplicativeDamageModifier(comboMultiplier);
             stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
         }
