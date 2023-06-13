@@ -13,4 +13,5 @@ public class Attack
     [field: SerializeField] public float ForceTime { get; private set; }
     [field: SerializeField] public bool RightHand = true;
     [field: SerializeField] public float Knockback;
+    [field: SerializeField] public int AdditiveDamage = 0;
 }

@@ -27,15 +27,15 @@ public class PlayerAttackingState : PlayerBaseState
         {
             stateMachine.Attributes.SpendStamina(stateMachine.WeaponHandler.mainHandWeapon.staminaReq);
             if (stateMachine.WeaponHandler.mainHandWeapon.twoHanded)
-                stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(Mathf.RoundToInt(stateMachine.Attributes.GetStat(Attribute.Brawn) * 1.5f));
-            else stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+                stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(Mathf.RoundToInt(stateMachine.Attributes.GetStat(Attribute.Brawn) * 1.5f) + attack.AdditiveDamage);
+            else stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
             stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
         }
         else 
         {
             stateMachine.Attributes.SpendStamina(stateMachine.WeaponHandler.offHandWeapon.staminaReq);
-            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
             stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
         }

@@ -19,13 +19,13 @@ public class EnemyAttackingState : EnemyBaseState
         stateMachine.WeaponHandler.ApplyWeaponMasks(stateMachine.animationMask, stateMachine.animator, false);
         if (attack.RightHand)
         {
-            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.mainHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
             stateMachine.WeaponHandler.mainHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.mainHandDamage.ClearColliderList();
         }
         else
         {
-            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn));
+            stateMachine.WeaponHandler.offHandDamage.SetAdditiveDamageModifier(stateMachine.Attributes.GetStat(Attribute.Brawn) + attack.AdditiveDamage);
             stateMachine.WeaponHandler.offHandDamage.knockback = attack.Knockback;
             stateMachine.WeaponHandler.offHandDamage.ClearColliderList();
         }

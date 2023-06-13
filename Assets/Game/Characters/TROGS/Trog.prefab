@@ -7,13 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 983451374144462587, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -19.16
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.53
+      value: 42.98
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29,15 +33,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1304643214821921452, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -63,6 +67,10 @@ PrefabInstance:
       propertyPath: Renderers.Array.data[0]
       value: 
       objectReference: {fileID: 3810620574140758}
+    - target: {fileID: 1554233808619369648, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
+      propertyPath: <AttackRange>k__BackingField
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1554233808619369648, guid: f87c0eefd8b69f2489d27be3f7e6cc02, type: 3}
       propertyPath: <BloodParticles>k__BackingField
       value: 
