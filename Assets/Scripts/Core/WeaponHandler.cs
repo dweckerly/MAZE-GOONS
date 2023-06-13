@@ -51,6 +51,7 @@ public class WeaponHandler : MonoBehaviour
         if(gameObject.CompareTag("Player")) LayerInt = LayerMask.NameToLayer(gameObject.tag);
         sourceCollider = GetComponent<Collider>();
         EquipDefaultWeapon();
+        EquipDefaultShield();
     }
 
     public void EquipWeapon(Weapon weapon, WeaponHand hand = WeaponHand.Right)
@@ -282,6 +283,18 @@ public class WeaponHandler : MonoBehaviour
             shield.equipped = true;
             OnEquipShield?.Invoke();
         }
+        OnEquip?.Invoke();
+    }
+
+    public void EquipDefaultShield()
+    {
+        if (shieldEquipped == null) return;
+        offHandPrefab = Instantiate(shieldEquipped.shieldPrefab, LeftHand.transform);
+        maskLayers.Add(LEFT_GRIP);
+        maskLayers.Add(SHIELD_ARM_POSITION);
+        SetWeaponLayer(offHandPrefab);
+        shieldEquipped.equipped = true;
+        OnEquipShield?.Invoke();
         OnEquip?.Invoke();
     }
 
