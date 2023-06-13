@@ -293,9 +293,7 @@ public class WeaponHandler : MonoBehaviour
         maskLayers.Add(LEFT_GRIP);
         maskLayers.Add(SHIELD_ARM_POSITION);
         SetWeaponLayer(offHandPrefab);
-        shieldEquipped.equipped = true;
         OnEquipShield?.Invoke();
-        OnEquip?.Invoke();
     }
 
     public void ApplyWeaponMasks(AnimationMaskHandler animationMaskHandler, Animator animator, bool value)

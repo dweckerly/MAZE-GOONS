@@ -63,6 +63,7 @@ public class EnemyStateMachine : StateMachine
         Attributes.OnTakeDamage += HandleTakeDamage;
         Attributes.OnDie += HandleDie;
         WeaponHandler.OnEquip += HandleWeaponEquip;
+        WeaponHandler.OnEquipShield += HandleShieldEquip;
         ArmorHandler.EquipArmorEvent += HandleArmorEquip;
     }
 
@@ -71,6 +72,7 @@ public class EnemyStateMachine : StateMachine
         Attributes.OnTakeDamage -= HandleTakeDamage;
         Attributes.OnDie -= HandleDie;
         WeaponHandler.OnEquip -= HandleWeaponEquip;
+        WeaponHandler.OnEquipShield -= HandleShieldEquip;
         ArmorHandler.EquipArmorEvent -= HandleArmorEquip;
     }
 
@@ -109,6 +111,14 @@ public class EnemyStateMachine : StateMachine
     {
         Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
         //Loot.AddItem(armor);
+    }
+
+    private void HandleShieldEquip()
+    {
+        Attributes.DamageReduction = ArmorHandler.CalculateArmorValue();
+        List<GameObject> prefabs = new List<GameObject>();
+        prefabs.Add(WeaponHandler.offHandPrefab);
+        Loot.AddItem(new LootItem(WeaponHandler.shieldEquipped, prefabs));
     }
 
     public void AlertNearbyEnemies()

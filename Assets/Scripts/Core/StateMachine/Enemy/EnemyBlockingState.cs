@@ -26,6 +26,7 @@ public class EnemyBlockingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        FaceTarget(stateMachine.Player);
         remainingBlockTime -= deltaTime;
         if (remainingBlockTime <= 0f) stateMachine.SwitchState(new EnemyFightingState(stateMachine));
     }
