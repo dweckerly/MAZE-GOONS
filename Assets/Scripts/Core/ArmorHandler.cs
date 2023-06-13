@@ -57,12 +57,32 @@ public class ArmorHandler : MonoBehaviour
         {
             if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null)
             {
+                ArmorSlot slot = ArmorSlot.Mask;
                 foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
                 {
-                    UnEquipArmor(armorBodyMap, armor);
+                    switch(armorBodyMap.bodyPositionReference)
+                    {
+                        case BodyMapping.Head:
+                            slot = ArmorSlot.Mask;
+                            break;
+                        case BodyMapping.LeftShoulder:
+                            slot = ArmorSlot.Pauldrons;
+                            break;
+                        case BodyMapping.RightShoulder:
+                            slot = ArmorSlot.Pauldrons;
+                            break;
+                        case BodyMapping.LeftWrist:
+                            slot = ArmorSlot.Wrists;
+                            break;
+                        case BodyMapping.RightWrist:
+                            slot = ArmorSlot.Wrists;
+                            break;
+                        case BodyMapping.Waist:
+                            slot = ArmorSlot.Waist;
+                            break;
+                    }
+                    if (equippedArmor[slot] != null) UnEquipArmor(armorBodyMap, equippedArmor[slot]);
                 }
-                armor.equipped = false;
-                UnEquipArmorEvent?.Invoke(armor);
             }
             EquipArmor(armor);
             armor.equipped = true;
