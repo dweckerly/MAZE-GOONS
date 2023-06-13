@@ -34,7 +34,16 @@ public class EnemyImpactState : EnemyBaseState
     {
         Move(deltaTime);
         duration -= deltaTime;
-        if (duration <= 0f) stateMachine.SwitchState(new EnemyFightingState(stateMachine));
+        if (duration <= 0f) 
+        {
+            if (stateMachine.WeaponHandler.shieldEquipped != null)
+            {
+                stateMachine.SwitchState(new EnemyBlockingState(stateMachine));
+                return;
+            }
+            stateMachine.SwitchState(new EnemyFightingState(stateMachine));
+            return;
+        }
     }
 
     private void SetImpactColor()
