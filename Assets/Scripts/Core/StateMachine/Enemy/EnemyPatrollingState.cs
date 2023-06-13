@@ -62,7 +62,7 @@ public class EnemyPatrollingState : EnemyBaseState
         if (stateMachine.Agent.isOnNavMesh)
         {
             stateMachine.Agent.destination = target.transform.position;
-            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed / 2, deltaTime);
+            Move(stateMachine.Agent.desiredVelocity.normalized * (stateMachine.MovementSpeed / 2f), deltaTime);
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }

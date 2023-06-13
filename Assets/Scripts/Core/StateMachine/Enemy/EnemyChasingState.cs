@@ -22,6 +22,11 @@ public class EnemyChasingState : EnemyBaseState
         {
             if (stateMachine.playerStateMachine.sneaking && !IsInDetectionRange(stateMachine.Player))
             {
+                if (stateMachine.PatrolPath != null)
+                {
+                    stateMachine.SwitchState(new EnemyPatrollingState(stateMachine, 0));
+                    return;
+                }
                 stateMachine.SwitchState(new EnemyIdleState(stateMachine));
                 return;
             }
