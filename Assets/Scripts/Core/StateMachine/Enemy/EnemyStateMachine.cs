@@ -31,6 +31,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float AttackRange { get; private set; } = 1f;
     [field: SerializeField] public ParticleSystem BloodParticles { get; private set; }
     [field: SerializeField] public List<Renderer> Renderers = new List<Renderer>();
+    [field: SerializeField] public PatrolPath PatrolPath { get; private set; }
 
     public float scaleFactor = 1;
     public float animSpeed = 1;
@@ -47,7 +48,8 @@ public class EnemyStateMachine : StateMachine
         Agent.updateRotation = false;
         AttackRange *= scaleFactor;
         animSpeed = 1 / scaleFactor;
-        SwitchState(new EnemyIdleState(this));
+        if (PatrolPath != null) SwitchState(new EnemyPatrollingState(this, 0));
+        else SwitchState(new EnemyIdleState(this));
     }
 
     private void OnDrawGizmosSelected() 
