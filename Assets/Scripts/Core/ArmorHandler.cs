@@ -94,6 +94,7 @@ public class ArmorHandler : MonoBehaviour
     public void UnEquipArmor(ArmorBodyMap armorBodyMap, Armor armor)
     {
         if (equipLookup[armorBodyMap.bodyPositionReference] == null) return;
+        armor.equipped = false;
         equippedArmor.Remove(armor.slot);
         UnEquipArmorEvent?.Invoke(armor);
         Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
