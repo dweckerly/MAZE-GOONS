@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnTime = 30f;
     public GameObject spawn;
     public int maxSpawns = 4;
+    public int maxTotalSpawns = 100;
+    private int totalSpawns = 0;
     public float spawnDistance = 5f;
     [Range(0f, 180f)]
     public float maxAngle = 90f;
@@ -18,12 +20,12 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-
     IEnumerator SpawnEnemy()
     {
         while (canSpawn)
         {
             yield return new WaitForSeconds(spawnTime);
+            if (totalSpawns == maxTotalSpawns) canSpawn = false;
             if (canSpawn)
             {
                 List<Attributes> deadEnemies = new List<Attributes>();
@@ -45,6 +47,7 @@ public class EnemySpawner : MonoBehaviour
                     spawnPos.z = transform.position.z + (spawnDistance * Mathf.Cos((angle + transform.eulerAngles.y) / (180f / Mathf.PI)));
                     GameObject go = Instantiate(spawn, spawnPos, Quaternion.identity);
                     spawnedAttributes.Add(go.GetComponent<Attributes>());
+                    totalSpawns++;
                 }
             }
         }
