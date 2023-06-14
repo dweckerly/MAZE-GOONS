@@ -152,8 +152,18 @@ public class WeaponHandler : MonoBehaviour
         mainHandCollider = mainHandPrefab.GetComponent<Collider>();
         if (!defaultWeapon.unarmed)
         {
-            maskLayers.Add(RIGHT_GRIP);
-            maskLayers.Add(ONE_HANDED_ARM_POSITION);
+            if (defaultWeapon.twoHanded)
+            {
+                maskLayers.Add(RIGHT_GRIP);
+                maskLayers.Add(LEFT_GRIP);
+                maskLayers.Add(TWO_HANDED_ARM_POSITION);
+            }
+            else
+            {
+                maskLayers.Add(RIGHT_GRIP);
+                maskLayers.Add(ONE_HANDED_ARM_POSITION);
+            }
+            
         }
         DisableRightHandCollider();
     }
