@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27cb513eae377e40a62e91b18327d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 1
   <animator>k__BackingField: {fileID: 3134474910933261979}
   <animationMask>k__BackingField: {fileID: 8465621606813905529}
   <ArmorHandler>k__BackingField: {fileID: 7119147323215391651}
@@ -1094,6 +1094,7 @@ MonoBehaviour:
   <BloodParticles>k__BackingField: {fileID: 2734901866298208732}
   Renderers:
   - {fileID: 4458100944043783804}
+  <PatrolPath>k__BackingField: {fileID: 0}
   scaleFactor: 1
   animSpeed: 1
   playerStateMachine: {fileID: 0}
@@ -1124,6 +1125,7 @@ MonoBehaviour:
   sourceCollider: {fileID: 0}
   shieldEquipped: {fileID: 0}
   maskLayers: 
+  clickMe: 0
 --- !u!114 &3134474910933261977
 MonoBehaviour:
   m_ObjectHideFlags: 0
