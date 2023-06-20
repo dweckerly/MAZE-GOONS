@@ -23,7 +23,7 @@ public class EnemyFightingState : EnemyBaseState
     {
         if (stateMachine.Player != null && stateMachine.playerStateMachine.Attributes.alive)
         {
-            if (stateMachine.enemyType == EnemyType.Trog && stateMachine.Attributes.GetHPFraction() < 0.5f)
+            if (stateMachine.enemyType == EnemyType.Coward && stateMachine.Attributes.GetHPFraction() < 0.5f)
             {
                 stateMachine.SwitchState(new EnemyFleeingState(stateMachine));
                 return;

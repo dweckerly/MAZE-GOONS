@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public enum EnemyType
 {
+    Coward,
     Default,
     Worshipper,
-    Trog
 }
 
 public class EnemyStateMachine : StateMachine
