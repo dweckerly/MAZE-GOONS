@@ -65,6 +65,7 @@ public class EnemyStateMachine : StateMachine
         WeaponHandler.OnEquip += HandleWeaponEquip;
         WeaponHandler.OnEquipShield += HandleShieldEquip;
         ArmorHandler.EquipArmorEvent += HandleArmorEquip;
+        if (!Attributes.alive) SwitchState(new EnemyDeadState(this));
     }
 
     private void OnDisable() 
