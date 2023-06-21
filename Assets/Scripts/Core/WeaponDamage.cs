@@ -24,6 +24,7 @@ public class WeaponDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other == sourceCollider) return;
+        if (other.CompareTag(sourceCollider.gameObject.tag)) return;
         if (alreadyCollidedWith.Contains(other)) return;
         alreadyCollidedWith.Add(other);
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
