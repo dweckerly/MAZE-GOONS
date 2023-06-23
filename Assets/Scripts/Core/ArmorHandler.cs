@@ -32,6 +32,7 @@ public class ArmorHandler : MonoBehaviour
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerInt;
+    public Transform rootBone;
     
     private void Awake() 
     {
@@ -44,6 +45,11 @@ public class ArmorHandler : MonoBehaviour
 
     public void CheckArmor(Armor armor)
     {
+        if (armor.slot == ArmorSlot.Body)
+        {
+            EquipBodyArmor(armor);
+            return;
+        }
         if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null && equipLookup[armor.ArmorObjects[0].bodyPositionReference].Id == armor.Id)
         {
             foreach (ArmorBodyMap armorBodyMap in armor.ArmorObjects)
@@ -119,6 +125,27 @@ public class ArmorHandler : MonoBehaviour
         UnEquipArmorEvent?.Invoke(armor);
         Destroy(equipLookup[armorBodyMap.bodyPositionReference].equip);
         equipLookup[armorBodyMap.bodyPositionReference] = null;
+    }
+
+    void EquipBodyArmor(Armor armor)
+    {
+        if (!equippedArmor.ContainsKey(ArmorSlot.Body)) equippedArmor.Add(ArmorSlot.Body, null);
+        if (equippedArmor[ArmorSlot.Body] != null)
+        {
+            if (equippedArmor[ArmorSlot.Body].Id == armor.Id)
+            {
+                UnEquipArmor(armor.ArmorObjects[0], armor);
+                return;
+            }
+            UnEquipArmor(equippedArmor[ArmorSlot.Body].ArmorObjects[0], equippedArmor[ArmorSlot.Body]);
+        }
+        GameObject go = Instantiate(armor.ArmorObjects[0].armorPrefab, gameObject.transform);
+        go.GetComponent<SkinnedMeshRenderer>().rootBone = rootBone;
+        ArmorObject armorObject = new ArmorObject(armor.Id, go);
+        equipLookup[armor.ArmorObjects[0].bodyPositionReference] = armorObject;
+        equippedArmor[ArmorSlot.Body] = armor;
+        armor.equipped = true;
+        EquipArmorEvent?.Invoke(armor);
     }
 
     public void UnEquipAllArmor()
