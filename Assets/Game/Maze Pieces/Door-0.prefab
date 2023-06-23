@@ -117,7 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanInteract: 1
   isOpen: 0
-  clip: {fileID: 8300000, guid: f38f1cf21e84fef429f32a0ea356c3b6, type: 3}
+  openingClip: {fileID: 8300000, guid: f38f1cf21e84fef429f32a0ea356c3b6, type: 3}
+  closingClip: {fileID: 8300000, guid: f38f1cf21e84fef429f32a0ea356c3b6, type: 3}
   audioSource: {fileID: 3555489184842465543}
 --- !u!95 &4405074326411354777
 Animator:
@@ -151,7 +152,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
