@@ -6,6 +6,8 @@ public class Door : Interactable
 {
     Animator animator;
     public bool isOpen = false;
+    public AudioClip clip;
+    public AudioSource audioSource;
 
     public override InteractableType type { get { return InteractableType.Door; } } 
 
@@ -30,5 +32,13 @@ public class Door : Interactable
     public void AnimationComplete()
     {
         CanInteract = true;
+    }
+
+    // animation event
+    void DoorOpening()
+    {
+        if (clip == null || audioSource == null) return;
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }
