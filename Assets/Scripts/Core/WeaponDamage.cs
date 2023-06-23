@@ -15,6 +15,8 @@ public class WeaponDamage : MonoBehaviour
 
     public bool staminaDrain = false;
     public Transform sourceTransform;
+    public AudioClip impactSfx;
+    public AudioSource audioSource;
 
     private void OnEnable()
     {
@@ -29,6 +31,7 @@ public class WeaponDamage : MonoBehaviour
         alreadyCollidedWith.Add(other);
         if (other.TryGetComponent<Attributes>(out Attributes attributes))
         {
+            PlayImpactSFX();
             int damage = Mathf.RoundToInt((baseDamage + additiveDamageModifier) * multiplicativeDamageModifier);
             if (staminaDrain)
             {
@@ -63,6 +66,13 @@ public class WeaponDamage : MonoBehaviour
     public void SetMultiplicativeDamageModifier(float mod)
     {
         multiplicativeDamageModifier = mod;
+    }
+
+    void PlayImpactSFX()
+    {
+        if (impactSfx == null || audioSource == null) return;
+        audioSource.clip = impactSfx;
+        audioSource.Play();
     }
 
     IEnumerator HitStop()
