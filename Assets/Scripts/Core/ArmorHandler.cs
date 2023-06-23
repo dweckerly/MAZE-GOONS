@@ -33,6 +33,7 @@ public class ArmorHandler : MonoBehaviour
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerInt;
     public SkinnedMeshRenderer BodyArmor;
+    public SkinnedMeshRenderer Gloves;
     
     private void Awake() 
     {

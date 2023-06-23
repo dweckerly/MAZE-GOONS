@@ -2076,15 +2076,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1852786953951905800, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.13328663
+      value: -0.13328661
       objectReference: {fileID: 0}
     - target: {fileID: 1852786953951905800, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.12678982
+      value: 0.12678978
       objectReference: {fileID: 0}
     - target: {fileID: 1852786953951905800, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.017195433
+      value: 0.017195428
       objectReference: {fileID: 0}
     - target: {fileID: 1952675535003740578, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2212,11 +2212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355633040201, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4
+      value: 1.364868
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355633040201, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.903261
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2240,11 +2240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000029802322
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355942272336, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009313226
+      value: -0.0000000055879354
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2276,19 +2276,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356033351243, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4
+      value: 1.364868
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356033351243, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.903261
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356304072435, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4
+      value: 1.364868
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356304072435, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.903261
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356531690472, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2320,16 +2320,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356531690475, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356531690475, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_YAxis.m_MaxSpeed
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4750001408796619353, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
+      propertyPath: Gloves
+      value: 
+      objectReference: {fileID: 1778077955}
     - target: {fileID: 4750001408796619353, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: rootBone
       value: 
       objectReference: {fileID: 1806583828}
+    - target: {fileID: 4750001408796619353, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
+      propertyPath: BodyArmor
+      value: 
+      objectReference: {fileID: 553425805}
     - target: {fileID: 4936804140636576682, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.009777565
@@ -16165,6 +16173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba367613f68601241b1c3dce65d628ee, type: 3}
+--- !u!137 &553425805 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4353346364379278030, guid: 1473bd5493ccdab48b6b15b747c72e8f, type: 3}
+  m_PrefabInstance: {fileID: 8160605192945588144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &553888490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52457,8 +52470,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7890a45b9e8342f4a8dbb81ac1c6d201, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52483,7 +52495,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: f5172de4135d35d4f92c4b395cf838df, type: 2}
+  m_Mesh: {fileID: 0}
   m_Bones:
   - {fileID: 1806583828}
   - {fileID: 571504156}
@@ -65165,6 +65177,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4353346364379278030, guid: 1473bd5493ccdab48b6b15b747c72e8f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353346364379278030, guid: 1473bd5493ccdab48b6b15b747c72e8f, type: 3}
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 1806583828}
@@ -65368,6 +65384,10 @@ PrefabInstance:
       propertyPath: m_Bones.Array.data[49]
       value: 
       objectReference: {fileID: 1138701758}
+    - target: {fileID: 4353346364379278030, guid: 1473bd5493ccdab48b6b15b747c72e8f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4983735205929696108, guid: 1473bd5493ccdab48b6b15b747c72e8f, type: 3}
       propertyPath: m_Name
       value: BodyArmor

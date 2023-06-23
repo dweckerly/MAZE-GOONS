@@ -21,7 +21,17 @@ MonoBehaviour:
   pickup: {fileID: 6298581309705799867, guid: fce43152d67d4af4c87d3626ffe30438, type: 3}
   equipped: 0
   ArmorObjects:
-  - armorPrefab: {fileID: 1087857000993325042, guid: 30f0c9c1108e9b64eb58a7e243a28a21, type: 3}
+  - armorPrefab: {fileID: 0}
     bodyPositionReference: 6
   slot: 4
   DamageReduction: 4
+  materials:
+  - {fileID: 2100000, guid: 7ca8526332625094f88ed34e4b70fab3, type: 2}
+  - {fileID: 2100000, guid: 7890a45b9e8342f4a8dbb81ac1c6d201, type: 2}
+  - {fileID: 2100000, guid: a823e5a477f8156478ec6c3ef4d3b8ff, type: 2}
+  - {fileID: 2100000, guid: 7ca8526332625094f88ed34e4b70fab3, type: 2}
+  - {fileID: 2100000, guid: 989504af6a31de4458dfeeb4b0266360, type: 2}
+  - {fileID: 2100000, guid: 7ca8526332625094f88ed34e4b70fab3, type: 2}
+  - {fileID: 2100000, guid: 7ca8526332625094f88ed34e4b70fab3, type: 2}
+  - {fileID: 2100000, guid: dce1132e5582ebd4fb0840ce27ba30a3, type: 2}
+  BodyMesh: {fileID: 4300000, guid: 91f3a00ddf626ed40b1267fa86177e5d, type: 2}
