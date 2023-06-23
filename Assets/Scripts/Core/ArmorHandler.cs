@@ -32,7 +32,7 @@ public class ArmorHandler : MonoBehaviour
     public BodyPartMapReference[] bodyPartMap;
     Dictionary<BodyMapping, ArmorObject> equipLookup = new Dictionary<BodyMapping, ArmorObject>();
     int LayerInt;
-    public Transform rootBone;
+    public SkinnedMeshRenderer BodyArmor;
     
     private void Awake() 
     {
@@ -47,7 +47,7 @@ public class ArmorHandler : MonoBehaviour
     {
         if (armor.slot == ArmorSlot.Body)
         {
-            EquipBodyArmor(armor);
+            EquipSMRArmor(armor, BodyArmor);
             return;
         }
         if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null && equipLookup[armor.ArmorObjects[0].bodyPositionReference].Id == armor.Id)
@@ -127,25 +127,34 @@ public class ArmorHandler : MonoBehaviour
         equipLookup[armorBodyMap.bodyPositionReference] = null;
     }
 
-    void EquipBodyArmor(Armor armor)
+    void EquipSMRArmor(Armor armor, SkinnedMeshRenderer armorSMR)
     {
         if (!equippedArmor.ContainsKey(ArmorSlot.Body)) equippedArmor.Add(ArmorSlot.Body, null);
         if (equippedArmor[ArmorSlot.Body] != null)
         {
             if (equippedArmor[ArmorSlot.Body].Id == armor.Id)
             {
-                UnEquipArmor(armor.ArmorObjects[0], armor);
+                UnEquipSMRArmor(armor, armorSMR);
                 return;
             }
-            UnEquipArmor(equippedArmor[ArmorSlot.Body].ArmorObjects[0], equippedArmor[ArmorSlot.Body]);
+            UnEquipSMRArmor(equippedArmor[ArmorSlot.Body], armorSMR);
         }
-        GameObject go = Instantiate(armor.ArmorObjects[0].armorPrefab, gameObject.transform);
-        go.GetComponent<SkinnedMeshRenderer>().rootBone = rootBone;
-        ArmorObject armorObject = new ArmorObject(armor.Id, go);
+        armorSMR.sharedMesh = armor.BodyMesh;
+        armorSMR.materials = armor.materials;
+        ArmorObject armorObject = new ArmorObject(armor.Id, null);
         equipLookup[armor.ArmorObjects[0].bodyPositionReference] = armorObject;
         equippedArmor[ArmorSlot.Body] = armor;
         armor.equipped = true;
         EquipArmorEvent?.Invoke(armor);
+    }
+
+    void UnEquipSMRArmor(Armor armor,SkinnedMeshRenderer armorSMR)
+    {
+        armorSMR.sharedMesh = null;
+        armor.equipped = false;
+        equippedArmor.Remove(armor.slot);
+        UnEquipArmorEvent?.Invoke(armor);
+        equipLookup[armor.ArmorObjects[0].bodyPositionReference] = null;
     }
 
     public void UnEquipAllArmor()

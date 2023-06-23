@@ -10,7 +10,8 @@ public enum BodyMapping
     LeftWrist,
     RightWrist,
     Waist,
-    Body
+    Body,
+    Gloves
 }
 
 public enum ArmorSlot
@@ -19,7 +20,8 @@ public enum ArmorSlot
     Pauldrons,
     Wrists,
     Waist,
-    Body
+    Body,
+    Gloves
 }
 
 [System.Serializable]
@@ -36,4 +38,6 @@ public class Armor : Equippable
     public override ItemType itemType => ItemType.Armor;
     public ArmorSlot slot;
     public int DamageReduction = 1;
+    public Material[] materials;
+    public Mesh BodyMesh;
 }
