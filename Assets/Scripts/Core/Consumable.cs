@@ -30,6 +30,6 @@ public class Consumable : Item
             default:
                 break;
         }
-        stateMachine.sFXPlayer.PlaySFX(sfx);
+        if (sfx != null) stateMachine.sFXPlayer.PlaySFX(sfx);
     }
 }
