@@ -362,11 +362,19 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
+        foreach (Item i in playerStateMachine.Inventory.inventory.Keys)
+        {
+            if (i is Equippable) ((Equippable)i).equipped = false;
+        }
         Application.Quit();
     }
 
     public void Retry()
     {
+        foreach (Item i in playerStateMachine.Inventory.inventory.Keys)
+        {
+            if (i is Equippable) ((Equippable)i).equipped = false;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
