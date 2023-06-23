@@ -48,12 +48,13 @@ public abstract class EnemyBaseState : State
         stateMachine.Controller.Move((movement + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
 
+    float rotateSpeed = 700f;
     protected void FaceTarget(GameObject go)
     {
         if (go == null) return;
         Vector3 lookPosition = go.transform.position - stateMachine.transform.position;
         lookPosition.y = 0f;
-        stateMachine.transform.rotation = Quaternion.LookRotation(lookPosition);
+        stateMachine.transform.rotation = Quaternion.RotateTowards(stateMachine.transform.rotation, Quaternion.LookRotation(lookPosition), Time.deltaTime * rotateSpeed);
     }
 
     protected void FaceAwayFromTarget(GameObject go)
