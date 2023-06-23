@@ -13,7 +13,7 @@ public class ItemDetails : MonoBehaviour
     public void ShowDetails(Item item)
     {
         props.text = "";
-        itemName.text = item.name;
+        itemName.text = item.itemName;
         description.text = item.description;
         
         if (item is Equippable)
