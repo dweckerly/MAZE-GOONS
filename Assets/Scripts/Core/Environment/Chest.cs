@@ -18,7 +18,7 @@ public class Chest : Interactable
     {
         OpenChest();
         CanInteract = false;
-        if (Gold == 0) Gold = Random.Range(10, 1001);
+        if (Gold == 0) Gold = Random.Range(100, 1001);
         stateMachine.Inventory.UpdateGold(Gold);
         stateMachine.Notifier.NotifyGold(Gold);
     }

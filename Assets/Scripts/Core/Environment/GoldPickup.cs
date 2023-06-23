@@ -9,7 +9,7 @@ public class GoldPickup : Interactable
 
     public override void Interact(PlayerStateMachine stateMachine)
     {
-        if (GoldAmount == 0) GoldAmount = Random.Range(10, 1001);
+        if (GoldAmount == 0) GoldAmount = Random.Range(1, 100);
         stateMachine.Inventory.UpdateGold(GoldAmount);
         stateMachine.Notifier.NotifyGold(GoldAmount);
         Destroy(this.gameObject);
