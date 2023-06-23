@@ -817,6 +817,7 @@ MonoBehaviour:
   <Attributes>k__BackingField: {fileID: 7108165860227709176}
   <WeaponHandler>k__BackingField: {fileID: 8476488287274066269}
   <Interacter>k__BackingField: {fileID: 1712063361229416543}
+  <Notifier>k__BackingField: {fileID: 0}
   <Inventory>k__BackingField: {fileID: 5651724049144144587}
   <DodgeParticles>k__BackingField: {fileID: 5143117952757578873}
   <BloodParticles>k__BackingField: {fileID: 1901930654010135083}
@@ -831,6 +832,8 @@ MonoBehaviour:
   blockCooldown: 1
   canBlock: 1
   sneaking: 0
+  encumberanceModifier: 1
+  sFXPlayer: {fileID: 134271892742543210}
 --- !u!114 &7782677968425473779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +916,7 @@ MonoBehaviour:
   carryCapacity: 0
   weightText: {fileID: 0}
   weightRect: {fileID: 0}
+  encumbered: 0
 --- !u!114 &7108165860227709176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,9 +936,14 @@ MonoBehaviour:
   guts: 2
   baseHP: 10
   DamageReduction: 0
+  currentBrawn: 0
   currentGuile: 0
+  currentStamina: 0
+  isBlocking: 0
   <HealthRect>k__BackingField: {fileID: 0}
   <StaminaRect>k__BackingField: {fileID: 0}
+  <HealthBGRect>k__BackingField: {fileID: 0}
+  <StaminaBGRect>k__BackingField: {fileID: 0}
 --- !u!114 &5953909182342821676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +981,7 @@ MonoBehaviour:
   mainHandCollider: {fileID: 0}
   offHandCollider: {fileID: 0}
   sourceCollider: {fileID: 0}
-  shieldEquipped: 
+  shieldEquipped: {fileID: 0}
   maskLayers: 
 --- !u!114 &4598053074635153495
 MonoBehaviour:

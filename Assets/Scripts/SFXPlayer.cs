@@ -13,5 +13,11 @@ public class SFXPlayer : MonoBehaviour
         audioSource.clip = footSteps[r];
         audioSource.Play();
     }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
     
 }

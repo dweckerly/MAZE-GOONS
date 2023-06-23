@@ -37,6 +37,7 @@ public class PlayerStateMachine : StateMachine
 
     public bool sneaking = false;
     public float encumberanceModifier = 1f;
+    public SFXPlayer sFXPlayer;
 
     private void Awake() 
     {

@@ -15,6 +15,7 @@ public class Consumable : Item
     public override ItemType itemType => ItemType.Consumable;
     public ConsumableType consumableType;
     public int effectAmount = 10;
+    public AudioClip sfx;
 
     public void Consume(PlayerStateMachine stateMachine)
     {
@@ -29,5 +30,6 @@ public class Consumable : Item
             default:
                 break;
         }
+        stateMachine.sFXPlayer.PlaySFX(sfx);
     }
 }
