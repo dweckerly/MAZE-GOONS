@@ -46,7 +46,7 @@ public class ArmorHandler : MonoBehaviour
 
     public void CheckArmor(Armor armor)
     {
-        if (armor.slot == ArmorSlot.Body)
+        if (armor.slot == ArmorSlot.Body || armor.slot == ArmorSlot.Gloves)
         {
             EquipSMRArmor(armor, BodyArmor);
             return;
