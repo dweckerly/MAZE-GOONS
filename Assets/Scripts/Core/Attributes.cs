@@ -142,6 +142,7 @@ public class Attributes : MonoBehaviour
     public void TakeDamage(int amount, Transform trans)
     {
         if (!alive) return;
+        if (trans == null) return;
         int damage = Mathf.Clamp(amount - DamageReduction, 1, currentHP);
 
         Vector3 targetDir = trans.position - gameObject.transform.position;
