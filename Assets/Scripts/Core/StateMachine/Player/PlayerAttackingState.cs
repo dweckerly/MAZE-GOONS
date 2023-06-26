@@ -16,8 +16,8 @@ public class PlayerAttackingState : PlayerBaseState
     {
         attack = stateMachine.WeaponHandler.mainHandWeapon.Attacks[attackIndex];
         storedAnimSpeed = stateMachine.animator.speed;
-        if (stateMachine.WeaponHandler.mainHandWeapon.weight < stateMachine.Attributes.currentBrawn) 
-            stateMachine.animator.speed = 1 + Mathf.Clamp((stateMachine.Attributes.currentGuile - stateMachine.WeaponHandler.mainHandWeapon.weight) / 10, 0, 1);
+        // if (stateMachine.WeaponHandler.mainHandWeapon.weight < stateMachine.Attributes.currentBrawn) 
+        //     stateMachine.animator.speed = 1 + Mathf.Clamp((stateMachine.Attributes.currentGuile - stateMachine.WeaponHandler.mainHandWeapon.weight) / 10, 0, 1);
     }
 
     public override void Enter()
