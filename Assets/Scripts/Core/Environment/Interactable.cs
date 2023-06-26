@@ -11,7 +11,8 @@ public enum InteractableType
     Gold,
     Lever,
     PickUp,
-    Statue
+    Statue,
+    GameTracker
 }
 
 public abstract class Interactable : MonoBehaviour 

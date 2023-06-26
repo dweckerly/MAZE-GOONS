@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AchievementTracker : MonoBehaviour
+public class AchievementTracker : Interactable
 {
     int playTime;
 
     public TMP_Text timeText;
+
+    public override InteractableType type { get { return InteractableType.GameTracker; } }
 
     private void Start() 
     {
@@ -25,5 +27,10 @@ public class AchievementTracker : MonoBehaviour
             ts = TimeSpan.FromSeconds(playTime);
             timeText.text = ((int)ts.TotalHours).ToString() + ":" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
         }
+    }
+
+    public override void Interact(PlayerStateMachine stateMachine)
+    {
+        throw new NotImplementedException();
     }
 }
