@@ -46,9 +46,14 @@ public class ArmorHandler : MonoBehaviour
 
     public void CheckArmor(Armor armor)
     {
-        if (armor.slot == ArmorSlot.Body || armor.slot == ArmorSlot.Gloves)
+        if (armor.slot == ArmorSlot.Body)
         {
             EquipSMRArmor(armor, BodyArmor);
+            return;
+        }
+        if (armor.slot == ArmorSlot.Gloves)
+        {
+            EquipSMRArmor(armor, Gloves);
             return;
         }
         if (equipLookup[armor.ArmorObjects[0].bodyPositionReference] != null && equipLookup[armor.ArmorObjects[0].bodyPositionReference].Id == armor.Id)
@@ -130,26 +135,26 @@ public class ArmorHandler : MonoBehaviour
 
     void EquipSMRArmor(Armor armor, SkinnedMeshRenderer armorSMR)
     {
-        if (!equippedArmor.ContainsKey(ArmorSlot.Body)) equippedArmor.Add(ArmorSlot.Body, null);
-        if (equippedArmor[ArmorSlot.Body] != null)
+        if (!equippedArmor.ContainsKey(armor.slot)) equippedArmor.Add(armor.slot, null);
+        if (equippedArmor[armor.slot] != null)
         {
-            if (equippedArmor[ArmorSlot.Body].Id == armor.Id)
+            if (equippedArmor[armor.slot].Id == armor.Id)
             {
                 UnEquipSMRArmor(armor, armorSMR);
                 return;
             }
-            UnEquipSMRArmor(equippedArmor[ArmorSlot.Body], armorSMR);
+            UnEquipSMRArmor(equippedArmor[armor.slot], armorSMR);
         }
         armorSMR.sharedMesh = armor.BodyMesh;
         armorSMR.materials = armor.materials;
         ArmorObject armorObject = new ArmorObject(armor.Id, null);
         equipLookup[armor.ArmorObjects[0].bodyPositionReference] = armorObject;
-        equippedArmor[ArmorSlot.Body] = armor;
+        equippedArmor[armor.slot] = armor;
         armor.equipped = true;
         EquipArmorEvent?.Invoke(armor);
     }
 
-    void UnEquipSMRArmor(Armor armor,SkinnedMeshRenderer armorSMR)
+    void UnEquipSMRArmor(Armor armor, SkinnedMeshRenderer armorSMR)
     {
         armorSMR.sharedMesh = null;
         armor.equipped = false;
