@@ -1006,6 +1006,8 @@ MonoBehaviour:
     bodyPositionReference: 3
   - bodyPart: {fileID: 1202129379253390036}
     bodyPositionReference: 4
+  BodyArmor: {fileID: 0}
+  Gloves: {fileID: 0}
 --- !u!82 &2424580684461931469
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3090,6 +3092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 19840564, guid: d03730c3abcf63d44865fd96f761de02, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19945494, guid: d03730c3abcf63d44865fd96f761de02, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -3163,6 +3169,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421518, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19852826, guid: 18e8ed702bb7cad4ab6fc2b6707f73f1, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
