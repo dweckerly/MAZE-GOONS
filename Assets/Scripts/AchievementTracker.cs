@@ -6,9 +6,19 @@ using TMPro;
 
 public class AchievementTracker : Interactable
 {
-    int playTime;
-
+    public UIManager uIManager;
     public TMP_Text timeText;
+    public TMP_Text slimeText;
+    public TMP_Text offeringText;
+    public TMP_Text fountainText;
+    public TMP_Text cacheText;
+
+    public Attributes blackSlime;
+    public EnemySpawner[] fountains;
+    public OfferingUI offering;
+    public CacheFound cache;
+
+    int playTime;
 
     public override InteractableType type { get { return InteractableType.GameTracker; } }
 
@@ -29,8 +39,36 @@ public class AchievementTracker : Interactable
         }
     }
 
+    bool CheckSlime()
+    {
+        return !blackSlime.alive;
+    }
+
+    bool CheckFountains()
+    {
+        foreach(EnemySpawner e in fountains)
+        {
+            if (e.canSpawn) return false;
+        }
+        return true;
+    }
+
+    bool CheckOffering()
+    {
+        return offering.madeOffering;
+    }
+
+    bool CheckCache()
+    {
+        return cache.found;
+    }
+
     public override void Interact(PlayerStateMachine stateMachine)
     {
-        throw new NotImplementedException();
+        slimeText.text = CheckSlime().ToString();
+        offeringText.text = CheckOffering().ToString();
+        fountainText.text = CheckFountains().ToString();
+        cacheText.text = CheckCache().ToString();
+        uIManager.ShowAchievmentsUI();
     }
 }

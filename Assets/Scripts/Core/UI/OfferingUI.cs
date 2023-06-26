@@ -21,6 +21,7 @@ public class OfferingUI : MonoBehaviour
     public TMP_Text gold;
 
     public TMP_Text errorMessage;
+    public bool madeOffering = false;
 
     private int tempBrawn;
     private int tempBrains;
@@ -123,6 +124,7 @@ public class OfferingUI : MonoBehaviour
         Time.timeScale = 1;
         gameObject.SetActive(false);
         playerStateMachine.InputReader.UIOpen = false;
+        madeOffering = true;
     }
 
     public void CancelOffering()

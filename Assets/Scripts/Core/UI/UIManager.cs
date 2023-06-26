@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject PauseCanvas;
     public GameObject GameOverCanvas;
     public GameObject OfferingCanvas;
+    public GameObject AchievementsCanvas;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -133,6 +134,9 @@ public class UIManager : MonoBehaviour
                     break;
                 case InteractableType.Statue:
                     interactableMessage.text = "Make Offering";
+                    break;
+                case InteractableType.GameTracker:
+                    interactableMessage.text = "Achievements";
                     break;
             }
             Animator.SetBool("ShowPrompt", true);
@@ -273,6 +277,24 @@ public class UIManager : MonoBehaviour
         OfferingCanvas.SetActive(false);
     }
 
+    public void ShowAchievmentsUI()
+    {
+        if (!PauseCanvas.activeSelf && !UICanvas.activeSelf && !GameOverCanvas.activeSelf)
+        {
+            playerStateMachine.InputReader.UIOpen = true;
+            playerStateMachine.InputReader.UnlockCursor();
+            AchievementsCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
+    private void CloseAchievementsUI()
+    {
+        playerStateMachine.InputReader.UIOpen = false;
+        playerStateMachine.InputReader.LockCursor();
+        AchievementsCanvas.SetActive(false);
+    }
+
     private void UpdateLootUI()
     {
         RemoveContainerChildren(LootContentContainer);
@@ -320,6 +342,14 @@ public class UIManager : MonoBehaviour
         if (loot.items.Count == 0) loot.DisableLoot();
     }
 
+    private void CloseSecondaryUI()
+    {
+        if (LootUI.activeSelf) CloseLootUI();
+        CloseInventoryUI();
+        CloseOfferingUI();
+        CloseAchievementsUI();
+    }
+
     public void OnPause()
     {
         if (!GameOverCanvas.activeSelf)
@@ -333,9 +363,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                if (LootUI.activeSelf) CloseLootUI();
-                CloseInventoryUI();
-                CloseOfferingUI();
+                CloseSecondaryUI();
                 playerStateMachine.InputReader.UIOpen = true;
                 playerStateMachine.InputReader.UnlockCursor();
                 PauseCanvas.SetActive(true);
