@@ -71,4 +71,9 @@ public class AchievementTracker : Interactable
         cacheText.text = CheckCache().ToString();
         uIManager.ShowAchievmentsUI();
     }
+
+    public void CloseUI()
+    {
+        uIManager.CloseAchievementsUI();
+    }
 }

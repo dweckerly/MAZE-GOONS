@@ -288,11 +288,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void CloseAchievementsUI()
+    public void CloseAchievementsUI()
     {
         playerStateMachine.InputReader.UIOpen = false;
         playerStateMachine.InputReader.LockCursor();
         AchievementsCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void UpdateLootUI()
