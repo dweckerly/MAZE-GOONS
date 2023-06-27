@@ -27,7 +27,6 @@ public class Door : Interactable
     {
         isOpen = !isOpen;
         animator.SetBool("IsOpen", isOpen);
-        CanInteract = false;
     }
 
     // animation event used in the last frame of the opening and closing animations
