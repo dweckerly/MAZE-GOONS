@@ -41,6 +41,8 @@ public class CharacterCreator : MonoBehaviour
     public StatsButtons statsButtons;
     public TMP_Text goonName;
     public UIManager uIManager;
+    public AudioSource music;
+    float fadeTime = 2f;
 
     private void Start() 
     {
@@ -174,10 +176,24 @@ public class CharacterCreator : MonoBehaviour
             uIManager.UpdateStats();
             goonName.text = name;
             StartCoroutine(CameraPan());
+            StartCoroutine(FadeMusic());
         }
         else
         {
             nameWarning.SetActive(true);
+        }
+    }
+
+    public IEnumerator FadeMusic()
+    {
+        while (music.isPlaying)
+        {
+            music.volume -= Time.deltaTime / fadeTime;
+            if (music.volume <= 0)
+            {
+                music.Stop();
+            }
+            yield return null;
         }
     }
 
