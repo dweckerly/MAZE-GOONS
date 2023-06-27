@@ -2199,15 +2199,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0744943
+      value: 0.07449431
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000018626451
+      value: 0.0000000055879354
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355443677534, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004656613
+      value: 4.656613e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355633040201, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
@@ -2263,15 +2263,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12113922
+      value: 0.1211392
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000024214389
+      value: -0.000000009313227
       objectReference: {fileID: 0}
     - target: {fileID: 4585188355991063171, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000005587936
+      value: -0.000000004190952
       objectReference: {fileID: 0}
     - target: {fileID: 4585188356033351243, guid: fabf5a2349f53614eb47a526c40d4634, type: 3}
       propertyPath: m_FollowOffset.y
@@ -41414,7 +41414,7 @@ PrefabInstance:
     - target: {fileID: 3134474910933261974, guid: 83751ada518ecaf48ac7d97da02344f6, type: 3}
       propertyPath: <defaultWeapon>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 79ab94effd8475f499b76ad3dd43ec2b, type: 2}
+      objectReference: {fileID: 11400000, guid: f7273b3b6098a264588a27575b7f8923, type: 2}
     - target: {fileID: 3134474910933261976, guid: 83751ada518ecaf48ac7d97da02344f6, type: 3}
       propertyPath: guts
       value: 3
@@ -50994,23 +50994,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3502579
+      value: 0.3502575
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.0014462789
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9366534
+      value: -0.93665224
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.00054083037
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.116
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -51018,7 +51018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 339793938704273016, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -0.134
       objectReference: {fileID: 0}
     - target: {fileID: 1152042333122647234, guid: eb67006b2cab9b54eba7f2c7514c2bdb, type: 3}
       propertyPath: m_Name
@@ -51908,6 +51908,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5109151639457500059, guid: 0c0e8147b23f4c94ebd12d5e843d69a4, type: 3}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109151639457500059, guid: 0c0e8147b23f4c94ebd12d5e843d69a4, type: 3}
+      propertyPath: items.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 81688b51d9fba8c4a9918837d618854a, type: 2}
     - target: {fileID: 5343014672926062275, guid: 0c0e8147b23f4c94ebd12d5e843d69a4, type: 3}
       propertyPath: m_Name
       value: BIG TROG
