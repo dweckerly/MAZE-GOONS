@@ -363,7 +363,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec85f59d-1f98-45ea-970e-a93a824a0b03"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
@@ -429,7 +429,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c7ab802b-89bd-4aea-9ff9-62aa7be1b5a3"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
@@ -473,7 +473,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7b152009-3bfa-4a28-80f8-dd7b3a9dc92a"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
