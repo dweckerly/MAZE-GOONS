@@ -398,6 +398,11 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void SettingsBtnClick()
+    {
+        Debug.Log("Settings button click");
+    }
+
     public void Retry()
     {
         foreach (Item i in playerStateMachine.Inventory.inventory.Keys)
