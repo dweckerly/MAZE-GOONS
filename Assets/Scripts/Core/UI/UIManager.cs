@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverCanvas;
     public GameObject OfferingCanvas;
     public GameObject AchievementsCanvas;
+    public GameObject ControlsCanvas;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -401,6 +402,11 @@ public class UIManager : MonoBehaviour
     public void SettingsBtnClick()
     {
         Debug.Log("Settings button click");
+    }
+
+    public void ControlsBtnClick()
+    {
+        Debug.Log("Controls button click");
     }
 
     public void Retry()
