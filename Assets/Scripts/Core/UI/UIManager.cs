@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverCanvas;
     public GameObject OfferingCanvas;
     public GameObject AchievementsCanvas;
-    public GameObject ControlsCanvas;
+    public GameObject PauseMainPanel;
+    public GameObject ControlsPanel;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -368,6 +369,7 @@ public class UIManager : MonoBehaviour
                 CloseSecondaryUI();
                 playerStateMachine.InputReader.UIOpen = true;
                 playerStateMachine.InputReader.UnlockCursor();
+                ResetPausePanels();
                 PauseCanvas.SetActive(true);
                 Time.timeScale = 0;
             }
@@ -406,7 +408,19 @@ public class UIManager : MonoBehaviour
 
     public void ControlsBtnClick()
     {
-        Debug.Log("Controls button click");
+        PauseMainPanel.SetActive(false);
+        ControlsPanel.SetActive(true);
+    }
+
+    public void BackBtnClick()
+    {
+        ResetPausePanels();
+    }
+
+    private void ResetPausePanels()
+    {
+        ControlsPanel.SetActive(false);
+        PauseMainPanel.SetActive(true);
     }
 
     public void Retry()
