@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject AchievementsCanvas;
     public GameObject PauseMainPanel;
     public GameObject ControlsPanel;
+    public GameObject SettingsPanel;
     public TextMeshProUGUI brawnText;
     public TextMeshProUGUI brainsText;
     public TextMeshProUGUI gutsText;
@@ -41,6 +42,12 @@ public class UIManager : MonoBehaviour
     public Sprite baseUISprite;
 
     public event Action OnInventoryOpen;
+
+    public float baseFreeLookXSpeed = 300f;
+    public float baseFreeLookYSpeed = 2f;
+
+    public float freeLookXSpeedMod = 1f;
+    public float freeLookYSpeedMod = 1f;
     
     void Start()
     {
@@ -338,8 +345,8 @@ public class UIManager : MonoBehaviour
     {
         playerStateMachine.InputReader.UIOpen = false;
         playerStateMachine.InputReader.LockCursor();
-        freeLook.m_XAxis.m_MaxSpeed = 300;
-        freeLook.m_YAxis.m_MaxSpeed = 2;
+        freeLook.m_XAxis.m_MaxSpeed = baseFreeLookXSpeed * freeLookXSpeedMod;
+        freeLook.m_YAxis.m_MaxSpeed = baseFreeLookYSpeed * freeLookYSpeedMod;
         LootUI.SetActive(false);
         if (loot != null) loot.EnableLoot();
         if (loot.items.Count == 0) loot.DisableLoot();
@@ -378,8 +385,8 @@ public class UIManager : MonoBehaviour
 
     void CloseInventoryUI()
     {
-        freeLook.m_XAxis.m_MaxSpeed = 300;
-        freeLook.m_YAxis.m_MaxSpeed = 2;
+        freeLook.m_XAxis.m_MaxSpeed = baseFreeLookXSpeed * freeLookXSpeedMod;
+        freeLook.m_YAxis.m_MaxSpeed = baseFreeLookYSpeed * freeLookYSpeedMod;
         UICanvas.SetActive(false);
     }
 
@@ -403,7 +410,8 @@ public class UIManager : MonoBehaviour
 
     public void SettingsBtnClick()
     {
-        Debug.Log("Settings button click");
+        PauseMainPanel.SetActive(false);
+        SettingsPanel.SetActive(true);
     }
 
     public void ControlsBtnClick()
@@ -420,6 +428,7 @@ public class UIManager : MonoBehaviour
     private void ResetPausePanels()
     {
         ControlsPanel.SetActive(false);
+        SettingsPanel.SetActive(false);
         PauseMainPanel.SetActive(true);
     }
 
@@ -468,5 +477,15 @@ public class UIManager : MonoBehaviour
     private void HotKey4()
     {
         if (hotKeyItems[3] != null && !UICanvas.activeSelf) InventoryItemClick(hotKeyItems[3]);
+    }
+
+    public void OnMouseXSliderChanged(float val)
+    {
+        freeLookXSpeedMod = val;
+    }
+
+    public void OnMouseYSliderChanged(float val)
+    {
+        freeLookYSpeedMod = val;
     }
 }
